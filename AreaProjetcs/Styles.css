@@ -1,0 +1,84 @@
+h1{
+    text-align: center;
+    color: aliceblue;
+}
+h2{
+    margin: 10px 90px;
+    color: aliceblue;
+}
+p{
+   
+    color: aliceblue;
+}
+main{
+    
+    margin: 10px 30px;
+}
+section{
+    display: inline-block;
+    width:320px;
+    
+}
+html{
+    min-height: 100%;
+
+    background-image: url(../Assets/Back.avif);
+
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.header {
+    position: fixed;
+    left: 50%;
+    top: 1.5%;
+    transform: translate(-50%, -50%);
+    
+    background-color: #020d26;
+    border-radius: 10px;
+}
+.header ::after{
+
+    content: "💻";
+}
+.Link-Header{
+    
+    font-weight: 100;
+    font-size: 24px;
+    line-height: 29px;
+    color: #989D9C;
+    cursor: pointer;
+    margin: 10px;
+    
+}
+img{
+    width: 200px;
+    height: 150px;
+}
+@media (max-Width:700px){
+    .header {
+        position: fixed;
+        left: 50%;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        width: 400px;
+        margin: 8px;
+        font-size: 2px;
+    }
+    .Link-Header{
+    
+        font-weight: 100;
+        font-size: 24px;
+        line-height: 29px;
+        color: #989D9C;
+        cursor: pointer;
+        margin: 10px;
+ 
+        
+    }
+    .main{
+        text-align: center;
+        margin: 5px 15px;
+    }
+}

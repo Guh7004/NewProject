@@ -1,0 +1,58 @@
+.Box{
+    text-align: center;
+}
+.Link-Header{
+       
+        font-weight: 100;
+        font-size: 24px;
+        line-height: 29px;
+        color: #989D9C;
+        cursor: pointer;
+        margin-right: 23px;
+}
+.Link-HeaderButton{
+   
+    width: 100px;
+    height: 50px;
+    background-color: darkgreen;
+    color: aliceblue;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.section{
+    margin: 50px 10px;
+    display: inline-block;
+    width: 500px;
+}
+.img{
+    margin: 50px 10px;
+    display: inline-block;
+    width: 595px;
+    height: 500px;
+    top: 246px;
+    left: 126px;
+}
+h1{
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 82px;
+    color: #161A49;
+
+}
+p{
+    font-size: 25px;
+    width: 493px;
+    height: 99px;
+    top: 553px;
+    left: 801px;
+    color: #4B505A;
+}
+.button{
+    color: #6FBF44;
+    background-color: azure;
+    border: 0;
+    font-size: 30px;
+    cursor: pointer;
+}
