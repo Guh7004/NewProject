@@ -56,3 +56,56 @@ p{
     font-size: 30px;
     cursor: pointer;
 }
+@media screen and (max-width:900px) {
+    .Link-Header {
+        font-weight: 100;
+        font-size: 15px;
+        line-height: 29px;
+        color: #989D9C;
+        cursor: pointer;
+        margin-right: 23px;
+    }
+    .img {
+        margin: 25px 0px;
+        display: inline-block;
+        width: 360px;
+        height: 300px;
+        top: 246px;
+        left: 126px;
+    }
+    .section {
+        /* margin: 50px 10px; */
+        /* display: inline-block; */
+        width: 400px;
+        text-align: center;
+    }
+    h1 {
+        font-size: 25px;
+        color: #161A49;
+    }
+    p {
+        font-size: 15px;
+        width: 250px;
+        /* height: 99px; */
+        /* top: 553px; */
+        /* left: 801px; */
+        color: #4B505A;
+    }
+    .button {
+        color: #6FBF44;
+        background-color: azure;
+        border: 0;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .Link-HeaderButton {
+        font-size: 13px;
+        width: 70px;
+        height: 50px;
+        background-color: darkgreen;
+        color: aliceblue;
+        border: 0;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}
