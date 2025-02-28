@@ -54,7 +54,7 @@ html{
 }
 img {
     background-color: black;
-    border: 4px solid #000;
+    border: #000000 solid 4px;
     width: 200px;
     height: 150px;
     border-radius: 40px;
