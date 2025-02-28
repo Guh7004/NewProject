@@ -52,9 +52,12 @@ html{
     margin: 10px;
     
 }
-img{
+img {
+    background-color: black;
+    border: 4px solid #000;
     width: 200px;
     height: 150px;
+    border-radius: 40px;
 }
 @media (max-Width:700px){
     .header {
