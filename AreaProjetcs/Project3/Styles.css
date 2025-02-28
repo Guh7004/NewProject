@@ -38,3 +38,34 @@ section{
 div{
     text-align: center;
 }
+@media screen and (max-width:900px)
+{
+    img {
+        position: absolute;
+        width: 200px;
+        top: 60px;
+        left: 100px;
+    }
+    section {
+        width: 100vw;
+        position: absolute;
+        top: 200px;
+        text-align: center;
+    }
+    button {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        top: 400px;
+        color: #FFFFFF;
+        left: 145px;
+        background-color: #AEC346;
+        border-radius: 20px;
+    }
+    body{
+    width: 375px;
+    height: 667px;
+    }
+
+
+}
