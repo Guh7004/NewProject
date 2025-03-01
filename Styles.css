@@ -1,3 +1,26 @@
+/* Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background-image: url(./Assets/Back.avif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    line-height: 1.6;
+    padding-top: 100px; /* Espaço para o header não sobrepor o conteúdo */
+}
+
+/* Header */
 .header {
     position: fixed;
     left: 50%;
@@ -5,105 +28,130 @@
     transform: translate(-50%, -50%);
     background-color: #020d26;
     border-radius: 10px;
+    padding: 15px 30px;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3); /* Sombra futurista */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.header ::after{
 
+.header:hover {
+    transform: translate(-50%, -55%) scale(1.05); /* Efeito de zoom ao passar o mouse */
+    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.5);
+}
+
+.header::after {
     content: "💻";
-}
-.Link-Header{
-    
-    font-weight: 100;
-    font-size: 24px;
-    line-height: 29px;
-    color: #989D9C;
-    cursor: pointer;
-    margin: 10px;
-    
+    font-size: 28px;
+    margin-left: 10px;
 }
 
-.main{
+.Link-Header {
+    margin: 10px;
+    font-weight: 400;
+    font-size: 24px;
+    color: #00bcd4;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.Link-Header:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #00bcd4; /* Efeito de brilho no hover */
+}
+
+/* Ajustando o título para não ser sobreposto pelo header */
+.main {
     text-align: center;
     margin: 10px 30px;
 }
-.title1{
+
+/* Títulos */
+.title1, .title2 {
     text-align: center;
+    color: #00bcd4;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4; /* Efeito de brilho no título */
+}
+
+.title1 {
     margin: 22px;
+    font-size: 2rem;
 }
-.title2{
-    text-align: center;
+
+.title2 {
     margin: 0 50px 0 0;
-
+    font-size: 1.8rem;
 }
-section{
+
+/* Seções */
+section {
     display: inline-block;
-    width:450px;
+    width: 700px;
+    padding: 30px;
+    background: rgba(0, 188, 212, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3); /* Sombra futurista */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-p{  
-    color: #FFFFFF;
-    
-}
-h1{
-    font-weight: bold;
-    color: #FFFFFF;
-}
-h2{
-    
-    font-weight: bold;
-    color: #FFFFFF;
-}
-h3{
-    
-    font-weight: bold;
-    color: #FFFFFF;
-}
-html{
-    min-height: 100%;
-    background-image: url(./Assets/Back.avif);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-@media (max-Width:770px){
-   
 
+section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.5); /* Aumento da sombra ao passar o mouse */
+}
+
+/* Texto */
+p {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Imagens */
+img {
+    max-width: 100%; /* Ajusta a imagem para a largura máxima do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3); /* Sombra nas imagens */
+}
+
+/* Media Query para dispositivos móveis */
+@media (max-width: 770px) {
     .header {
-        position: fixed;
-        left: 50%;
-        background-color: #FFFFFF;
-        border-radius: 10px;
+        background-color: #020d26;
         width: 400px;
+        font-size: 18px;
         margin: 8px;
-        font-size: 2px;
-        top: 1px;
+        padding: 15px 25px;
     }
-    .Link-Header{
-    
-        font-weight: 100;
-        font-size: 24px;
-        line-height: 29px;
-        color: #989D9C;
-        cursor: pointer;
+
+    .Link-Header {
+        font-size: 22px;
         margin: 10px;
- 
-        
     }
-    h2{
+
+    .title1, .title2 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
         font-size: 17px;
     }
-    p{
-        font-size: 13px;
 
+    p {
+        font-size: 14px;
     }
-    img{
-        width: 280px;
-        height: 140px;
+
+    img {
+        width: 100%;
+        height: auto;
     }
-    section{
+
+    section {
         width: 300px;
+        padding: 20px;
     }
-  
-        
-
-    
-
 }

@@ -1,85 +1,170 @@
-h1{
-    text-align: center;
-    color: aliceblue;
+/* Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-h2{
-    margin: 10px 90px;
-    color: aliceblue;
-}
-p{
-   
-    color: aliceblue;
-}
-main{
-    
-    margin: 10px 30px;
-}
-section{
-    display: inline-block;
-    width:320px;
-    
-}
-html{
+
+html {
     min-height: 100%;
-
     background-image: url(../Assets/Back.avif);
-
-    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+
+    
 }
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    line-height: 1.6;
+    padding-top: 100px; /* Espaço para o header não sobrepor o conteúdo */
+}
+
+/* Header */
 .header {
     position: fixed;
     left: 50%;
     top: 1.5%;
     transform: translate(-50%, -50%);
-    
     background-color: #020d26;
     border-radius: 10px;
+    padding: 15px 30px;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3); /* Sombra futurista */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.header ::after{
 
+.header:hover {
+    transform: translate(-50%, -55%) scale(1.05); /* Efeito de zoom ao passar o mouse */
+    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.5);
+}
+
+.header::after {
     content: "💻";
+    font-size: 28px;
+    margin-left: 10px;
 }
-.Link-Header{
-    
-    font-weight: 100;
-    font-size: 24px;
-    line-height: 29px;
-    color: #989D9C;
-    cursor: pointer;
+
+.Link-Header {
     margin: 10px;
-    
+    font-weight: 400;
+    font-size: 24px;
+    color: #00bcd4;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
+
+.Link-Header:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #00bcd4; /* Efeito de brilho no hover */
+}
+
+/* Ajustando o título para não ser sobreposto pelo header */
+.main {
+    text-align: center;
+    margin: 10px 30px;
+}
+
+/* Títulos */
+.title1, .title2 {
+    text-align: center;
+    color: #00bcd4;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4; /* Efeito de brilho no título */
+}
+
+.title1 {
+    margin: 22px;
+    font-size: 2rem;
+}
+
+.title2 {
+    margin: 0 50px 0 0;
+    font-size: 1.8rem;
+}
+
+/* Seções */
+section {
+    margin: 20px 10px;
+    display: inline-block;
+    width: 800px;
+    padding: 30px;
+    background: rgba(0, 188, 212, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3); /* Sombra futurista */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.5); /* Aumento da sombra ao passar o mouse */
+}
+
+/* Texto */
+p {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    margin: 0 20px;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    width: 300px;
+    padding: 30px;
+    background: rgba(0, 188, 212, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3); /* Sombra futurista */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Imagens */
 img {
-    background-color: black;
-    border: #000000 solid 4px;
-    width: 200px;
-    height: 150px;
-    border-radius: 40px;
+    margin: 5px 5px 0 30px;
+    max-width: 250px; /* Garante que a largura máxima da imagem seja igual à largura do contêiner */
+    height: 200px; /* Mantém a proporção da imagem */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3); /* Sombra nas imagens */
+    object-fit: cover; /* Adiciona para manter a proporção sem distorcer */
 }
-@media (max-Width:700px){
+
+/* Media Query para dispositivos móveis */
+@media (max-width: 770px) {
     .header {
-        position: fixed;
-        left: 50%;
-        background-color: #FFFFFF;
-        border-radius: 10px;
-        width: 320px;
+        background-color: #020d26;
+        width: 400px;
+        font-size: 18px;
         margin: 8px;
-        font-size: 1px;
-        top: 1px;
+        padding: 15px 25px;
     }
+
     .Link-Header {
-        font-weight: 100;
-        font-size: 20px;
-        line-height: 29px;
-        color: #989D9C;
-        cursor: pointer;
-        /* margin: 10px; */
+        font-size: 22px;
+        margin: 10px;
     }
-    .main{
-        text-align: center;
-        margin: 5px 15px;
+
+    .title1, .title2 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 17px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    section {
+        width: 300px;
+        padding: 20px;
     }
 }
