@@ -65,20 +65,18 @@ img {
         left: 50%;
         background-color: #FFFFFF;
         border-radius: 10px;
-        width: 400px;
+        width: 320px;
         margin: 8px;
-        font-size: 2px;
+        font-size: 1px;
+        top: 1px;
     }
-    .Link-Header{
-    
+    .Link-Header {
         font-weight: 100;
-        font-size: 24px;
+        font-size: 20px;
         line-height: 29px;
         color: #989D9C;
         cursor: pointer;
-        margin: 10px;
- 
-        
+        /* margin: 10px; */
     }
     .main{
         text-align: center;
