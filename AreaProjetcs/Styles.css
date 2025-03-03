@@ -59,7 +59,18 @@ body {
     color: #ffffff;
     text-shadow: 0 0 10px #00bcd4; /* Efeito de brilho no hover */
 }
-
+main{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    margin: 30px 20px;
+    border-radius: 10px;
+    background-image: url(../Assets/back3.jfif);
+    background-size: cover;
+    cursor: pointer;
+}
+main:hover {
+    transform: translateY(-10px);
+}
 /* Ajustando o título para não ser sobreposto pelo header */
 .main {
     text-align: center;
@@ -86,6 +97,7 @@ body {
 
 /* Seções */
 section {
+    
     margin: 20px 10px;
     display: inline-block;
     width: 800px;
@@ -94,6 +106,9 @@ section {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3); /* Sombra futurista */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    background-color: rgb(0,188, 212, .2);
+    background-size: cover;
 }
 
 section:hover {
@@ -108,21 +123,26 @@ p {
     line-height: 1.6;
 }
 
-h1, h2, h3 {
-    margin: 0 20px;
+h1{
+    
+    margin: 15px 10px;
     font-weight: bold;
     color: #fff;
     display: inline-block;
     width: 300px;
-    padding: 30px;
+    padding: 20px;
     background: rgba(0, 188, 212, 0.1);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3); /* Sombra futurista */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+h2{
+    color: #ffffff;
+}
 
 /* Imagens */
 img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin: 5px 5px 0 30px;
     max-width: 250px; /* Garante que a largura máxima da imagem seja igual à largura do contêiner */
     height: 200px; /* Mantém a proporção da imagem */
@@ -130,7 +150,9 @@ img {
     box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3); /* Sombra nas imagens */
     object-fit: cover; /* Adiciona para manter a proporção sem distorcer */
 }
-
+img:hover {
+    transform: translateY(-10px);
+}
 /* Media Query para dispositivos móveis */
 @media (max-width: 770px) {
     .header {
@@ -167,4 +189,5 @@ img {
         width: 300px;
         padding: 20px;
     }
+    
 }
