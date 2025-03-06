@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    background-color: black;
+}
+header{
+    display: flex;
+    background-color: black;
+    color: aliceblue;
+    padding: 20px;
+}
+li,button{
+    cursor: pointer;
+}
+li{
+    display: inline-block;
+    margin: 0px 20px;
+    font-size: 20px;
+    color: #ff00ff;
+}
+li:hover{
+    
+    color: #ff00ff;
+}
+nav{
+    
+    position: relative;
+    left: 800px;
+    top: 10px;
+    
+}
+button{
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 24px;
+    background: #00eaff;
+    color: #0a0a0a;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+    
+}
+button:hover{
+    background: #ff00ff;
+    color: white;
+}
+p{
+    color: #00eaff;
+}
+h1{
+    color: #00eaff;
+}
+li{
+    color: #00eaff;
+}
+img{
+    display: block;
+    margin: 0 auto 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.title{
+
+    text-align: center;
+
+}
+.Descricao{
+    
+    margin: 10px;
+    text-align: center;
+    
+}
+.BtnMyProjects{
+    
+    margin: 0 auto 10px;
+    display: block;
+    
+}
+.contact{
+    background-color: cadetblue;
+    margin: 0 0 10px 30px ;
+}
+.copy{
+    background-color: dimgrey;
+    text-align: center;
+    padding: 7px;
+}
+section{
+    height: 80vh;
+    background-color: darkcyan;
+}
+.caracters{
+    
+    position: absolute;
+    top: 200px;
+    right: 25%;
+    
+    
+}
