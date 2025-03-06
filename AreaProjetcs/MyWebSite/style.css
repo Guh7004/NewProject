@@ -8,7 +8,7 @@ html{
 }
 header{
     display: flex;
-    background-color: black;
+    background-color: #121212;
     color: aliceblue;
     padding: 20px;
 }
@@ -28,7 +28,7 @@ li:hover{
 nav{
     
     position: relative;
-    left: 800px;
+    left: 750px;
     top: 10px;
     
 }
@@ -57,6 +57,7 @@ h1{
 li{
     color: #00eaff;
 }
+
 img{
     display: block;
     margin: 0 auto 20px;
@@ -87,13 +88,13 @@ img{
     margin: 0 0 10px 30px ;
 }
 .copy{
-    background-color: dimgrey;
+    background-color: #121212;
     text-align: center;
     padding: 7px;
 }
 section{
     height: 80vh;
-    background-color: darkcyan;
+    background-color:  #002b36;
 }
 .caracters{
     
@@ -102,4 +103,28 @@ section{
     right: 25%;
     
     
+}
+.dark-mode section{
+    background-color: #002b36;
+}
+.dark-mode .copy{
+    background-color: #121212;
+}
+.dark-mode button {
+    background: #007a99;
+    color: #0a0a0a;
+}
+.dark-mode p{
+    color: #007a99;
+    
+}
+.dark-mode li{
+    color: #007a99;
+}
+.dark-mode h1 {
+    color: #007a99;
+}
+.dark-mode button:hover{
+    background: #ff00ff;
+    color: white;
 }
