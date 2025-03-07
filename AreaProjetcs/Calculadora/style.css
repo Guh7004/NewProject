@@ -1,0 +1,49 @@
+* {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    background-color:  #002b36;
+    background-image: url(../../Assets/Back.avif);
+    background-size: cover;
+}
+body{
+    text-align: center;
+}
+.tecl{
+    
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    background-color: rgb(18, 18, 18, .8);
+    padding: 100px;
+    border-radius: 50px;
+    color: aliceblue;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tecl:hover {
+    transform: translate(-5%, -5%) scale(1.05); /* Efeito de zoom ao passar o mouse */
+    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.5);
+}
+main{
+    margin: 10px;
+}
+input{
+    margin: 10px;
+}
+button{
+    border-radius: 20px;
+    padding: 10px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.2s;
+        
+}
+      
+button:active {
+    background-color: red;
+}

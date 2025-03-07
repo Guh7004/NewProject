@@ -5,22 +5,27 @@
 <body>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Calculadora</title>
-    <header><h1><strong>Calculadora</strong></h1></header>
-    <main>
-        <input id="num1" type="number" placeholder="Coloque seu primeiro numero aqui">
-        <input id="num2" type="number" placeholder="Coloque seu segundo numero aqui">
-        <div id="resultado" class="resultado">
-            <p></p>
-        </div>
-    </main>
+    
+    
     <div class="tecl">
-        <button onclick="calcular()">Multiplicação</button>
-        <button>Divisão</button>
+        <main>
+            <header><h1><strong>Calculadora</strong></h1></header>
+            <input id="num1" type="number" placeholder="Num1">
+            <input id="num2" type="number" placeholder="Num2">
+            
+            <div id="resultado" class="resultado">
+                <h1>resultado</h1>
+            </div>
+        </main>
+        <button onclick="multiplicacao()">Multiplicação</button>
+        <button onclick="divisao()">Divisão</button>
         <button onclick="soma()">Soma</button>
-        <button>Subtração</button>
-        <button>Potência</button>
+        <button onclick="subtraçao()">Subtração</button>
+        <button onclick="potencia()">Potência</button>
     </div>
+    
     <script src="./script.js"></script>
 </body>
 
