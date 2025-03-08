@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+    <title>Pedido de Comida</title>
+</head>
+<body>
+    <h1><strong>Super Mercado</strong></h1>
+    
+    <div class="menu">
+        <button onclick="mostrarItens('comidas')">Comidas</button>
+        <button onclick="mostrarItens('bebidas')">Bebidas</button>
+        <button onclick="mostrarItens('doces')">Doces</button>
+    </div>
+
+    <div id="container1" class="container">
+        <div id="comidas" class="items">
+            <div class="item" onclick="adicionarAoCarrinho('Pizza', 35)">
+                <img src="../../Assets/download.jfif" alt="Pizza">
+                Pizza - R$ 35,00
+            </div>
+            <div class="item" onclick="adicionarAoCarrinho('Hambúrguer', 20)">
+                <img src="../../Assets/burguer.jfif" alt="Hambúrguer">
+                Hambúrguer - R$ 20,00
+            </div>
+            <div class="item" onclick="adicionarAoCarrinho('Lasanha', 25)">
+                <img src="../../Assets/lasagna.jfif" alt="Lasanha">
+                Lasanha - R$ 25,00
+            </div>
+        </div>
+        
+        <div id="bebidas" class="items">
+            <div class="item" onclick="adicionarAoCarrinho('Refrigerante', 5)">
+                <img src="../../Assets/refrigerator.jfif" alt="Refrigerante">
+                Refrigerante - R$ 5,00
+            </div>
+            <div class="item" onclick="adicionarAoCarrinho('Suco Natural', 7)">
+                <img src="../../Assets/NaturalJuice.jfif" alt="Suco Natural">
+                Suco Natural - R$ 7,00
+            </div>
+            <div class="item" onclick="adicionarAoCarrinho('Água', 3)">
+                <img src="../../Assets/water.jfif" alt="Água">
+                Água - R$ 3,00
+            </div>
+        </div>
+        
+        <div id="doces" class="items">
+            <div class="item" onclick="adicionarAoCarrinho('Bolo de Chocolate', 15)">
+                <img src="../../Assets/chocolate_cake.jfif" alt="Bolo de Chocolate">
+                Bolo de Chocolate - R$ 15,00
+            </div>
+            <div class="item" onclick="adicionarAoCarrinho('Pudim', 12)">
+                <img src="../../Assets/pudding.jfif" alt="Pudim">
+                Pudim - R$ 12,00
+            </div>
+            <div class="item" onclick="adicionarAoCarrinho('Brigadeiro', 2)">
+                <img src="../../Assets/brigadier.jfif" alt="Brigadeiro">
+                Brigadeiro - R$ 2,00
+            </div>
+        </div>
+    </div>
+
+    <div id="carrinho-container">
+        <h2>Carrinho</h2>
+        <ul id="carrinho"></ul>
+        <p id="total">Total: R$ 0,00</p>
+    </div>
+</body>
+</html>

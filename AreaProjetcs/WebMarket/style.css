@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0d0d0d;
+    color: #00ffcc;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.menu button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #00ffcc;
+    color: #0d0d0d;
+    transition: 0.3s;
+}
+
+.menu button:hover {
+    background: #00997a;
+    color: white;
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+.items {
+    margin-top: 20px;
+    display: none;
+    justify-content: center;
+    gap: 20px;
+}
+
+.item {
+    padding: 15px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ffcc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ffcc;
+}
+
+.item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    border: 3px solid #00ffcc;
+}
+
+#carrinho {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border: 1px solid #00ffcc;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    box-shadow: 0 0 10px #00ffcc;
+    border-radius: 10px;
+}
