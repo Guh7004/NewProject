@@ -81,3 +81,20 @@ h1 {
     box-shadow: 0 0 10px #00ffcc;
     border-radius: 10px;
 }
+.menuCar{
+    margin-top: 20px;
+    background-color: #1a1a1a;
+    border: 1px solid #00ffcc;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 10px #00ffcc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+h2:hover {
+    background: #00997a;
+    color: white;
+    box-shadow: 0 0 10px #00ffcc;
+}

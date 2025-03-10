@@ -46,7 +46,8 @@ function atualizarCarrinho() {
 
         let botaoRemover = document.createElement("button");
         botaoRemover.textContent = "❌";
-        botaoRemover.style.marginLeft = "10px";
+        botaoRemover.style.marginLeft = "30px";
+        
         botaoRemover.onclick = () => removerDoCarrinho(item.nome);
 
         li.appendChild(botaoRemover);
@@ -54,4 +55,11 @@ function atualizarCarrinho() {
     });
 
     totalElemento.textContent = `Total: R$ ${total.toFixed(2)}`; // Atualiza o total
+}
+function CarOn(el) {
+    var display = document.getElementById(el).style.display;
+    if(display == "none")
+        document.getElementById(el).style.display = 'block';
+    else
+        document.getElementById(el).style.display = 'none';
 }
