@@ -2,7 +2,11 @@ let carrinho = [];
 
 function mostrarItens(categoria) {
     document.querySelectorAll('.items').forEach(cat => {
-        cat.style.display = (cat.id === categoria ? 'flex' : 'none');
+        if (cat.id === categoria) {
+            cat.style.display = window.innerWidth < 800 ? 'inline-block' : 'flex';
+        } else {
+            cat.style.display = 'none';
+        }
     });
 }
 
@@ -35,7 +39,9 @@ function removerDoCarrinho(nome) {
 function atualizarCarrinho() {
     let carrinhoLista = document.getElementById("carrinho");
     let totalElemento = document.getElementById("total");
+    let tituloCarrinho = document.getElementById("tituloCarrinho"); // Seleciona o título onde será exibida a quantidade total
     let total = 0;
+    let quantidadeTotal = 0; // Variável para armazenar a soma das quantidades
 
     carrinhoLista.innerHTML = ""; // Limpa a lista para atualizar
 
@@ -43,19 +49,22 @@ function atualizarCarrinho() {
         let li = document.createElement("li");
         li.textContent = `${item.quantidade}x ${item.nome} - R$ ${(item.preco * item.quantidade).toFixed(2)}`;
         total += item.preco * item.quantidade; // Calcula o total
+        quantidadeTotal += item.quantidade; // Soma a quantidade total
 
         let botaoRemover = document.createElement("button");
         botaoRemover.textContent = "❌";
         botaoRemover.style.marginLeft = "30px";
-        
+
         botaoRemover.onclick = () => removerDoCarrinho(item.nome);
 
         li.appendChild(botaoRemover);
         carrinhoLista.appendChild(li);
     });
 
-    totalElemento.textContent = `Total: R$ ${total.toFixed(2)}`; // Atualiza o total
+    totalElemento.textContent = `Total: R$ ${total.toFixed(2)}`;
+    tituloCarrinho.textContent = `🛒 Carrinho (${quantidadeTotal} itens)`;
 }
+
 function CarOn(el) {
     var display = document.getElementById(el).style.display;
     if(display == "none")

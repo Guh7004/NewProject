@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #0d0d0d;
+    background-color: #102920;
     color: #00ffcc;
     text-align: center;
 }
@@ -97,4 +97,19 @@ h2:hover {
     background: #00997a;
     color: white;
     box-shadow: 0 0 10px #00ffcc;
+}
+#total{
+    margin: 10px;
+}
+@media (max-width: 800px) {
+    .item{
+        margin: 10px;
+    }    
+    .menuCar{
+        width: 90%;
+        margin-bottom: 10px;
+    }
+    #carrinho{
+        width: 90%;
+    }
 }
