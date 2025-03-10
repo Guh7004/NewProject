@@ -6,7 +6,6 @@
 }
 html{
     background-color:  #002b36;
-    
     background-size: cover;
 }
 body{
@@ -46,4 +45,23 @@ button{
       
 button:active {
     background-color: red;
+}
+@media (max-width: 770px) {
+    .tecl{
+        position: relative;
+        margin: 10px;
+        left: 1%;
+        padding: 1px;
+        top: 180px;
+
+    }
+    input{
+        font-size: 15px;
+        width: 100px;
+    }
+    button{
+        margin: 5px;
+        font-size: 15px;
+    }
+   
 }
