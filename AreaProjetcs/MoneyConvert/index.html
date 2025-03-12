@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    
+    <title>Conversor De Moedas</title>
+</head>
+<header><h1>Converta Suas Moedas</h1></header>
+<body>
+    
+    <div class="centralizada">
+        
+        <select id="meuSelect1">
+            <option value="op1">BRL</option>
+            
+            <option value="op2">USD</option>
+        </select>
+       
+        <select id="meuSelect2">
+            <option value="op1">BRL</option>
+            <option value="op2">USD</option>
+        </select>
+
+        <input id="moneyInput" type="text" placeholder="R$0,00">
+        <button onclick="converter()">Converter</button>
+        <img src="../../Assets/CoinBRL.svg" alt="Imagem Não Encontrada">
+        <p id="output1">R$0.00</p>
+        <img src="../../Assets/CoinUSD.svg" alt="Imagem Não Encontrada">
+        <p id="output2">R$0.00</p>
+        
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>

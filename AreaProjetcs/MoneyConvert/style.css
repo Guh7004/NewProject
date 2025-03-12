@@ -1,0 +1,65 @@
+body,html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center;     /* Alinha verticalmente */
+    background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
+  }
+
+  .centralizada {
+    width: 300px;
+    height: 200px;
+    background-color: lightblue; /* Apenas para ilustrar */
+    display: grid;
+    justify-items: center;
+    padding: 60px;
+    border-radius: 50px;
+    background: rgba(50, 50, 50, 0.8);
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    width: 350px;
+    height: auto;
+  }
+.centralizada img {
+    max-width: 40px;  
+    transition: transform 0.3s ease-in-out; 
+}
+.centralizada img:hover {
+    transform: scale(1.2); 
+}
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    border: 2px solid #00FFFF;
+    background: rgba(255, 255, 255, 0.2); 
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease; 
+}
+  header{
+    position: absolute;
+    top: 1px;
+  }
+  input:focus, select:focus {
+    border-color: #00FF00; 
+    background-color: rgba(0, 255, 0, 0.2); 
+}
+
+input::placeholder, select {
+    color: #00FFFF; 
+}
+h1{
+    color: #00FFFF;
+}
+.emoji{
+  margin: 0;
+  font-size: 20px;
+}
+p{
+  color: #00FFFF;
+  
+}
