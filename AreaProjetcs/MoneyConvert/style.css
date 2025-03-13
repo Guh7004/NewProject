@@ -63,3 +63,8 @@ p{
   color: #00FFFF;
   
 }
+@media (max-width: 770px){
+  .centralizada{
+    width: 230px;
+  }
+}
