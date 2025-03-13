@@ -4,7 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.teste{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
+    gap: 20px;
+}
 html {
     min-height: 100%;
     background-image: url(../Assets/Back.avif);
@@ -94,13 +98,20 @@ main:hover {
     margin: 0 50px 0 0;
     font-size: 1.8rem;
 }
+.project-card, .pro, h2 {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #00eaff;
+    text-align: center;
+    margin: 10px;
+}
 
 /* Seções */
 section {
     
     margin: 20px 10px;
     display: inline-block;
-    width: 800px;
     padding: 30px;
     background: rgba(0, 188, 212, 0.1);
     border-radius: 15px;
@@ -121,23 +132,6 @@ p {
     color: #fff;
     font-size: 1rem;
     line-height: 1.6;
-}
-
-h1{
-    
-    margin: 15px 10px;
-    font-weight: bold;
-    color: #fff;
-    display: inline-block;
-    width: 300px;
-    padding: 20px;
-    background: rgba(0, 188, 212, 0.1);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3); /* Sombra futurista */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-h2{
-    color: #ffffff;
 }
 
 /* Imagens */
