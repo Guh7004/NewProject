@@ -1,47 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustavo Chauki | Desenvolvedor Front-End</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="./script.js"></script>
-    <title>MyWebSite</title>
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <header >
-        <h1>Gustavo Chauki</h1>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>Projetos</li>
-                <li>Sobre</li>
-                <li><button id="theme-toggle">🌙</button></li>
-            </ul>
-        </nav>
+    <header>
+        <div class="container header-content">
+            <h1>Gustavo Chauki</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projetos</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li><button id="theme-toggle">🌙</button></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <section>
-    <div class="caracters">
-        <aside>
-            <img src="../../Assets/Lading page.jfif" alt="Imagem não encontrada">
-        </aside>
 
-    
-        <h1 class="title">Oi , Eu sou o Gustavo Chauki </h1>
-        <p class="Descricao">Desenvolvedor Front-End especializado em criar interfaces modernas, responsivas e otimizadas.</p>
-        <button class="BtnMyProjects">Veja meus Projetos</button>
-    </div>
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="../../Assets/Aluno1.jfif" alt="Gatinho fofo" class="cat-img">
+            <h2>Oi, eu sou Gustavo Chauki</h2>
+            <p>Desenvolvedor Front-End especializado em criar interfaces modernas, responsivas e otimizadas.</p>
+            <a href="projects.html" class="btn">Veja meus projetos</a>
+        </div>
     </section>
 
-    <footer class="Contact">
-        <h1>Contato</h1>
-        <p>Entre em contato para colaborações e projetos.</p>
-        <a href="mailto:gustavochauki2019@gmail.com"><button>Enviar E-mail</button></a>
-        
-    </footer>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contato</h2>
+            <p>Entre em contato para colaborações e projetos.</p>
+            <a href="mailto:gustavochauki2019@gmail.com" class="btn">Enviar E-mail</a>
+        </div>
+    </section>
 
-    <footer class="copy">
-        <p>&copy; 2025 Gustavo Chauki - Todos os direitos reservados.</p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gustavo Chauki - Todos os direitos reservados.</p>
+        </div>
     </footer>
-
 </body>
 </html>
