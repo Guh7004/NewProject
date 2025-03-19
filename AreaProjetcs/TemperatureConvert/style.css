@@ -40,6 +40,10 @@ button {
     cursor: pointer;
 
 }
+h1{
+    color: white;
+    margin-bottom: 10px;
+}
 
 input {
     padding: 8px;
