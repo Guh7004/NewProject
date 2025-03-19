@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgb(79, 172, 254), rgb(0, 242, 254));
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    display: grid;
+    padding: 50px;
+    border: solid;
+    border-radius: 20px;
+}
+
+.inf {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+button {
+    border-radius: 20px;
+    padding: 8px;
+    background: rgb(255, 152, 0);
+    cursor: pointer;
+
+}
+
+input {
+    padding: 8px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.Graus {
+    color: rgb(255, 204, 0);
+    font-size: 30px;
+}
+
+p {
+    color: white;
+    font-size: 30px;
+}
+
+.Icon {
+
+    position: absolute;
+
+}
+
+.Humidity {
+    font-size: 15px;
+}
+
+.Percent {
+    font-size: 20px;
+}
