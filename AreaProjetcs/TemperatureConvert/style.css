@@ -51,7 +51,7 @@ input {
     background: rgba(255, 255, 255, 0.2);
 }
 
-.Graus {
+#Graus {
     color: rgb(255, 204, 0);
     font-size: 30px;
 }
@@ -61,16 +61,16 @@ p {
     font-size: 30px;
 }
 
-.Icon {
-
+#Icon {
+    font-size: 20px;
     position: absolute;
 
 }
 
-.Humidity {
+#Humidity {
     font-size: 15px;
 }
 
-.Percent {
+#Percent {
     font-size: 20px;
 }
