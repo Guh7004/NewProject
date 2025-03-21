@@ -1,31 +1,30 @@
 
 function Start(){
-   
     let lat;
     let lon;
-    
     const apiKey ='05f28c72ce6c434369126d4fc66ee2ff';
     const city = document.getElementById("City").value;
     const state = document.getElementById("State").value;
-    const geo = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},BR&limit=5&appid=${apiKey}`;
+    const geo = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},BR&limit=5&appid=${apiKey}`;
 
-    fetch (geo)
+    fetch(geo)
     .then(response => response.json())
-    .then(data=> {
-        if (data.length > 0 ){
+    .then(data => {
+        if (data && data.length > 0) {
             lat = data[0].lat;
             lon = data[0].lon;
             console.log('Latitude:', lat);
             console.log('Longitude:', lon);
-
+            
             const map = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
             return fetch(map);
-        }else {
-            console.log('Nenhuma Cidade Encontrada')
+        } else {
+            console.log('Nenhuma Cidade Encontrada');
+            throw new Error('Cidade não encontrada');
         }
     })
     .then(response => response.json())
-    .then(data =>{
+    .then(data => {
         const Icon = "°C";
         const HumidityTxt = "Humidade:";
         let Humidity = data.main.humidity;
@@ -34,12 +33,14 @@ function Start(){
 
         let ValorTemp = (data.main.temp - 273.15).toFixed(2);
         console.log(ValorTemp);
-        
 
         document.getElementById("Percent").innerHTML = HumidadeFormat;
         document.getElementById("Graus").innerHTML = ValorTemp;
         document.getElementById("HumidityTxt").textContent = HumidityTxt;
         document.getElementById("Icon").textContent = Icon;
-    } )
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
 
 }
