@@ -1,7 +1,9 @@
 function Start(){
+    require('dotenv').config();
+    const API_KEY = process.env.API_KEY;
     let lat;
     let lon;
-    const apiKey = '05f28c72ce6c434369126d4fc66ee2ff';
+    const apiKey = API_KEY;
     const city = document.getElementById("City").value;
     const state = document.getElementById("State").value;
     const geo = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},BR&limit=5&appid=${apiKey}`;
