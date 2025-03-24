@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <title>MovieHunt</title>
@@ -24,7 +23,7 @@
 
     </header>
     <nav>
-        <h1 class="Categories">Animes</h1>
+        <h1 id="Titles" class="Categories">Animes</h1>
         <input type="text" placeholder="Pesquisar...">
 
         <button class="search-btn">
@@ -71,38 +70,26 @@
 
     <section id="desenhos" class="carousel-container">
         <button id="prevBtn1" class="nav-btn"><i class="fa fa-chevron-left"></i></button>
-        <div class="carousel1">
-            <div class="card">
+        <div  class="carousel1">
+            <div id="HoradeAventura" class="card">
                 <img src="../../Assets/HoradeAventura.jfif" alt="Hora De Aventura">
                 <p>Hora De Aventura</p>
             </div>
-            <div class="card">
+            <div id="ben10" class="card">
                 <img src="../../Assets/ben10.jfif" alt="Ben 10">
                 <p>Ben 10</p>
             </div>
-            <div class="card">
+            <div id="ApenasUmShown" class="card">
                 <img src="../../Assets/Apenas.jfif" alt="Apenas Um Show">
                 <p>Apenas Um Show</p>
             </div>
-            <div class="card">
+            <div id="PadrinhosMagicos" class="card">
                 <img src="../../Assets/padrinhos.jfif" alt="Os Padrinhos Magicos">
                 <p>Padrinhos Magicos</p>
             </div>
-            <div class="card">
+            <div id="TitioAvo" class="card">
                 <img src="../../Assets/Titio.jfif" alt="Titio Avô">
                 <p>Titio Avô</p>
-            </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
-            </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
-            </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
             </div>
         </div>
         <button id="nextBtn1" class="nav-btn"><i class="fa fa-chevron-right"></i></button>
@@ -110,33 +97,25 @@
     <section id="filmes" class="carousel-container">
         <button id="prevBtn1" class="nav-btn"><i class="fa fa-chevron-left"></i></button>
         <div class="carousel1">
-            <div class="card">
-                <img src="../../Assets/SoloLeveling.jfif" alt="Solo Leveling">
-                <p>Solo Leveling</p>
+            <div id="GntGrande" class="card">
+                <img src="../../Assets/GntGrande.jfif" alt="Gente Grande">
+                <p>Gente Grande</p>
             </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
+            <div id="IronMan" class="card">
+                <img src="../../Assets/IronMan.jfif" alt="HomemDeFerro">
+                <p>Homem De Ferro</p>
             </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
+            <div id="ThorRagnaro" class="card">
+                <img src="../../Assets/ThorRagnaro.jfif" alt="Thor">
+                <p>Thor Ragnarok</p>
             </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
+            <div id="AvengersEnd" class="card">
+                <img src="../../Assets/AvengersEnd.jfif" alt="Avengers">
+                <p>Avengers</p>
             </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
-            </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
-            </div>
-            <div class="card">
-                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
-                <p>Dragon Ball Daima</p>
+            <div id="Velozes" class="card">
+                <img src="../../Assets/Velozes.jfif" alt="Velozes Furiosos 6 ">
+                <p>Velozes Furiosos 6</p>
             </div>
         </div>
         <button id="nextBtn1" class="nav-btn"><i class="fa fa-chevron-right"></i></button>
@@ -145,7 +124,9 @@
         <button class="play-button">
             ▶
         </button>
-
+        <div id="ImgOp">
+            
+        </div>
         <img id="imgExpo" src="../../Assets/SoloLeveling.jfif" alt="Dragon Ball Daima">
         <p id="imginf">Há mais de uma década, surgiu uma misteriosa passagem chamada “portal”, que conecta este mundo a
             uma dimensão diferente, o que fez com que pessoas despertassem poderes únicos… e essas pessoas são chamadas

@@ -175,7 +175,8 @@ footer {
 
 .play-button {
   font-size: 24px;
-  background-color: #ff4d4d;
+  background-color: #ff1a1a;
+  
   color: white;
   border: none;
   border-radius: 50%;
@@ -186,8 +187,20 @@ footer {
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 2;
 }
 
 .play-button:hover {
-  background-color: #ff1a1a;
+  background-color: #ff4d4d;
+ 
+}
+#ImgOp{
+  background-color: rgb(0, 0, 0, .5);
+  border-radius: 10px;
+  height: 282px;
+  width: 302px;
+  position: relative;
+  z-index: 1;
+  right: 120px;
+  bottom: 192px;
 }

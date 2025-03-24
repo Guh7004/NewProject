@@ -7,6 +7,15 @@ const blackCover = document.getElementById('blackCover');
 const Attack = document.getElementById('Attack');
 const Nanatsu = document.getElementById('Nanatsu');
 const HxH = document.getElementById('HxH');
+const HoradeAventura = document.getElementById('HoradeAventura');
+const ben10 = document.getElementById('ben10');
+const ApenasUmShown = document.getElementById('ApenasUmShown');
+const PadrinhosMagicos = document.getElementById('PadrinhosMagicos');
+const GntGrande = document.getElementById('GntGrande');
+const IronMan = document.getElementById('IronMan');
+const ThorRagnaro = document.getElementById('ThorRagnaro');
+const AvengersEnd = document.getElementById('AvengersEnd');
+const Velozes = document.getElementById('Velozes');
 
 // Adicionando um evento de clique
 soloLevel.addEventListener('click', function () {
@@ -37,6 +46,48 @@ HxH.addEventListener('click', function () {
     imagem.src = "../../Assets/HxH.jpg";
     div.textContent = 'Hunter x Hunter 2011 Todos os Episodios Online, Assistir Hunter x Hunter 2011 Anime Completo.Gon Freecss, um garoto de doze anos, um dia descobre que seu pai, que supostamente estava morto, estava vivo e bem. Seu Pai, Ging, é um Hunter, um membro de elite da sociedade com uma licença para ir a qualquer lugar ou fazer qualquer coisa.';
 });
+HoradeAventura.addEventListener('click', function () {
+    imagem.src = "../../Assets/HoradeAventura.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+ben10.addEventListener('click', function () {
+    imagem.src = "../../Assets/ben10.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+ApenasUmShown.addEventListener('click', function () {
+    imagem.src = "../../Assets/Apenas.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+PadrinhosMagicos.addEventListener('click', function () {
+    imagem.src = "../../Assets/Padrinhos.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+TitioAvo.addEventListener('click', function () {
+    imagem.src = "../../Assets/Titio.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+GntGrande.addEventListener('click', function () {
+    imagem.src = "../../Assets/GntGrande.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+IronMan.addEventListener('click', function () {
+    imagem.src = "../../Assets/IronMan.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+ThorRagnaro.addEventListener('click', function () {
+    imagem.src = "../../Assets/ThorRagnaro.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+AvengersEnd.addEventListener('click', function () {
+    imagem.src = "../../Assets/AvengersEnd.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+Velozes.addEventListener('click', function () {
+    imagem.src = "../../Assets/Velozes.jfif";
+    div.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nisi quia architecto omnis nihil illo maiores tenetur eveniet non minima quam rem, repellendus, amet voluptatem! Quisquam dolores quia cumque harum!';
+});
+
+
 
 
 const btnAnimes = document.getElementById('btnAnimes');
@@ -47,17 +98,20 @@ const divdesenhos = document.getElementById('desenhos');
 const divfilmes = document.getElementById('filmes');
 
 btnAnimes.addEventListener('click', function () {
-    divanimes.style.display = 'flex';  // Esconde a Div 1
-    divdesenhos.style.display = 'none'; // Exibe a Div 2
-    divfilmes.style.display = 'none';  // Esconde a Div 3
+    divanimes.style.display = 'flex';  
+    divdesenhos.style.display = 'none';
+    divfilmes.style.display = 'none';  
+    document.getElementById("Titles").innerText = "Animes";
 });
 btnDesenhos.addEventListener('click', function () {
-    divanimes.style.display = 'none';  // Esconde a Div 1
-    divdesenhos.style.display = 'flex'; // Exibe a Div 2
-    divfilmes.style.display = 'none';  // Esconde a Div 3
+    divanimes.style.display = 'none';  
+    divdesenhos.style.display = 'flex';
+    divfilmes.style.display = 'none';  
+    document.getElementById("Titles").innerText = "Desenhos";
 });
 btnFilmes.addEventListener('click', function () {
-    divanimes.style.display = 'none';  // Esconde a Div 1
-    divdesenhos.style.display = 'none'; // Exibe a Div 2
-    divfilmes.style.display = 'flex';  // Esconde a Div 3
+    divanimes.style.display = 'none';  
+    divdesenhos.style.display = 'none'; 
+    divfilmes.style.display = 'flex';  
+    document.getElementById("Titles").innerText = "Filmes";
 });
