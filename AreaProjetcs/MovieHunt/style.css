@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #333333;
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1E1E1E;
+  padding: 15px;
+}
+
+nav {
+  justify-self: self-start;
+  position: relative;
+  /* justify-self: center; */
+  display: flex;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  border: 1px solid #1E1E1E;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-left: 260px;
+
+}
+
+input::placeholder {
+  color: #ff0000;
+}
+
+.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn i {
+  font-size: 18px;
+  color: #333;
+}
+
+section {
+  display: flex;
+}
+
+h1 {
+  color: #D1D1D1;
+  font-size: 30px;
+}
+
+h1,
+.Populares {
+  margin: 5px 5px 0 5px;
+}
+
+button {
+  background-color: #E50914;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+}
+
+.card {
+  margin: 0 0 10px 30px;
+  justify-items: center;
+  padding: 20px;
+  background-color: #1E1E1E;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+p {
+  font-weight: bold;
+  font-size: 18px;
+  color: #FFD700;
+  justify-self: center;
+}
+
+footer {
+  background-color: #1E1E1E;
+  padding: 6px;
+  position: relative;
+  top: 50px;
+}
+
+.Categories {
+  padding: 15px;
+  background-color: #1E1E1E;
+  width: 150px;
+  border-radius: 0 50px 0 50px;
+  margin: 5px 0 10px 200px;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.carousel, .carousel1 {
+  display: flex;
+  overflow: hidden;
+  width: 900px;
+  padding: 20px;
+  background-color: rgb(0, 0, 0, .3);
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+}
+
+.Exposition {
+  justify-self: center;
+  width: 900px;
+  background-color: #1E1E1E;
+  padding: 150px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+#imgExpo {
+  position: absolute;
+  left: 280px;
+  top: 410px;
+  width: 300px;
+  height: 280px;
+}
+
+#imginf {
+  position: absolute;
+  width: 550px;
+  left: 600px;
+  top: 55%;
+}
+
+#desenhos,
+#titleAnimes,
+#filmes {
+  display: none;
+}
+
+.play-button {
+  font-size: 24px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.play-button:hover {
+  background-color: #ff1a1a;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title>MovieHunt</title>
+</head>
+
+<body>
+    <header>
+        <h1>MovieHunt</h1>
+        <div class="container">
+            <button id="btnAnimes" class="Populares">Animes</button>
+            <button id="btnDesenhos" class="Populares">Desenhos</button>
+            <button id="btnFilmes" class="Populares">Filmes Populares</button>
+
+
+        </div>
+
+    </header>
+    <nav>
+        <h1 class="Categories">Animes</h1>
+        <input type="text" placeholder="Pesquisar...">
+
+        <button class="search-btn">
+            <i class="fa fa-search"></i>
+        </button>
+    </nav>
+
+    <h1 id="titleAnimes" class="Categories">Animes</h1>
+    <section id="animes" class="carousel-container">
+        <button id="prevBtn" class="nav-btn"><i class="fa fa-chevron-left"></i></button>
+        <div class="carousel">
+            <div id="soloLevel" class="card">
+                <img src="../../Assets/SoloLeveling.jfif" alt="Solo Leveling">
+                <p>Solo Leveling</p>
+            </div>
+            <div id="dragonBall" class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+            <div id="narutoShippuden" class="card">
+                <img src="../../Assets/Naruto.jpg" alt="Naruto Shippuden">
+                <p>Naruto Shippuden</p>
+            </div>
+            <div id="blackCover" class="card">
+                <img src="../../Assets/Black.jpg" alt="Black Cover">
+                <p>Black Cover</p>
+            </div>
+            <div id="Attack" class="card">
+                <img src="../../Assets/Attack.jpg" alt="Attack On Titan">
+                <p>Attack On Titan</p>
+            </div>
+            <div id="Nanatsu" class="card">
+                <img src="../../Assets/Nanatsu.jpg" alt="Nanatsu no Taizai">
+                <p>Nanatsu no Taizai</p>
+            </div>
+            <div id="HxH" class="card">
+                <img src="../../Assets/HxH.jpg" alt="Hunter X Hunter">
+                <p>Hunter X Hunter</p>
+            </div>
+        </div>
+        <button id="nextBtn" class="nav-btn"><i class="fa fa-chevron-right"></i></button>
+    </section>
+
+
+    <section id="desenhos" class="carousel-container">
+        <button id="prevBtn1" class="nav-btn"><i class="fa fa-chevron-left"></i></button>
+        <div class="carousel1">
+            <div class="card">
+                <img src="../../Assets/HoradeAventura.jfif" alt="Hora De Aventura">
+                <p>Hora De Aventura</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/ben10.jfif" alt="Ben 10">
+                <p>Ben 10</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/Apenas.jfif" alt="Apenas Um Show">
+                <p>Apenas Um Show</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/padrinhos.jfif" alt="Os Padrinhos Magicos">
+                <p>Padrinhos Magicos</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/Titio.jfif" alt="Titio Avô">
+                <p>Titio Avô</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+        </div>
+        <button id="nextBtn1" class="nav-btn"><i class="fa fa-chevron-right"></i></button>
+    </section>
+    <section id="filmes" class="carousel-container">
+        <button id="prevBtn1" class="nav-btn"><i class="fa fa-chevron-left"></i></button>
+        <div class="carousel1">
+            <div class="card">
+                <img src="../../Assets/SoloLeveling.jfif" alt="Solo Leveling">
+                <p>Solo Leveling</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+            <div class="card">
+                <img src="../../Assets/DragonDaima.jfif" alt="Dragon Ball Daima">
+                <p>Dragon Ball Daima</p>
+            </div>
+        </div>
+        <button id="nextBtn1" class="nav-btn"><i class="fa fa-chevron-right"></i></button>
+    </section>
+    <div class="Exposition">
+        <button class="play-button">
+            ▶
+        </button>
+
+        <img id="imgExpo" src="../../Assets/SoloLeveling.jfif" alt="Dragon Ball Daima">
+        <p id="imginf">Há mais de uma década, surgiu uma misteriosa passagem chamada “portal”, que conecta este mundo a
+            uma dimensão diferente, o que fez com que pessoas despertassem poderes únicos… e essas pessoas são chamadas
+            de “caçadores”. Os caçadores usam seus poderes sobre-humanos para conquistar masmorras dentro dos portais e
+            assim ganhar a vida. Sung Jinwoo, um caçador de nível baixo, é considerado o caçador mais fraco de toda a
+            humanidade. Certo dia, ele se depara com uma “masmorra dupla”, que tem uma masmorra de nível alto escondida
+            dentro de uma masmorra de nível baixo. Diante de um Jinwoo gravemente ferido, surge uma misteriosa missão! À
+            beira da morte, Jinwoo decide aceitar essa missão, tornando-se assim a única pessoa capaz de subir de nível!
+        </p>
+    </div>
+    <footer>
+        <p class="Rodape">© 2025 MovieHunt</p>
+
+    </footer>
+
+    <script src="./script.js"></script>
+    <script src="./mude.js"></script>
+
+</body>
+
+</html>
