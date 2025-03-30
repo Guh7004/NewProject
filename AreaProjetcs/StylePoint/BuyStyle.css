@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    background-color:rgb(0, 0, 0, .8) ;
+}
+header{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0, .8);
+    color: white;
+    width: 1399px;
+    padding: 10px;
+    align-items: baseline;
+}
+a{
+    margin-right: 30px;
+    text-decoration: none;
+    background-color: rgb(0, 0, 0,6);
+
+}
+.container{
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+}
+.minimg{
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    
+}
+.imagempequena1 , .imagempequena2{
+    border: solid;
+    border-radius: 20px;
+    height: 150px;
+    width: 100px;
+}
+.imagemgrande{
+    height: 500px;
+    border: none;
+    border: solid;
+    border-radius: 10px;
+}
+.bigimg{
+    margin-left: 10px;
+}
+h1,h3{
+    color: #FF3B00;
+}
+p{
+    color: #A3A3A3;
+ 
+}
+.textValor{
+    text-decoration: line-through;
+}
+h2{
+    color: #58BB00;
+}
+button{
+    color: #656565;
+    background-color: #FDFDFD;
+    padding: 10px 15px;
+}
+.Red{
+    background-color: red;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+}
+.Black{
+    background-color: black;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+}
+.valor{
+    display: flex;
+    align-items: baseline;
+}
+.Buy{
+    
+    background-color: #30A77E;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    width: 320px;
+}
+.infbuy{
+    display: grid;
+    margin-left: 10px;
+    gap: 5px;
+    align-content: flex-start;
+}
+.Drescriçao{
+    margin: 10px;
+    width: 500px;
+}
+.buttons.active {
+    background-color: red; 
+}
