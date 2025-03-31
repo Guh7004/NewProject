@@ -3,18 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-html{
+body{
     background-color:rgb(0, 0, 0, .8) ;
 }
-header{
-    display: flex;
-    justify-content: center;
-    background-color: rgb(0, 0, 0, .8);
-    color: white;
-    width: 1399px;
-    padding: 10px;
-    align-items: baseline;
-}
+
 a{
     margin-right: 30px;
     text-decoration: none;
@@ -99,6 +91,26 @@ button{
     margin: 10px;
     width: 500px;
 }
-.buttons.active {
+.buttons.active , .Dark.active{
     background-color: red; 
+}
+.Dark{
+    position: absolute;
+    top: 10px;
+    left: 1330px;
+    border-radius: 20px;
+}
+header{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0, .8);
+    color: white;
+    width: 1399px;
+    padding: 10px;
+    align-items: baseline;
+}
+.dark-mode {
+    background: #f3f3f3;
+    color: #fff;
+    
 }
