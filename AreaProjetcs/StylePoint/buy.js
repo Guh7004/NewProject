@@ -17,6 +17,9 @@ function pequena2(){
     console.log(imagempequena2)
     imagemGrande.src = imagempequena2.src;    
 }
+function altere(){
+    filterColorBlack()
+}
 function filterColorBlack(){
     const filterDark = camisetas.filter( (product) => product.cor === 'preta')
     console.log(filterDark[0].imagem1)

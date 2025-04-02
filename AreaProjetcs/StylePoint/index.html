@@ -10,59 +10,38 @@
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <h1 class="h1_header">StylePoint</h1>
 
     </header>
+    <button onclick="toggleDarkMode()" class="Dark">Lua</button>
     <div class="menu">
         <select id="categorias" onchange="opcaoAlterada()">
-            <option value="produtos">Produtos</option>
-            <option value="camisetas">Camisetas</option>
-            <option value="bermudas">Bermudas</option>
+            <option value="Camisetas">Camisetas</option>
+            <option value="Vermelhas">Vermelhas</option>
+            <option value="Pretas">Pretas</option>
         </select>
     </div>
     <div class="Container">
-        <div class="Produtos-Card-Camisetas">
-            <img src="../../Assets/Camisetas.jfif" alt="">
+        <div class="Produtos-Card-Preto" ><a href="./Buy.html" onclick="altere()">
+            <img src="../../Assets/CamisaPre.jpg"  alt="">
             <p class="Inf_Products">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos repellat blanditiis alias, ad voluptatum
                 soluta aspernatur est repudiandae magni tenetur quisquam, sequi deserunt rem sunt dolores eum officia
                 reiciendis quo!</p>
-        </div>
-        <div class="Produtos-Card-Camisetas">
-            <img src="../../Assets/Camisetas.jfif" alt="">
+            </a></div>
+       
+        <div class="Produtos-Card-Vermelho"><a href="./Buy.html" onclick="altere()">   
+            <img  src="../../Assets/CamisaVer.webp" alt="">
             <p class="Inf_Products">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos repellat blanditiis alias, ad voluptatum
                 soluta aspernatur est repudiandae magni tenetur quisquam, sequi deserunt rem sunt dolores eum officia
                 reiciendis quo!</p>
-        </div>
-        <div class="Produtos-Card-Camisetas">
-            <img src="../../Assets/Camisetas.jfif" alt="">
-            <p class="Inf_Products">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos repellat blanditiis alias, ad voluptatum
-                soluta aspernatur est repudiandae magni tenetur quisquam, sequi deserunt rem sunt dolores eum officia
-                reiciendis quo!</p>
-        </div>
-        <div class="Produtos-Card-Bermudas">
-            <img src="../../Assets/Bermudas.jfif" alt="">
-            <p class="Inf_Products">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos repellat blanditiis alias, ad voluptatum
-                soluta aspernatur est repudiandae magni tenetur quisquam, sequi deserunt rem sunt dolores eum officia
-                reiciendis quo!</p>
-        </div>
-        <div class="Produtos-Card-Bermudas">
-            <img src="../../Assets/Bermudas.jfif" alt="">
-            <p class="Inf_Products">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos repellat blanditiis alias, ad voluptatum
-                soluta aspernatur est repudiandae magni tenetur quisquam, sequi deserunt rem sunt dolores eum officia
-                reiciendis quo!</p>
-        </div>
-        <div class="Produtos-Card-Bermudas">
-            <img src="../../Assets/Bermudas.jfif" alt="">
-            <p class="Inf_Products">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos repellat blanditiis alias, ad voluptatum
-                soluta aspernatur est repudiandae magni tenetur quisquam, sequi deserunt rem sunt dolores eum officia
-                reiciendis quo!</p>
-        </div>
+            </a></div>
     </div>
-    <footer>
+    <footer class="footer">
         <p class="Rodape">© 2025 StylePoint</p>
 
     </footer>
 </body>
 <script src="script.js"></script>
+
 </html>

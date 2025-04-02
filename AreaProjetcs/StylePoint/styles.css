@@ -3,12 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
-.Produtos-Card-Camisetas, .Produtos-Card-Bermudas{
+body{
+    background-color:rgb(0, 0, 0, .8) ;
+}
+.Produtos-Card-Vermelho, .Produtos-Card-Preto{
     padding: 100px;
     border: solid;
     background: black;
     width: 230px;
     height: 400px;
+    border-radius: 20px;
+}
+.Dark{
+    position: absolute;
+    top: 1px;
+    left: 1330px;
     border-radius: 20px;
 }
 .Container{
@@ -17,13 +26,14 @@
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgb(0, 0, 0, .5);
+    
 }
 header{
     display: flex;
     justify-content: center;
-    background-color: rgb(0, 0, 0, .5);
+    background-color: rgb(0, 0, 0, .8);
     color: white;
+    font-size: 20px;
 }
 button{
     padding: 15px;
@@ -32,7 +42,10 @@ button{
 }
 .h1_header{
     margin: 5px;
-    color: white;
+    color: #FF3B00;
+}
+a{
+    text-decoration: none;
 }
 img{
     position: relative;
@@ -49,9 +62,9 @@ img{
     justify-content: center;
 }
 select{
-    background-color: darkgrey;
+    background-color: white;
     border: none;
-    color: white;
+    color: #FF3B00 ;
     font-size: 20px;
     border-radius: 10px;
     padding: 10px;
@@ -68,4 +81,6 @@ footer{
     background-color: black;
     color: white;
     justify-content: center;
+    position: relative;
+    top: 216px;
 }

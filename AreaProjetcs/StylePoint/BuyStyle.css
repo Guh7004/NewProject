@@ -13,6 +13,20 @@ a{
     background-color: rgb(0, 0, 0,6);
 
 }
+.home {
+    font-size: 20px;
+    border-radius: 20px;
+    color: black;
+    position: relative;
+    bottom: 48px;
+    height: 40px;
+    width: 40px;
+    left: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+}
 .container{
     display: flex;
     margin: 10px;
@@ -29,6 +43,14 @@ a{
     border-radius: 20px;
     height: 150px;
     width: 100px;
+    
+    
+}
+.imagempequena1, .imagempequena2{    
+transition: transform 0.5s ease-in-out;
+}
+.imagempequena1:hover , .imagempequena2:hover{
+    transform: translateY(-20px);
 }
 .imagemgrande{
     height: 500px;
@@ -38,7 +60,12 @@ a{
 }
 .bigimg{
     margin-left: 10px;
+    transition: transform 0.5s ease-in-out;
 }
+.bigimg:hover {
+    transform: translateY(-20px);
+    transform: scale(1.2);
+  }
 h1,h3{
     color: #FF3B00;
 }
@@ -52,11 +79,7 @@ p{
 h2{
     color: #58BB00;
 }
-button{
-    color: #656565;
-    background-color: #FDFDFD;
-    padding: 10px 15px;
-}
+
 .Red{
     background-color: red;
     border-radius: 50%;
@@ -113,4 +136,13 @@ header{
     background: #f3f3f3;
     color: #fff;
     
+}
+button, .home{
+    color: #656565;
+    background-color: #FDFDFD;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+button:hover, .home:hover{
+    background-color: rgb(255, 0, 0, .5);
 }
