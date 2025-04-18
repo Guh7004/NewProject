@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamento</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+      const lista = document.getElementById('lista-produtos');
+      const totalEl = document.getElementById('total');
+      let total = 0;
+
+      if (carrinho.length === 0) {
+        lista.innerHTML = "<p class='text-red-500'>Carrinho vazio</p>";
+        totalEl.textContent = "R$ 0,00";
+        return;
+      }
+
+      carrinho.forEach(produto => {
+        const li = document.createElement('li');
+        li.className = "border-b py-4 flex items-center justify-between text-lg";
+        li.innerHTML = `
+          <div class="flex items-center gap-4">
+            <span class="font-semibold">${produto.nome}</span>
+            <span class="text-gray-500 text-sm">${produto.preco}</span>
+          </div>
+        `;
+        lista.appendChild(li);
+
+        // Calcular o total
+        const precoNumerico = parseFloat(produto.preco.replace('R$', '').replace(',', '.'));
+        total += precoNumerico;
+      });
+
+      // Atualizar o total na página
+      totalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    });
+
+    function finalizarCompra() {
+      alert("Compra finalizada com sucesso!");
+      localStorage.removeItem('carrinho');  // Limpar o carrinho após a compra
+      location.reload();  // Recarregar a página
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-12">
+    <h1 class="text-3xl font-semibold text-center text-gray-800 mb-8">Resumo do Pedido</h1>
+
+    <ul id="lista-produtos" class="space-y-6">
+      <!-- Produtos serão inseridos aqui -->
+    </ul>
+
+    <div class="flex justify-between items-center mt-6">
+      <p class="font-medium text-xl text-gray-700">Total:</p>
+      <p id="total" class="font-bold text-2xl text-green-600">R$ 0,00</p>
+    </div>
+
+    <div class="flex justify-center mt-8">
+      <button onclick="finalizarCompra()" class="bg-green-600 hover:bg-green-700 text-white text-lg font-semibold py-3 px-8 rounded-full">
+        Finalizar Compra
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

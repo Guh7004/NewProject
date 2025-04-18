@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loja de Roupas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    };
+  </script>
+  <style>
+    body.light { background-color: #ffffff; color: #000000; }
+    body.dark { background-color: #111827; color: #ffffff; }
+
+    /* Ajuste para as imagens */
+    .produto-imagem {
+      width: 300px;
+      height: 250px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="light transition duration-300">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const temaSalvo = localStorage.getItem('tema');
+      if (temaSalvo) document.body.className = temaSalvo;
+
+      const carrinhoSalvo = JSON.parse(localStorage.getItem('carrinho')) || [];
+      carrinho = carrinhoSalvo;  
+      atualizarCarrinho();
+      renderizarProdutos(); 
+    });
+
+    let carrinho = [];
+    let produtosFiltrados = [];
+
+    function renderizarProdutos(secao = 'Todos') {
+      const produtosContainer = document.getElementById('produtos-container');
+      const produtos = JSON.parse(localStorage.getItem('produtos')) || [
+        {
+          id: 1,
+          nome: 'Camisa Branca',
+          descricao: 'Camisa confortável de algodão ideal para o dia a dia.',
+          preco: 'R$ 59,90',
+          imagem: 'https://via.placeholder.com/200x200?text=Camisa+1',
+          secao: 'Camisas'
+        },
+        {
+          id: 2,
+          nome: 'Camisa Preta',
+          descricao: 'Estilo e versatilidade com tecido leve e respirável.',
+          preco: 'R$ 64,90',
+          imagem: 'https://via.placeholder.com/200x200?text=Camisa+2',
+          secao: 'Camisas'
+        },
+        {
+          id: 3,
+          nome: 'Bermuda Jeans',
+          descricao: 'Bermuda jeans resistente, perfeita para passeios e lazer.',
+          preco: 'R$ 79,90',
+          imagem: 'https://via.placeholder.com/200x200?text=Bermuda+1',
+          secao: 'Bermudas'
+        },
+        {
+          id: 4,
+          nome: 'Bermuda Preta',
+          descricao: 'Modelo básico e confortável, ideal para dias quentes.',
+          preco: 'R$ 69,90',
+          imagem: 'https://via.placeholder.com/200x200?text=Bermuda+2',
+          secao: 'Bermudas'
+        }
+      ];
+
+      if (secao !== 'Todos') {
+        produtosFiltrados = produtos.filter(produto => produto.secao === secao);
+      } else {
+        produtosFiltrados = produtos;
+      }
+
+      produtosContainer.innerHTML = ''; 
+
+      produtosFiltrados.forEach(produto => {
+        const produtoDiv = document.createElement('div');
+        produtoDiv.classList.add('bg-white', 'dark:bg-gray-800', 'p-4', 'rounded', 'shadow', 'w-full', 'text-center');
+
+        produtoDiv.innerHTML = `
+          <img src="${produto.imagem}" class="produto-imagem mb-2 rounded" alt="${produto.nome}">
+          <p class="font-semibold">${produto.nome}</p>
+          <p class="text-sm mb-2 text-gray-600 dark:text-gray-400">${produto.descricao}</p>
+          <p class="mb-2 font-medium">${produto.preco}</p>
+          <button onclick="adicionarAoCarrinho(${JSON.stringify(produto)})" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded w-full">Adicionar ao carrinho</button>
+          <button onclick="removerProduto(${produto.id})" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-full mt-2">Remover Produto</button>
+        `;
+        produtosContainer.appendChild(produtoDiv);
+      });
+    }
+
+    function adicionarAoCarrinho(produto) {
+      carrinho.push(produto); 
+      localStorage.setItem('carrinho', JSON.stringify(carrinho)); 
+      atualizarCarrinho(); 
+      alert(produto.nome + ' adicionado ao carrinho!');
+    }
+
+    function removerProduto(id) {
+      produtosFiltrados = produtosFiltrados.filter(produto => produto.id !== id);
+      
+      const produtosSalvos = JSON.parse(localStorage.getItem('produtos')) || [];
+      const novosProdutos = produtosSalvos.filter(produto => produto.id !== id);
+      localStorage.setItem('produtos', JSON.stringify(novosProdutos));
+      
+      renderizarProdutos(); 
+      alert('Produto removido!');
+    }
+
+    function atualizarCarrinho() {
+      const carrinhoLista = document.getElementById('carrinho-lista');
+      const contador = document.getElementById('contador');
+      
+      carrinhoLista.innerHTML = '';
+      contador.textContent = carrinho.length;
+
+      carrinho.forEach(produto => {
+        const item = document.createElement('li');
+        item.textContent = produto.nome + ' - ' + produto.preco;
+        carrinhoLista.appendChild(item);
+      });
+    }
+
+    function irParaPagamento() {
+      alert("Indo para a página de pagamento!");
+      window.location.href = 'pagamento.html';
+    }
+
+    function toggleTema() {
+      const body = document.body;
+      const novoTema = body.classList.contains('light') ? 'dark' : 'light';
+      body.classList.remove('light', 'dark');
+      body.classList.add(novoTema);
+      localStorage.setItem('tema', novoTema);
+    }
+
+    function filtrarSecao(secao) {
+      renderizarProdutos(secao);
+    }
+  </script>
+
+  <div class="flex justify-between items-center p-4 border-b border-gray-300 dark:border-gray-700">
+    <h1 class="text-xl font-bold">Loja de Roupas</h1>
+    <div class="flex gap-4 items-center">
+      <a href="adicionar.html" target="_blank" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded text-sm">Adicionar Produtos</a>
+      <button onclick="toggleTema()" class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded text-sm">🌙 / ☀️</button>
+      <div class="relative">
+        <button class="bg-yellow-400 px-4 py-2 rounded text-sm" onclick="document.getElementById('carrinho-modal').classList.toggle('hidden')">
+          🛒 Carrinho (<span id="contador">0</span>)
+        </button>
+        <div id="carrinho-modal" class="hidden absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded shadow p-4 z-10">
+          <h2 class="text-lg font-semibold mb-2">Itens no Carrinho</h2>
+          <ul id="carrinho-lista" class="text-sm space-y-1 mb-3"></ul>
+          <button onclick="irParaPagamento()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full">Ir ao Pagamento</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center gap-6 mb-4">
+    <button onclick="filtrarSecao('Todos')" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Todos</button>
+    <button onclick="filtrarSecao('Camisas')" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Camisas</button>
+    <button onclick="filtrarSecao('Bermudas')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">Bermudas</button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 mb-6" id="produtos-container"></div>
+
+</body>
+</html>

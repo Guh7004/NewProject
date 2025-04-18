@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar Produto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Adicionar Novo Produto</h2>
+    <form id="form-produto">
+      <label class="block mb-2">
+        Nome do Produto:
+        <input type="text" id="nome" class="w-full border border-gray-300 rounded px-3 py-2 mt-1" placeholder="Ex: Camisa Azul" required />
+      </label>
+      <label class="block mb-2">
+        Preço:
+        <input type="text" id="preco" class="w-full border border-gray-300 rounded px-3 py-2 mt-1" placeholder="Ex: R$ 49,90" required />
+      </label>
+      <label class="block mb-2">
+        URL da Imagem:
+        <input type="text" id="imagem" class="w-full border border-gray-300 rounded px-3 py-2 mt-1" placeholder="https://..." required />
+      </label>
+      <label class="block mb-2">
+        Seção:
+        <select id="secao" class="w-full border border-gray-300 rounded px-3 py-2 mt-1" required>
+          <option value="Camisas">Camisas</option>
+          <option value="Bermudas">Bermudas</option>
+        </select>
+      </label>
+      <label class="block mb-4">
+        Descrição:
+        <textarea id="descricao" class="w-full border border-gray-300 rounded px-3 py-2 mt-1" placeholder="Descrição do produto" required></textarea>
+      </label>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Salvar Produto</button>
+    </form>
+    <p id="mensagem" class="text-sm text-green-600 mt-4"></p>
+  </div>
+
+  <script>
+    document.getElementById('form-produto').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nome = document.getElementById('nome').value;
+      const preco = document.getElementById('preco').value;
+      const imagem = document.getElementById('imagem').value;
+      const secao = document.getElementById('secao').value;
+      const descricao = document.getElementById('descricao').value;
+      
+      const novoProduto = {
+        id: Date.now(),
+        nome,
+        preco,
+        imagem,
+        secao,
+        descricao
+      };
+
+      let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+      produtos.push(novoProduto);
+      localStorage.setItem('produtos', JSON.stringify(produtos));
+
+      document.getElementById('mensagem').textContent = 'Produto adicionado com sucesso!';
+      document.getElementById('form-produto').reset();
+    });
+  </script>
+</body>
+</html>
