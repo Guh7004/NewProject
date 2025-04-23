@@ -5,45 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pagamento</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-      const lista = document.getElementById('lista-produtos');
-      const totalEl = document.getElementById('total');
-      let total = 0;
-
-      if (carrinho.length === 0) {
-        lista.innerHTML = "<p class='text-red-500'>Carrinho vazio</p>";
-        totalEl.textContent = "R$ 0,00";
-        return;
-      }
-
-      carrinho.forEach(produto => {
-        const li = document.createElement('li');
-        li.className = "border-b py-4 flex items-center justify-between text-lg";
-        li.innerHTML = `
-          <div class="flex items-center gap-4">
-            <span class="font-semibold">${produto.nome}</span>
-            <span class="text-gray-500 text-sm">${produto.preco}</span>
-          </div>
-        `;
-        lista.appendChild(li);
-
-        // Calcular o total
-        const precoNumerico = parseFloat(produto.preco.replace('R$', '').replace(',', '.'));
-        total += precoNumerico;
-      });
-
-      // Atualizar o total na página
-      totalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-    });
-
-    function finalizarCompra() {
-      alert("Compra finalizada com sucesso!");
-      localStorage.removeItem('carrinho');  // Limpar o carrinho após a compra
-      location.reload();  // Recarregar a página
-    }
-  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
@@ -66,5 +28,6 @@
     </div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>

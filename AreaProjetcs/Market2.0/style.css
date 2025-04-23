@@ -1,0 +1,15 @@
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  body.dark {
+    background-color: #111827;
+    color: #ffffff;
+  }
+  
+  .produto-imagem {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+  }
+  
