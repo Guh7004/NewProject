@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Memória</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .scoreboard {
+      display: flex;
+      gap: 30px;
+      margin: 20px 0;
+    }
+
+    .player {
+      font-size: 1.2rem;
+      background: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .active {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    #controls {
+      margin-bottom: 20px;
+    }
+
+    #controls button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #controls button:hover {
+      background-color: #0056b3;
+    }
+
+    #game-board {
+      display: grid;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .card {
+      width: 70px;
+      height: 70px;
+      background-color: white;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s;
+    }
+
+    .card.revealed {
+      background-color: #00c9ff;
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+
+    #victory-message {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #restart-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jogo da Memória</h1>
+
+  <div class="scoreboard">
+    <div class="player" id="player1">👤 Jogador 1: <span id="score1">0</span> | 🏆 <span id="wins1">0</span></div>
+    <div class="player" id="player2">👤 Jogador 2: <span id="score2">0</span> | 🏆 <span id="wins2">0</span></div>
+  </div>
+
+  <div id="controls">
+    <button onclick="changeSize(3,4)">3x4</button>
+    <button onclick="changeSize(4,4)">4x4</button>
+    <button onclick="changeSize(4,5)">4x5</button>
+    <button onclick="changeSize(6,6)">6x6</button>
+  </div>
+
+  <div id="game-board"></div>
+  <p id="victory-message" class="hidden">🎉 Fim de Jogo! 🎉</p>
+  <button id="restart-button" class="hidden">🔄 Jogar Novamente</button>
+
+  <script>
+    const emojisBase = ['🍕','🚀','🐶','🎮','🌈','🎲','🍔','🐱','🎧','🧊','🔥','📱','📦','🌟','⚡️','🍩','🎯','🐸','🎁','🍓','🍇','🦊','🌻','🎃','🛸','🐠','📚','🚗','🦄','💎','🐢','🍄','🥇','🏀','⚽️','🐝'];
+    let emojis = [];
+    let board = document.getElementById('game-board');
+    let victoryMessage = document.getElementById('victory-message');
+    let restartButton = document.getElementById('restart-button');
+    let score1 = document.getElementById('score1');
+    let score2 = document.getElementById('score2');
+    let wins1 = document.getElementById('wins1');
+    let wins2 = document.getElementById('wins2');
+    let player1 = document.getElementById('player1');
+    let player2 = document.getElementById('player2');
+
+    let firstCard, secondCard;
+    let lockBoard = false;
+    let matchedPairs = 0;
+    let currentPlayer = 1;
+    let scores = { 1: 0, 2: 0 };
+    let wins = { 1: 0, 2: 0 };
+    let rows = 3, cols = 4;
+
+    function updateScores() {
+      score1.textContent = scores[1];
+      score2.textContent = scores[2];
+    }
+
+    function updateWins() {
+      wins1.textContent = wins[1];
+      wins2.textContent = wins[2];
+    }
+
+    function togglePlayer() {
+      currentPlayer = currentPlayer === 1 ? 2 : 1;
+      player1.classList.toggle('active', currentPlayer === 1);
+      player2.classList.toggle('active', currentPlayer === 2);
+    }
+
+    function createCard(emoji) {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.dataset.emoji = emoji;
+      card.textContent = '❓';
+
+      card.addEventListener('click', () => {
+        if (lockBoard || card.classList.contains('revealed')) return;
+
+        card.textContent = emoji;
+        card.classList.add('revealed');
+
+        if (!firstCard) {
+          firstCard = card;
+        } else {
+          secondCard = card;
+          lockBoard = true;
+
+          if (firstCard.dataset.emoji === secondCard.dataset.emoji) {
+            matchedPairs++;
+            scores[currentPlayer]++;
+            updateScores();
+
+            firstCard = null;
+            secondCard = null;
+            lockBoard = false;
+
+            if (matchedPairs === emojis.length / 2) {
+              declareWinner();
+              restartButton.classList.remove('hidden');
+            }
+          } else {
+            setTimeout(() => {
+              firstCard.textContent = '❓';
+              secondCard.textContent = '❓';
+              firstCard.classList.remove('revealed');
+              secondCard.classList.remove('revealed');
+              firstCard = null;
+              secondCard = null;
+              lockBoard = false;
+              togglePlayer();
+            }, 1000);
+          }
+        }
+      });
+
+      board.appendChild(card);
+    }
+
+    function declareWinner() {
+      victoryMessage.classList.remove('hidden');
+      if (scores[1] > scores[2]) {
+        victoryMessage.textContent = '🎉 Jogador 1 venceu! 🎉';
+        wins[1]++;
+      } else if (scores[2] > scores[1]) {
+        victoryMessage.textContent = '🎉 Jogador 2 venceu! 🎉';
+        wins[2]++;
+      } else {
+        victoryMessage.textContent = '🤝 Empate! 🤝';
+      }
+      updateWins();
+    }
+
+    function startGame() {
+      board.innerHTML = '';
+      board.style.gridTemplateColumns = `repeat(${cols}, 70px)`;
+      const totalCards = rows * cols;
+      emojis = emojisBase.slice(0, totalCards / 2);
+      const shuffled = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+
+      shuffled.forEach(createCard);
+
+      scores = { 1: 0, 2: 0 };
+      updateScores();
+      matchedPairs = 0;
+      firstCard = null;
+      secondCard = null;
+      lockBoard = false;
+      currentPlayer = 1;
+      player1.classList.add('active');
+      player2.classList.remove('active');
+      victoryMessage.classList.add('hidden');
+      restartButton.classList.add('hidden');
+    }
+
+    function changeSize(r, c) {
+      rows = r;
+      cols = c;
+      startGame();
+    }
+
+    restartButton.addEventListener('click', startGame);
+    startGame();
+  </script>
+</body>
+</html>
