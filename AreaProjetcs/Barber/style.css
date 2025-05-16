@@ -312,7 +312,7 @@ nav ul li a:hover {
 }
 
 .p_assi {
-  text-align: left;
+  
   font-size: 1.2rem;
   margin: 20px 0;
   padding: 0 15px;
@@ -390,6 +390,7 @@ nav ul li a:hover {
 .info_sobre {
   width: 100%;
   max-width: 500px;
+  text-align: center;
 }
 
 .tem_sobre {
@@ -818,4 +819,20 @@ footer {
 /* JavaScript para o menu mobile */
 .js-code {
   display: none;
+}
+.teste{
+  background-color: rgb(31 41 55);
+}
+.contato{
+  background-color: rgb(17 24 39);
+}
+.info_sobre {
+    background-color: rgb(17 24 39);
+    padding: 35px;
+    border-radius: 50px;
+    width: 100%;
+    max-width: 500px;
+}
+.h3_fot{
+  text-align: center;
 }
