@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrator de Pixels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #282c34;
+            color: #ffffff;
+        }
+        input[type="file"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #61dafb;
+            border-radius: 5px;
+            background-color: #3a3f47;
+            color: #ffffff;
+        }
+        canvas {
+            border: 1px solid #61dafb;
+            margin-bottom: 15px;
+            background-color: #1c1f24;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #21a1f1;
+        }
+        textarea {
+            width: 80%;
+            height: 200px;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #1c1f24;
+            color: #ffffff;
+            border: 1px solid #61dafb;
+            border-radius: 5px;
+            font-family: monospace;
+            resize: vertical;
+        }
+        #instructions {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="instructions">
+        <h2>Extrator de Coordenadas de Pixels</h2>
+        <p>
+            Carregue uma imagem (idealmente uma silhueta com fundo transparente, como um logo ou um desenho de pixel art)
+            para extrair as coordenadas dos pixels não transparentes.
+            Copie o JSON gerado e cole no seu arquivo `script.js` para usar na animação de partículas!
+            Recomenda-se imagens com resolução baixa a média (ex: 100x100 a 300x300 pixels) para um bom desempenho.
+        </p>
+    </div>
+    <input type="file" id="imageLoader" name="imageLoader" accept="image/*">
+    <canvas id="imageCanvas"></canvas>
+    <button id="extractPixelsButton">Extrair Coordenadas dos Pixels</button>
+    <textarea id="outputJson" readonly placeholder="O JSON com as coordenadas aparecerá aqui."></textarea>
+
+    <script>
+        const imageLoader = document.getElementById('imageLoader');
+        const canvas = document.getElementById('imageCanvas');
+        const ctx = canvas.getContext('2d');
+        const extractPixelsButton = document.getElementById('extractPixelsButton');
+        const outputJson = document.getElementById('outputJson');
+
+        let originalImage = null;
+
+        imageLoader.addEventListener('change', handleImage, false);
+        extractPixelsButton.addEventListener('click', extractPixelCoordinates);
+
+        function handleImage(e) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    originalImage = img; // Armazena a imagem
+                    // Define o tamanho do canvas para o tamanho da imagem
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    // Desenha a imagem no canvas
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas
+                    ctx.drawImage(img, 0, 0);
+                    outputJson.value = ''; // Limpa a saída anterior
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+
+        function extractPixelCoordinates() {
+            if (!originalImage) {
+                alert('Por favor, carregue uma imagem primeiro.');
+                return;
+            }
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data; // Array de pixels RGBA (R, G, B, A)
+            const coordinates = [];
+            const threshold = 50; // Limiar de transparência: pixels com A > 50 serão considerados não transparentes
+
+            for (let y = 0; y < canvas.height; y++) {
+                for (let x = 0; x < canvas.width; x++) {
+                    const index = (y * canvas.width + x) * 4;
+                    const alpha = data[index + 3]; // Canal Alpha (transparência)
+
+                    if (alpha > threshold) { // Se o pixel não for muito transparente
+                        coordinates.push({ x: x, y: y });
+                    }
+                }
+            }
+            outputJson.value = JSON.stringify(coordinates, null, 2); // Exibe o JSON formatado
+            outputJson.select(); // Seleciona o texto para facilitar a cópia
+            document.execCommand('copy'); // Tenta copiar para a área de transferência
+            alert('Coordenadas copiadas para a área de transferência! Cole no seu script.js.');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 40px 100px;
+  justify-content: space-between;
+  background-color: rgb(212 163 115);
+}
+
+.sub_header {
+  position: relative;
+  top: -10px;
+  color: #FFF;
+}
+.title_header{
+  font-size: 50px;
+  color: #FFF;
+}
+.reserva{
+  color:rgb(212 163 115) ;
+  background-color: #FFF;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+}
+.contato{
+  color: #FFF;
+  background-color: rgb(108 88 76 );
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 25px;
+  border: none;
+}

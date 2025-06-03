@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Pratos</title>
+  <link rel="stylesheet" href="./publi.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1 class="title_header">Sabor & Arte</h1>
+      <h3 class="sub_header">Gastronomia mediterrânea com toque brasileiro</h3>
+    </div>
+    <div>
+      <button class="reserva">Fazer Reserva</button>
+      <button class="contato">Contato</button>
+    </div>
+  </header>
+  <div>
+    <button class="filtro-btn active" onclick="filtrarPratos('todos', this)">Todos</button>
+    <button class="filtro-btn" onclick="filtrarPratos('Prato Principal', this)">Prato Principal</button>
+    <button class="filtro-btn" onclick="filtrarPratos('Sobremesa', this)">Sobremesa</button>
+  </div>
+  <div id="lista-pratos"></div>
+
+</body>
+<script src="./publi.js"></script>
+</html>

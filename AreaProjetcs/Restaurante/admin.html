@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cardápio</title>
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      position: relative;
+    }
+
+    .remover-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      width: 25px;
+      height: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 25px;
+      text-align: center;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Adicionar Prato</h2>
+  <input type="text" id="nome" placeholder="Nome da Comida">
+  <input type="text" id="ingredientes" placeholder="Descrição dos ingredientes">
+  <select id="tipo">
+    <option value="Prato Principal">Prato Principal</option>
+    <option value="Sobremesa">Sobremesa</option>
+  </select>
+  <button onclick="adicionarPrato()">Salvar Prato</button>
+  <button onclick="enviarParaOutroArquivo()">Enviar para outro arquivo</button>
+
+  <h2>Pratos Adicionados</h2>
+  <div id="lista-pratos"></div>
+
+  <script>
+    let pratos = JSON.parse(localStorage.getItem("pratosSalvos")) || [];
+
+    function renderizarPratos() {
+      const lista = document.getElementById('lista-pratos');
+      lista.innerHTML = ""; // limpa antes de redesenhar
+
+      pratos.forEach((prato, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <button class="remover-btn" onclick="removerPrato(${index})">×</button>
+          <h3>${prato.nome}</h3>
+          <p><strong>Ingredientes:</strong> ${prato.ingredientes}</p>
+          <p><strong>Tipo:</strong> ${prato.tipo}</p>
+        `;
+        lista.appendChild(card);
+      });
+
+      localStorage.setItem("pratosSalvos", JSON.stringify(pratos));
+    }
+
+    function adicionarPrato() {
+      const nome = document.getElementById('nome').value;
+      const ingredientes = document.getElementById('ingredientes').value;
+      const tipo = document.getElementById('tipo').value;
+
+      if (!nome || !ingredientes) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      pratos.push({ nome, ingredientes, tipo });
+      renderizarPratos();
+
+      // Limpar inputs
+      document.getElementById('nome').value = '';
+      document.getElementById('ingredientes').value = '';
+      document.getElementById('tipo').selectedIndex = 0;
+    }
+
+    function removerPrato(index) {
+      pratos.splice(index, 1); // remove o item da lista
+      renderizarPratos(); // re-renderiza e salva novamente
+    }
+
+    function enviarParaOutroArquivo() {
+      // localStorage já está atualizado com os pratos atuais
+      
+    }
+
+    // renderiza ao abrir a página
+    renderizarPratos();
+  </script>
+</body>
+</html>
