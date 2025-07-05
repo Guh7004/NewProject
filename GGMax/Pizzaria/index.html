@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonna Giulia - Pizzaria Artesanal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <h1>Nonna Giulia</h1>
+                <p>Pizzaria Artesanal</p>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://wa.me/5511999999999" class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="https://instagram.com/nonnagiulia" class="btn-instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-text">
+                    <h2>Sabor Autêntico da Itália</h2>
+                    <p>Pizzas artesanais feitas com ingredientes frescos e receitas tradicionais da Nonna</p>
+                    <button class="cta-button" onclick="openWhatsApp()">
+                        <i class="fas fa-shopping-cart"></i>
+                        Peça Agora
+                    </button>
+                </div>
+            </section>
+
+            <!-- Pizza Showcase -->
+            <section class="pizza-showcase">
+                <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/HH5kKrJwdUxtO4bMPpbvvW_1750089848656_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvcGl6emFfY29ybg.webp?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L0hINWtLckp3ZFV4dE80Yk1QcGJ2dldfMTc1MDA4OTg0ODY1Nl9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZjR2w2ZW1GZlkyOXliZy53ZWJwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzY3MjI1NjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=r45cRymeEXTA1sp5oo8NDjOG~gzLEDB5OoGPJ~D~6zwH7wmIB1zGXJfOYureUlYLembLDTYjhA67CWAREe6TL1-nFXch5UiNTsI5Yk57mVhR0-BBAPqtPTzo2~9Rg2HfwtRMRxKPMPfKPiuZRSKrsqbpt6bvEzKDuzQniFO8Si-2z-psIP3DE-Emz2qEFWPzr2yqL5YBZhinfI~6fKLtODOvBb87IA-Jo~pwBR6vjNRIE1Z9IdFu~UFsjzFvp7kbx-kk0D8vwzCSSAw0GAl57dRGn0aXmETBCdGUbKqSuy4-xT4vblDAJEFK-PYOD6kMWvk4Vv-wQMj~GuQvZHxzlQ__">
+            </section>
+
+            <!-- Bottom Section -->
+            <div class="bottom-section">
+                <!-- Menu Section -->
+                <section class="menu">
+                    <h3>Nossas Especialidades</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/HH5kKrJwdUxtO4bMPpbvvW_1750089848655_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvcGl6emFfcGVwcGVyb25p.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L0hINWtLckp3ZFV4dE80Yk1QcGJ2dldfMTc1MDA4OTg0ODY1NV9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZjR2w2ZW1GZmNHVndjR1Z5YjI1cC5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NjcyMjU2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=RguDAc-7eMKAykz78wIbG~9upkLnfN4-IITOH1GgS9lVdCT607IV~AxgIbiAFFxBOUD68cF5pzLRVs1TlRyrhPo--cO3NiiKsPUrjbEZBN3JCwo~L25ErWL7PUaiTqaD37zMPNF0KeYTy7Qv2JPSltcjGJaDPIYdxIL2p868xSCSWJ8otXdFO2dueh3wxy7wt-Vvy2O4kJfPbCg-gckCyCiX-c4PiMS-v2R~mFNaYoIcpieR9-GNoISERFsd6iws0PEgrqOoQen6V~HdGUiU7fZXtK9v9IB0qs3c5evOdsNRMMMELTJptXMCuf515zIldWPUIuJHtX~bBKX3rQXAFA__" alt="Pizza Margherita">
+                            <div class="item-info">
+                                <h4>Margherita</h4>
+                                <p>Molho de tomate, mussarela, manjericão fresco</p>
+                                <span class="price">R$ 32,90</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/HH5kKrJwdUxtO4bMPpbvvW_1750089848655_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvcGl6emFfcGVwcGVyb25p.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L0hINWtLckp3ZFV4dE80Yk1QcGJ2dldfMTc1MDA4OTg0ODY1NV9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZjR2w2ZW1GZmNHVndjR1Z5YjI1cC5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NjcyMjU2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=RguDAc-7eMKAykz78wIbG~9upkLnfN4-IITOH1GgS9lVdCT607IV~AxgIbiAFFxBOUD68cF5pzLRVs1TlRyrhPo--cO3NiiKsPUrjbEZBN3JCwo~L25ErWL7PUaiTqaD37zMPNF0KeYTy7Qv2JPSltcjGJaDPIYdxIL2p868xSCSWJ8otXdFO2dueh3wxy7wt-Vvy2O4kJfPbCg-gckCyCiX-c4PiMS-v2R~mFNaYoIcpieR9-GNoISERFsd6iws0PEgrqOoQen6V~HdGUiU7fZXtK9v9IB0qs3c5evOdsNRMMMELTJptXMCuf515zIldWPUIuJHtX~bBKX3rQXAFA__" alt="Pizza Quattro Formaggi">
+                            <div class="item-info">
+                                <h4>Quattro Formaggi</h4>
+                                <p>Mussarela, gorgonzola, parmesão, provolone</p>
+                                <span class="price">R$ 38,90</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/HH5kKrJwdUxtO4bMPpbvvW_1750089848656_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvcGl6emFfbXVzaHJvb20.webp?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L0hINWtLckp3ZFV4dE80Yk1QcGJ2dldfMTc1MDA4OTg0ODY1Nl9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZjR2w2ZW1GZmJYVnphSEp2YjIwLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NjcyMjU2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=VJU0nX6WK5IJbJ986oJyHXdAwMJNM0e6TkDJojLGVbJxwxdUIekFHmFwmsIFyoKzQQavlmwYowflTddvvMpm5ImsBwAdJRTdlLJjaBUzWCm7gqksjIiMtnFm1OEorrB74wEWoJwFrw0CmJAmWDMgO2oFiWXAki9DZWgTGtwuAx2RJ9gaDRwDfw2jgkAryofnsE~FR3gK5IPX3DW3FcrlhLIns5plYYfz3kRa9KRQnOh27KfVEQodUz3Eyd1ppYNbmULUnsSQD~FK6dxMKxn-bRpQIz3Yi0pI9Uf6oNXiyvHERsWkqMV0oj7fcUsGUcQ9o8wL9Ats8N4u45Gyoq2jUg__" alt="Pizza Calabresa">
+                            <div class="item-info">
+                                <h4>Calabresa Especial</h4>
+                                <p>Calabresa artesanal, cebola, azeitonas</p>
+                                <span class="price">R$ 35,90</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Info and Map Section -->
+                <div class="info-map-section">
+                    <section class="info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <h4>Horário</h4>
+                            <p>Ter-Dom: 18h às 23h<br>Segunda: Fechado</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-motorcycle"></i>
+                            <h4>Entrega</h4>
+                            <p>30-45 minutos<br>Taxa: R$ 5,00</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Localização</h4>
+                            <p>Rua das Flores, 123<br>Vila Italiana - SP</p>
+                        </div>
+                    </section>
+
+                    <!-- Map Section -->
+                    <section class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975!2d-46.6333824!3d-23.5505199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sS%C3%A3o%20Paulo%2C%20SP!5e0!3m2!1spt!2sbr!4v1234567890"
+                            width="100%" 
+                            height="120" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer CTA -->
+        <div class="footer-cta">
+            <button class="cta-button-large" onclick="openWhatsApp()">
+                <i class="fab fa-whatsapp"></i>
+                Faça seu Pedido
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,195 @@
+/* Custom styles to complement Bootstrap */
+
+/* General Styles */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Custom Colors */
+.bg-black {
+  background-color: #000 !important;
+}
+
+.bg-dark {
+  background-color: rgb(17, 24, 39) !important;
+}
+
+.bg-secondary {
+  background-color: rgb(31, 41, 55) !important;
+}
+
+.text-warning {
+  color: #c59d5f !important;
+}
+
+.btn-warning {
+  background-color: #c59d5f !important;
+  border-color: #c59d5f !important;
+  color: #000 !important;
+}
+
+.btn-warning:hover {
+  background-color: #000 !important;
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+.btn-outline-light:hover {
+  background-color: #c59d5f !important;
+  border-color: #c59d5f !important;
+  color: #000 !important;
+}
+
+.border-warning {
+  border-color: #c59d5f !important;
+}
+
+/* Navbar */
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+.logo-text {
+  font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #000;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+/* Circular Design Element */
+.circulo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.circulo {
+  border: 10px solid rgba(140, 106, 60, 0.4);
+  border-radius: 50%;
+  position: relative;
+  height: 270px;
+  width: 270px;
+  z-index: 1;
+}
+
+.circulo-sobre {
+  border-color: rgb(140, 106, 60);
+}
+
+.linha {
+  position: absolute;
+  background-color: rgba(140, 106, 60, 0.4);
+}
+
+.horizontal {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  transform: translateY(-50%);
+}
+
+.horizontal1 {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 10px;
+  transform: translateY(-50%);
+}
+
+.horizontal2 {
+  top: 75%;
+  left: 25%;
+  width: 50%;
+  height: 10px;
+  transform: translateY(-50%);
+}
+
+/* Horizontal Line */
+.horizontal-line {
+  width: 250px;
+  height: 5px;
+  background-color: #c59d5f;
+}
+
+/* Decorative Lines */
+.linha-decorativa {
+  height: 50px;
+  width: 100%;
+  background-color: rgba(87, 95, 107, 0.5);
+  border-radius: 10px;
+}
+
+/* Form Controls */
+.form-control {
+  border-width: 2px;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(197, 157, 95, 0.25);
+  border-color: #c59d5f;
+}
+
+.placeholder-white-50::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+/* Cards */
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 576px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .circulo, .circulo-sobre {
+    height: 200px;
+    width: 200px;
+  }
+  
+  .horizontal {
+    height: 10px;
+  }
+  
+  .horizontal1, .horizontal2 {
+    height: 7px;
+  }
+  
+  .horizontal-line {
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .circulo, .circulo-sobre {
+    height: 220px;
+    width: 220px;
+  }
+}
+

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Napoli - Pizzaria Italiana Autêntica</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-pizza-slice me-2"></i>
+                <span class="brand-text">Bella Napoli</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#depoimentos">Depoimentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            Bem-vindos à <span class="text-accent">Bella Napoli</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Sabores autênticos da Itália, preparados com amor e tradição em nosso forno a lenha
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#menu" class="btn btn-primary btn-lg me-3">Ver Cardápio</a>
+                            <a href="#contato" class="btn btn-outline-light btn-lg">Fazer Pedido</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Especialidades Section -->
+    <section id="especialidades" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Nossas Especialidades</h2>
+                    <p class="section-subtitle">Pizzas artesanais preparadas com ingredientes selecionados</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card">
+                        <div class="specialty-image">
+                            <img src="images/pizza_specialty_1.jpg" alt="Pizza Margherita" class="img-fluid">
+                            <div class="specialty-overlay">
+                                <div class="specialty-price">R$ 45,90</div>
+                            </div>
+                        </div>
+                        <div class="specialty-content">
+                            <h4>Pizza Margherita</h4>
+                            <p>Molho de tomate artesanal, mozzarella di bufala, manjericão fresco e azeite extra virgem</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card">
+                        <div class="specialty-image">
+                            <img src="images/pizza_specialty_2.jpg" alt="Pizza Quattro Stagioni" class="img-fluid">
+                            <div class="specialty-overlay">
+                                <div class="specialty-price">R$ 52,90</div>
+                            </div>
+                        </div>
+                        <div class="specialty-content">
+                            <h4>Quattro Stagioni</h4>
+                            <p>Presunto de Parma, cogumelos frescos, alcachofras, azeitonas e mozzarella</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card">
+                        <div class="specialty-image">
+                            <img src="images/pizza_specialty_3.webp" alt="Pizza Pepperoni" class="img-fluid">
+                            <div class="specialty-overlay">
+                                <div class="specialty-price">R$ 48,90</div>
+                            </div>
+                        </div>
+                        <div class="specialty-content">
+                            <h4>Pizza Pepperoni</h4>
+                            <p>Pepperoni italiano, mozzarella especial e molho de tomate temperado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós Section -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2 class="section-title">Nossa História</h2>
+                        <p class="lead">
+                            Fundada em 1985 pela família Rossi, a Bella Napoli nasceu do sonho de trazer os sabores autênticos de Nápoles para o Brasil.
+                        </p>
+                        <p>
+                            Com mais de 35 anos de tradição, mantemos viva a arte da pizza napolitana, utilizando apenas ingredientes importados da Itália e técnicas tradicionais passadas de geração em geração. Nosso forno a lenha, construído com tijolos refratários originais de Nápoles, garante o sabor único que nos tornou referência.
+                        </p>
+                        <div class="about-stats">
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <div class="stat-item">
+                                        <h3 class="stat-number">35+</h3>
+                                        <p class="stat-label">Anos de Tradição</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat-item">
+                                        <h3 class="stat-number">50+</h3>
+                                        <p class="stat-label">Sabores Únicos</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat-item">
+                                        <h3 class="stat-number">10k+</h3>
+                                        <p class="stat-label">Clientes Satisfeitos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-images">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <img src="images/pizzeria_environment_1.jpg" alt="Ambiente da Pizzaria" class="img-fluid rounded shadow">
+                            </div>
+                            <div class="col-6">
+                                <img src="images/pizzeria_environment_2.jpg" alt="Cozinha da Pizzaria" class="img-fluid rounded shadow">
+                            </div>
+                            <div class="col-6">
+                                <img src="images/pizza_chef_1.jpg" alt="Chef Pizzaiolo" class="img-fluid rounded shadow">
+                            </div>
+                            <div class="col-6">
+                                <img src="images/pizza_chef_2.jpg" alt="Equipe de Chefs" class="img-fluid rounded shadow">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Nosso Cardápio</h2>
+                    <p class="section-subtitle">Explore nossa seleção de pizzas artesanais e bebidas</p>
+                </div>
+            </div>
+            
+            <!-- Menu Categories -->
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-pills justify-content-center mb-4" id="menuTabs">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tradicionais">
+                                Pizzas Tradicionais
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#premium">
+                                Premium
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#vegetarianas">
+                                Vegetarianas
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#bebidas">
+                                Bebidas
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Menu Content -->
+            <div class="tab-content" id="menuContent">
+                <!-- Pizzas Tradicionais -->
+                <div class="tab-pane fade show active" id="tradicionais">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Margherita</h5>
+                                    <span class="price">R$ 45,90</span>
+                                </div>
+                                <p>Molho de tomate, mozzarella di bufala, manjericão fresco</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Marinara</h5>
+                                    <span class="price">R$ 38,90</span>
+                                </div>
+                                <p>Molho de tomate, alho, orégano, azeite extra virgem</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Napoletana</h5>
+                                    <span class="price">R$ 49,90</span>
+                                </div>
+                                <p>Molho de tomate, mozzarella, anchovas, alcaparras, orégano</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Quattro Formaggi</h5>
+                                    <span class="price">R$ 54,90</span>
+                                </div>
+                                <p>Mozzarella, gorgonzola, parmesão, ricotta</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pizzas Premium -->
+                <div class="tab-pane fade" id="premium">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Tartufo</h5>
+                                    <span class="price">R$ 89,90</span>
+                                </div>
+                                <p>Mozzarella, trufa negra, cogumelos porcini, rúcula</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Prosciutto di Parma</h5>
+                                    <span class="price">R$ 72,90</span>
+                                </div>
+                                <p>Mozzarella, presunto de Parma, rúcula, tomate cereja</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Salmone</h5>
+                                    <span class="price">R$ 68,90</span>
+                                </div>
+                                <p>Mozzarella, salmão defumado, alcaparras, cream cheese</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Burrata</h5>
+                                    <span class="price">R$ 65,90</span>
+                                </div>
+                                <p>Molho de tomate, burrata, tomate cereja, manjericão</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pizzas Vegetarianas -->
+                <div class="tab-pane fade" id="vegetarianas">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Ortolana</h5>
+                                    <span class="price">R$ 52,90</span>
+                                </div>
+                                <p>Mozzarella, berinjela, abobrinha, pimentão, tomate</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Funghi</h5>
+                                    <span class="price">R$ 48,90</span>
+                                </div>
+                                <p>Mozzarella, cogumelos frescos, alho, salsinha</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Caprese</h5>
+                                    <span class="price">R$ 55,90</span>
+                                </div>
+                                <p>Mozzarella di bufala, tomate, manjericão, azeite</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Pizza Spinaci</h5>
+                                    <span class="price">R$ 49,90</span>
+                                </div>
+                                <p>Mozzarella, espinafre, ricotta, alho, nozes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bebidas -->
+                <div class="tab-pane fade" id="bebidas">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Vinho Chianti Classico</h5>
+                                    <span class="price">R$ 89,90</span>
+                                </div>
+                                <p>Vinho tinto italiano, 750ml</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Prosecco</h5>
+                                    <span class="price">R$ 65,90</span>
+                                </div>
+                                <p>Espumante italiano, 750ml</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Limonata</h5>
+                                    <span class="price">R$ 12,90</span>
+                                </div>
+                                <p>Limonada italiana com limão siciliano</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <h5>Acqua Panna</h5>
+                                    <span class="price">R$ 8,90</span>
+                                </div>
+                                <p>Água mineral italiana, 500ml</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section id="depoimentos" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">O que nossos clientes dizem</h2>
+                    <p class="section-subtitle">Depoimentos reais de quem já provou nossa pizza</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "A melhor pizza que já comi no Brasil! O sabor é realmente autêntico, parece que estou na Itália. O atendimento é excepcional!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Maria Silva" class="testimonial-avatar">
+                            <div>
+                                <h6>Maria Silva</h6>
+                                <small>Cliente há 5 anos</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Ambiente acolhedor, pizza deliciosa e preço justo. A massa é perfeita, crocante por fora e macia por dentro. Recomendo!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" alt="João Santos" class="testimonial-avatar">
+                            <div>
+                                <h6>João Santos</h6>
+                                <small>Cliente há 3 anos</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Tradição familiar que se sente em cada mordida. Os ingredientes são de primeira qualidade e o forno a lenha faz toda a diferença!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Ana Costa" class="testimonial-avatar">
+                            <div>
+                                <h6>Ana Costa</h6>
+                                <small>Cliente há 7 anos</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Section -->
+    <section id="galeria" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Galeria</h2>
+                    <p class="section-subtitle">Conheça nossos pratos e ambiente</p>
+                </div>
+            </div>
+            
+            <div class="row g-3">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/hero_pizza.png" alt="Pizza no Forno" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/pizza_specialty_1.jpg" alt="Pizza Margherita" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/pizzeria_environment_1.jpg" alt="Ambiente" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/pizza_specialty_2.jpg" alt="Quattro Stagioni" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/pizzeria_environment_2.jpg" alt="Cozinha" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/pizza_chef_1.jpg" alt="Chef Pizzaiolo" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Entre em Contato</h2>
+                    <p class="section-subtitle">Faça sua reserva ou tire suas dúvidas</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <form class="contact-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="nome" placeholder="Seu nome">
+                                    <label for="nome">Nome</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Seu email">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="telefone" placeholder="Seu telefone">
+                                    <label for="telefone">Telefone</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="assunto">
+                                        <option selected>Escolha o assunto</option>
+                                        <option value="reserva">Reserva</option>
+                                        <option value="pedido">Pedido</option>
+                                        <option value="evento">Evento</option>
+                                        <option value="outros">Outros</option>
+                                    </select>
+                                    <label for="assunto">Assunto</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="mensagem" style="height: 120px" placeholder="Sua mensagem"></textarea>
+                                    <label for="mensagem">Mensagem</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Enviar Mensagem
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h6>Endereço</h6>
+                                <p>Rua das Flores, 123<br>Centro - São Paulo, SP<br>CEP: 01234-567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h6>Telefone</h6>
+                                <p>(11) 3456-7890<br>(11) 98765-4321</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h6>Horário de Funcionamento</h6>
+                                <p>Terça a Domingo<br>18h às 23h<br>Segunda: Fechado</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h6>Email</h6>
+                                <p>contato@bellanapoli.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mapa -->
+                    <div class="map-container mt-4">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975!2d-46.6344!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzgnMDMuOCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                            width="100%" 
+                            height="250" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <h4>
+                            <i class="fas fa-pizza-slice me-2"></i>
+                            Bella Napoli
+                        </h4>
+                        <p>Sabores autênticos da Itália desde 1985. Tradição, qualidade e amor em cada pizza.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-tripadvisor"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="footer-title">Menu</h6>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Cardápio</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="footer-title">Especialidades</h6>
+                    <ul class="footer-links">
+                        <li><a href="#menu">Pizza Margherita</a></li>
+                        <li><a href="#menu">Quattro Stagioni</a></li>
+                        <li><a href="#menu">Pizza Tartufo</a></li>
+                        <li><a href="#menu">Prosciutto di Parma</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="footer-title">Contato</h6>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt me-2"></i>Rua das Flores, 123 - Centro</p>
+                        <p><i class="fas fa-phone me-2"></i>(11) 3456-7890</p>
+                        <p><i class="fas fa-envelope me-2"></i>contato@bellanapoli.com.br</p>
+                        <p><i class="fas fa-clock me-2"></i>Ter-Dom: 18h às 23h</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="footer-copyright">
+                        &copy; 2024 Bella Napoli. Todos os direitos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="footer-credits">
+                        Desenvolvido com <i class="fas fa-heart text-danger"></i> para os amantes da pizza
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
+

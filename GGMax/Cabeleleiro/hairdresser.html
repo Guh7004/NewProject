@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Bella - Cabeleireiro & Estética</title>
+    <link rel="stylesheet" href="hairdresser-style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <h1>Studio Bella</h1>
+                <p>Cabeleireiro & Estética</p>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://wa.me/5511999999999" class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="https://instagram.com/studiobella" class="btn-instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-text">
+                    <h2>Beleza que Transforma</h2>
+                    <p>Realce sua beleza natural com nossos serviços especializados em cabelo, maquiagem e estética</p>
+                    <button class="cta-button" onclick="openWhatsApp()">
+                        <i class="fas fa-calendar-alt"></i>
+                        Agendar Agora
+                    </button>
+                </div>
+            </section>
+
+            <!-- Service Showcase -->
+            <section class="service-showcase">
+                <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/f3Fw1SAlsLlvt4VCSHYtq2_1750090911113_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvaGFpcmRyZXNzZXJfbWFpbg.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L2YzRncxU0Fsc0xsdnQ0VkNTSFl0cTJfMTc1MDA5MDkxMTExM19uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZhR0ZwY21SeVpYTnpaWEpmYldGcGJnLnBuZyIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc2NzIyNTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=OLRFC9giRAoBv0RnrzjHMP7U3dPZ4t0GDxCQ8Kx9REQgANNRZqLAUl1ecHysJOoXSeF98RQUHEpBlEwVQ5ic7x~2G8RB2sVLXE~wXfRwYenynSlwuNFcZV42pWKyjsNJ8n1NeXkhz1yS5gJ7rSD0CSWJzmNFTOkHenkBt5DDQdWQ8rwZHykflAeyLBOFgMPh8YRYJXGQhESk2ulVYZeKuxkq2DSI5ru9nxPA9rU9sJujTK~FAxOb9dVsdTNKVTY2kqbIQk1qCDE5~7xnH~q40JM2xtuqLrmgQRQ8QBbOQeBS~mjPjfLRkpuX1c~XBfRsX5kOc4hmmtKnc9ewUR2yGQ__"
+                    alt="Studio Bella - Serviços de Beleza">
+            </section>
+
+            <!-- Bottom Section -->
+            <div class="bottom-section">
+                <!-- Services Section -->
+                <section class="services">
+                    <h3>Nossos Serviços</h3>
+                    <div class="service-items">
+                        <div class="service-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/f3Fw1SAlsLlvt4VCSHYtq2_1750090911113_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvaGFpcmRyZXNzZXJfY3V0.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L2YzRncxU0Fsc0xsdnQ0VkNTSFl0cTJfMTc1MDA5MDkxMTExM19uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZhR0ZwY21SeVpYTnpaWEpmWTNWMC5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NjcyMjU2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=ZVuM4mqzH9u00n3mP2Ysk-dbaFre-j8Q9kmOZlmMkSklptZAX0mCue3xXuADXEBPhtjnousvDU5~IQn7TFAp90Fbg4wVkHUgnM3I4l0vULF3qY5aE6kfDxns3kX353a-OWWRlrB0wSjwlr1FQM1wr2A7qmRoVSJh7T6Y39DIJAcPLJEd3galHxCcurL8aK8b2AULcnrEyaSHek4svmzxfBkfMZUga9bxkp8fBAcQ9ydDYebvUeJQFZOxYamiis~-sQGI97U9RNh-ZnVJ-H9978otje6jJP4s~-syOnuX9LIv~F-yhMMYuj7w4MCbr0oS9f2CFqY5EnKamoa50Pysug__"
+                                alt="Corte e Escova">
+                            <div class="item-info">
+                                <h4>Corte & Escova</h4>
+                                <p>Corte personalizado + escova modeladora</p>
+                                <span class="price">R$ 85,00</span>
+                            </div>
+                        </div>
+                        <div class="service-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/f3Fw1SAlsLlvt4VCSHYtq2_1750090911114_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvaGFpcmRyZXNzZXJfYnJhaWQ.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L2YzRncxU0Fsc0xsdnQ0VkNTSFl0cTJfMTc1MDA5MDkxMTExNF9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZhR0ZwY21SeVpYTnpaWEpmWW5KaGFXUS5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NjcyMjU2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=Jv1C7-o0Oy5nyxbyWsGHfZVVLQSaLAfCnIH4RKE4A9KY08CoSneUMIZLvl7CSFCQwlB9JSygfooRNOD4MaCgykFj1um0o06W0PJioTcZmVteiDPGxTnKvMi6R3qllCZGMVSexumQZqOvCdCgbJJCIa3~fH12iS4AdjkXDU9rgS3Owa2z8bUOPdurRSH0w8xnEdqrwM7TAwnznRxU~caNxc2QPYDzhOV7R-b4WVwnfXetuFAYQ09uMvbPHzbPdGcINdXE4soDFijOXZx0OTcrs7TPGez9cdy-eyzOe4nnAqIOv7PSUhlFUmKFcb3IQPqHv-FZiMfnVUjtSbd95beZAA__"
+                                alt="Maquiagem Profissional">
+                            <div class="item-info">
+                                <h4>Maquiagem</h4>
+                                <p>Maquiagem profissional para eventos</p>
+                                <span class="price">R$ 120,00</span>
+                            </div>
+                        </div>
+                        <div class="service-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/f3Fw1SAlsLlvt4VCSHYtq2_1750090911114_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvaGFpcmRyZXNzZXJfbWFrZXVw.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L2YzRncxU0Fsc0xsdnQ0VkNTSFl0cTJfMTc1MDA5MDkxMTExNF9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZhR0ZwY21SeVpYTnpaWEpmYldGclpYVncuanBnIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzY3MjI1NjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=EPmQsGrxF1C4fiuSomAT9wxz3XgVO81C9k9vx1y04WFEmrCEA2aXHkSiH-RqZMv5Du8rnjJCWRQXQrCeoxfsO8EPTbwgiL1pD~aTDtgu2xaTKCh7u5MUtwifngMHZs8Bazny89Rsy34WRpxvjeFT99GXbYcOlxxi5tQ8Ol6o3LGNY3lSfiMxERPjOlChE6hjtUPF7N5ySQLYC~dtewOlwXplDo2FcYN2uGgHfx1AhLRxf~fb-xgYEJY~gatb-Lki7cKeMUdlsjCcMSqUa3ArvjpRAbxXZqddUm0QckD9w1-e~54Nf1MUvVcbD6rrswWNOyGBFbNKDqkhXVBlJgIWDw__"
+                                alt="Penteados">
+                            <div class="item-info">
+                                <h4>Penteados</h4>
+                                <p>Penteados elaborados para ocasiões especiais</p>
+                                <span class="price">R$ 95,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Info and Map Section -->
+                <div class="info-map-section">
+                    <section class="info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <h4>Horário</h4>
+                            <p>Seg-Sex: 9h às 19h<br>Sáb: 8h às 17h</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <h4>Agendamento</h4>
+                            <p>Apenas com<br>hora marcada</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Localização</h4>
+                            <p>Rua da Beleza, 456<br>Centro - SP</p>
+                        </div>
+                    </section>
+
+                    <!-- Map Section -->
+                    <section class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975!2d-46.6333824!3d-23.5505199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sS%C3%A3o%20Paulo%2C%20SP!5e0!3m2!1spt!2sbr!4v1234567890"
+                            width="100%" height="120" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer CTA -->
+        <div class="footer-cta">
+            <button class="cta-button-large" onclick="openWhatsApp()">
+                <i class="fab fa-whatsapp"></i>
+                Agende seu Horário
+            </button>
+        </div>
+    </div>
+
+    <script src="hairdresser-script.js"></script>
+</body>
+
+</html>

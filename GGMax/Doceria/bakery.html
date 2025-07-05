@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce Encanto - Confeitaria Artesanal</title>
+    <link rel="stylesheet" href="bakery-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <h1>Doce Encanto</h1>
+                <p>Confeitaria Artesanal</p>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://wa.me/5511999999999" class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="https://instagram.com/doceencanto" class="btn-instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-text">
+                    <h2>Doçura que Encanta</h2>
+                    <p>Doces artesanais feitos com carinho e ingredientes selecionados para adoçar seus momentos especiais</p>
+                    <button class="cta-button" onclick="openWhatsApp()">
+                        <i class="fas fa-shopping-bag"></i>
+                        Peça Agora
+                    </button>
+                </div>
+            </section>
+
+            <!-- Product Showcase -->
+            <section class="product-showcase">
+                <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/wCM7E67LWkqID0CN7DsDW4_1750091935227_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvYmFrZXJ5X2Rlc3NlcnQ.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L3dDTTdFNjdMV2txSUQwQ043RHNEVzRfMTc1MDA5MTkzNTIyN19uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZZbUZyWlhKNVgyUmxjM05sY25RLmpwZyIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc2NzIyNTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=XDVDphjana~wCVaIJKWKAr2W6aIqO91lLQZnwPHLHWVJ2nFDThsQQ9CImIP6UxykrJfgGj3SGwQEmTLpuk-dD9BwOirUJqJe-Oiu~jncve1jW1-6YRkUjkoy5kfRlh5HOm4mF4i1eVd~pCCqXzxJSIW0RTR9asD74yqGRhO7DXaNMeyo2I8f9Z5Zl1DHzVJ9ye06u-rrQM3DvOpxpaSXOG9kIMzgHxmC-SybLW8j4fb9aMF1cAt2U1tCcbdFxqPJ57sfcazBAdJxz6FN6-SwCdt1fQL9i1qLwPASkvbvxRIUPyHnUYkPntjlQRbIYxwh~xIXFWDr-1Xqxava9O~G7A__" alt="Doce Encanto - Confeitaria Artesanal">
+            </section>
+
+            <!-- Bottom Section -->
+            <div class="bottom-section">
+                <!-- Products Section -->
+                <section class="products">
+                    <h3>Nossos Doces</h3>
+                    <div class="product-items">
+                        <div class="product-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/wCM7E67LWkqID0CN7DsDW4_1750091935227_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvYmFrZXJ5X2JyaWdhZGVpcm8.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L3dDTTdFNjdMV2txSUQwQ043RHNEVzRfMTc1MDA5MTkzNTIyN19uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZZbUZyWlhKNVgySnlhV2RoWkdWcGNtOC5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NjcyMjU2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=o5ZvabcarUZx4Wyv0IB7SGuc6DhUaavNDWtk0HPCMLxF~~qvPxfmjQQr~MsiZZ52kUSWzbtYgf2locBYC6fMZuPkJpcOb15IEG8egjJNYP3BapEhXeVjLTVAaOudKOjVX7cn1rn3bEjg0JLgKX5uZR6zgtj665EGeunH7TpmojgvhmcKgYm1fAZ7rOaOetgHiKUwgkDxRUYA45WUgVaThi6mRwUBgRJNxjOUjYReevZU4y0srECL7aXjkmNChKJdF6pR4fuv25SgBQzhAXjuJMO1S~5a904VfAPnzPvLjRKls1RSuK1F0mQiDMWvGXIthXCQmsc3QJipMYN9uFbxnQ__" alt="Torta de Brigadeiro">
+                            <div class="item-info">
+                                <h4>Torta de Brigadeiro</h4>
+                                <p>Massa de chocolate com brigadeiro cremoso</p>
+                                <span class="price">R$ 45,00</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/wCM7E67LWkqID0CN7DsDW4_1750091935227_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvYmFrZXJ5X2Nha2U.jpeg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L3dDTTdFNjdMV2txSUQwQ043RHNEVzRfMTc1MDA5MTkzNTIyN19uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZZbUZyWlhKNVgyTmhhMlUuanBlZyIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc2NzIyNTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=eT8yv7dM2~kiQBONmCG1iNcN-WsGYcRIcR508B8ICOu59M4UWRXmlUqt2LbCw8z6FEM4USmsZ~czoPJCK58VRUsqhWBBPssozgFYjRZWE3E7FFdqDXYjHK-TPySLvWz-o~KMDU5bx0mCHoYQx1v2rN-VDhxj-o6RzxZZMDLAeKpHL4d~Tu9ARvu9rIYibj3g1yJWvzSXCj-jd3UbtwqUJ~bIKtAQs-e72syP3qdOg4mNh77AmyQQrJKzb8fv0sdPwyVIUHtcfNHmrnBYEYi0eGQrXYNvo5zjJNNR8JAp0A473uRFZaINgp0Z6oAuRq7nxcjSGUWk2oNt7imhAhQr4Q__" alt="Bolo Artesanal">
+                            <div class="item-info">
+                                <h4>Bolo Artesanal</h4>
+                                <p>Bolos personalizados para ocasiões especiais</p>
+                                <span class="price">R$ 65,00</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://private-us-east-1.manuscdn.com/sessionFile/NrGnsIhBLBwCXX1IK8Urij/sandbox/wCM7E67LWkqID0CN7DsDW4_1750091935226_na1fn_L2hvbWUvdWJ1bnR1L2Fzc2V0cy9pbWFnZXMvYmFrZXJ5X21haW4.jpeg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnJHbnNJaEJMQndDWFgxSUs4VXJpai9zYW5kYm94L3dDTTdFNjdMV2txSUQwQ043RHNEVzRfMTc1MDA5MTkzNTIyNl9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJGemMyVjBjeTlwYldGblpYTXZZbUZyWlhKNVgyMWhhVzQuanBlZyIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc2NzIyNTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=YvnKwA5H1QmHGuXv6AkBp1~v7lcZEy4Z6aIc2Zgk26jqFF-ytswrgt-P-z-w9aCLspI3QsVTjWoaLxchEqEgD-QPBB5U-~uBQxuhDwe3Ubs9BlNL-HcrAIb3xzlMDtlOBGRV-dUVDzdxJ1BFOiP72GJ9BT5XH1AjNqZpXC8HefPf9JBYP~z2Ij3WmomaZ8mSTT~3EdjYnHz-yFVmvlk6KX6JnltNbek1vH09PUPuNyefaxChg6KIijajE10-bMqImrbXeQokNmS5yvsT4Floax9ha81W9L8VZG~vAZrpYNoNpxqdQ88rwNOOOP0vCEl88I~~NUy9zBjrGJEqf3ueAg__" alt="Docinhos Gourmet">
+                            <div class="item-info">
+                                <h4>Docinhos Gourmet</h4>
+                                <p>Seleção especial de docinhos finos</p>
+                                <span class="price">R$ 3,50</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Info and Map Section -->
+                <div class="info-map-section">
+                    <section class="info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <h4>Horário</h4>
+                            <p>Ter-Sáb: 8h às 18h<br>Dom: 9h às 16h</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-truck"></i>
+                            <h4>Entrega</h4>
+                            <p>45-60 minutos<br>Taxa: R$ 8,00</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Localização</h4>
+                            <p>Rua dos Doces, 789<br>Vila Doce - SP</p>
+                        </div>
+                    </section>
+
+                    <!-- Map Section -->
+                    <section class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975!2d-46.6333824!3d-23.5505199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sS%C3%A3o%20Paulo%2C%20SP!5e0!3m2!1spt!2sbr!4v1234567890"
+                            width="100%" 
+                            height="120" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer CTA -->
+        <div class="footer-cta">
+            <button class="cta-button-large" onclick="openWhatsApp()">
+                <i class="fab fa-whatsapp"></i>
+                Faça seu Pedido
+            </button>
+        </div>
+    </div>
+
+    <script src="bakery-script.js"></script>
+</body>
+</html>
+
