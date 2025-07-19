@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - PetParadise</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/paw_print_1.jpg" alt="PetParadise" class="logo-img">
+                <span class="brand-text">PetParadise</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicos.html">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agendamento.html">Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotel.html">Hotel Pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="sobre.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary nav-btn" onclick="toggleTheme()">
+                            <i class="fas fa-moon" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Nossa História</h1>
+                    <p class="hero-subtitle">
+                        Desde 2019, dedicamos nossa paixão e expertise ao cuidado dos pets, 
+                        oferecendo serviços de qualidade com muito amor e carinho.
+                    </p>
+                    <div class="hero-achievements">
+                        <div class="achievement-item">
+                            <div class="achievement-number">5+</div>
+                            <div class="achievement-label">Anos de Experiência</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-number">2000+</div>
+                            <div class="achievement-label">Pets Atendidos</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-number">98%</div>
+                            <div class="achievement-label">Satisfação</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/staff_interaction_1.jpg" alt="Equipe PetParadise" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="story-content">
+                        <h2 class="section-title text-center mb-5">Como Tudo Começou</h2>
+                        
+                        <div class="story-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">2019</div>
+                                <div class="timeline-content">
+                                    <h4>O Sonho Nasce</h4>
+                                    <p>
+                                        Tudo começou com o amor incondicional por animais. Marina e Carlos, 
+                                        veterinários apaixonados, decidiram criar um espaço onde os pets 
+                                        fossem tratados como verdadeiros membros da família.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-year">2020</div>
+                                <div class="timeline-content">
+                                    <h4>Primeiros Passos</h4>
+                                    <p>
+                                        Inauguramos nossa primeira unidade com apenas 3 funcionários e muito 
+                                        entusiasmo. Nosso foco era oferecer banho e tosa com qualidade excepcional 
+                                        e atendimento humanizado.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-year">2021</div>
+                                <div class="timeline-content">
+                                    <h4>Crescimento e Reconhecimento</h4>
+                                    <p>
+                                        Com o boca a boca positivo dos clientes, expandimos nossos serviços 
+                                        incluindo o hotel pet. Recebemos nossa primeira premiação como 
+                                        "Melhor Petshop da Região".
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-year">2022</div>
+                                <div class="timeline-content">
+                                    <h4>Inovação e Tecnologia</h4>
+                                    <p>
+                                        Investimos em tecnologia de ponta, sistema de agendamento online 
+                                        e câmeras de monitoramento 24h. Nosso hotel pet se tornou referência 
+                                        na cidade.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-year">2023</div>
+                                <div class="timeline-content">
+                                    <h4>Expansão dos Serviços</h4>
+                                    <p>
+                                        Ampliamos nossas instalações e incluímos serviços veterinários 
+                                        especializados. Nossa equipe cresceu para 15 profissionais 
+                                        altamente qualificados.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024</div>
+                                <div class="timeline-content">
+                                    <h4>Presente e Futuro</h4>
+                                    <p>
+                                        Hoje somos referência em cuidados pet na região, com mais de 2000 
+                                        pets atendidos e 98% de satisfação dos clientes. Nosso compromisso 
+                                        continua sendo o mesmo: amor e cuidado em primeiro lugar.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Nossa Missão</h3>
+                        <p>
+                            Proporcionar cuidados excepcionais aos pets, tratando cada animal com amor, 
+                            respeito e profissionalismo, garantindo o bem-estar e a felicidade de nossos 
+                            pequenos clientes e a tranquilidade de seus tutores.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Nossa Visão</h3>
+                        <p>
+                            Ser reconhecida como a melhor rede de petshops do país, referência em 
+                            qualidade, inovação e cuidado animal, expandindo nossos serviços para 
+                            atender cada vez mais famílias e seus pets.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Nossos Valores</h3>
+                        <ul class="values-list">
+                            <li><i class="fas fa-paw"></i> Amor pelos animais</li>
+                            <li><i class="fas fa-shield-alt"></i> Segurança e bem-estar</li>
+                            <li><i class="fas fa-star"></i> Excelência no atendimento</li>
+                            <li><i class="fas fa-handshake"></i> Transparência e confiança</li>
+                            <li><i class="fas fa-leaf"></i> Sustentabilidade</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Nossa Equipe</h2>
+                    <p class="section-subtitle">Profissionais apaixonados e qualificados</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="img/staff_interaction_1.jpg" alt="Marina Silva" class="img-fluid">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Dra. Marina Silva</h4>
+                            <span class="team-role">Fundadora & Veterinária</span>
+                            <p>
+                                Veterinária com 10 anos de experiência, especialista em clínica geral 
+                                e comportamento animal. Apaixonada por cães e gatos.
+                            </p>
+                            <div class="team-specialties">
+                                <span class="specialty">Clínica Geral</span>
+                                <span class="specialty">Comportamento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="img/staff_interaction_2.jpg" alt="Carlos Mendes" class="img-fluid">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Dr. Carlos Mendes</h4>
+                            <span class="team-role">Co-fundador & Veterinário</span>
+                            <p>
+                                Veterinário especializado em cirurgia e emergências. Responsável 
+                                pelo atendimento médico e supervisão geral dos cuidados.
+                            </p>
+                            <div class="team-specialties">
+                                <span class="specialty">Cirurgia</span>
+                                <span class="specialty">Emergências</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="img/dog_happy_1.jpg" alt="Ana Costa" class="img-fluid">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Ana Costa</h4>
+                            <span class="team-role">Groomer Sênior</span>
+                            <p>
+                                Especialista em tosa criativa com 8 anos de experiência. 
+                                Certificada em técnicas avançadas de grooming e estética pet.
+                            </p>
+                            <div class="team-specialties">
+                                <span class="specialty">Tosa Criativa</span>
+                                <span class="specialty">Estética Pet</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="img/cat_happy_1.jpg" alt="Roberto Lima" class="img-fluid">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Roberto Lima</h4>
+                            <span class="team-role">Gerente do Hotel Pet</span>
+                            <p>
+                                Responsável pela hospedagem e recreação dos pets. Especialista 
+                                em comportamento animal e atividades recreativas.
+                            </p>
+                            <div class="team-specialties">
+                                <span class="specialty">Hospedagem</span>
+                                <span class="specialty">Recreação</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Certificações e Prêmios</h2>
+                    <p class="section-subtitle">Reconhecimento da nossa qualidade</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-award text-warning"></i>
+                        </div>
+                        <h4>Melhor Petshop 2023</h4>
+                        <p>Prêmio Cidade Pet - Categoria Excelência em Atendimento</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate text-primary"></i>
+                        </div>
+                        <h4>ISO 9001</h4>
+                        <p>Certificação de Qualidade em Gestão e Processos</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-shield-alt text-success"></i>
+                        </div>
+                        <h4>CRMV Aprovado</h4>
+                        <p>Licenciado pelo Conselho Regional de Medicina Veterinária</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-leaf text-info"></i>
+                        </div>
+                        <h4>Eco Pet Friendly</h4>
+                        <p>Certificação de Sustentabilidade e Responsabilidade Ambiental</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Nossos Números</h2>
+                    <p class="section-subtitle">Resultados que falam por si só</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="stat-number" data-target="2000">0</div>
+                        <div class="stat-label">Pets Atendidos</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">% Satisfação</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">Funcionários</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="stat-number" data-target="5">0</div>
+                        <div class="stat-label">Anos de Experiência</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta-card text-center">
+                        <h3>Faça Parte da Nossa História</h3>
+                        <p>Venha conhecer nosso espaço e descobrir por que somos a escolha de milhares de tutores!</p>
+                        <div class="cta-buttons">
+                            <a href="agendamento.html" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-calendar-alt me-2"></i>
+                                Agendar Visita
+                            </a>
+                            <a href="contato.html" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-map-marker-alt me-2"></i>
+                                Como Chegar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <img src="img/paw_print_1.jpg" alt="PetParadise" class="footer-logo">
+                        <h5>PetParadise</h5>
+                        <p>Cuidando do seu pet com amor e carinho desde 2019.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Links Rápidos</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="agendamento.html">Agendamento</a></li>
+                        <li><a href="hotel.html">Hotel Pet</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Contato</h6>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                        <p><i class="fas fa-envelope"></i> contato@petparadise.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Rua dos Pets, 123 - São Paulo</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Newsletter</h6>
+                    <p>Receba novidades e promoções!</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="social-links mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 PetParadise. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <img src="img/dog_happy_1.jpg" alt="Atendente" class="chat-avatar">
+            <div class="chat-info">
+                <h6>Rex - Atendente Virtual</h6>
+                <span class="chat-status">Online</span>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message bot">
+                <p>👋 Quer conhecer mais sobre nossa história?</p>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" placeholder="Digite sua mensagem...">
+            <button class="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="chat-toggle" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script src="js/about.js"></script>
+</body>
+</html>
+

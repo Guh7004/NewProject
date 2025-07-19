@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - PetParadise</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/paw_print_1.jpg" alt="PetParadise" class="logo-img">
+                <span class="brand-text">PetParadise</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicos.html">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agendamento.html">Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotel.html">Hotel Pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contato.html">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary nav-btn" onclick="toggleTheme()">
+                            <i class="fas fa-moon" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Entre em Contato</h1>
+                    <p class="hero-subtitle">
+                        Estamos sempre prontos para atender você e seu pet! Entre em contato 
+                        conosco através dos canais abaixo ou visite nossa loja.
+                    </p>
+                    <div class="hero-contact-quick">
+                        <div class="contact-quick-item">
+                            <i class="fas fa-phone text-success"></i>
+                            <div>
+                                <strong>(11) 9999-9999</strong>
+                                <span>WhatsApp e Ligações</span>
+                            </div>
+                        </div>
+                        <div class="contact-quick-item">
+                            <i class="fas fa-clock text-primary"></i>
+                            <div>
+                                <strong>Seg-Sáb: 8h às 18h</strong>
+                                <span>Dom: 9h às 17h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/reception_1.jpg" alt="Contato PetParadise" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Endereço</h4>
+                        <p>
+                            Rua dos Pets, 123<br>
+                            Vila Madalena<br>
+                            São Paulo - SP<br>
+                            CEP: 05435-000
+                        </p>
+                        <a href="#" class="btn btn-outline-primary btn-sm" onclick="openMap()">
+                            <i class="fas fa-directions me-2"></i>
+                            Como Chegar
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Telefones</h4>
+                        <p>
+                            <strong>WhatsApp:</strong> (11) 9999-9999<br>
+                            <strong>Fixo:</strong> (11) 3333-3333<br>
+                            <strong>Emergência:</strong> (11) 9888-8888
+                        </p>
+                        <div class="contact-buttons">
+                            <a href="tel:11999999999" class="btn btn-success btn-sm me-2">
+                                <i class="fab fa-whatsapp me-1"></i>
+                                WhatsApp
+                            </a>
+                            <a href="tel:1133333333" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-phone me-1"></i>
+                                Ligar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>E-mails</h4>
+                        <p>
+                            <strong>Geral:</strong> contato@petparadise.com<br>
+                            <strong>Agendamento:</strong> agenda@petparadise.com<br>
+                            <strong>Hotel:</strong> hotel@petparadise.com
+                        </p>
+                        <a href="mailto:contato@petparadise.com" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-envelope me-2"></i>
+                            Enviar E-mail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Envie sua Mensagem</h2>
+                    <p class="section-subtitle">Preencha o formulário abaixo e entraremos em contato em breve</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form-card">
+                        <form id="contactForm" class="contact-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Nome Completo *</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">E-mail *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Telefone *</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="(11) 99999-9999" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="subject" class="form-label">Assunto *</label>
+                                    <select class="form-select" id="subject" required>
+                                        <option value="">Selecione o assunto</option>
+                                        <option value="agendamento">Agendamento</option>
+                                        <option value="hotel">Hotel Pet</option>
+                                        <option value="servicos">Informações sobre Serviços</option>
+                                        <option value="precos">Preços e Promoções</option>
+                                        <option value="reclamacao">Reclamação</option>
+                                        <option value="sugestao">Sugestão</option>
+                                        <option value="outros">Outros</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="petInfo" class="form-label">Informações do Pet (opcional)</label>
+                                    <input type="text" class="form-control" id="petInfo" placeholder="Nome, raça, idade do seu pet">
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Mensagem *</label>
+                                    <textarea class="form-control" id="message" rows="5" placeholder="Descreva sua dúvida ou solicitação..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            Quero receber novidades e promoções por e-mail
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="privacy" required>
+                                        <label class="form-check-label" for="privacy">
+                                            Aceito a <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">política de privacidade</a> *
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>
+                                        Enviar Mensagem
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Nossa Localização</h2>
+                    <p class="section-subtitle">Venha nos visitar! Estamos bem localizados na Vila Madalena</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <div class="map-content">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h4>PetParadise</h4>
+                                <p>Rua dos Pets, 123 - Vila Madalena<br>São Paulo - SP</p>
+                                <div class="map-buttons">
+                                    <button class="btn btn-primary" onclick="openGoogleMaps()">
+                                        <i class="fab fa-google me-2"></i>
+                                        Abrir no Google Maps
+                                    </button>
+                                    <button class="btn btn-outline-primary" onclick="openWaze()">
+                                        <i class="fas fa-route me-2"></i>
+                                        Abrir no Waze
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section class="hours-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="hours-card">
+                        <h3 class="text-center mb-4">
+                            <i class="fas fa-clock me-2"></i>
+                            Horários de Funcionamento
+                        </h3>
+                        
+                        <div class="hours-grid">
+                            <div class="hours-item">
+                                <div class="day">Segunda-feira</div>
+                                <div class="time">8:00 - 18:00</div>
+                            </div>
+                            <div class="hours-item">
+                                <div class="day">Terça-feira</div>
+                                <div class="time">8:00 - 18:00</div>
+                            </div>
+                            <div class="hours-item">
+                                <div class="day">Quarta-feira</div>
+                                <div class="time">8:00 - 18:00</div>
+                            </div>
+                            <div class="hours-item">
+                                <div class="day">Quinta-feira</div>
+                                <div class="time">8:00 - 18:00</div>
+                            </div>
+                            <div class="hours-item">
+                                <div class="day">Sexta-feira</div>
+                                <div class="time">8:00 - 18:00</div>
+                            </div>
+                            <div class="hours-item">
+                                <div class="day">Sábado</div>
+                                <div class="time">8:00 - 18:00</div>
+                            </div>
+                            <div class="hours-item special">
+                                <div class="day">Domingo</div>
+                                <div class="time">9:00 - 17:00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hours-note">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Importante:</strong> Em feriados, funcionamos em horário especial. 
+                            Entre em contato para confirmar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Perguntas Frequentes</h2>
+                    <p class="section-subtitle">Tire suas dúvidas mais comuns</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Como posso agendar um serviço?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Você pode agendar através do nosso site na página de agendamento, pelo WhatsApp (11) 9999-9999 
+                                    ou ligando diretamente para (11) 3333-3333. Recomendamos agendar com pelo menos 24 horas de antecedência.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Quais documentos preciso levar?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    É obrigatório apresentar a carteira de vacinação atualizada do seu pet. Para hospedagem no hotel, 
+                                    também solicitamos comprovante de vermifugação recente e, se possível, exame de fezes.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Vocês atendem pets de todos os portes?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Atendemos pets de todos os portes, desde pequenos como Chihuahuas até grandes como São Bernardos. 
+                                    Nossos preços variam conforme o porte do animal.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Qual é a política de cancelamento?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Cancelamentos devem ser feitos com pelo menos 12 horas de antecedência. Para hospedagem no hotel, 
+                                    solicitamos 24 horas de antecedência. Cancelamentos de última hora podem estar sujeitos a taxa.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Vocês oferecem desconto para múltiplos pets?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Oferecemos 10% de desconto para o segundo pet da mesma família. Também temos descontos especiais 
+                                    para clientes fidelidade e hospedagens de longa duração.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Política de Privacidade</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Coleta de Informações</h6>
+                    <p>Coletamos apenas as informações necessárias para prestar nossos serviços com qualidade.</p>
+                    
+                    <h6>2. Uso das Informações</h6>
+                    <p>Suas informações são utilizadas exclusivamente para agendamentos, contato e melhoria dos nossos serviços.</p>
+                    
+                    <h6>3. Proteção de Dados</h6>
+                    <p>Garantimos a segurança e confidencialidade de todos os dados pessoais coletados.</p>
+                    
+                    <h6>4. Compartilhamento</h6>
+                    <p>Não compartilhamos suas informações com terceiros sem seu consentimento expresso.</p>
+                    
+                    <h6>5. Seus Direitos</h6>
+                    <p>Você pode solicitar acesso, correção ou exclusão de seus dados a qualquer momento.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <img src="img/paw_print_1.jpg" alt="PetParadise" class="footer-logo">
+                        <h5>PetParadise</h5>
+                        <p>Cuidando do seu pet com amor e carinho desde 2019.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Links Rápidos</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="agendamento.html">Agendamento</a></li>
+                        <li><a href="hotel.html">Hotel Pet</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Contato</h6>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                        <p><i class="fas fa-envelope"></i> contato@petparadise.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Rua dos Pets, 123 - São Paulo</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Newsletter</h6>
+                    <p>Receba novidades e promoções!</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="social-links mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 PetParadise. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <img src="img/dog_happy_1.jpg" alt="Atendente" class="chat-avatar">
+            <div class="chat-info">
+                <h6>Rex - Atendente Virtual</h6>
+                <span class="chat-status">Online</span>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message bot">
+                <p>📞 Precisa de ajuda? Estou aqui para você!</p>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" placeholder="Digite sua mensagem...">
+            <button class="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="chat-toggle" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
+

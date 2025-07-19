@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - PetParadise</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/paw_print_1.jpg" alt="PetParadise" class="logo-img">
+                <span class="brand-text">PetParadise</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="servicos.html">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agendamento.html">Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotel.html">Hotel Pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary nav-btn" onclick="toggleTheme()">
+                            <i class="fas fa-moon" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Nossos Serviços</h1>
+                    <p class="hero-subtitle">
+                        Oferecemos uma gama completa de serviços para manter seu pet sempre feliz, 
+                        saudável e bem cuidado. Cada serviço é realizado com amor e profissionalismo.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="agendamento.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            Agendar Agora
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/staff_interaction_1.jpg" alt="Serviços PetParadise" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Detail Section -->
+    <section class="services-detail py-5">
+        <div class="container">
+            <!-- Banho Section -->
+            <div class="service-detail-card mb-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="service-content">
+                            <div class="service-icon-large">
+                                <img src="img/icon_bath.png" alt="Banho">
+                            </div>
+                            <h2>Banho Completo</h2>
+                            <p class="service-description">
+                                Nosso serviço de banho completo inclui tudo que seu pet precisa para ficar 
+                                limpo, cheiroso e relaxado. Utilizamos apenas produtos de alta qualidade, 
+                                adequados para cada tipo de pelagem.
+                            </p>
+                            
+                            <div class="service-features">
+                                <h4>O que está incluído:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check text-success"></i> Shampoo premium específico para o tipo de pelo</li>
+                                    <li><i class="fas fa-check text-success"></i> Condicionador hidratante</li>
+                                    <li><i class="fas fa-check text-success"></i> Secagem profissional com temperatura controlada</li>
+                                    <li><i class="fas fa-check text-success"></i> Perfume pet hipoalergênico</li>
+                                    <li><i class="fas fa-check text-success"></i> Limpeza completa de ouvidos</li>
+                                    <li><i class="fas fa-check text-success"></i> Corte básico de unhas</li>
+                                    <li><i class="fas fa-check text-success"></i> Escovação completa</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="pricing-table">
+                                <h4>Preços:</h4>
+                                <div class="price-row">
+                                    <span>Porte Pequeno (até 10kg)</span>
+                                    <span class="price">R$ 35,00</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Porte Médio (10-25kg)</span>
+                                    <span class="price">R$ 45,00</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Porte Grande (acima de 25kg)</span>
+                                    <span class="price">R$ 55,00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="service-gallery">
+                            <img src="img/bathing_area_1.png" alt="Área de Banho" class="gallery-image img-fluid rounded-3 shadow mb-3">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <img src="img/dog_happy_1.jpg" alt="Cão após banho" class="gallery-image img-fluid rounded-3">
+                                </div>
+                                <div class="col-6">
+                                    <img src="img/cat_happy_1.jpg" alt="Gato após banho" class="gallery-image img-fluid rounded-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tosa Section -->
+            <div class="service-detail-card mb-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="service-content">
+                            <div class="service-icon-large">
+                                <img src="img/icon_grooming.jpg" alt="Tosa">
+                            </div>
+                            <h2>Tosa Profissional</h2>
+                            <p class="service-description">
+                                Nossa equipe especializada em tosa oferece cortes personalizados que 
+                                respeitam as características da raça e as preferências do tutor, 
+                                sempre priorizando o bem-estar do animal.
+                            </p>
+                            
+                            <div class="service-features">
+                                <h4>Tipos de tosa disponíveis:</h4>
+                                <ul>
+                                    <li><i class="fas fa-scissors text-primary"></i> Tosa higiênica completa</li>
+                                    <li><i class="fas fa-scissors text-primary"></i> Tosa bebê (pelagem curta e fofa)</li>
+                                    <li><i class="fas fa-scissors text-primary"></i> Tosa verão (ideal para o calor)</li>
+                                    <li><i class="fas fa-scissors text-primary"></i> Tosa tesoura (acabamento refinado)</li>
+                                    <li><i class="fas fa-scissors text-primary"></i> Tosa criativa (desenhos e formas)</li>
+                                    <li><i class="fas fa-scissors text-primary"></i> Aparar unhas e pelos das patas</li>
+                                    <li><i class="fas fa-scissors text-primary"></i> Limpeza dental básica</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="pricing-table">
+                                <h4>Preços:</h4>
+                                <div class="price-row">
+                                    <span>Porte Pequeno</span>
+                                    <span class="price">R$ 45,00</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Porte Médio</span>
+                                    <span class="price">R$ 55,00</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Porte Grande</span>
+                                    <span class="price">R$ 65,00</span>
+                                </div>
+                                <div class="price-row highlight">
+                                    <span>Tosa Criativa</span>
+                                    <span class="price">+ R$ 20,00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="service-gallery">
+                            <img src="img/grooming_before_after_dog_1.jpg" alt="Antes e depois da tosa" class="gallery-image img-fluid rounded-3 shadow mb-3">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <img src="img/grooming_before_after_cat_1.jpg" alt="Tosa em gato" class="gallery-image img-fluid rounded-3">
+                                </div>
+                                <div class="col-6">
+                                    <img src="img/staff_interaction_2.jpg" alt="Profissional tosando" class="gallery-image img-fluid rounded-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotel Section -->
+            <div class="service-detail-card mb-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="service-content">
+                            <div class="service-icon-large">
+                                <img src="img/icon_hotel.png" alt="Hotel">
+                            </div>
+                            <h2>Hotel Pet</h2>
+                            <p class="service-description">
+                                Quando você precisar viajar, deixe seu pet em nossas mãos! Nosso hotel 
+                                oferece hospedagem completa com todo conforto e carinho que seu amiguinho merece.
+                            </p>
+                            
+                            <div class="service-features">
+                                <h4>Comodidades do hotel:</h4>
+                                <ul>
+                                    <li><i class="fas fa-home text-info"></i> Suítes climatizadas individuais</li>
+                                    <li><i class="fas fa-utensils text-info"></i> Alimentação personalizada</li>
+                                    <li><i class="fas fa-gamepad text-info"></i> Recreação e brincadeiras diárias</li>
+                                    <li><i class="fas fa-eye text-info"></i> Monitoramento 24 horas</li>
+                                    <li><i class="fas fa-file-alt text-info"></i> Relatórios diários com fotos</li>
+                                    <li><i class="fas fa-stethoscope text-info"></i> Acompanhamento veterinário</li>
+                                    <li><i class="fas fa-bath text-info"></i> Banho de cortesia (estadias +3 dias)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="pricing-table">
+                                <h4>Preços por dia:</h4>
+                                <div class="price-row">
+                                    <span>Porte Pequeno</span>
+                                    <span class="price">R$ 60,00</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Porte Médio</span>
+                                    <span class="price">R$ 70,00</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Porte Grande</span>
+                                    <span class="price">R$ 80,00</span>
+                                </div>
+                                <div class="price-row highlight">
+                                    <span>Desconto semanal</span>
+                                    <span class="price">15% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="service-gallery">
+                            <img src="img/hotel_1.jpg" alt="Hotel Pet" class="gallery-image img-fluid rounded-3 shadow mb-3">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <img src="img/reception_1.jpg" alt="Recepção" class="gallery-image img-fluid rounded-3">
+                                </div>
+                                <div class="col-6">
+                                    <img src="img/dog_cat_happy_1.png" alt="Pets felizes" class="gallery-image img-fluid rounded-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Calculator Section -->
+    <section class="price-calculator-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="calculator-card">
+                        <h3 class="text-center mb-4">
+                            <i class="fas fa-calculator me-2"></i>
+                            Calculadora de Preços
+                        </h3>
+                        <p class="text-center mb-4">
+                            Calcule o valor dos nossos serviços de forma rápida e fácil
+                        </p>
+                        
+                        <div id="priceCalculator">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="service" class="form-label">Serviço</label>
+                                    <select class="form-select" id="service">
+                                        <option value="">Selecione o serviço</option>
+                                        <option value="banho">Banho Completo</option>
+                                        <option value="tosa">Tosa Profissional</option>
+                                        <option value="hotel">Hotel Pet (por dia)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="size" class="form-label">Porte do Pet</label>
+                                    <select class="form-select" id="size">
+                                        <option value="">Selecione o porte</option>
+                                        <option value="small">Pequeno (até 10kg)</option>
+                                        <option value="medium">Médio (10-25kg)</option>
+                                        <option value="large">Grande (acima de 25kg)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Preço Total</label>
+                                    <div class="price-display">
+                                        <span id="calculatedPrice">R$ 0,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <a href="agendamento.html" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-calendar-check me-2"></i>
+                                    Agendar Este Serviço
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services Section -->
+    <section class="additional-services py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Serviços Adicionais</h2>
+                    <p class="section-subtitle">Cuidados extras para o bem-estar do seu pet</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="additional-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h4>Corte de Unhas</h4>
+                        <p>Corte seguro e profissional das unhas do seu pet</p>
+                        <div class="service-price">R$ 15,00</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="additional-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <h4>Limpeza Dental</h4>
+                        <p>Higiene bucal completa para manter os dentes saudáveis</p>
+                        <div class="service-price">R$ 25,00</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="additional-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-ear-listen"></i>
+                        </div>
+                        <h4>Limpeza de Ouvidos</h4>
+                        <p>Limpeza cuidadosa para prevenir infecções</p>
+                        <div class="service-price">R$ 20,00</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="additional-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <h4>Perfume Premium</h4>
+                        <p>Fragrâncias especiais para deixar seu pet cheiroso</p>
+                        <div class="service-price">R$ 10,00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta-card text-center">
+                        <h3>Pronto para cuidar do seu pet?</h3>
+                        <p>Agende agora mesmo e garante o melhor cuidado para seu amiguinho!</p>
+                        <div class="cta-buttons">
+                            <a href="agendamento.html" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-calendar-alt me-2"></i>
+                                Agendar Serviço
+                            </a>
+                            <a href="contato.html" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-phone me-2"></i>
+                                Falar Conosco
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <img src="img/paw_print_1.jpg" alt="PetParadise" class="footer-logo">
+                        <h5>PetParadise</h5>
+                        <p>Cuidando do seu pet com amor e carinho desde 2019.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Links Rápidos</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="agendamento.html">Agendamento</a></li>
+                        <li><a href="hotel.html">Hotel Pet</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Contato</h6>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                        <p><i class="fas fa-envelope"></i> contato@petparadise.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Rua dos Pets, 123 - São Paulo</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Newsletter</h6>
+                    <p>Receba novidades e promoções!</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="social-links mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 PetParadise. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <img src="img/dog_happy_1.jpg" alt="Atendente" class="chat-avatar">
+            <div class="chat-info">
+                <h6>Rex - Atendente Virtual</h6>
+                <span class="chat-status">Online</span>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message bot">
+                <p>🐾 Olá! Precisa de ajuda com nossos serviços?</p>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" placeholder="Digite sua mensagem...">
+            <button class="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="chat-toggle" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
+

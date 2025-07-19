@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Pet - PetParadise</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/paw_print_1.jpg" alt="PetParadise" class="logo-img">
+                <span class="brand-text">PetParadise</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicos.html">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agendamento.html">Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="hotel.html">Hotel Pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary nav-btn" onclick="toggleTheme()">
+                            <i class="fas fa-moon" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Hotel Pet PetParadise</h1>
+                    <p class="hero-subtitle">
+                        Um lar longe de casa para seu pet! Oferecemos hospedagem completa com 
+                        todo conforto, segurança e carinho que seu amiguinho merece durante sua ausência.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Monitoramento</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Segurança</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5★</div>
+                            <div class="stat-label">Avaliação</div>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="agendamento.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            Reservar Agora
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/hotel_1.jpg" alt="Hotel Pet PetParadise" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Conheça Nossas Instalações</h2>
+                    <p class="section-subtitle">Ambientes pensados especialmente para o conforto e bem-estar do seu pet</p>
+                </div>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="img/hotel_1.jpg" alt="Suíte Principal" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Suítes Climatizadas</h3>
+                        <p>Ambientes confortáveis e seguros</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/reception_1.jpg" alt="Recepção" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Recepção</h3>
+                        <p>Atendimento especializado</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/dog_happy_1.jpg" alt="Área de Recreação" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Recreação</h3>
+                        <p>Diversão garantida</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/cat_happy_1.jpg" alt="Área para Gatos" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Área para Gatos</h3>
+                        <p>Espaço exclusivo para felinos</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/staff_interaction_1.jpg" alt="Cuidados Especiais" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Cuidados Especiais</h3>
+                        <p>Atenção personalizada</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/bathing_area_1.png" alt="Área de Banho" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Spa Pet</h3>
+                        <p>Banho e tosa inclusos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Comodidades do Hotel</h2>
+                    <p class="section-subtitle">Tudo que seu pet precisa para se sentir em casa</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>Suítes Climatizadas</h4>
+                        <p>Ambientes individuais com temperatura controlada, camas confortáveis e brinquedos.</p>
+                        <ul class="amenity-features">
+                            <li>Ar condicionado</li>
+                            <li>Cama ortopédica</li>
+                            <li>Brinquedos seguros</li>
+                            <li>Água fresca sempre disponível</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4>Alimentação Personalizada</h4>
+                        <p>Respeitamos a dieta do seu pet com horários regulares e ração de qualidade premium.</p>
+                        <ul class="amenity-features">
+                            <li>Ração premium incluída</li>
+                            <li>Dieta especial (se necessário)</li>
+                            <li>Horários regulares</li>
+                            <li>Medicamentos (se prescritos)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h4>Recreação Diária</h4>
+                        <p>Atividades supervisionadas para manter seu pet ativo, feliz e socializado.</p>
+                        <ul class="amenity-features">
+                            <li>Brincadeiras em grupo</li>
+                            <li>Caminhadas diárias</li>
+                            <li>Atividades individuais</li>
+                            <li>Socialização controlada</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Monitoramento 24h</h4>
+                        <p>Vigilância constante com câmeras de segurança e equipe especializada sempre presente.</p>
+                        <ul class="amenity-features">
+                            <li>Câmeras de segurança</li>
+                            <li>Equipe 24 horas</li>
+                            <li>Sistema de alarme</li>
+                            <li>Acesso controlado</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h4>Relatórios Diários</h4>
+                        <p>Receba atualizações diárias sobre seu pet com fotos e informações detalhadas.</p>
+                        <ul class="amenity-features">
+                            <li>Fotos diárias</li>
+                            <li>Relatório de atividades</li>
+                            <li>Status de alimentação</li>
+                            <li>Observações comportamentais</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h4>Acompanhamento Veterinário</h4>
+                        <p>Veterinário de plantão para emergências e cuidados especiais quando necessário.</p>
+                        <ul class="amenity-features">
+                            <li>Veterinário de plantão</li>
+                            <li>Primeiros socorros</li>
+                            <li>Administração de medicamentos</li>
+                            <li>Contato com veterinário do pet</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Planos de Hospedagem</h2>
+                    <p class="section-subtitle">Escolha o plano ideal para seu pet</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Porte Pequeno</h3>
+                            <div class="pricing-badge">Até 10kg</div>
+                        </div>
+                        <div class="pricing-body">
+                            <div class="price">
+                                <span class="currency">R$</span>
+                                <span class="amount">60</span>
+                                <span class="period">/dia</span>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Suíte climatizada individual</li>
+                                <li><i class="fas fa-check"></i> Alimentação premium</li>
+                                <li><i class="fas fa-check"></i> Recreação diária</li>
+                                <li><i class="fas fa-check"></i> Monitoramento 24h</li>
+                                <li><i class="fas fa-check"></i> Relatórios com fotos</li>
+                                <li><i class="fas fa-check"></i> Banho de cortesia (3+ dias)</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="agendamento.html" class="btn btn-outline-primary btn-lg w-100">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card featured">
+                        <div class="pricing-header">
+                            <h3>Porte Médio</h3>
+                            <div class="pricing-badge popular">10-25kg</div>
+                        </div>
+                        <div class="pricing-body">
+                            <div class="price">
+                                <span class="currency">R$</span>
+                                <span class="amount">70</span>
+                                <span class="period">/dia</span>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Suíte climatizada ampla</li>
+                                <li><i class="fas fa-check"></i> Alimentação premium</li>
+                                <li><i class="fas fa-check"></i> Recreação diária</li>
+                                <li><i class="fas fa-check"></i> Monitoramento 24h</li>
+                                <li><i class="fas fa-check"></i> Relatórios com fotos</li>
+                                <li><i class="fas fa-check"></i> Banho de cortesia (3+ dias)</li>
+                                <li><i class="fas fa-star text-warning"></i> Área de recreação extra</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="agendamento.html" class="btn btn-primary btn-lg w-100">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Porte Grande</h3>
+                            <div class="pricing-badge">Acima de 25kg</div>
+                        </div>
+                        <div class="pricing-body">
+                            <div class="price">
+                                <span class="currency">R$</span>
+                                <span class="amount">80</span>
+                                <span class="period">/dia</span>
+                            </div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Suíte climatizada extra grande</li>
+                                <li><i class="fas fa-check"></i> Alimentação premium</li>
+                                <li><i class="fas fa-check"></i> Recreação diária</li>
+                                <li><i class="fas fa-check"></i> Monitoramento 24h</li>
+                                <li><i class="fas fa-check"></i> Relatórios com fotos</li>
+                                <li><i class="fas fa-check"></i> Banho de cortesia (3+ dias)</li>
+                                <li><i class="fas fa-star text-warning"></i> Área externa privativa</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="agendamento.html" class="btn btn-outline-primary btn-lg w-100">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="discount-card">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8">
+                                <h3><i class="fas fa-percentage me-2"></i>Descontos Especiais</h3>
+                                <ul class="discount-list">
+                                    <li><strong>Hospedagem Semanal:</strong> 15% de desconto</li>
+                                    <li><strong>Hospedagem Mensal:</strong> 25% de desconto</li>
+                                    <li><strong>Segundo Pet:</strong> 10% de desconto</li>
+                                    <li><strong>Cliente Fidelidade:</strong> 5% de desconto permanente</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 text-lg-end">
+                                <div class="discount-highlight">
+                                    <span class="discount-text">Até</span>
+                                    <span class="discount-value">25%</span>
+                                    <span class="discount-text">OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="requirements-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Requisitos para Hospedagem</h2>
+                    <p class="section-subtitle">Para garantir a segurança de todos os pets</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="requirement-card">
+                        <div class="requirement-icon">
+                            <i class="fas fa-syringe text-success"></i>
+                        </div>
+                        <div class="requirement-content">
+                            <h4>Vacinação em Dia</h4>
+                            <p>Carteira de vacinação atualizada com as vacinas obrigatórias:</p>
+                            <ul>
+                                <li>V8 ou V10 (cães) / Tríplice (gatos)</li>
+                                <li>Antirrábica</li>
+                                <li>Giárdia (recomendada)</li>
+                                <li>Gripe canina (recomendada)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="requirement-card">
+                        <div class="requirement-icon">
+                            <i class="fas fa-bug text-warning"></i>
+                        </div>
+                        <div class="requirement-content">
+                            <h4>Controle de Parasitas</h4>
+                            <p>Proteção contra pulgas, carrapatos e vermes:</p>
+                            <ul>
+                                <li>Vermifugação em dia</li>
+                                <li>Antipulgas aplicado</li>
+                                <li>Exame de fezes recente (opcional)</li>
+                                <li>Sem sinais de parasitas externos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="requirement-card">
+                        <div class="requirement-icon">
+                            <i class="fas fa-heart text-danger"></i>
+                        </div>
+                        <div class="requirement-content">
+                            <h4>Saúde Geral</h4>
+                            <p>Pet deve estar saudável e sem sintomas de doenças:</p>
+                            <ul>
+                                <li>Sem febre ou sintomas gripais</li>
+                                <li>Sem diarreia ou vômitos</li>
+                                <li>Comportamento normal</li>
+                                <li>Apetite regular</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="requirement-card">
+                        <div class="requirement-icon">
+                            <i class="fas fa-smile text-info"></i>
+                        </div>
+                        <div class="requirement-content">
+                            <h4>Comportamento Sociável</h4>
+                            <p>Pet deve ser sociável e não agressivo:</p>
+                            <ul>
+                                <li>Não agressivo com pessoas</li>
+                                <li>Socializado com outros pets</li>
+                                <li>Sem histórico de mordidas</li>
+                                <li>Obediente a comandos básicos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Importante:</strong> Todos os documentos devem ser apresentados no momento do check-in. 
+                        Pets que não atendam aos requisitos não poderão ser hospedados por questões de segurança.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Depoimentos dos Tutores</h2>
+                    <p class="section-subtitle">Veja o que nossos clientes dizem sobre o hotel</p>
+                </div>
+            </div>
+            
+            <div class="testimonials-carousel">
+                <div class="testimonial-item">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Deixei minha Luna por uma semana e fiquei impressionada com o cuidado! Recebi fotos todos os dias e ela voltou ainda mais feliz."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="img/staff_interaction_1.jpg" alt="Cliente" class="author-img">
+                            <div class="author-info">
+                                <h5>Ana Carolina</h5>
+                                <span>Tutora da Luna (Golden Retriever)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"O hotel é incrível! Meu Thor ficou 10 dias e quando voltei para buscá-lo, ele não queria vir embora. A equipe é muito carinhosa."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="img/staff_interaction_2.jpg" alt="Cliente" class="author-img">
+                            <div class="author-info">
+                                <h5>Roberto Silva</h5>
+                                <span>Tutor do Thor (Pastor Alemão)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Perfeito para gatos também! Minha Mimi é muito tímida, mas se adaptou super bem. As instalações são limpas e seguras."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="img/cat_happy_1.jpg" alt="Cliente" class="author-img">
+                            <div class="author-info">
+                                <h5>Fernanda Costa</h5>
+                                <span>Tutora da Mimi (Persa)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta-card text-center">
+                        <h3>Pronto para reservar a hospedagem?</h3>
+                        <p>Garante já a vaga do seu pet no melhor hotel da cidade!</p>
+                        <div class="cta-buttons">
+                            <a href="agendamento.html" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-calendar-alt me-2"></i>
+                                Fazer Reserva
+                            </a>
+                            <a href="contato.html" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-phone me-2"></i>
+                                Tirar Dúvidas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <img src="img/paw_print_1.jpg" alt="PetParadise" class="footer-logo">
+                        <h5>PetParadise</h5>
+                        <p>Cuidando do seu pet com amor e carinho desde 2019.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Links Rápidos</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="agendamento.html">Agendamento</a></li>
+                        <li><a href="hotel.html">Hotel Pet</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Contato</h6>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                        <p><i class="fas fa-envelope"></i> contato@petparadise.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Rua dos Pets, 123 - São Paulo</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Newsletter</h6>
+                    <p>Receba novidades e promoções!</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="social-links mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 PetParadise. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <img src="img/dog_happy_1.jpg" alt="Atendente" class="chat-avatar">
+            <div class="chat-info">
+                <h6>Rex - Atendente Virtual</h6>
+                <span class="chat-status">Online</span>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message bot">
+                <p>🏨 Quer saber mais sobre nosso hotel pet?</p>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" placeholder="Digite sua mensagem...">
+            <button class="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="chat-toggle" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script src="js/hotel.js"></script>
+</body>
+</html>
+

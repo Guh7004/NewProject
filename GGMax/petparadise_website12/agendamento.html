@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento - PetParadise</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/paw_print_1.jpg" alt="PetParadise" class="logo-img">
+                <span class="brand-text">PetParadise</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicos.html">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="agendamento.html">Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotel.html">Hotel Pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary nav-btn" onclick="toggleTheme()">
+                            <i class="fas fa-moon" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Agende seu Serviço</h1>
+                    <p class="hero-subtitle">
+                        Reserve o melhor horário para cuidar do seu pet. Nosso sistema de 
+                        agendamento é rápido, fácil e você recebe confirmação imediata.
+                    </p>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-clock text-primary"></i>
+                            <span>Agendamento em tempo real</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-calendar-check text-success"></i>
+                            <span>Confirmação imediata</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bell text-warning"></i>
+                            <span>Lembretes automáticos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/reception_1.jpg" alt="Agendamento PetParadise" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Form Section -->
+    <section class="appointment-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Formulário de Agendamento</h2>
+                    <p class="section-subtitle">Preencha os dados abaixo para agendar o serviço</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="appointment-form-card">
+                        <form id="appointmentForm" class="appointment-form">
+                            <!-- Step 1: Pet Information -->
+                            <div class="form-step active" id="step1">
+                                <div class="step-header">
+                                    <h3><i class="fas fa-paw me-2"></i>Informações do Pet</h3>
+                                    <p>Conte-nos sobre seu amiguinho</p>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="petName" class="form-label">Nome do Pet *</label>
+                                        <input type="text" class="form-control" id="petName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="petType" class="form-label">Tipo *</label>
+                                        <select class="form-select" id="petType" required>
+                                            <option value="">Selecione</option>
+                                            <option value="cao">Cão</option>
+                                            <option value="gato">Gato</option>
+                                            <option value="outro">Outro</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="petBreed" class="form-label">Raça</label>
+                                        <input type="text" class="form-control" id="petBreed" placeholder="Ex: Golden Retriever">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="petAge" class="form-label">Idade *</label>
+                                        <select class="form-select" id="petAge" required>
+                                            <option value="">Selecione</option>
+                                            <option value="filhote">Filhote (até 1 ano)</option>
+                                            <option value="adulto">Adulto (1-7 anos)</option>
+                                            <option value="idoso">Idoso (acima de 7 anos)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="petSize" class="form-label">Porte *</label>
+                                        <select class="form-select" id="petSize" required>
+                                            <option value="">Selecione</option>
+                                            <option value="pequeno">Pequeno (até 10kg)</option>
+                                            <option value="medio">Médio (10-25kg)</option>
+                                            <option value="grande">Grande (acima de 25kg)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="petWeight" class="form-label">Peso (kg)</label>
+                                        <input type="number" class="form-control" id="petWeight" min="0" step="0.1">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="petObservations" class="form-label">Observações Especiais</label>
+                                        <textarea class="form-control" id="petObservations" rows="3" placeholder="Comportamento, alergias, medicamentos, etc."></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-navigation">
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        Próximo <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Service Selection -->
+                            <div class="form-step" id="step2">
+                                <div class="step-header">
+                                    <h3><i class="fas fa-spa me-2"></i>Escolha o Serviço</h3>
+                                    <p>Selecione os serviços desejados</p>
+                                </div>
+                                
+                                <div class="services-selection">
+                                    <div class="service-option">
+                                        <input type="checkbox" id="serviceBanho" name="services" value="banho">
+                                        <label for="serviceBanho" class="service-label">
+                                            <div class="service-icon">
+                                                <img src="img/icon_bath.png" alt="Banho">
+                                            </div>
+                                            <div class="service-info">
+                                                <h4>Banho Completo</h4>
+                                                <p>Shampoo, condicionador, secagem e perfume</p>
+                                                <span class="service-price">A partir de R$ 35</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="service-option">
+                                        <input type="checkbox" id="serviceTosa" name="services" value="tosa">
+                                        <label for="serviceTosa" class="service-label">
+                                            <div class="service-icon">
+                                                <img src="img/icon_grooming.jpg" alt="Tosa">
+                                            </div>
+                                            <div class="service-info">
+                                                <h4>Tosa Profissional</h4>
+                                                <p>Corte personalizado e aparar unhas</p>
+                                                <span class="service-price">A partir de R$ 45</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="service-option">
+                                        <input type="checkbox" id="serviceHotel" name="services" value="hotel">
+                                        <label for="serviceHotel" class="service-label">
+                                            <div class="service-icon">
+                                                <img src="img/icon_hotel.png" alt="Hotel">
+                                            </div>
+                                            <div class="service-info">
+                                                <h4>Hotel Pet</h4>
+                                                <p>Hospedagem completa com recreação</p>
+                                                <span class="service-price">A partir de R$ 60/dia</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="additional-services">
+                                    <h4>Serviços Adicionais</h4>
+                                    <div class="row g-2">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="unhas" name="additional" value="unhas">
+                                                <label class="form-check-label" for="unhas">
+                                                    Corte de Unhas (+R$ 15)
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="dental" name="additional" value="dental">
+                                                <label class="form-check-label" for="dental">
+                                                    Limpeza Dental (+R$ 25)
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="ouvidos" name="additional" value="ouvidos">
+                                                <label class="form-check-label" for="ouvidos">
+                                                    Limpeza de Ouvidos (+R$ 20)
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="perfume" name="additional" value="perfume">
+                                                <label class="form-check-label" for="perfume">
+                                                    Perfume Premium (+R$ 10)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-navigation">
+                                    <button type="button" class="btn btn-outline-primary" onclick="prevStep()">
+                                        <i class="fas fa-arrow-left me-2"></i> Anterior
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        Próximo <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Date and Time -->
+                            <div class="form-step" id="step3">
+                                <div class="step-header">
+                                    <h3><i class="fas fa-calendar-alt me-2"></i>Data e Horário</h3>
+                                    <p>Escolha o melhor dia e horário</p>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4>Selecione a Data</h4>
+                                        <div id="appointmentCalendar" class="appointment-calendar"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div id="timeSlots" class="time-slots-container">
+                                            <h4>Selecione um dia no calendário</h4>
+                                            <p class="text-muted">Os horários disponíveis aparecerão aqui</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-navigation">
+                                    <button type="button" class="btn btn-outline-primary" onclick="prevStep()">
+                                        <i class="fas fa-arrow-left me-2"></i> Anterior
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        Próximo <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Contact Information -->
+                            <div class="form-step" id="step4">
+                                <div class="step-header">
+                                    <h3><i class="fas fa-user me-2"></i>Seus Dados</h3>
+                                    <p>Informações para contato e confirmação</p>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="ownerName" class="form-label">Seu Nome *</label>
+                                        <input type="text" class="form-control" id="ownerName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="ownerPhone" class="form-label">Telefone *</label>
+                                        <input type="tel" class="form-control" id="ownerPhone" placeholder="(11) 99999-9999" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="ownerEmail" class="form-label">E-mail *</label>
+                                        <input type="email" class="form-control" id="ownerEmail" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="ownerCpf" class="form-label">CPF</label>
+                                        <input type="text" class="form-control" id="ownerCpf" placeholder="000.000.000-00">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="ownerAddress" class="form-label">Endereço Completo</label>
+                                        <textarea class="form-control" id="ownerAddress" rows="2" placeholder="Rua, número, bairro, cidade"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="preferences-section">
+                                    <h4>Preferências de Contato</h4>
+                                    <div class="row g-2">
+                                        <div class="col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="whatsapp" name="contact" value="whatsapp" checked>
+                                                <label class="form-check-label" for="whatsapp">
+                                                    <i class="fab fa-whatsapp text-success"></i> WhatsApp
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="sms" name="contact" value="sms">
+                                                <label class="form-check-label" for="sms">
+                                                    <i class="fas fa-sms text-primary"></i> SMS
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="email" name="contact" value="email" checked>
+                                                <label class="form-check-label" for="email">
+                                                    <i class="fas fa-envelope text-info"></i> E-mail
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-navigation">
+                                    <button type="button" class="btn btn-outline-primary" onclick="prevStep()">
+                                        <i class="fas fa-arrow-left me-2"></i> Anterior
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        Revisar <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Review and Confirm -->
+                            <div class="form-step" id="step5">
+                                <div class="step-header">
+                                    <h3><i class="fas fa-check-circle me-2"></i>Revisão do Agendamento</h3>
+                                    <p>Confirme os dados antes de finalizar</p>
+                                </div>
+                                
+                                <div class="appointment-summary">
+                                    <div class="summary-section">
+                                        <h4><i class="fas fa-paw me-2"></i>Pet</h4>
+                                        <div id="petSummary" class="summary-content"></div>
+                                    </div>
+                                    
+                                    <div class="summary-section">
+                                        <h4><i class="fas fa-spa me-2"></i>Serviços</h4>
+                                        <div id="servicesSummary" class="summary-content"></div>
+                                    </div>
+                                    
+                                    <div class="summary-section">
+                                        <h4><i class="fas fa-calendar-alt me-2"></i>Data e Horário</h4>
+                                        <div id="datetimeSummary" class="summary-content"></div>
+                                    </div>
+                                    
+                                    <div class="summary-section">
+                                        <h4><i class="fas fa-user me-2"></i>Contato</h4>
+                                        <div id="contactSummary" class="summary-content"></div>
+                                    </div>
+                                    
+                                    <div class="summary-section total-section">
+                                        <h4><i class="fas fa-calculator me-2"></i>Total Estimado</h4>
+                                        <div id="totalSummary" class="summary-content total-price"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="terms-section">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="terms" required>
+                                        <label class="form-check-label" for="terms">
+                                            Aceito os <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">termos e condições</a> *
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-navigation">
+                                    <button type="button" class="btn btn-outline-primary" onclick="prevStep()">
+                                        <i class="fas fa-arrow-left me-2"></i> Anterior
+                                    </button>
+                                    <button type="submit" class="btn btn-success btn-lg">
+                                        <i class="fas fa-check me-2"></i> Confirmar Agendamento
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Progress Bar -->
+                        <div class="form-progress">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 20%"></div>
+                            </div>
+                            <div class="progress-steps">
+                                <div class="step active">1</div>
+                                <div class="step">2</div>
+                                <div class="step">3</div>
+                                <div class="step">4</div>
+                                <div class="step">5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact Section -->
+    <section class="emergency-contact py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="emergency-card">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8">
+                                <h3><i class="fas fa-phone-alt me-2"></i>Precisa de Atendimento Urgente?</h3>
+                                <p>Para emergências ou agendamentos de última hora, entre em contato diretamente conosco.</p>
+                            </div>
+                            <div class="col-lg-4 text-lg-end">
+                                <a href="tel:11999999999" class="btn btn-danger btn-lg">
+                                    <i class="fas fa-phone me-2"></i>
+                                    (11) 9999-9999
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Termos e Condições</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Agendamento e Cancelamento</h6>
+                    <p>O agendamento deve ser feito com pelo menos 24 horas de antecedência. Cancelamentos devem ser comunicados com 12 horas de antecedência.</p>
+                    
+                    <h6>2. Vacinação</h6>
+                    <p>Todos os pets devem estar com a vacinação em dia. É obrigatório apresentar a carteira de vacinação.</p>
+                    
+                    <h6>3. Comportamento do Pet</h6>
+                    <p>Pets agressivos ou com comportamento inadequado podem ter o serviço interrompido por segurança.</p>
+                    
+                    <h6>4. Pagamento</h6>
+                    <p>O pagamento deve ser efetuado no momento da prestação do serviço. Aceitamos dinheiro, cartão e PIX.</p>
+                    
+                    <h6>5. Responsabilidade</h6>
+                    <p>O PetParadise não se responsabiliza por objetos pessoais deixados no estabelecimento.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <img src="img/paw_print_1.jpg" alt="PetParadise" class="footer-logo">
+                        <h5>PetParadise</h5>
+                        <p>Cuidando do seu pet com amor e carinho desde 2019.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6>Links Rápidos</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="agendamento.html">Agendamento</a></li>
+                        <li><a href="hotel.html">Hotel Pet</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Contato</h6>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                        <p><i class="fas fa-envelope"></i> contato@petparadise.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Rua dos Pets, 123 - São Paulo</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6>Newsletter</h6>
+                    <p>Receba novidades e promoções!</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="social-links mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 PetParadise. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <img src="img/dog_happy_1.jpg" alt="Atendente" class="chat-avatar">
+            <div class="chat-info">
+                <h6>Rex - Atendente Virtual</h6>
+                <span class="chat-status">Online</span>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message bot">
+                <p>🐾 Precisa de ajuda com o agendamento?</p>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" placeholder="Digite sua mensagem...">
+            <button class="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="chat-toggle" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script src="js/appointment.js"></script>
+</body>
+</html>
+
