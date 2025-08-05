@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Doce Encanto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-birthday-cake me-2"></i>Doce Encanto
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cardapio.html">Cardápio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contato.html">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">Entre em Contato</h1>
+                    <p class="lead">Estamos aqui para tornar seus momentos ainda mais doces</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="contact-card text-center p-4 bg-light rounded-3 h-100">
+                        <div class="contact-icon mb-3">
+                            <i class="fas fa-map-marker-alt text-primary fa-3x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Localização</h5>
+                        <p class="text-muted mb-3">
+                            Rua das Flores, 123<br>
+                            Centro - São Paulo/SP<br>
+                            CEP: 01234-567
+                        </p>
+                        <a href="#mapa" class="btn btn-outline-primary rounded-pill">
+                            <i class="fas fa-directions me-2"></i>Ver no Mapa
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-card text-center p-4 bg-light rounded-3 h-100">
+                        <div class="contact-icon mb-3">
+                            <i class="fas fa-phone text-primary fa-3x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Telefone</h5>
+                        <p class="text-muted mb-3">
+                            <strong>Loja:</strong> (11) 3333-4444<br>
+                            <strong>WhatsApp:</strong> (11) 9999-9999<br>
+                            <strong>Pedidos:</strong> (11) 8888-7777
+                        </p>
+                        <a href="tel:+5511999999999" class="btn btn-outline-primary rounded-pill">
+                            <i class="fas fa-phone me-2"></i>Ligar Agora
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-card text-center p-4 bg-light rounded-3 h-100">
+                        <div class="contact-icon mb-3">
+                            <i class="fas fa-envelope text-primary fa-3x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">E-mail</h5>
+                        <p class="text-muted mb-3">
+                            <strong>Geral:</strong> contato@doceencanto.com.br<br>
+                            <strong>Pedidos:</strong> pedidos@doceencanto.com.br<br>
+                            <strong>Eventos:</strong> eventos@doceencanto.com.br
+                        </p>
+                        <a href="mailto:contato@doceencanto.com.br" class="btn btn-outline-primary rounded-pill">
+                            <i class="fas fa-envelope me-2"></i>Enviar E-mail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form and Hours -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8">
+                    <div class="bg-white p-4 rounded-3 shadow-sm">
+                        <h3 class="fw-bold text-primary mb-4">Envie sua Mensagem</h3>
+                        <form id="contact-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="nome" class="form-label">Nome Completo *</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">E-mail *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="telefone" name="telefone">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="assunto" class="form-label">Assunto *</label>
+                                    <select class="form-select" id="assunto" name="assunto" required>
+                                        <option value="">Selecione um assunto</option>
+                                        <option value="pedido">Fazer Pedido</option>
+                                        <option value="evento">Evento Especial</option>
+                                        <option value="orcamento">Solicitar Orçamento</option>
+                                        <option value="duvida">Dúvida sobre Produtos</option>
+                                        <option value="sugestao">Sugestão</option>
+                                        <option value="reclamacao">Reclamação</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="mensagem" class="form-label">Mensagem *</label>
+                                    <textarea class="form-control" id="mensagem" name="mensagem" rows="5" 
+                                              placeholder="Descreva seu pedido, dúvida ou sugestão..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            Desejo receber novidades e promoções por e-mail
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>Enviar Mensagem
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <!-- Horário de Funcionamento -->
+                    <div class="bg-white p-4 rounded-3 shadow-sm mb-4">
+                        <h5 class="fw-bold text-primary mb-3">
+                            <i class="fas fa-clock me-2"></i>Horário de Funcionamento
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span>Segunda-feira</span>
+                                <span class="text-primary fw-bold">8h às 18h</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span>Terça-feira</span>
+                                <span class="text-primary fw-bold">8h às 18h</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span>Quarta-feira</span>
+                                <span class="text-primary fw-bold">8h às 18h</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span>Quinta-feira</span>
+                                <span class="text-primary fw-bold">8h às 18h</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span>Sexta-feira</span>
+                                <span class="text-primary fw-bold">8h às 18h</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2 border-bottom">
+                                <span>Sábado</span>
+                                <span class="text-primary fw-bold">8h às 16h</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2">
+                                <span>Domingo</span>
+                                <span class="text-primary fw-bold">9h às 14h</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Redes Sociais -->
+                    <div class="bg-white p-4 rounded-3 shadow-sm">
+                        <h5 class="fw-bold text-primary mb-3">
+                            <i class="fas fa-share-alt me-2"></i>Redes Sociais
+                        </h5>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-outline-primary d-flex align-items-center">
+                                <i class="fab fa-facebook-f me-3"></i>
+                                <div class="text-start">
+                                    <div class="fw-bold">Facebook</div>
+                                    <small class="text-muted">@doceencanto</small>
+                                </div>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary d-flex align-items-center">
+                                <i class="fab fa-instagram me-3"></i>
+                                <div class="text-start">
+                                    <div class="fw-bold">Instagram</div>
+                                    <small class="text-muted">@doceencanto</small>
+                                </div>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary d-flex align-items-center">
+                                <i class="fab fa-whatsapp me-3"></i>
+                                <div class="text-start">
+                                    <div class="fw-bold">WhatsApp</div>
+                                    <small class="text-muted">(11) 9999-9999</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="mapa" class="py-5">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-primary mb-3">Nossa Localização</h3>
+                <p class="lead text-muted">Venha nos visitar e conhecer nossos doces de perto</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="map-container rounded-3 overflow-hidden shadow">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975359999995!2d-46.63425908502207!3d-23.561414984691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sR.%20das%20Flores%2C%20123%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1635789012345!5m2!1spt-BR!2sbr"
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="https://goo.gl/maps/exemplo" target="_blank" class="btn btn-primary rounded-pill px-4">
+                            <i class="fas fa-directions me-2"></i>Abrir no Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h3 class="fw-bold text-primary mb-3">Perguntas Frequentes</h3>
+                <p class="lead text-muted">Tire suas dúvidas mais comuns</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    Com quanto tempo de antecedência devo fazer meu pedido?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" 
+                                 aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Para pedidos simples, recomendamos pelo menos 24 horas de antecedência. 
+                                    Para bolos personalizados e eventos especiais, sugerimos de 3 a 7 dias 
+                                    de antecedência para garantir a disponibilidade e qualidade desejada.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Vocês fazem entregas?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" 
+                                 aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Fazemos entregas na região metropolitana de São Paulo. 
+                                    O valor da entrega varia conforme a distância e será informado 
+                                    no momento do pedido. Para pedidos acima de R$ 100, a entrega é gratuita.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    Quais formas de pagamento vocês aceitam?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" 
+                                 aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Aceitamos dinheiro, cartões de débito e crédito (Visa, Mastercard, Elo), 
+                                    PIX, transferência bancária e vale-refeição/alimentação. 
+                                    Para pedidos online, também aceitamos pagamento via PayPal.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    Vocês têm opções para pessoas com restrições alimentares?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" 
+                                 aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Oferecemos opções sem glúten, sem lactose, veganas e com baixo açúcar. 
+                                    Entre em contato conosco para discutir suas necessidades específicas e 
+                                    criaremos algo especial para você.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-birthday-cake me-2 text-primary"></i>Doce Encanto
+                    </h5>
+                    <p class="text-light">
+                        Criamos momentos especiais com doces artesanais feitos com amor e ingredientes selecionados.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Links Rápidos</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Início</a></li>
+                        <li><a href="cardapio.html" class="text-light text-decoration-none">Cardápio</a></li>
+                        <li><a href="sobre.html" class="text-light text-decoration-none">Sobre Nós</a></li>
+                        <li><a href="contato.html" class="text-light text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Contato</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                            Rua das Flores, 123 - Centro
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone text-primary me-2"></i>
+                            (11) 9999-9999
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope text-primary me-2"></i>
+                            contato@doceencanto.com.br
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Horário de Funcionamento</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-1">Segunda a Sexta: 8h às 18h</li>
+                        <li class="mb-1">Sábado: 8h às 16h</li>
+                        <li class="mb-1">Domingo: 9h às 14h</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Doce Encanto. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
+

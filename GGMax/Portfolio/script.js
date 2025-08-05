@@ -59,10 +59,8 @@ function initTypingAnimation() {
     const typedTextElement = document.getElementById('typed-text');
     const texts = [
         'Desenvolvedor Web',
-        'Especialista em Frontend',
-        'Criador de Experiências',
-        'Expert em Bootstrap',
-        'Automação com n8n'
+        'Especialista em Frontend,BootStrap',
+        'Buscando Aprender & Melhorar, Sempre'
     ];
     
     let textIndex = 0;
@@ -271,12 +269,35 @@ function initContactForm() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
             submitBtn.disabled = true;
 
-            setTimeout(() => {
-                showNotification('Mensagem enviada com sucesso! Entrarei em contato em breve.', 'success');
-                this.reset();
+            // Enviar formulário via Formspree
+            fetch(contactForm.action, {
+                method: contactForm.method,
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showNotification('Mensagem enviada com sucesso! Entrarei em contato em breve.', 'success');
+                    contactForm.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            showNotification(data["errors"].map(error => error["message"]).join(", "), 'error');
+                        } else {
+                            showNotification('Erro ao enviar. Tente novamente mais tarde.', 'error');
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                showNotification('Erro ao enviar. Tente novamente mais tarde.', 'error');
+            })
+            .finally(() => {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 2000);
+            });
         });
 
         // Efeitos nos campos do formulário
@@ -292,6 +313,19 @@ function initContactForm() {
         });
     }
 }
+
+
+        // Efeitos nos campos do formulário
+        const formControls = contactForm.querySelectorAll('.form-control');
+        formControls.forEach(control => {
+            control.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+
+            control.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
 
 // ===== ELEMENTOS FLUTUANTES =====
 function initFloatingElements() {

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Doce Encanto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-birthday-cake me-2"></i>Doce Encanto
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cardapio.html">Cardápio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">Nosso Cardápio</h1>
+                    <p class="lead">Descubra nossa seleção especial de doces artesanais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="filter-buttons text-center">
+                        <button class="btn btn-outline-primary rounded-pill mx-2 mb-2 filter-btn active" data-filter="all">
+                            <i class="fas fa-th me-2"></i>Todos
+                        </button>
+                        <button class="btn btn-outline-primary rounded-pill mx-2 mb-2 filter-btn" data-filter="bolos">
+                            <i class="fas fa-birthday-cake me-2"></i>Bolos
+                        </button>
+                        <button class="btn btn-outline-primary rounded-pill mx-2 mb-2 filter-btn" data-filter="tortas">
+                            <i class="fas fa-chart-pie me-2"></i>Tortas
+                        </button>
+                        <button class="btn btn-outline-primary rounded-pill mx-2 mb-2 filter-btn" data-filter="doces-finos">
+                            <i class="fas fa-gem me-2"></i>Doces Finos
+                        </button>
+                        <button class="btn btn-outline-primary rounded-pill mx-2 mb-2 filter-btn" data-filter="salgados">
+                            <i class="fas fa-cookie-bite me-2"></i>Salgados
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4" id="products-grid">
+                <!-- Bolos -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="bolos">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/banner_doce_2.jpg" class="card-img-top" alt="Bolo de Chocolate">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 45,00</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Bolo de Chocolate Premium</h5>
+                            <p class="card-text text-muted">
+                                Massa fofinha de chocolate com recheio de brigadeiro gourmet e cobertura de ganache
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="bolos">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/banner_doce_1.jpg" class="card-img-top" alt="Bolo de Morango">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 42,00</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Bolo de Morango</h5>
+                            <p class="card-text text-muted">
+                                Massa de baunilha com recheio de creme e morangos frescos, cobertura de chantilly
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="bolos">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/destaque_doces.jpg" class="card-img-top" alt="Bolo Red Velvet">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 48,00</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Bolo Red Velvet</h5>
+                            <p class="card-text text-muted">
+                                Clássico americano com massa vermelha aveludada e cream cheese especial
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tortas -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="tortas">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/banner_doce_3.jpg" class="card-img-top" alt="Torta de Frutas Vermelhas">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 38,00</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Torta de Frutas Vermelhas</h5>
+                            <p class="card-text text-muted">
+                                Base crocante, creme de baunilha e frutas vermelhas frescas selecionadas
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="tortas">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/banner_doce_1.jpg" class="card-img-top" alt="Torta de Limão">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 35,00</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Torta de Limão</h5>
+                            <p class="card-text text-muted">
+                                Base de biscoito, creme de limão siciliano e merengue dourado
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="tortas">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/banner_doce_2.jpg" class="card-img-top" alt="Torta de Chocolate">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 40,00</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Torta de Chocolate Belga</h5>
+                            <p class="card-text text-muted">
+                                Mousse de chocolate belga 70% cacau com base crocante de biscoito
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doces Finos -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="doces-finos">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/destaque_doces.jpg" class="card-img-top" alt="Brigadeiros Gourmet">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 3,50/un</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Brigadeiros Gourmet</h5>
+                            <p class="card-text text-muted">
+                                Brigadeiros artesanais com chocolate belga e coberturas especiais
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="doces-finos">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/banner_doce_1.jpg" class="card-img-top" alt="Beijinhos Premium">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 3,00/un</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Beijinhos Premium</h5>
+                            <p class="card-text text-muted">
+                                Beijinhos com coco fresco e leite condensado artesanal
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="doces-finos">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/banner_doce_3.jpg" class="card-img-top" alt="Trufas Artesanais">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 4,00/un</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Trufas Artesanais</h5>
+                            <p class="card-text text-muted">
+                                Trufas de chocolate com recheios variados e coberturas especiais
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salgados -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="salgados">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/banner_doce_1.jpg" class="card-img-top" alt="Coxinhas Gourmet">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 5,00/un</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Coxinhas Gourmet</h5>
+                            <p class="card-text text-muted">
+                                Coxinhas artesanais com frango desfiado e temperos especiais
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="salgados">
+                    <div class="card product-card h-100 border-0 shadow-sm">
+                        <div class="card-img-wrapper">
+                            <img src="images/destaque_doces.jpg" class="card-img-top" alt="Empadas Especiais">
+                            <div class="card-overlay">
+                                <div class="price-tag">R$ 4,50/un</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Empadas Especiais</h5>
+                            <p class="card-text text-muted">
+                                Empadas com massa amanteigada e recheios variados
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <button class="btn btn-primary btn-sm rounded-pill">
+                                    <i class="fas fa-shopping-cart me-1"></i>Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="display-5 fw-bold mb-4">Gostou do que viu?</h2>
+                    <p class="lead mb-4">
+                        Entre em contato conosco para fazer seu pedido ou tirar dúvidas sobre nossos produtos
+                    </p>
+                    <a href="contato.html" class="btn btn-light btn-lg rounded-pill px-5">
+                        <i class="fas fa-phone me-2"></i>Fazer Pedido
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-birthday-cake me-2 text-primary"></i>Doce Encanto
+                    </h5>
+                    <p class="text-light">
+                        Criamos momentos especiais com doces artesanais feitos com amor e ingredientes selecionados.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Links Rápidos</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Início</a></li>
+                        <li><a href="cardapio.html" class="text-light text-decoration-none">Cardápio</a></li>
+                        <li><a href="sobre.html" class="text-light text-decoration-none">Sobre Nós</a></li>
+                        <li><a href="contato.html" class="text-light text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Contato</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                            Rua das Flores, 123 - Centro
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone text-primary me-2"></i>
+                            (11) 9999-9999
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope text-primary me-2"></i>
+                            contato@doceencanto.com.br
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Horário de Funcionamento</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-1">Segunda a Sexta: 8h às 18h</li>
+                        <li class="mb-1">Sábado: 8h às 16h</li>
+                        <li class="mb-1">Domingo: 9h às 14h</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Doce Encanto. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
+
