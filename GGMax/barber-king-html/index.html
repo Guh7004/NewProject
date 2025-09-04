@@ -6,6 +6,8 @@
     <title>BARBER KING - Barbearia Premium</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Swiper CSS para carrosséis -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -141,7 +143,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section com Carrossel -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -152,8 +154,16 @@
                 </p>
             </div>
             
-            <div class="services-grid" id="servicesGrid">
-                <!-- Services will be populated by JavaScript -->
+            <!-- Carrossel de Serviços -->
+            <div class="services-carousel-container">
+                <div class="swiper services-swiper">
+                    <div class="swiper-wrapper" id="servicesGrid">
+                        <!-- Services will be populated by JavaScript -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
             
             <div class="loyalty-program">
@@ -168,7 +178,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Gallery Section com Carrossel -->
     <section id="gallery" class="gallery">
         <div class="container">
             <div class="section-header">
@@ -177,13 +187,21 @@
                 <p class="section-description">Nossos trabalhos e ambiente exclusivo</p>
             </div>
             
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Gallery images will be populated by JavaScript -->
+            <!-- Carrossel de Galeria -->
+            <div class="gallery-carousel-container">
+                <div class="swiper gallery-swiper">
+                    <div class="swiper-wrapper" id="galleryGrid">
+                        <!-- Gallery images will be populated by JavaScript -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team Section com Carrossel -->
     <section id="team" class="team">
         <div class="container">
             <div class="section-header">
@@ -192,8 +210,16 @@
                 <p class="section-description">Mestres barbeiros com certificação internacional</p>
             </div>
             
-            <div class="team-grid" id="teamGrid">
-                <!-- Team members will be populated by JavaScript -->
+            <!-- Carrossel de Equipe -->
+            <div class="team-carousel-container">
+                <div class="swiper team-swiper">
+                    <div class="swiper-wrapper" id="teamGrid">
+                        <!-- Team members will be populated by JavaScript -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -345,109 +371,140 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <svg class="crown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M2 20h20l-2-6-4 2-4-4-4 4-4-2z"/>
-                            <path d="M6 6l4 4 4-4 4 4"/>
-                        </svg>
-                        <span class="logo-text">BARBER KING</span>
+                <div class="footer-logo">
+                    <svg class="crown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 20h20l-2-6-4 2-4-4-4 4-4-2z"/>
+                        <path d="M6 6l4 4 4-4 4 4"/>
+                    </svg>
+                    <span class="logo-text">BARBER KING</span>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Navegação</h4>
+                        <ul class="footer-list">
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#services">Serviços</a></li>
+                            <li><a href="#gallery">Galeria</a></li>
+                        </ul>
                     </div>
-                    <p class="footer-description">
-                        A experiência premium em cuidados masculinos que você merece.
-                    </p>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Serviços</h4>
+                        <ul class="footer-list">
+                            <li><a href="#">Corte Premium</a></li>
+                            <li><a href="#">Barba Completa</a></li>
+                            <li><a href="#">Combo King</a></li>
+                            <li><a href="#">Tratamento Capilar</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Contato</h4>
+                        <ul class="footer-list">
+                            <li>Rua Augusta, 1234</li>
+                            <li>São Paulo - SP</li>
+                            <li>(11) 3456-7890</li>
+                            <li>contato@barberking.com</li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4 class="footer-title">Serviços</h4>
-                    <ul class="footer-links">
-                        <li>Cortes Premium</li>
-                        <li>Barbas Especiais</li>
-                        <li>Tratamentos</li>
-                        <li>Produtos Importados</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4 class="footer-title">Links Úteis</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4 class="footer-title">Newsletter</h4>
-                    <p class="newsletter-description">Receba ofertas exclusivas</p>
+                <div class="newsletter">
+                    <h4 class="newsletter-title">Newsletter</h4>
+                    <p class="newsletter-description">Receba ofertas exclusivas e novidades</p>
                     <div class="newsletter-form">
-                        <input type="email" placeholder="Seu e-mail" class="newsletter-input">
-                        <button class="newsletter-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </button>
+                        <input type="email" class="newsletter-input" placeholder="Seu e-mail">
+                        <button class="newsletter-btn">Inscrever</button>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 BARBER KING. Todos os direitos reservados.</p>
+                <p class="footer-copyright">
+                    © 2024 BARBER KING. Todos os direitos reservados.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
-        <button class="lightbox-close" id="lightboxClose">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-        </button>
-        
-        <button class="lightbox-nav prev" id="lightboxPrev">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15,18 9,12 15,6"/>
-            </svg>
-        </button>
-        
-        <button class="lightbox-nav next" id="lightboxNext">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9,18 15,12 9,6"/>
-            </svg>
-        </button>
-        
         <div class="lightbox-content">
-            <img id="lightboxImage" src="" alt="">
-            <div class="lightbox-counter">
-                <span id="lightboxCounter">1 de 9</span>
-            </div>
+            <button class="lightbox-close" id="lightboxClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+            
+            <button class="lightbox-nav prev" id="lightboxPrev">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15,18 9,12 15,6"/>
+                </svg>
+            </button>
+            <button class="lightbox-nav next" id="lightboxNext">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9,18 15,12 9,6"/>
+                </svg>
+            </button>
+            
+            <div class="lightbox-counter" id="lightboxCounter">1 de 9</div>
         </div>
     </div>
 
     <!-- Booking Modal -->
-    <div id="bookingModal" class="modal">
+    <div id="bookingModal" class="booking-modal">
         <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            
             <div class="modal-header">
                 <h2 class="modal-title">Agendar Horário</h2>
-                <button class="modal-close" id="modalClose">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="progress-bar">
-                <div class="progress-step active" data-step="1">1</div>
-                <div class="progress-line"></div>
-                <div class="progress-step" data-step="2">2</div>
-                <div class="progress-line"></div>
-                <div class="progress-step" data-step="3">3</div>
+                <p class="modal-subtitle">Reserve sua experiência premium em 3 passos simples</p>
+                
+                <div class="booking-progress">
+                    <div class="progress-step active">
+                        <div class="progress-number">1</div>
+                        <span class="progress-label">Serviço</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="progress-number">2</div>
+                        <span class="progress-label">Data & Hora</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="progress-number">3</div>
+                        <span class="progress-label">Dados</span>
+                    </div>
+                </div>
             </div>
 
             <form id="bookingForm" class="booking-form">
@@ -455,15 +512,12 @@
                 <div class="form-step active" data-step="1">
                     <h3 class="step-title">
                         <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="16" y1="2" x2="16" y2="6"/>
-                            <line x1="8" y1="2" x2="8" y2="6"/>
-                            <line x1="3" y1="10" x2="21" y2="10"/>
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                         Escolha seu Serviço
                     </h3>
                     <div class="service-options" id="serviceOptions">
-                        <!-- Services will be populated by JavaScript -->
+                        <!-- Service options will be populated by JavaScript -->
                     </div>
                 </div>
 
@@ -471,8 +525,10 @@
                 <div class="form-step" data-step="2">
                     <h3 class="step-title">
                         <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12,6 12,12 16,14"/>
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
                         </svg>
                         Data e Horário
                     </h3>
@@ -563,6 +619,8 @@
         </div>
     </div>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

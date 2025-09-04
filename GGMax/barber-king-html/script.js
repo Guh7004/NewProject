@@ -88,6 +88,11 @@ let currentBookingStep = 1;
 let selectedService = null;
 let bookingData = {};
 
+// Swiper instances
+let servicesSwiper = null;
+let gallerySwiper = null;
+let teamSwiper = null;
+
 // DOM Elements
 const navbar = document.getElementById('navbar');
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
@@ -125,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeBookingModal();
     initializeScrollEffects();
     initializeSmoothScrolling();
+    initializeCarousels();
 });
 
 // Navigation
@@ -171,17 +177,19 @@ function initializeNavigation() {
 // Services
 function initializeServices() {
     servicesGrid.innerHTML = services.map(service => `
-        <div class="service-card card-hover">
-            <img src="${service.image}" alt="${service.name}" class="service-image">
-            <h3 class="service-name">${service.name}</h3>
-            <p class="service-description">${service.description}</p>
-            <div class="service-details">
-                <span class="service-price">${service.price}</span>
-                <span class="service-duration">${service.duration}</span>
+        <div class="swiper-slide">
+            <div class="service-card card-hover">
+                <img src="${service.image}" alt="${service.name}" class="service-image" loading="lazy">
+                <h3 class="service-name">${service.name}</h3>
+                <p class="service-description">${service.description}</p>
+                <div class="service-details">
+                    <span class="service-price">${service.price}</span>
+                    <span class="service-duration">${service.duration}</span>
+                </div>
+                <button class="btn-primary" onclick="openBookingModal('${service.name}')">
+                    Agendar
+                </button>
             </div>
-            <button class="btn-primary" onclick="openBookingModal('${service.name}')">
-                Agendar
-            </button>
         </div>
     `).join('');
 }
@@ -189,8 +197,10 @@ function initializeServices() {
 // Gallery
 function initializeGallery() {
     galleryGrid.innerHTML = galleryImages.map((image, index) => `
-        <div class="gallery-item" onclick="openLightbox(${index})">
-            <img src="${image}" alt="Galeria ${index + 1}">
+        <div class="swiper-slide">
+            <div class="gallery-item" onclick="openLightbox(${index})">
+                <img src="${image}" alt="Galeria ${index + 1}" loading="lazy">
+            </div>
         </div>
     `).join('');
 }
@@ -198,30 +208,123 @@ function initializeGallery() {
 // Team
 function initializeTeam() {
     teamGrid.innerHTML = team.map(member => `
-        <div class="team-card card-hover">
-            <img src="${member.image}" alt="${member.name}" class="team-image">
-            <div class="team-info">
-                <h3 class="team-name">${member.name}</h3>
-                <p class="team-specialty">${member.specialty}</p>
-                <p class="team-experience">${member.experience} de experiência</p>
+        <div class="swiper-slide">
+            <div class="team-card card-hover">
+                <img src="${member.image}" alt="${member.name}" class="team-image" loading="lazy">
+                <div class="team-info">
+                    <h3 class="team-name">${member.name}</h3>
+                    <p class="team-specialty">${member.specialty}</p>
+                    <p class="team-experience">${member.experience} de experiência</p>
+                </div>
             </div>
         </div>
     `).join('');
+}
+
+// Initialize Carousels
+function initializeCarousels() {
+    // Services Carousel
+    servicesSwiper = new Swiper('.services-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.services-swiper .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.services-swiper .swiper-button-next',
+            prevEl: '.services-swiper .swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+    // Gallery Carousel
+    gallerySwiper = new Swiper('.gallery-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.gallery-swiper .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.gallery-swiper .swiper-button-next',
+            prevEl: '.gallery-swiper .swiper-button-prev',
+        },
+        breakpoints: {
+            480: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            1024: {
+                slidesPerView: 4,
+            },
+        },
+    });
+
+    // Team Carousel
+    teamSwiper = new Swiper('.team-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.team-swiper .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.team-swiper .swiper-button-next',
+            prevEl: '.team-swiper .swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
 }
 
 // Testimonials
 function initializeTestimonials() {
     updateTestimonial();
     
-    prevTestimonialBtn.addEventListener('click', function() {
-        currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-        updateTestimonial();
-    });
+    if (prevTestimonialBtn) {
+        prevTestimonialBtn.addEventListener('click', function() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial();
+        });
+    }
     
-    nextTestimonialBtn.addEventListener('click', function() {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        updateTestimonial();
-    });
+    if (nextTestimonialBtn) {
+        nextTestimonialBtn.addEventListener('click', function() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial();
+        });
+    }
 
     // Auto-rotate testimonials
     setInterval(function() {
@@ -231,8 +334,9 @@ function initializeTestimonials() {
 }
 
 function updateTestimonial() {
+    if (!testimonialCard) return;
+    
     const testimonial = testimonials[currentTestimonial];
-    const stars = Array(testimonial.rating).fill('★').join('');
     
     testimonialCard.innerHTML = `
         <div class="testimonial-stars">
@@ -251,20 +355,28 @@ function updateTestimonial() {
 
 // Lightbox
 function initializeLightbox() {
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxPrev.addEventListener('click', prevLightboxImage);
-    lightboxNext.addEventListener('click', nextLightboxImage);
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+    if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', prevLightboxImage);
+    }
+    if (lightboxNext) {
+        lightboxNext.addEventListener('click', nextLightboxImage);
+    }
     
     // Close lightbox when clicking outside
-    lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
-    });
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    }
     
     // Keyboard navigation
     document.addEventListener('keydown', function(e) {
-        if (lightbox.classList.contains('active')) {
+        if (lightbox && lightbox.classList.contains('active')) {
             if (e.key === 'Escape') {
                 closeLightbox();
             } else if (e.key === 'ArrowLeft') {
@@ -279,13 +391,17 @@ function initializeLightbox() {
 function openLightbox(index) {
     currentLightboxImage = index;
     updateLightboxImage();
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (lightbox) {
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 }
 
 function prevLightboxImage() {
@@ -299,34 +415,52 @@ function nextLightboxImage() {
 }
 
 function updateLightboxImage() {
-    lightboxImage.src = galleryImages[currentLightboxImage];
-    lightboxCounter.textContent = `${currentLightboxImage + 1} de ${galleryImages.length}`;
+    if (lightboxImage && lightboxCounter) {
+        lightboxImage.src = galleryImages[currentLightboxImage];
+        lightboxCounter.textContent = `${currentLightboxImage + 1} de ${galleryImages.length}`;
+    }
 }
 
 // Booking Modal
 function initializeBookingModal() {
-    modalClose.addEventListener('click', closeBookingModal);
-    prevStepBtn.addEventListener('click', prevBookingStep);
-    nextStepBtn.addEventListener('click', nextBookingStep);
-    submitFormBtn.addEventListener('click', submitBooking);
+    if (modalClose) {
+        modalClose.addEventListener('click', closeBookingModal);
+    }
+    if (prevStepBtn) {
+        prevStepBtn.addEventListener('click', prevBookingStep);
+    }
+    if (nextStepBtn) {
+        nextStepBtn.addEventListener('click', nextBookingStep);
+    }
+    if (submitFormBtn) {
+        submitFormBtn.addEventListener('click', submitBooking);
+    }
     
     // Close modal when clicking outside
-    bookingModal.addEventListener('click', function(e) {
-        if (e.target === bookingModal) {
-            closeBookingModal();
-        }
-    });
+    if (bookingModal) {
+        bookingModal.addEventListener('click', function(e) {
+            if (e.target === bookingModal) {
+                closeBookingModal();
+            }
+        });
+    }
     
     // Initialize service options
     initializeServiceOptions();
     
     // Set minimum date to today
-    const dateInput = bookingForm.querySelector('input[name="date"]');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
+    if (bookingForm) {
+        const dateInput = bookingForm.querySelector('input[name="date"]');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        }
+    }
 }
 
 function initializeServiceOptions() {
+    if (!serviceOptions) return;
+    
     serviceOptions.innerHTML = services.map((service, index) => `
         <div class="service-option" data-service="${index}">
             <div class="service-option-header">
@@ -351,7 +485,9 @@ function initializeServiceOptions() {
             bookingData.service = services[index];
             
             // Enable next button
-            nextStepBtn.disabled = false;
+            if (nextStepBtn) {
+                nextStepBtn.disabled = false;
+            }
         });
     });
 }
@@ -363,7 +499,9 @@ function openBookingModal(serviceName = null) {
     bookingData = {};
     
     // Reset form
-    bookingForm.reset();
+    if (bookingForm) {
+        bookingForm.reset();
+    }
     
     // Reset progress
     updateBookingProgress();
@@ -372,7 +510,7 @@ function openBookingModal(serviceName = null) {
     showBookingStep(1);
     
     // Pre-select service if provided
-    if (serviceName) {
+    if (serviceName && serviceOptions) {
         const serviceIndex = services.findIndex(s => s.name === serviceName);
         if (serviceIndex !== -1) {
             setTimeout(() => {
@@ -385,17 +523,23 @@ function openBookingModal(serviceName = null) {
     }
     
     // Show modal
-    bookingModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (bookingModal) {
+        bookingModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeBookingModal() {
-    bookingModal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    if (bookingModal) {
+        bookingModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
     
     // Hide success message
-    successMessage.style.display = 'none';
-    bookingForm.style.display = 'block';
+    if (successMessage && bookingForm) {
+        successMessage.style.display = 'none';
+        bookingForm.style.display = 'block';
+    }
 }
 
 function prevBookingStep() {
@@ -417,6 +561,8 @@ function nextBookingStep() {
 }
 
 function showBookingStep(step) {
+    if (!bookingForm) return;
+    
     // Hide all steps
     const steps = bookingForm.querySelectorAll('.form-step');
     steps.forEach(s => s.classList.remove('active'));
@@ -428,15 +574,19 @@ function showBookingStep(step) {
     }
     
     // Update navigation buttons
-    prevStepBtn.disabled = step === 1;
+    if (prevStepBtn) {
+        prevStepBtn.disabled = step === 1;
+    }
     
-    if (step === 3) {
-        nextStepBtn.style.display = 'none';
-        submitFormBtn.style.display = 'block';
-    } else {
-        nextStepBtn.style.display = 'block';
-        submitFormBtn.style.display = 'none';
-        nextStepBtn.disabled = step === 1 && selectedService === null;
+    if (nextStepBtn && submitFormBtn) {
+        if (step === 3) {
+            nextStepBtn.style.display = 'none';
+            submitFormBtn.style.display = 'block';
+        } else {
+            nextStepBtn.style.display = 'block';
+            submitFormBtn.style.display = 'none';
+            nextStepBtn.disabled = step === 1 && selectedService === null;
+        }
     }
 }
 
@@ -464,17 +614,19 @@ function updateBookingProgress() {
 }
 
 function validateCurrentStep() {
+    if (!bookingForm) return false;
+    
     switch (currentBookingStep) {
         case 1:
             return selectedService !== null;
         case 2:
-            const date = bookingForm.querySelector('input[name="date"]').value;
-            const time = bookingForm.querySelector('select[name="time"]').value;
+            const date = bookingForm.querySelector('input[name="date"]')?.value;
+            const time = bookingForm.querySelector('select[name="time"]')?.value;
             return date && time;
         case 3:
-            const name = bookingForm.querySelector('input[name="name"]').value;
-            const phone = bookingForm.querySelector('input[name="phone"]').value;
-            const email = bookingForm.querySelector('input[name="email"]').value;
+            const name = bookingForm.querySelector('input[name="name"]')?.value;
+            const phone = bookingForm.querySelector('input[name="phone"]')?.value;
+            const email = bookingForm.querySelector('input[name="email"]')?.value;
             return name && phone && email;
         default:
             return true;
@@ -489,6 +641,8 @@ function submitBooking(e) {
         return;
     }
     
+    if (!bookingForm) return;
+    
     // Collect form data
     const formData = new FormData(bookingForm);
     bookingData.date = formData.get('date');
@@ -498,11 +652,16 @@ function submitBooking(e) {
     bookingData.email = formData.get('email');
     bookingData.notes = formData.get('notes');
     
+    // Simulate booking submission
+    console.log('Booking data:', bookingData);
+    
     // Show success message
     showSuccessMessage();
 }
 
 function showSuccessMessage() {
+    if (!bookingForm || !successMessage || !successSummary) return;
+    
     // Hide form
     bookingForm.style.display = 'none';
     
@@ -618,24 +777,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const newsletterBtn = newsletterForm.querySelector('.newsletter-btn');
         const newsletterInput = newsletterForm.querySelector('.newsletter-input');
         
-        newsletterBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const email = newsletterInput.value.trim();
+        if (newsletterBtn && newsletterInput) {
+            newsletterBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const email = newsletterInput.value.trim();
+                
+                if (email && isValidEmail(email)) {
+                    // Simulate subscription
+                    newsletterInput.value = '';
+                    alert('Obrigado por se inscrever! Você receberá nossas ofertas exclusivas em breve.');
+                } else {
+                    alert('Por favor, insira um e-mail válido.');
+                }
+            });
             
-            if (email && isValidEmail(email)) {
-                // Simulate subscription
-                newsletterInput.value = '';
-                alert('Obrigado por se inscrever! Você receberá nossas ofertas exclusivas em breve.');
-            } else {
-                alert('Por favor, insira um e-mail válido.');
-            }
-        });
-        
-        newsletterInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                newsletterBtn.click();
-            }
-        });
+            newsletterInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    newsletterBtn.click();
+                }
+            });
+        }
     }
 });
 
@@ -666,43 +827,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add loading states and error handling
-function showLoading(element) {
-    element.disabled = true;
-    element.innerHTML = 'Carregando...';
-}
-
-function hideLoading(element, originalText) {
-    element.disabled = false;
-    element.innerHTML = originalText;
-}
-
 // Add touch support for mobile devices
 document.addEventListener('DOMContentLoaded', function() {
     let touchStartX = 0;
     let touchEndX = 0;
     
     // Swipe support for testimonials
-    testimonialCard.addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-    
-    testimonialCard.addEventListener('touchend', function(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleTestimonialSwipe();
-    });
-    
-    function handleTestimonialSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
+    if (testimonialCard) {
+        testimonialCard.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
         
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Swipe left - next testimonial
-                nextTestimonialBtn.click();
-            } else {
-                // Swipe right - previous testimonial
-                prevTestimonialBtn.click();
+        testimonialCard.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleTestimonialSwipe();
+        });
+        
+        function handleTestimonialSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next testimonial
+                    if (nextTestimonialBtn) nextTestimonialBtn.click();
+                } else {
+                    // Swipe right - previous testimonial
+                    if (prevTestimonialBtn) prevTestimonialBtn.click();
+                }
             }
         }
     }
@@ -739,18 +891,20 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('img[data-src]');
     
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
+    if (images.length > 0) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
         });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
 });
 
 // Add accessibility improvements
@@ -778,5 +932,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-console.log('BARBER KING - Site carregado com sucesso!');
+// Pause autoplay on user interaction
+document.addEventListener('DOMContentLoaded', function() {
+    // Pause carousel autoplay when user hovers
+    const carouselContainers = document.querySelectorAll('.swiper');
+    carouselContainers.forEach(container => {
+        container.addEventListener('mouseenter', function() {
+            const swiper = container.swiper;
+            if (swiper && swiper.autoplay) {
+                swiper.autoplay.stop();
+            }
+        });
+        
+        container.addEventListener('mouseleave', function() {
+            const swiper = container.swiper;
+            if (swiper && swiper.autoplay) {
+                swiper.autoplay.start();
+            }
+        });
+    });
+});
+
+// Handle window resize for responsive adjustments
+window.addEventListener('resize', function() {
+    // Update swiper instances on resize
+    if (servicesSwiper) servicesSwiper.update();
+    if (gallerySwiper) gallerySwiper.update();
+    if (teamSwiper) teamSwiper.update();
+});
+
+console.log('BARBER KING - Site otimizado carregado com sucesso!');
 
