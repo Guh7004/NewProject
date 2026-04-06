@@ -1,0 +1,179 @@
+/* Custom CSS */
+
+:root {
+    --bk-red: #D62300;
+    --bk-yellow: #FFBF00;
+    --bk-brown: #8B4513;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom, var(--bk-red), orange, var(--bk-yellow));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Loading Screen */
+#loading-screen {
+    transition: opacity 0.5s ease-in-out;
+    z-index: 9999;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Header */
+header {
+    background-color: var(--bk-red) !important;
+}
+
+header img {
+    border-radius: 50%;
+    background-color: var(--bk-yellow);
+    padding: 5px;
+}
+
+/* Hero Section */
+#hero {
+    background: url('https://source.unsplash.com/random/1920x1080/?burger,fastfood') no-repeat center center/cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#hero h2 {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Call-to-Action Section */
+#cta {
+    background-color: var(--bk-red);
+}
+
+#cta .container div {
+    border: 2px solid var(--bk-yellow);
+}
+
+#cta h4 {
+    color: var(--bk-yellow);
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+}
+
+/* Footer */
+footer {
+    background-color: var(--bk-brown) !important;
+    margin-top: auto;
+}
+
+
+
+
+/* Product Carousel */
+#products {
+    background-color: #f8f8f8;
+}
+
+#productCarousel .carousel-item {
+    padding: 50px 0;
+}
+
+#productCarousel .product-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+#productCarousel .product-title {
+    color: var(--bk-red);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+#productCarousel .product-description {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#productCarousel .product-price {
+    color: var(--bk-red);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px rgba(214, 35, 0, 0.5);
+}
+
+#productCarousel .product-price del {
+    color: #999;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+#productCarousel .product-features li {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#productCarousel .order-button {
+    background-color: var(--bk-yellow);
+    color: var(--bk-brown);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#productCarousel .order-button:hover {
+    background-color: var(--bk-red);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: var(--bk-red);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.carousel-indicators button {
+    background-color: var(--bk-red);
+}
+
+/* Hover Effects for Product Cards (simulated on product image/info area) */
+#productCarousel .carousel-item .row {
+    transition: transform 0.3s ease-in-out;
+}
+
+#productCarousel .carousel-item .row:hover {
+    transform: scale(1.02);
+}
+
+/* Glow effect for prices and titles (already applied to hero title and product prices) */
+
+/* Floating elements in background (conceptual, will add later if needed or simplify) */
+
+/* Smooth transitions between slides (handled by Bootstrap's carousel-fade) */
+
+/* Visual feedback on clicks (handled by Bootstrap's button styles) */
+
+

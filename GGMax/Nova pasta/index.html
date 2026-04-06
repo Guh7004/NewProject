@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger King - Have It Your Way®</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="d-flex justify-content-center align-items-center vh-100 bg-dark position-fixed w-100 h-100 top-0 start-0 z-index-9999">
+        <img src="https://www.burgerking.com.br/assets/images/logo.png" alt="Burger King Logo" class="img-fluid" style="max-width: 200px;">
+    </div>
+
+    <!-- Header -->
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="https://www.burgerking.com.br/assets/images/logo.png" alt="Burger King Logo" class="me-2" style="height: 50px;">
+                <h1 class="h4 mb-0">BURGER KING</h1>
+            </div>
+            <div class="text-end">
+                <p class="mb-0">Have It Your Way®</p>
+                <p class="mb-0">📍 Delivery disponível | 🕒 Aberto até 23h</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="d-flex justify-content-center align-items-center text-white text-center vh-100">
+            <h2 class="display-1 fw-bold">SABOR REAL</h2>
+        </section>
+
+        <!-- Product Carousel Section -->
+        <section id="products" class="py-5">
+            <div class="container">
+                <h3 class="text-center mb-5">Nossos Produtos</h3>
+<div id="productCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Product 1 - WHOPPER® -->
+                        <div class="carousel-item active">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-6 text-center">
+                                    <img src="./images/whopper.png" class="d-block w-100 product-image" alt="WHOPPER®">
+                                </div>
+                                <div class="col-md-6 text-center text-md-start">
+                                    <h4 class="product-title">WHOPPER®</h4>
+                                    <p class="product-description">O clássico! Hambúrguer de carne bovina grelhada, alface, tomate, cebola, picles e maionese no pão com gergelim</p>
+                                    <p class="product-price"><del>R$ 24,90</del> R$ 19,90 <span class="text-warning">(oferta especial)</span></p>
+                                    <ul class="list-unstyled product-features">
+                                        <li>Carne 100% bovina</li>
+                                        <li>Grelhada na chama</li>
+                                        <li>Ingredientes frescos</li>
+                                        <li>Original desde 1957</li>
+                                    </ul>
+                                    <button class="btn btn-warning btn-lg order-button">PEDIR AGORA</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product 2 - BIG KING® -->
+                        <div class="carousel-item">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-6 text-center">
+                                    <img src="./images/big_king.png" class="d-block w-100 product-image" alt="BIG KING®">
+                                </div>
+                                <div class="col-md-6 text-center text-md-start">
+                                    <h4 class="product-title">BIG KING® <span class="badge bg-warning text-dark">MAIS VENDIDO</span></h4>
+                                    <p class="product-description">Dois hambúrgueres, alface, queijo, picles, cebola e molho especial no pão com gergelim</p>
+                                    <p class="product-price"><del>R$ 28,90</del> R$ 22,90 <span class="text-warning">(promoção limitada)</span></p>
+                                    <ul class="list-unstyled product-features">
+                                        <li>Dois hambúrgueres</li>
+                                        <li>Queijo derretido</li>
+                                        <li>Molho especial BK</li>
+                                        <li>Favorito dos clientes</li>
+                                    </ul>
+                                    <button class="btn btn-warning btn-lg order-button">PEDIR AGORA</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product 3 - CHICKEN CRISPY -->
+                        <div class="carousel-item">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-6 text-center">
+                                    <img src="./images/chicken_crispy.png" class="d-block w-100 product-image" alt="CHICKEN CRISPY">
+                                </div>
+                                <div class="col-md-6 text-center text-md-start">
+                                    <h4 class="product-title">CHICKEN CRISPY</h4>
+                                    <p class="product-description">Peito de frango empanado e crocante, alface americana, tomate e maionese no pão brioche</p>
+                                    <p class="product-price"><del>R$ 22,90</del> R$ 17,90 <span class="text-warning">(super oferta)</span></p>
+                                    <ul class="list-unstyled product-features">
+                                        <li>Frango premium</li>
+                                        <li>Pão brioche macio</li>
+                                        <li>Vegetais frescos</li>
+                                        <li>Crocância perfeita</li>
+                                    </ul>
+                                    <button class="btn btn-warning btn-lg order-button">PEDIR AGORA</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call-to-Action Section -->
+        <section id="cta" class="py-5 text-white text-center">
+            <div class="container">
+                <div class="p-5 rounded-3" style="background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);">
+                    <h4 class="display-4 fw-bold">🔥 COMBO KING: Leve os 3 + batata + refri por apenas R$ 49,90</h4>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3 text-center">
+        <div class="container">
+            <p class="mb-0">🔒 Pagamento Seguro | 🚚 Entrega em 30min | ⭐ Satisfação Garantida | 📞 0800-BK-KING</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
+

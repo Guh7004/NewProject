@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Convite Especial</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.2s;
+    }
+
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="main">
+  <h1>Quer sair comigo domingo? 😏</h1>
+  <button id="yesBtn">Sim 😍</button>
+  <button id="noBtn">Não 😅</button>
+</div>
+
+<div class="container hidden" id="success">
+  <h1>Pedido aceito! 🎉</h1>
+  <p>Agora não tem volta 😎</p>
+</div>
+
+<script>
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const main = document.getElementById('main');
+  const success = document.getElementById('success');
+
+  yesBtn.addEventListener('click', () => {
+    main.classList.add('hidden');
+    success.classList.remove('hidden');
+  });
+
+  noBtn.addEventListener('mouseover', moveButton);
+  noBtn.addEventListener('click', moveButton);
+
+  function moveButton() {
+    const container = document.querySelector('.container');
+    const maxX = container.offsetWidth - noBtn.offsetWidth;
+    const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
+  }
+</script>
+
+</body>
+</html>

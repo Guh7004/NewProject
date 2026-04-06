@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger King - Futuristic Experience</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-container"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="assets/images/burger-king-logo.png" alt="Burger King" class="logo">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1 class="hero-title">
+                    <span class="neon-text">BURGER KING</span>
+                    <span class="subtitle">FUTURISTIC EXPERIENCE</span>
+                </h1>
+                <p class="hero-description">Descubra o futuro do sabor com nossos produtos icônicos</p>
+            </section>
+
+            <!-- Products Carousel + Destaque -->
+            <section class="products-section">
+                <div class="carousel-layout">
+                    
+                    <!-- Carrossel -->
+                    <div class="carousel-container">
+                        <div class="carousel-wrapper">
+                            <div class="carousel-track" id="carousel-track">
+                                <div class="product-slide center" data-product="whopper" data-index="0">
+                                    <img src="assets/images/whopper.png" alt="Whopper" class="product-image">
+                                </div>
+                                <div class="product-slide right" data-product="big-king" data-index="1">
+                                    <img src="assets/images/big-king.png" alt="Big King" class="product-image">
+                                </div>
+                                <div class="product-slide left" data-product="chicken-royale" data-index="2">
+                                    <img src="assets/images/chicken-royale.png" alt="Chicken Royale" class="product-image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navegação -->
+<button class="nav-btn prev-btn" id="prev-btn">◀</button>
+<button class="nav-btn next-btn" id="next-btn">▶</button>
+<div class="carousel-dots" id="carousel-dots">
+    <button class="dot active" data-slide="0"></button>
+    <button class="dot" data-slide="1"></button>
+    <button class="dot" data-slide="2"></button>
+</div>
+
+
+                    <!-- Área de Destaque -->
+                    <div class="product-highlight" id="product-highlight">
+                        <h3 class="product-name">WHOPPER®</h3>
+                        <p class="product-description">O clássico que conquistou o mundo. Carne grelhada no fogo, salada fresca e molho especial.</p>
+                        <div class="product-price">R$ 24,90</div>
+                        <button class="order-btn" data-product="whopper">
+                            <span>PEDIR AGORA</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Burger King Corporation. Todos os direitos reservados.</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Política de Privacidade</a>
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

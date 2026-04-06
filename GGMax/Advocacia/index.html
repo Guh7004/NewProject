@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BA — Brenda Araújo | Advocacia e Consultoria Jurídica</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #001F2D;         /* azul-escuro elegante */
+      --gold: #E3B977;       /* dourado principal */
+      --text: #FFFFFF;
+      --muted: #C9D6DD;      /* cinza-claro */
+      --urgent: #FF0000;     /* vermelho botão */
+      --glass: rgba(255,255,255,0.03);
+      --container-max: 1200px;
+    }
+
+    /* Reset / base */
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    a { text-decoration: none; }
+    .container-max{ max-width: var(--container-max); margin: 0 auto; padding: 0 16px; }
+
+    /* NAVBAR FIXA */
+    .site-header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+      background: linear-gradient(180deg, rgba(0,31,45,0.95), rgba(0,31,45,0.88));
+      border-bottom: 1px solid rgba(227,185,119,0.06);
+      backdrop-filter: blur(6px);
+    }
+    .nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; max-width:var(--container-max); margin:0 auto; }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo-badge{
+      width:56px; height:56px; border-radius:10px;
+      display:inline-flex; align-items:center; justify-content:center;
+      font-family:"Playfair Display", serif; font-weight:700; font-size:20px;
+      background: linear-gradient(135deg, #f3d8a9, #e7bd73);
+      color: var(--bg);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    }
+    .brand-title{ font-family:"Playfair Display", serif; color:var(--gold); font-weight:700; font-size:16px; line-height:1; }
+    .brand-sub{ font-size:12px; color:var(--muted); margin-top:2px; }
+
+    /* Navbar links */
+    .nav-links { display:flex; gap:18px; align-items:center; }
+    .nav-links a { color:var(--muted); font-weight:600; padding:8px 6px; border-radius:6px; }
+    .nav-links a:hover, .nav-links a:focus { color:var(--text); background: rgba(227,185,119,0.03); }
+
+    /* Circular phone badge */
+    .phone-badge {
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:56px; height:56px; border-radius:50%;
+      background: linear-gradient(135deg, #e9cfa0, #e3b977);
+      color:var(--bg); font-weight:700; box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+      border: 2px solid rgba(255,255,255,0.06);
+      text-align:center;
+    }
+    .phone-badge small{ display:block; font-size:11px; font-weight:600; line-height:1; color:var(--bg); }
+
+    /* MOBILE: collapse */
+    .nav-collapse { display:none; }
+    .navbar-toggler { background: transparent; border: none; color: var(--muted); font-size:20px; }
+
+    /* HERO */
+    .hero {
+      padding-top: 110px; /* give space for fixed header */
+      padding-bottom: 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 68vh;
+      display:flex; align-items:center; justify-content:center;
+    }
+
+    /* Subtle geometric texture using repeating radial gradients */
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(227,185,119,0.03) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 70%, rgba(227,185,119,0.02) 0 2px, transparent 3px),
+        linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+      mix-blend-mode: overlay;
+      pointer-events:none;
+    }
+
+    .hero-inner {
+      z-index:2;
+      width:100%;
+      max-width:var(--container-max);
+      margin:0 auto;
+      padding: 36px 18px;
+      border-radius:14px;
+    }
+
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:36px 28px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+      display:flex; flex-direction:column; align-items:center; gap:14px;
+    }
+
+    .site-title{
+      font-family:"Playfair Display", serif;
+      color:var(--gold);
+      font-size: clamp(26px, 3.7vw, 44px);
+      font-weight:700;
+      margin:0;
+      letter-spacing: .4px;
+    }
+    .site-sub{
+      color:var(--muted);
+      font-size: clamp(13px, 1.8vw, 16px);
+      margin:4px 0 16px;
+      max-width:880px;
+    }
+
+    /* URGENT BUTTON central */
+    .btn-urgent-hero{
+      background: var(--urgent);
+      color: #fff;
+      border: none;
+      padding: .9rem 1.6rem;
+      border-radius: 10px;
+      font-weight:800;
+      letter-spacing:.6px;
+      box-shadow: 0 12px 30px rgba(255,0,0,0.14);
+      transform: translateZ(0);
+      transition: transform .18s ease, box-shadow .18s ease;
+      font-size:1rem;
+    }
+    .btn-urgent-hero:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(255,0,0,0.18); }
+
+    /* Services 3 columns */
+    .services {
+      padding: 60px 18px;
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+    .service-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:22px;
+      min-height:170px;
+      transition: transform .22s ease, box-shadow .22s ease;
+      border:1px solid rgba(227,185,119,0.04);
+      display:flex; gap:16px; align-items:flex-start;
+    }
+    .service-card:hover{ transform: translateY(-8px); box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    .service-icon{
+      width:62px; height:62px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+      background: linear-gradient(135deg, rgba(227,185,119,0.12), rgba(227,185,119,0.06));
+      color: var(--gold); font-size:28px;
+      border: 1px solid rgba(227,185,119,0.12);
+      flex-shrink:0;
+    }
+    .service-title{ font-weight:700; color:var(--text); font-size:1.05rem; margin:0; font-family:"Playfair Display", serif; }
+    .service-desc{ color:var(--muted); margin:6px 0 10px; font-size:0.95rem; }
+
+    .service-link { color:var(--gold); font-weight:600; font-size:.95rem; text-decoration:underline; }
+    .service-link:hover{ color:#ffdca4; }
+
+    /* Footer */
+    footer.site-footer{
+      background: linear-gradient(180deg, rgba(0,31,45,1), rgba(0,31,45,0.98));
+      padding:36px 18px;
+      color:var(--gold);
+      border-top: 1px solid rgba(227,185,119,0.04);
+      margin-top:40px;
+    }
+    .footer-contact{ color:var(--gold); }
+    .footer-muted{ color:var(--muted); }
+
+    .social-btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:44px; height:44px; border-radius:8px;
+      background: rgba(227,185,119,0.06);
+      color:var(--gold); border:1px solid rgba(227,185,119,0.12); margin-right:8px;
+    }
+    .social-btn:hover{ transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+
+    /* Animations: fade-in */
+    .fade-in { opacity:0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity:1; transform: translateY(0); }
+
+    /* Small screens */
+    @media (max-width: 991px){
+      .nav-links { display:none; }
+      .nav-collapse { display:block; }
+      .hero { padding-top:100px; padding-bottom:50px; min-height:60vh; }
+      .service-card{ min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAV -->
+  <header class="site-header" role="banner">
+    <div class="nav-inner container-max">
+      <div class="brand">
+        <div class="logo-badge" aria-hidden="true">BA</div>
+        <div>
+          <div class="brand-title">Brenda Araújo</div>
+          <div class="brand-sub">Advocacia &amp; Consultoria Jurídica</div>
+        </div>
+      </div>
+
+      <!-- desktop nav links -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#areas">Áreas</a>
+        <a href="#atuacao">Atuação</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <!-- right side: phone circular -->
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="nav-collapse">
+          <!-- small screen toggler -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menu">
+            <i class="bi bi-list" style="font-size:22px;"></i>
+          </button>
+        </div>
+
+        <a class="phone-badge" href="tel:+5511982474804" aria-label="Ligar para (11) 98247-4804">
+          <small style="font-size:11px;line-height:1">LIGUE</small>
+          <div style="font-size:12px;line-height:1"> (11)<br><strong>98247-4804</strong></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile collapse menu -->
+    <div class="collapse" id="mobileMenu" style="background:linear-gradient(180deg, rgba(0,31,45,0.98), rgba(0,31,45,0.96)); border-top:1px solid rgba(227,185,119,0.04);">
+      <div class="container-max py-3 d-flex flex-column gap-2">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#areas">Áreas</a>
+        <a class="nav-link" href="#atuacao">Atuação</a>
+        <a class="nav-link" href="#contato">Contato</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-inner fade-in">
+        <div class="hero-card text-center">
+          <h1 class="site-title">BA — Brenda Araújo<br><small style="display:block;font-size:14px;color:var(--muted);margin-top:6px">Advocacia &amp; Consultoria Jurídica</small></h1>
+          <p class="site-sub">Atuação estratégica em Direito Penal e consultoria jurídica personalizada — atendimento ágil, discreto e com foco em resultados.</p>
+
+          <div style="margin-top:18px">
+            <button class="btn-urgent-hero" onclick="location.href='tel:+5511982474804'">URGENTE</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="areas" class="services">
+      <div class="container-max">
+        <div class="row g-4">
+          <!-- Service 1 -->
+          <div class="col-md-4">
+            <div class="service-card fade-in" role="article" aria-labelledby="s1">
+              <div class="service-icon"><i class="bi bi-telephone-fill" aria-hidden="true"></i></div>
+              <div>
+                <h3 id="s1" class="service-title">Atendimento 24h</h3>
+                <p class="service-desc">Em caso de urgência ligue <a href="tel:+5511982474804" style="color:var(--gold); font-weight:600;">(11) 98247-4804</a></p>
+                <a class="service-link" href="tel:+5511982474804">Ligar agora →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="col-md-4">
+            <div class="service-card fade-in" role="article" aria-labelledby="s2">
+              <div class="service-icon"><i class="bi bi-laptop-fill" aria-hidden="true"></i></div>
+              <div>
+                <h3 id="s2" class="service-title">Atendimento Online e Presencial</h3>
+                <p class="service-desc">Consultoria e atendimento flexível — reuniões por videoconferência ou em nosso escritório.</p>
+                <a class="service-link" href="#contato">Solicitar consultoria →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="col-md-4">
+            <div class="service-card fade-in" role="article" aria-labelledby="s3">
+              <div class="service-icon"><i class="bi bi-balance-scale" aria-hidden="true"></i></div>
+              <div>
+                <h3 id="s3" class="service-title">Especialidades</h3>
+                <p class="service-desc">Prisão em Flagrante, Habeas Corpus, Inquérito Policial, Direito Penal, Crimes Sexuais e defesa criminal.</p>
+                <a class="service-link" href="#contato">Fale com a equipe →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPTIONAL 'Atuação' section (simple) -->
+    <section id="atuacao" class="container-max mb-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <h3 style="font-family:Playfair Display, serif; color:var(--gold)">Atuação focada em resultados</h3>
+          <p style="color:var(--muted); max-width:720px">Nossa atuação combina experiência processual com estratégia preventiva. Atendemos desde flagrantes até recursos e habeas corpus, com atendimento prioritário em situações de urgência.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="#contato" class="btn btn-outline-light" style="border-color: rgba(227,185,119,0.12); color:var(--muted)">Agende uma consulta</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container-max">
+      <div class="row gy-4">
+        <div class="col-md-5">
+          <h4 style="font-family:Playfair Display, serif; margin-bottom:6px">Brenda Araújo</h4>
+          <p class="footer-muted" style="margin-bottom:10px">Advocacia &amp; Consultoria Jurídica — confidencialidade, técnica e defesa estratégica.</p>
+          <div>
+            <a class="social-btn" href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a class="social-btn" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a class="social-btn" href="https://wa.me/5511982474804" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h6 style="color:var(--gold)">Contato</h6>
+          <p class="footer-muted" style="margin-bottom:4px"><strong style="color:var(--gold)">Telefone:</strong> <a href="tel:+5511982474804" style="color:var(--muted)">(11) 98247-4804</a></p>
+          <p class="footer-muted" style="margin-bottom:4px"><strong style="color:var(--gold)">Email:</strong> <a href="mailto:contato@brendaaraujo.adv.br" style="color:var(--muted)">contato@brendaaraujo.adv.br</a></p>
+          <p class="footer-muted"><strong style="color:var(--gold)">Endereço:</strong> Rua Exemplo, 123 — Centro, Cidade - Estado</p>
+        </div>
+
+        <div class="col-md-3 text-md-end">
+          <h6 style="color:var(--gold)">Horário</h6>
+          <p class="footer-muted" style="margin-bottom:6px">Atendimento 24h — Prioridade para casos de urgência via telefone.</p>
+          <p class="footer-muted" style="font-size:.92rem">© <span id="year"></span> Brenda Araújo — Todos os direitos reservados</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Small JS: fade-in on scroll + set year -->
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // IntersectionObserver for fade-in elements
+    (function(){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.12});
+
+      document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    })();
+
+    // Smooth scroll for same-page anchors (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>

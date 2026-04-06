@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger King - Have It Your Way</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Flame:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .flame-font {
+            font-family: 'Flame', 'Inter', sans-serif;
+        }
+        
+        .bk-red { background-color: #D62300; }
+        .bk-yellow { background-color: #FFBF00; }
+        .bk-brown { background-color: #8B4513; }
+        
+        .gradient-bk {
+            background: linear-gradient(135deg, #D62300 0%, #FF4500 50%, #FFBF00 100%);
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #D62300 0%, #8B0000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .bk-logo {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .logo-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, #FFBF00 0%, #FF4500 50%, #D62300 100%);
+            border-radius: 50%;
+            animation: fillUp 3s ease-out forwards;
+        }
+        
+        @keyframes fillUp {
+            0% { height: 0%; }
+            100% { height: 100%; }
+        }
+        
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.8s ease-in;
+        }
+        
+        .main-content.visible {
+            opacity: 1;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .slide-up {
+            animation: slideUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .flame-glow {
+            animation: flameGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes flameGlow {
+            0% { 
+                box-shadow: 0 0 20px rgba(214, 35, 0, 0.5);
+                text-shadow: 0 0 10px rgba(255, 191, 0, 0.8);
+            }
+            100% { 
+                box-shadow: 0 0 40px rgba(214, 35, 0, 0.8);
+                text-shadow: 0 0 20px rgba(255, 191, 0, 1);
+            }
+        }
+        
+        .product-card {
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(214, 35, 0, 0.3);
+        }
+        
+        .stagger-1 { animation-delay: 0.2s; }
+        .stagger-2 { animation-delay: 0.4s; }
+        .stagger-3 { animation-delay: 0.6s; }
+        .stagger-4 { animation-delay: 0.8s; }
+        
+        .carousel-container {
+            perspective: 1000px;
+        }
+        
+        .product-slide {
+            width: 320px;
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .product-slide.active {
+            transform: translateX(0) scale(1.0) translateZ(0);
+            z-index: 10;
+            opacity: 1;
+        }
+        
+        .product-slide.prev {
+            transform: translateX(-250px) scale(0.8) rotateY(15deg) translateZ(-100px);
+            z-index: 5;
+            opacity: 0.7;
+        }
+        
+        .product-slide.next {
+            transform: translateX(250px) scale(0.8) rotateY(-15deg) translateZ(-100px);
+            z-index: 5;
+            opacity: 0.7;
+        }
+        
+        .product-slide.hidden {
+            transform: translateX(0) scale(0.6) translateZ(-200px);
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .carousel-indicator.active {
+            background: linear-gradient(135deg, #D62300 0%, #FFBF00 100%);
+            transform: scale(1.2);
+        }
+        
+        .btn-flame {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #D62300 0%, #FF4500 100%);
+        }
+        
+        .btn-flame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,191,0,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-flame:hover::before {
+            left: 100%;
+        }
+        
+        .price-flame {
+            color: #FFBF00;
+            text-shadow: 0 0 10px rgba(255, 191, 0, 0.8);
+            animation: priceGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes priceGlow {
+            from { text-shadow: 0 0 10px rgba(255, 191, 0, 0.5); }
+            to { text-shadow: 0 0 20px rgba(255, 191, 0, 1); }
+        }
+
+        .product-image {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="h-screen overflow-hidden bg-gradient-to-br from-red-900 via-orange-800 to-yellow-600 relative">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="text-center">
+            <div class="bk-logo mx-auto mb-8 relative">
+                <!-- BK Logo SVG -->
+                <svg viewBox="0 0 200 200" class="w-full h-full">
+                    <circle cx="100" cy="100" r="95" fill="#8B4513" stroke="#FFBF00" stroke-width="4"/>
+                    <circle cx="100" cy="100" r="85" fill="#D62300"/>
+                    <text x="100" y="85" text-anchor="middle" fill="#FFBF00" font-size="32" font-weight="bold" class="flame-font">BURGER</text>
+                    <text x="100" y="120" text-anchor="middle" fill="#FFBF00" font-size="32" font-weight="bold" class="flame-font">KING</text>
+                    <circle cx="100" cy="100" r="85" fill="url(#logoFill)" opacity="0.9"/>
+                    <defs>
+                        <linearGradient id="logoFill" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FFBF00;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#FF4500;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#D62300;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="logo-fill"></div>
+            </div>
+            <div class="text-white text-2xl font-bold mb-4 flame-glow">Preparando sua experiência...</div>
+            <div class="flex justify-center space-x-2">
+                <div class="w-3 h-3 bg-yellow-400 rounded-full animate-bounce"></div>
+                <div class="w-3 h-3 bg-yellow-400 rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+                <div class="w-3 h-3 bg-yellow-400 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-yellow-400/10 rounded-full floating"></div>
+            <div class="absolute top-40 right-20 w-24 h-24 bg-red-500/10 rounded-full floating" style="animation-delay: -2s;"></div>
+            <div class="absolute bottom-40 left-20 w-20 h-20 bg-orange-400/10 rounded-full floating" style="animation-delay: -4s;"></div>
+            <div class="absolute bottom-20 right-40 w-16 h-16 bg-yellow-400/10 rounded-full floating" style="animation-delay: -1s;"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="relative z-10 flex justify-between items-center p-6">
+            <div class="flex items-center fade-in">
+                <div class="w-16 h-16 gradient-bk rounded-full flex items-center justify-center border-4 border-yellow-400">
+                    <span class="text-white font-bold text-xl flame-font">BK</span>
+                </div>
+                <div class="ml-4">
+                    <div class="text-3xl font-bold text-white flame-font">BURGER KING</div>
+                    <div class="text-yellow-400 text-sm font-semibold">Have It Your Way®</div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-6 fade-in stagger-1">
+                <span class="text-white/90">📍 Delivery disponível</span>
+                <span class="text-white/90">🕒 Aberto até 23h</span>
+            </div>
+        </header>
+
+
+
+        <!-- Main Content -->
+        <main class="relative z-10 flex flex-col items-center justify-start h-full px-6 pt-8">
+            <!-- Hero Title -->
+            <div class="text-center mb-8">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 fade-in flame-font flame-glow drop-shadow-2xl">
+                    SABOR REAL
+                </h1>
+            </div>
+
+            <!-- Products Carousel -->
+            <div class="relative max-w-5xl w-full mb-8">
+                <!-- Navigation Arrows -->
+                <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-14 h-14 bg-red-600/80 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-red-600 transition-all duration-300 border-2 border-yellow-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-14 h-14 bg-red-600/80 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-red-600 transition-all duration-300 border-2 border-yellow-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+
+                <!-- Carousel Container -->
+                <div class="carousel-container relative h-80 flex items-center justify-center">
+                    <!-- Produto 1 - Whopper -->
+                    <div class="product-slide absolute cursor-pointer" data-index="0">
+                        <div class="product-card bg-white/95 backdrop-blur-md rounded-3xl p-4 border-4 border-yellow-400 shadow-2xl">
+                            <div class="text-center">
+                                <div class="w-16 h-16 gradient-bk rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-yellow-400">
+                                    <img src="https://private-us-east-1.manuscdn.com/sessionFile/eKnaPKp58a64QVicjXq9Ca/sandbox/GXsomdUsr7flFTNJWPKwVR_1757362824654_na1fn_L2hvbWUvdWJ1bnR1L2ltYWdlcy9iaWdfa2luZ192Mg.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvZUtuYVBLcDU4YTY0UVZpY2pYcTlDYS9zYW5kYm94L0dYc29tZFVzcjdmbEZUTkpXUEt3VlJfMTc1NzM2MjgyNDY1NF9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJsdFlXZGxjeTlpYVdkZmEybHVaMTkyTWcucG5nIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=hI7JZrpTysoiProe4IZ6CJr~7vFJM53bhjDr2rbUrnmK6Of9IZEXJx7XzuIAGquU-tFJBd3qEGPOqhz3dODnoXsHJ-fgyyvQ8-EtrtHlbKINLOtjka65kVwjYWfzz3mvmp45ecO7GzABPrdbSJ0lVqT5P6xLruMAMpN3wLTIDO9BbioTTp-zRljiM-83pnZUthcgDR-e3EhKbzYAgW0y8UT4sR22eQACp3oYUezxH2xZYdNSWDqHiYDW0PViHRLQOC1OEwaxFxZQ~z7ptRxPJQ9fsO1XTL79k4OUWAGzN7GKuxeh1UNWf-LDZMRk9z5H-EKPQBah77FFCiwOJiWRyg__" alt="Whopper" class="product-image" onerror="this.outerHTML='<span class="text-4xl">🍔</span>';">
+                                </div>
+                                <h3 class="text-2xl font-bold text-red-800 mb-3 flame-font drop-shadow-sm">WHOPPER®</h3>
+                                <p class="text-gray-800 text-sm mb-4 leading-relaxed font-semibold">
+                                    O clássico! Hambúrguer de carne bovina grelhada, alface, tomate, cebola, picles e maionese no pão com gergelim
+                                </p>
+                                <div class="mb-4">
+                                    <span class="text-gray-500 text-sm line-through">R$ 24,90</span>
+                                    <div class="text-2xl font-bold price-flame">R$ 19,90</div>
+                                    <span class="text-gray-600 text-sm">🔥 Oferta especial</span>
+                                </div>
+                                <ul class="text-gray-800 text-sm text-left mb-4 space-y-2 font-semibold">
+                                    <li class="flex items-center"><span class="mr-2">🥩</span> Carne 100% bovina</li>
+                                    <li class="flex items-center"><span class="mr-2">🔥</span> Grelhada na chama</li>
+                                    <li class="flex items-center"><span class="mr-2">🥬</span> Ingredientes frescos</li>
+                                    <li class="flex items-center"><span class="mr-2">👑</span> O original desde 1957</li>
+                                </ul>
+                                <button class="btn-flame w-full text-white py-3 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-yellow-400">
+                                    🛒 PEDIR AGORA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 2 - Big King -->
+                    <div class="product-slide absolute cursor-pointer" data-index="1">
+                        <div class="product-card bg-white/95 backdrop-blur-md rounded-3xl p-4 border-4 border-yellow-400 shadow-2xl relative">
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                <span class="bg-gradient-to-r from-red-600 to-yellow-500 text-white px-3 py-1 rounded-full font-bold text-xs border-2 border-white">
+                                    👑 MAIS VENDIDO
+                                </span>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-14 h-14 gradient-bk rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-yellow-400">
+                                    <img src="./images/big_king_v2.png" alt="Big King" class="w-10 h-10 object-cover rounded-full" onerror="this.outerHTML='<span class="text-2xl">🍔</span>';">
+                                </div>
+                                <h3 class="text-2xl font-bold text-red-800 mb-3 flame-font drop-shadow-sm">BIG KING®</h3>
+                                <p class="text-gray-800 text-sm mb-4 leading-relaxed font-semibold">
+                                    Dois hambúrgueres, alface, queijo, picles, cebola e molho especial no pão com gergelim. Simplesmente irresistível!
+                                </p>
+                                <div class="mb-4">
+                                    <span class="text-gray-500 text-sm line-through">R$ 28,90</span>
+                                    <div class="text-2xl font-bold price-flame">R$ 22,90</div>
+                                    <span class="text-gray-600 text-sm">🔥 Promoção limitada</span>
+                                </div>
+                                <ul class="text-gray-800 text-sm text-left mb-4 space-y-2 font-semibold">
+                                    <li class="flex items-center"><span class="mr-2">🥩</span> Dois hambúrgueres</li>
+                                    <li class="flex items-center"><span class="mr-2">🧀</span> Queijo derretido</li>
+                                    <li class="flex items-center"><span class="mr-2">🥫</span> Molho especial BK</li>
+                                    <li class="flex items-center"><span class="mr-2">⭐</span> Favorito dos clientes</li>
+                                </ul>
+                                <button class="btn-flame w-full text-white py-3 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-yellow-400">
+                                    🛒 PEDIR AGORA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 3 - Chicken Crispy -->
+                    <div class="product-slide absolute cursor-pointer" data-index="2">
+                        <div class="product-card bg-white/95 backdrop-blur-md rounded-3xl p-4 border-4 border-yellow-400 shadow-2xl">
+                            <div class="text-center">
+                                <div class="w-14 h-14 gradient-bk rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-yellow-400">
+                                    <img src="./images/chicken_crispy_v2.png" alt="Chicken Crispy" class="w-10 h-10 object-cover rounded-full" onerror="this.outerHTML='<span class="text-2xl">🍗</span>';">
+                                </div>
+                                <h3 class="text-2xl font-bold text-red-800 mb-3 flame-font drop-shadow-sm">CHICKEN CRISPY</h3>
+                                <p class="text-gray-800 text-sm mb-4 leading-relaxed font-semibold">
+                                    Peito de frango empanado e crocante, alface americana, tomate e maionese no pão brioche. Uma delícia!
+                                </p>
+                                <div class="mb-4">
+                                    <span class="text-gray-500 text-sm line-through">R$ 22,90</span>
+                                    <div class="text-2xl font-bold price-flame">R$ 17,90</div>
+                                    <span class="text-gray-600 text-sm">🔥 Super oferta</span>
+                                </div>
+                                <ul class="text-gray-800 text-sm text-left mb-4 space-y-2 font-semibold">
+                                    <li class="flex items-center"><span class="mr-2">🐔</span> Frango premium</li>
+                                    <li class="flex items-center"><span class="mr-2">🍞</span> Pão brioche macio</li>
+                                    <li class="flex items-center"><span class="mr-2">🍅</span> Vegetais frescos</li>
+                                    <li class="flex items-center"><span class="mr-2">✨</span> Crocância perfeita</li>
+                                </ul>
+                                <button class="btn-flame w-full text-white py-3 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-yellow-400">
+                                    🛒 PEDIR AGORA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Indicators -->
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+                    <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-all duration-300" data-slide-to="0"></button>
+                    <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-all duration-300" data-slide-to="1"></button>
+                    <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-all duration-300" data-slide-to="2"></button>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="w-full max-w-4xl text-center fade-in stagger-4">
+                <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-8 border-2 border-yellow-400 shadow-lg">
+                    <h2 class="text-3xl font-bold text-white mb-4 flame-font flame-glow">🔥 COMBO KING 🔥</h2>
+                    <p class="text-white/90 text-lg mb-6">
+                        Leve os 3 sanduíches da realeza + batata grande + refri por apenas
+                        <span class="text-4xl font-bold text-yellow-300 price-flame">R$ 49,90</span>
+                    </p>
+                    <button class="btn-flame text-white py-4 px-10 rounded-full font-bold text-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-yellow-400">
+                        QUERO O COMBO KING!
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="absolute bottom-0 left-0 w-full p-4 z-10">
+            <div class="text-white/80 text-center text-xs">
+                🔒 Pagamento Seguro | 🚚 Entrega em 30min | ⭐ Satisfação Garantida | 📞 0800-BK-KING
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const mainContent = document.getElementById('mainContent');
+
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                mainContent.classList.add('visible');
+            }, 3000);
+
+            const slides = document.querySelectorAll('.product-slide');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentIndex = 0;
+            let autoPlayInterval;
+
+            function updateCarousel() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('active', 'prev', 'next', 'hidden');
+                    if (index === currentIndex) {
+                        slide.classList.add('active');
+                    } else if (index === (currentIndex - 1 + slides.length) % slides.length) {
+                        slide.classList.add('prev');
+                    } else if (index === (currentIndex + 1) % slides.length) {
+                        slide.classList.add('next');
+                    } else {
+                        slide.classList.add('hidden');
+                    }
+                });
+
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+                resetAutoPlay();
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel();
+            }
+
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(nextSlide, 6000);
+            }
+
+            function resetAutoPlay() {
+                clearInterval(autoPlayInterval);
+                startAutoPlay();
+            }
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoPlay();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoPlay();
+            });
+
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', (e) => {
+                    goToSlide(parseInt(e.target.dataset.slideTo));
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetAutoPlay();
+                }
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoPlay();
+                }
+            });
+
+            updateCarousel();
+            startAutoPlay();
+        });
+    </script>
+</body>
+</html>
+
+
