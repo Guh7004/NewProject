@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ImoViva — Imóveis em Suzano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:   #FAF7F2;
+  --white:   #FFFFFF;
+  --gold:    #C9A84C;
+  --gold2:   #A8863A;
+  --dark:    #1A1A2E;
+  --dark2:   #12121E;
+  --charcoal:#2D2D3A;
+  --muted:   #8A8A9A;
+  --border:  #E8E4DC;
+  --green:   #2ECC71;
+  --radius:  16px;
+  --font-h:  'Cormorant Garamond', Georgia, serif;
+  --font-b:  'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,247,242,.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 66px;
+}
+.nav-logo {
+  font-family: var(--font-h); font-weight: 700; font-size: 1.7rem;
+  color: var(--dark); text-decoration: none; display: flex; align-items: center; gap: .4rem;
+  letter-spacing: .02em;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: .88rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--dark); color: #fff;
+  border: none; border-radius: 50px;
+  padding: .55rem 1.4rem; font-family: var(--font-b);
+  font-weight: 600; font-size: .85rem; cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.nav-cta:hover { background: var(--gold); transform: scale(1.04); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 0;
+  position: relative; overflow: hidden;
+}
+.hero-left {
+  padding: 5rem 5vw 5rem 5vw;
+  background: var(--cream);
+  position: relative; z-index: 1;
+}
+.hero-right {
+  height: 92vh; position: relative; overflow: hidden;
+}
+.hero-right img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.hero-right::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 30%);
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.3);
+  color: var(--gold2); border-radius: 50px; padding: .3rem 1rem;
+  font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: 1.5rem;
+  animation: pop .5s cubic-bezier(.34,1.56,.64,1);
+}
+.hero h1 {
+  font-family: var(--font-h);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 700; line-height: 1.0;
+  color: var(--dark);
+  animation: slideUp .6s .1s both ease;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero p {
+  margin-top: 1.4rem; font-size: 1rem; color: var(--muted);
+  line-height: 1.8; max-width: 440px;
+  animation: slideUp .6s .2s both ease;
+}
+.hero-search {
+  margin-top: 2.5rem;
+  background: #fff; border-radius: 60px;
+  border: 1.5px solid var(--border);
+  padding: .6rem .6rem .6rem 1.4rem;
+  display: flex; align-items: center; gap: .8rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+  animation: slideUp .6s .3s both ease;
+  max-width: 460px;
+}
+.hero-search input {
+  flex: 1; border: none; outline: none;
+  font-family: var(--font-b); font-size: .95rem; color: var(--dark);
+  background: transparent;
+}
+.hero-search input::placeholder { color: var(--muted); }
+.hero-search button {
+  background: var(--gold); color: #fff;
+  border: none; border-radius: 50px;
+  padding: .65rem 1.4rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 600; font-size: .9rem;
+  transition: background .15s; white-space: nowrap;
+}
+.hero-search button:hover { background: var(--gold2); }
+.hero-stats {
+  margin-top: 3rem; display: flex; gap: 2.5rem;
+  animation: slideUp .6s .4s both ease;
+}
+.hstat { text-align: center; }
+.hstat-num { font-family: var(--font-h); font-size: 2rem; font-weight: 700; color: var(--dark); display: block; }
+.hstat-lbl { font-size: .78rem; color: var(--muted); font-weight: 500; }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--dark); display: flex;
+  justify-content: center; flex-wrap: wrap;
+  gap: 3rem; padding: 1.3rem 2rem;
+}
+.trust-item { display: flex; align-items: center; gap: .6rem; font-size: .85rem; font-weight: 500; color: #8A8AAA; }
+.trust-item .ti { color: var(--gold); font-size: 1rem; }
+.trust-item strong { color: #fff; }
+
+/* ── FILTER BAR ── */
+#imoveis { background: var(--cream); padding: 4rem 5vw 2rem; }
+.filter-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
+.s-tag {
+  display: inline-block;
+  background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.3);
+  color: var(--gold2); border-radius: 50px; padding: .3rem .9rem;
+  font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .7rem;
+}
+.s-title { font-family: var(--font-h); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; line-height: 1.1; }
+.s-title em { color: var(--gold); font-style: italic; }
+.filter-pills { display: flex; gap: .6rem; flex-wrap: wrap; }
+.pill {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 50px; padding: .45rem 1.1rem;
+  font-size: .82rem; font-weight: 600; color: var(--muted);
+  cursor: pointer; transition: all .18s;
+}
+.pill.active { background: var(--dark); border-color: var(--dark); color: #fff; }
+.pill:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+
+/* ── PROPERTY GRID ── */
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.6rem;
+  padding-bottom: 6rem;
+}
+.prop-card {
+  background: #fff; border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+  position: relative;
+}
+.prop-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,.1); }
+.prop-card.hidden { display: none; }
+.prop-img {
+  height: 210px; position: relative; overflow: hidden;
+}
+.prop-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s;
+}
+.prop-card:hover .prop-img img { transform: scale(1.06); }
+.prop-type-badge {
+  position: absolute; bottom: 12px; left: 12px;
+  background: var(--dark); color: #fff;
+  border-radius: 50px; padding: .25rem .75rem;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+}
+.prop-type-badge.aluguel { background: var(--gold); }
+.prop-type-badge.venda { background: var(--dark); }
+.fav-btn {
+  position: absolute; top: 12px; right: 12px;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,.9); border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1.1rem;
+  transition: background .15s, transform .15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+.fav-btn:hover { transform: scale(1.15); }
+.fav-btn.active { background: #FF4D6D; }
+.prop-info { padding: 1.3rem 1.3rem 1.5rem; }
+.prop-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: .5rem; }
+.prop-price { font-family: var(--font-h); font-size: 1.45rem; font-weight: 700; color: var(--dark); }
+.prop-period { font-size: .75rem; color: var(--muted); font-weight: 500; }
+.prop-name { font-weight: 700; font-size: .97rem; color: var(--dark); margin-bottom: .25rem; }
+.prop-addr { font-size: .82rem; color: var(--muted); display: flex; align-items: center; gap: .3rem; margin-bottom: 1rem; }
+.prop-specs {
+  display: flex; gap: 1rem;
+  border-top: 1px solid var(--border); padding-top: .9rem;
+}
+.spec { display: flex; align-items: center; gap: .3rem; font-size: .8rem; color: var(--muted); font-weight: 500; }
+.spec-icon { font-size: .95rem; }
+.prop-cta {
+  display: block; margin-top: 1rem;
+  background: var(--dark); color: #fff;
+  border: none; border-radius: 50px; padding: .6rem 0;
+  width: 100%; cursor: pointer;
+  font-family: var(--font-b); font-weight: 700; font-size: .85rem;
+  transition: background .15s;
+}
+.prop-card.favorited .prop-cta { background: #FF4D6D; }
+.prop-cta:hover { background: var(--gold); }
+
+/* ── HOW IT WORKS ── */
+#como-funciona { background: var(--dark); padding: 5rem 5vw; }
+#como-funciona .s-tag { background: rgba(201,168,76,.15); border-color: rgba(201,168,76,.3); }
+#como-funciona .s-title { color: #fff; }
+.steps { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+.step { text-align: center; padding: 1.5rem 1rem; }
+.step-num {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: rgba(201,168,76,.12); border: 2px solid rgba(201,168,76,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; margin: 0 auto 1.2rem;
+}
+.step h3 { font-family: var(--font-h); font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: .4rem; }
+.step p { font-size: .87rem; color: #8A8AAA; line-height: 1.65; }
+
+/* ── DIFERENCIAIS ── */
+#diferenciais { background: #fff; padding: 5rem 5vw; }
+.feats { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
+.feat {
+  background: var(--cream); border-radius: var(--radius);
+  border: 1.5px solid var(--border); padding: 1.8rem 1.5rem;
+  transition: border-color .2s, transform .2s;
+}
+.feat:hover { border-color: var(--gold); transform: translateY(-4px); }
+.feat-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+.feat h3 { font-family: var(--font-h); font-size: 1.15rem; font-weight: 700; color: var(--dark); margin-bottom: .45rem; }
+.feat p { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+
+/* ── REVIEWS ── */
+#avaliacoes { background: var(--cream); padding: 5rem 5vw; }
+.reviews-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.4rem; }
+.review {
+  background: #fff; border-radius: var(--radius);
+  border: 1.5px solid var(--border); padding: 1.6rem;
+  transition: border-color .2s;
+}
+.review:hover { border-color: var(--gold); }
+.review-stars { color: var(--gold); font-size: .95rem; margin-bottom: .8rem; }
+.review-text { color: var(--charcoal); font-size: .92rem; line-height: 1.7; font-style: italic; }
+.review-author { margin-top: 1.2rem; display: flex; align-items: center; gap: .8rem; }
+.r-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #E8C96A);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: .9rem; color: var(--dark);
+}
+.r-name { font-weight: 700; color: var(--dark); font-size: .88rem; }
+.r-desc { font-size: .78rem; color: var(--muted); }
+
+/* ── FAQ ── */
+#faq { background: #fff; padding: 5rem 5vw; }
+.faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: .7rem; max-width: 740px; }
+.faq-item {
+  background: var(--cream); border-radius: 14px;
+  border: 1.5px solid var(--border); overflow: hidden;
+  transition: border-color .2s;
+}
+.faq-item.open { border-color: var(--gold); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.15rem 1.4rem; cursor: pointer;
+  font-weight: 600; font-size: .97rem; color: var(--dark); user-select: none;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-icon { font-size: 1.3rem; color: var(--gold); transition: transform .3s; flex-shrink: 0; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .25s;
+  font-size: .92rem; color: var(--muted); line-height: 1.7; padding: 0 1.4rem;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 1.4rem 1.2rem; }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--dark) 0%, #2D2D3A 100%);
+  padding: 5rem 5vw; text-align: center; position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 600px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.12) 0%, transparent 70%);
+}
+.cta-banner h2 { font-family: var(--font-h); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #fff; position: relative; }
+.cta-banner p { color: #8A8AAA; font-size: 1rem; margin: .8rem auto; max-width: 480px; line-height: 1.7; position: relative; }
+.btn-gold {
+  background: var(--gold); color: var(--dark);
+  border: none; border-radius: 50px;
+  padding: .95rem 2.2rem; font-family: var(--font-b);
+  font-weight: 700; font-size: 1rem; cursor: pointer;
+  transition: transform .15s, background .15s;
+  margin-top: 1.5rem; position: relative;
+  box-shadow: 0 4px 20px rgba(201,168,76,.3);
+}
+.btn-gold:hover { transform: translateY(-3px); background: #D4AE52; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark2); border-top: 1px solid rgba(255,255,255,.06); padding: 3rem 5vw 2rem; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+.footer-logo { font-family: var(--font-h); font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: .6rem; }
+.footer-logo span { color: var(--gold); }
+.footer-desc { font-size: .87rem; color: #6A6A8A; line-height: 1.7; }
+footer h4 { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); margin-bottom: 1rem; font-weight: 700; }
+footer ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+footer ul a { color: #6A6A8A; text-decoration: none; font-size: .87rem; transition: color .2s; }
+footer ul a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: .8rem; color: #4A4A6A; flex-wrap: wrap; gap: .5rem; }
+
+/* ── FAVORITES BAR ── */
+.fav-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: var(--dark);
+  border-top: 2px solid var(--gold);
+  padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  transform: translateY(100%);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 -8px 40px rgba(0,0,0,.3);
+}
+.fav-bar.visible { transform: translateY(0); }
+.fav-bar-info { display: flex; flex-direction: column; gap: .2rem; }
+.fav-bar-count { font-size: .82rem; color: #8A8AAA; }
+.fav-bar-label { font-family: var(--font-h); font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+.fav-btns { display: flex; gap: .7rem; align-items: center; flex-wrap: wrap; }
+.fav-clear {
+  background: transparent; color: #8A8AAA;
+  border: 1px solid rgba(255,255,255,.1); border-radius: 50px;
+  padding: .7rem 1.2rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 600; font-size: .85rem; transition: color .15s;
+}
+.fav-clear:hover { color: #fff; }
+.fav-wa {
+  background: #25D366; color: #fff; border: none; border-radius: 50px;
+  padding: .8rem 1.8rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 700; font-size: 1rem;
+  transition: transform .15s, background .15s;
+  display: flex; align-items: center; gap: .5rem; white-space: nowrap;
+}
+.fav-wa:hover { transform: scale(1.04); background: #1db954; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,.6);
+  display: flex; align-items: center; justify-content: center; padding: 1rem;
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: #fff; border-radius: 24px; padding: 2.5rem 2rem;
+  max-width: 440px; width: 100%; text-align: center;
+  transform: translateY(30px) scale(.96);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+.modal-icon { font-size: 2.8rem; margin-bottom: .6rem; }
+.modal-title { font-family: var(--font-h); font-size: 1.6rem; font-weight: 700; color: var(--dark); margin-bottom: .4rem; }
+.modal-sub { color: var(--muted); font-size: .93rem; margin-bottom: 1.5rem; line-height: 1.6; }
+.modal-input {
+  width: 100%; padding: .85rem 1.2rem;
+  border: 1.5px solid var(--border); border-radius: 50px;
+  font-family: var(--font-b); font-size: 1rem; color: var(--dark);
+  outline: none; transition: border-color .2s; text-align: center; background: var(--cream);
+}
+.modal-input::placeholder { color: var(--muted); }
+.modal-input:focus { border-color: var(--gold); }
+.modal-input + .modal-input { margin-top: .7rem; }
+.modal-btns { display: flex; gap: .8rem; margin-top: 1.2rem; }
+.modal-send {
+  flex: 1; background: #25D366; color: #fff; border: none; border-radius: 50px;
+  padding: .85rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 700; font-size: 1rem; transition: background .15s;
+}
+.modal-send:hover { background: #1db954; }
+.modal-skip {
+  background: var(--cream); color: var(--muted);
+  border: 1.5px solid var(--border); border-radius: 50px;
+  padding: .85rem 1.2rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 600; font-size: .88rem; white-space: nowrap; transition: color .15s;
+}
+.modal-skip:hover { color: var(--dark); }
+
+/* ── ANIMATIONS ── */
+@keyframes slideUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pop { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { height: 280px; }
+  .hero-right::after { background: linear-gradient(to bottom, var(--cream) 0%, transparent 30%); }
+  .hero-left { padding: 3rem 5vw; }
+  .nav-links { display: none; }
+  .footer-inner { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Imo<span>Viva</span></a>
+  <ul class="nav-links">
+    <li><a href="#imoveis">Imóveis</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#avaliacoes">Avaliações</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal()">Falar com Corretor</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <div class="hero-tag">🏡 Suzano e Região</div>
+    <h1>Encontre o imóvel<br>que vai <em>mudar sua vida</em></h1>
+    <p>A ImoViva conecta você ao imóvel ideal com agilidade, transparência e o melhor atendimento da região. Casas, apartamentos e comerciais para comprar ou alugar.</p>
+    <div class="hero-search">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar por bairro, tipo ou código..." oninput="filterProperties()">
+      <button onclick="document.getElementById('imoveis').scrollIntoView({behavior:'smooth'})">Buscar</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-num">+320</span><span class="hstat-lbl">Imóveis disponíveis</span></div>
+      <div class="hstat"><span class="hstat-num">12+</span><span class="hstat-lbl">Anos no mercado</span></div>
+      <div class="hstat"><span class="hstat-num">98%</span><span class="hstat-lbl">Clientes satisfeitos</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.pexels.com/photos/8134816/pexels-photo-8134816.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&fit=crop" alt="Casa moderna">
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="ti">✅</span><span><strong>CRECI Ativo</strong> — Imobiliária regularizada</span></div>
+  <div class="trust-item"><span class="ti">🏆</span><span>+<strong>12 anos</strong> no mercado</span></div>
+  <div class="trust-item"><span class="ti">🔑</span><span><strong>+320</strong> imóveis disponíveis</span></div>
+  <div class="trust-item"><span class="ti">📍</span><span>Suzano e <strong>Grande SP</strong></span></div>
+  <div class="trust-item"><span class="ti">💬</span><span>Atendimento <strong>7 dias</strong></span></div>
+</div>
+
+<!-- IMÓVEIS / CATÁLOGO -->
+<section id="imoveis">
+  <div class="filter-header">
+    <div>
+      <div class="s-tag">Catálogo de Imóveis</div>
+      <h2 class="s-title">Selecione os imóveis<br>de seu <em>interesse</em></h2>
+    </div>
+    <div class="filter-pills">
+      <button class="pill active" onclick="setFilter('todos', this)">Todos</button>
+      <button class="pill" onclick="setFilter('aluguel', this)">Aluguel</button>
+      <button class="pill" onclick="setFilter('venda', this)">Venda</button>
+      <button class="pill" onclick="setFilter('casa', this)">Casas</button>
+      <button class="pill" onclick="setFilter('apartamento', this)">Apartamentos</button>
+      <button class="pill" onclick="setFilter('comercial', this)">Comercial</button>
+    </div>
+  </div>
+
+  <div class="properties-grid" id="propsGrid">
+
+    <div class="prop-card" data-type="aluguel" data-cat="apartamento" data-name="Apto 2 Quartos — Jd. Miriam" data-price="R$ 1.800/mês" data-code="IMV-001">
+      <div class="prop-img">
+        <img src="https://images.pexels.com/photos/6588599/pexels-photo-6588599.jpeg?auto=compress&cs=tinysrgb&w=600&h=350&fit=crop" alt="Apartamento moderno">
+        <span class="prop-type-badge aluguel">Aluguel</span>
+        <button class="fav-btn" onclick="toggleFav(this)" title="Favoritar">🤍</button>
+      </div>
+      <div class="prop-info">
+        <div class="prop-top">
+          <div><div class="prop-price">R$ 1.800</div><div class="prop-period">/mês + condomínio</div></div>
+        </div>
+        <div class="prop-name">Apartamento 2 Quartos</div>
+        <div class="prop-addr">📍 Jardim Miriam, Suzano</div>
+        <div class="prop-specs">
+          <span class="spec"><span class="spec-icon">🛏</span> 2 quartos</span>
+          <span class="spec"><span class="spec-icon">🚿</span> 1 banheiro</span>
+          <span class="spec"><span class="spec-icon">📐</span> 58m²</span>
+        </div>
+        <button class="prop-cta" onclick="toggleFavFromCta(this)">♡ Tenho Interesse</button>
+      </div>
+    </div>
+
+    <div class="prop-card" data-type="venda" data-cat="casa" data-name="Casa 3 Quartos com Piscina — Centro" data-price="R$ 480.000" data-code="IMV-002">
+      <div class="prop-img">
+        <img src="https://images.pexels.com/photos/7587880/pexels-photo-7587880.jpeg?auto=compress&cs=tinysrgb&w=600&h=350&fit=crop" alt="Casa com piscina">
+        <span class="prop-type-badge venda">Venda</span>
+        <button class="fav-btn" onclick="toggleFav(this)" title="Favoritar">🤍</button>
+      </div>
+      <div class="prop-info">
+        <div class="prop-top">
+          <div><div class="prop-price">R$ 480.000</div><div class="prop-period">à vista ou financiado</div></div>
+        </div>
+        <div class="prop-name">Casa 3 Quartos com Piscina</div>
+        <div class="prop-addr">📍 Centro, Suzano</div>
+        <div class="prop-specs">
+          <span class="spec"><span class="spec-icon">🛏</span> 3 quartos</span>
+          <span class="spec"><span class="spec-icon">🚿</span> 2 banheiros</span>
+          <span class="spec"><span class="spec-icon">📐</span> 180m²</span>
+        </div>
+        <button class="prop-cta" onclick="toggleFavFromCta(this)">♡ Tenho Interesse</button>
+      </div>
+    </div>
+
+    <div class="prop-card" data-type="aluguel" data-cat="apartamento" data-name="Apto Studio — Vila Fátima" data-price="R$ 1.200/mês" data-code="IMV-003">
+      <div class="prop-img">
+        <img src="https://images.pexels.com/photos/6933852/pexels-photo-6933852.jpeg?auto=compress&cs=tinysrgb&w=600&h=350&fit=crop" alt="Studio moderno">
+        <span class="prop-type-badge aluguel">Aluguel</span>
+        <button class="fav-btn" onclick="toggleFav(this)" title="Favoritar">🤍</button>
+      </div>
+      <div class="prop-info">
+        <div class="prop-top">
+          <div><div class="prop-price">R$ 1.200</div><div class="prop-period">/mês</div></div>
+        </div>
+        <div class="prop-name">Studio Moderno Mobiliado</div>
+        <div class="prop-addr">📍 Vila Fátima, Suzano</div>
+        <div class="prop-specs">
+          <span class="spec"><span class="spec-icon">🛏</span> 1 quarto</span>
+          <span class="spec"><span class="spec-icon">🚿</span> 1 banheiro</span>
+          <span class="spec"><span class="spec-icon">📐</span> 35m²</span>
+        </div>
+        <button class="prop-cta" onclick="toggleFavFromCta(this)">♡ Tenho Interesse</button>
+      </div>
+    </div>
+
+    <div class="prop-card" data-type="venda" data-cat="casa" data-name="Casa de Alto Padrão — Jd. Europa" data-price="R$ 850.000" data-code="IMV-004">
+      <div class="prop-img">
+        <img src="https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=600&h=350&fit=crop" alt="Casa luxo">
+        <span class="prop-type-badge venda">Venda</span>
+        <button class="fav-btn" onclick="toggleFav(this)" title="Favoritar">🤍</button>
+      </div>
+      <div class="prop-info">
+        <div class="prop-top">
+          <div><div class="prop-price">R$ 850.000</div><div class="prop-period">Alto Padrão</div></div>
+        </div>
+        <div class="prop-name">Casa de Alto Padrão</div>
+        <div class="prop-addr">📍 Jardim Europa, Suzano</div>
+        <div class="prop-specs">
+          <span class="spec"><span class="spec-icon">🛏</span> 4 quartos</span>
+          <span class="spec"><span class="spec-icon">🚿</span> 3 banheiros</span>
+          <span class="spec"><span class="spec-icon">📐</span> 280m²</span>
+        </div>
+        <button class="prop-cta" onclick="toggleFavFromCta(this)">♡ Tenho Interesse</button>
+      </div>
+    </div>
+
+    <div class="prop-card" data-type="aluguel" data-cat="comercial" data-name="Sala Comercial — Av. Principal" data-price="R$ 2.500/mês" data-code="IMV-005">
+      <div class="prop-img">
+        <img src="https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=600&h=350&fit=crop" alt="Sala comercial">
+        <span class="prop-type-badge aluguel">Aluguel</span>
+        <button class="fav-btn" onclick="toggleFav(this)" title="Favoritar">🤍</button>
+      </div>
+      <div class="prop-info">
+        <div class="prop-top">
+          <div><div class="prop-price">R$ 2.500</div><div class="prop-period">/mês</div></div>
+        </div>
+        <div class="prop-name">Sala Comercial — Ótima Localização</div>
+        <div class="prop-addr">📍 Av. Principal, Suzano</div>
+        <div class="prop-specs">
+          <span class="spec"><span class="spec-icon">🚿</span> 1 banheiro</span>
+          <span class="spec"><span class="spec-icon">🚗</span> 2 vagas</span>
+          <span class="spec"><span class="spec-icon">📐</span> 75m²</span>
+        </div>
+        <button class="prop-cta" onclick="toggleFavFromCta(this)">♡ Tenho Interesse</button>
+      </div>
+    </div>
+
+    <div class="prop-card" data-type="venda" data-cat="apartamento" data-name="Apto 3 Quartos com Suíte — Cézar de Souza" data-price="R$ 390.000" data-code="IMV-006">
+      <div class="prop-img">
+        <img src="https://images.pexels.com/photos/4468806/pexels-photo-4468806.jpeg?auto=compress&cs=tinysrgb&w=600&h=350&fit=crop" alt="Apartamento suite">
+        <span class="prop-type-badge venda">Venda</span>
+        <button class="fav-btn" onclick="toggleFav(this)" title="Favoritar">🤍</button>
+      </div>
+      <div class="prop-info">
+        <div class="prop-top">
+          <div><div class="prop-price">R$ 390.000</div><div class="prop-period">financiável</div></div>
+        </div>
+        <div class="prop-name">Apartamento 3 Quartos com Suíte</div>
+        <div class="prop-addr">📍 Cézar de Souza, Mogi das Cruzes</div>
+        <div class="prop-specs">
+          <span class="spec"><span class="spec-icon">🛏</span> 3 quartos</span>
+          <span class="spec"><span class="spec-icon">🚿</span> 2 banheiros</span>
+          <span class="spec"><span class="spec-icon">📐</span> 95m²</span>
+        </div>
+        <button class="prop-cta" onclick="toggleFavFromCta(this)">♡ Tenho Interesse</button>
+      </div>
+    </div>
+
+    <div class="prop-card" data-type="aluguel" data-cat="casa" data-name="Casa 2 Quartos — Jd. Colorado" data-price="R$ 1.500/mês" data-code="IMV-007">
+      <div class="prop-img">
+        <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600&h=350&fit=crop" alt="Casa aluguel">
+        <span class="prop-type-badge aluguel">Aluguel</span>
+        <button class="fav-btn" onclick="toggleFav(this)" title="Favoritar">🤍</button>
+      </div>
+      <div class="prop-info">
+        <div class="prop-top">
+          <div><div class="prop-price">R$ 1.500</div><div class="prop-period">/mês</div></div>
+        </div>
+        <div class="prop-name">Casa 2 Quartos — Quintal</div>
+        <div class="prop-addr">📍 Jardim Colorado, Suzano</div>
+        <div class="prop-specs">
+          <span class="spec"><span class="spec-icon">🛏</span> 2 quartos</span>
+          <span class="spec"><span class="spec-icon">🚿</span> 1 banheiro</span>
+          <span class="spec"><span class="spec-icon">📐</span> 90m²</span>
+        </div>
+        <button class="prop-cta" onclick="toggleFavFromCta(this)">♡ Tenho Interesse</button>
+      </div>
+    </div>
+
+    <div class="prop-card" data-type="venda" data-cat="comercial" data-name="Ponto Comercial — Centro" data-price="R$ 620.000" data-code="IMV-008">
+      <div class="prop-img">
+        <img src="https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=600&h=350&fit=crop" alt="Ponto comercial">
+        <span class="prop-type-badge venda">Venda</span>
+        <button class="fav-btn" onclick="toggleFav(this)" title="Favoritar">🤍</button>
+      </div>
+      <div class="prop-info">
+        <div class="prop-top">
+          <div><div class="prop-price">R$ 620.000</div><div class="prop-period">imóvel comercial</div></div>
+        </div>
+        <div class="prop-name">Ponto Comercial — Alta Visibilidade</div>
+        <div class="prop-addr">📍 Centro, Suzano</div>
+        <div class="prop-specs">
+          <span class="spec"><span class="spec-icon">🚿</span> 2 banheiros</span>
+          <span class="spec"><span class="spec-icon">🚗</span> 5 vagas</span>
+          <span class="spec"><span class="spec-icon">📐</span> 200m²</span>
+        </div>
+        <button class="prop-cta" onclick="toggleFavFromCta(this)">♡ Tenho Interesse</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="s-tag">Processo</div>
+  <h2 class="s-title" style="color:#fff">Do interesse à<br><em>chave na mão</em></h2>
+  <p style="margin-top:.8rem;font-size:1rem;color:#8A8AAA;max-width:500px;line-height:1.7">Trabalhamos para que sua experiência seja simples, segura e sem estresse do início ao fim.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">🏠</div><h3>1. Escolha os Imóveis</h3><p>Navegue pelo catálogo e adicione aos favoritos todos que despertarem seu interesse.</p></div>
+    <div class="step"><div class="step-num">💬</div><h3>2. Fale com o Corretor</h3><p>Envie sua lista pelo WhatsApp e nosso corretor entra em contato em até 2 horas.</p></div>
+    <div class="step"><div class="step-num">🔍</div><h3>3. Visita Agendada</h3><p>Agendamos visitas nos seus horários preferidos, presencialmente ou por vídeo.</p></div>
+    <div class="step"><div class="step-num">🔑</div><h3>4. Contrato e Chave</h3><p>Cuidamos de toda a documentação. Você só precisa chegar e assinar.</p></div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="s-tag">Por que a ImoViva?</div>
+  <h2 class="s-title">Imobiliária que cuida<br>de você do <em>início ao fim</em></h2>
+  <div class="feats">
+    <div class="feat"><span class="feat-icon">📋</span><h3>Documentação Completa</h3><p>Nossa equipe cuida de toda a burocracia para que você não precise se preocupar com papelada.</p></div>
+    <div class="feat"><span class="feat-icon">🔒</span><h3>Segurança Jurídica</h3><p>Todos os imóveis passam por uma verificação legal rigorosa antes de serem listados no catálogo.</p></div>
+    <div class="feat"><span class="feat-icon">💰</span><h3>Melhor Negociação</h3><p>Com 12 anos no mercado, sabemos a hora certa de negociar e conseguimos as melhores condições.</p></div>
+    <div class="feat"><span class="feat-icon">📱</span><h3>Atendimento 7 dias</h3><p>Nossos corretores atendem todos os dias da semana, incluindo fins de semana e feriados.</p></div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section id="avaliacoes">
+  <div class="s-tag">Avaliações</div>
+  <h2 class="s-title">Clientes que <em>encontraram</em><br>o lar ideal</h2>
+  <div class="reviews-grid">
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Encontrei meu apartamento em menos de uma semana! A corretora foi incrível, super atenciosa e me ajudou em tudo. Processo rápido e sem dor de cabeça."</p>
+      <div class="review-author"><div class="r-avatar">AP</div><div><div class="r-name">Ana Paula R.</div><div class="r-desc">Aluguel de apartamento — Suzano</div></div></div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Comprei minha primeira casa pela ImoViva. Me explicaram tudo sobre o financiamento, cuidaram da documentação e ainda me visitaram na entrega das chaves. Recomendo muito!"</p>
+      <div class="review-author"><div class="r-avatar">MF</div><div><div class="r-name">Marcos Figueiredo</div><div class="r-desc">Compra de casa — Mogi das Cruzes</div></div></div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Já aluguei meu ponto comercial pela terceira vez com a ImoViva. Sempre eficientes, transparentes nos valores e com ótimas opções. São realmente a melhor da região."</p>
+      <div class="review-author"><div class="r-avatar">CB</div><div><div class="r-name">Carolina Bastos</div><div class="r-desc">Aluguel comercial — Centro</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="s-tag">Dúvidas</div>
+  <h2 class="s-title">Perguntas <em>frequentes</em></h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Quais documentos preciso para alugar? <span class="faq-icon">+</span></div><div class="faq-a">Para aluguel residencial: RG, CPF, comprovante de renda (3x o valor do aluguel) e comprovante de residência. Para aluguel comercial podem ser necessários documentos da empresa. Nossa equipe orienta em cada caso.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Vocês ajudam com financiamento imobiliário? <span class="faq-icon">+</span></div><div class="faq-a">Sim! Temos parceria com as principais instituições financeiras e podemos te ajudar a simular e encaminhar o financiamento pelo Minha Casa Minha Vida ou linha livre. Sem custo adicional.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva para fechar um contrato? <span class="faq-icon">+</span></div><div class="faq-a">Aluguel: em média 5 a 10 dias úteis após aprovação do cadastro. Compra: 30 a 60 dias, dependendo da modalidade (à vista é mais rápido, financiamento depende da análise do banco).</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">As visitas são gratuitas? <span class="faq-icon">+</span></div><div class="faq-a">Sim, totalmente gratuitas e sem compromisso. Você pode visitar quantos imóveis quiser antes de tomar sua decisão. Também oferecemos visita virtual por vídeo chamada.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Vocês atuam somente em Suzano? <span class="faq-icon">+</span></div><div class="faq-a">Nossa base é Suzano, mas atuamos em toda a região do Alto Tietê: Mogi das Cruzes, Poá, Itaquaquecetuba, Ferraz de Vasconcelos e arredores.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>Seu próximo lar<br>está aqui. 🏡</h2>
+  <p>Selecione os imóveis que chamaram sua atenção e receba atendimento personalizado de um corretor dedicado.</p>
+  <button class="btn-gold" onclick="document.getElementById('imoveis').scrollIntoView({behavior:'smooth'})">Ver Todos os Imóveis →</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Imo<span>Viva</span></div>
+      <p class="footer-desc">Imobiliária especializada em Suzano e Grande São Paulo. CRECI ativo, 12 anos de mercado e mais de 320 imóveis disponíveis.</p>
+    </div>
+    <div>
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="#imoveis">Imóveis</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#avaliacoes">Avaliações</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">CRECI 12345-F</a></li>
+        <li><a href="#">contato@imoviva.com.br</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ImoViva Imóveis. Todos os direitos reservados.</span>
+    <span>Suzano, São Paulo — Brasil</span>
+  </div>
+</footer>
+
+<!-- FAVORITES BAR -->
+<div class="fav-bar" id="favBar">
+  <div class="fav-bar-info">
+    <div class="fav-bar-count" id="favCount">0 imóveis selecionados</div>
+    <div class="fav-bar-label">❤️ Meus Favoritos</div>
+  </div>
+  <div class="fav-btns">
+    <button class="fav-clear" onclick="clearFavs()">Limpar</button>
+    <button class="fav-wa" onclick="openModal()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.339 18.894l-.538 1.996C4.565 21.511 5.089 22 5.671 22c.182 0 .368-.049.532-.149l2.098-1.248a9.878 9.878 0 002.7-.002A9.94 9.94 0 0020 12 9.968 9.968 0 0010 2 9.968 9.968 0 002.929 4.929 9.968 9.968 0 000 12c0 1.847.503 3.576 1.378 5.062l-1.04 3.854a.5.5 0 00.612.612l3.389-.634z"/></svg>
+      Solicitar Visita pelo WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-icon">🏡</div>
+    <div class="modal-title">Quase lá!</div>
+    <div class="modal-sub">Nos diga seu nome e telefone para que nosso corretor entre em contato rapidinho e agende as visitas.</div>
+    <input class="modal-input" id="clientName" type="text" placeholder="Seu nome completo" maxlength="60">
+    <input class="modal-input" id="clientPhone" type="tel" placeholder="Seu WhatsApp (opcional)" maxlength="20">
+    <div class="modal-btns">
+      <button class="modal-skip" onclick="sendWhatsApp('', '')">Pular</button>
+      <button class="modal-send" onclick="sendWhatsApp(document.getElementById('clientName').value, document.getElementById('clientPhone').value)">Solicitar Visita ✓</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WA_NUMBER = '5511992568717';
+const favs = new Set();
+let currentFilter = 'todos';
+
+/* ── FILTER ── */
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  filterProperties();
+}
+
+function filterProperties() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.prop-card').forEach(card => {
+    const matchFilter = currentFilter === 'todos' ||
+      card.dataset.type === currentFilter ||
+      card.dataset.cat === currentFilter;
+    const matchSearch = !q ||
+      card.dataset.name.toLowerCase().includes(q) ||
+      card.querySelector('.prop-addr').textContent.toLowerCase().includes(q);
+    card.classList.toggle('hidden', !(matchFilter && matchSearch));
+  });
+}
+
+/* ── FAVORITES ── */
+function toggleFav(btn) {
+  const card = btn.closest('.prop-card');
+  const name = card.dataset.name;
+  const ctaBtn = card.querySelector('.prop-cta');
+  if (favs.has(name)) {
+    favs.delete(name);
+    btn.textContent = '🤍';
+    btn.classList.remove('active');
+    card.classList.remove('favorited');
+    ctaBtn.textContent = '♡ Tenho Interesse';
+  } else {
+    favs.add(name);
+    btn.textContent = '❤️';
+    btn.classList.add('active');
+    card.classList.add('favorited');
+    ctaBtn.textContent = '❤️ Favoritado!';
+  }
+  updateFavBar();
+}
+
+function toggleFavFromCta(btn) {
+  const card = btn.closest('.prop-card');
+  const favBtn = card.querySelector('.fav-btn');
+  toggleFav(favBtn);
+}
+
+function updateFavBar() {
+  const bar = document.getElementById('favBar');
+  const cnt = document.getElementById('favCount');
+  if (favs.size === 0) { bar.classList.remove('visible'); return; }
+  bar.classList.add('visible');
+  cnt.textContent = favs.size === 1 ? '1 imóvel selecionado' : `${favs.size} imóveis selecionados`;
+}
+
+function clearFavs() {
+  favs.clear();
+  document.querySelectorAll('.prop-card').forEach(card => {
+    card.classList.remove('favorited');
+    card.querySelector('.fav-btn').textContent = '🤍';
+    card.querySelector('.fav-btn').classList.remove('active');
+    card.querySelector('.prop-cta').textContent = '♡ Tenho Interesse';
+  });
+  updateFavBar();
+}
+
+/* ── FAQ ── */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+/* ── MODAL ── */
+function openModal() {
+  if (favs.size === 0) { alert('Selecione pelo menos um imóvel antes! 🏠'); return; }
+  document.getElementById('clientName').value = '';
+  document.getElementById('clientPhone').value = '';
+  document.getElementById('modalOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('clientName').focus(), 300);
+}
+
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+/* ── WHATSAPP ── */
+function sendWhatsApp(name, phone) {
+  document.getElementById('modalOverlay').classList.remove('open');
+  if (favs.size === 0) return;
+
+  const greeting = name && name.trim()
+    ? `Olá! Me chamo *${name.trim()}* e tenho interesse em alguns imóveis da ImoViva.`
+    : 'Olá! Tenho interesse em alguns imóveis da ImoViva.';
+  
+  const phoneInfo = phone && phone.trim() ? `\n📞 Meu contato: *${phone.trim()}*` : '';
+
+  const lines = [];
+  favs.forEach(favName => {
+    const card = [...document.querySelectorAll('.prop-card')].find(c => c.dataset.name === favName);
+    if (!card) return;
+    const code = card.dataset.code;
+    const price = card.dataset.price;
+    const addr = card.querySelector('.prop-addr').textContent.trim();
+    lines.push(`▸ [${code}] ${favName}\n   ${addr} — *${price}*`);
+  });
+
+  const msg = [
+    '🏡 *Solicitação de Visita — ImoViva*',
+    '',
+    greeting,
+    phoneInfo,
+    '',
+    `🔖 *Imóveis de interesse (${favs.size}):*`,
+    ...lines,
+    '',
+    'Gostaria de agendar visitas e saber mais informações. Obrigado(a)!'
+  ].join('\n');
+
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+</script>
+</body>
+</html>

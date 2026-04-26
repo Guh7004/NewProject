@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padoca Bestie — Quentinho & Gostoso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:   #FFF8EC;
+    --gold:    #F5A623;
+    --gold2:   #E8900A;
+    --brown:   #4A2C2A;
+    --brown2:  #2E1A18;
+    --pink:    #FF6B9D;
+    --pink2:   #FF4580;
+    --warm:    #FFF0DC;
+    --card-bg: #FFFFFF;
+    --radius:  20px;
+    --font-h:  'Fraunces', Georgia, serif;
+    --font-b:  'Nunito', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-b);
+    background: var(--cream);
+    color: var(--brown);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,248,236,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--gold);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--font-h);
+    font-weight: 900; font-size: 1.5rem;
+    color: var(--brown); text-decoration: none;
+    display: flex; align-items: center; gap: .4rem;
+  }
+  .nav-logo span { color: var(--pink); }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a {
+    font-size: .9rem; font-weight: 700;
+    color: var(--brown); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--pink); }
+  .nav-cta {
+    background: var(--pink); color: #fff;
+    border: none; border-radius: 50px;
+    padding: .5rem 1.3rem; font-family: var(--font-b);
+    font-weight: 800; font-size: .85rem; cursor: pointer;
+    transition: transform .15s, background .15s;
+  }
+  .nav-cta:hover { background: var(--pink2); transform: scale(1.05); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - 64px);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 2rem;
+    padding: 4rem 5vw;
+    background: linear-gradient(135deg, #FFF8EC 60%, #FFE8CA 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFD29E 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--pink); color: #fff;
+    border-radius: 50px; padding: .35rem 1rem;
+    font-size: .8rem; font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    animation: pop .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  .hero h1 {
+    font-family: var(--font-h);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--brown);
+    animation: slideUp .6s .1s both ease;
+  }
+  .hero h1 em { color: var(--pink); font-style: italic; }
+  .hero p {
+    margin-top: 1.2rem; font-size: 1.1rem;
+    color: #7A5045; line-height: 1.7; max-width: 460px;
+    animation: slideUp .6s .2s both ease;
+  }
+  .hero-btns {
+    margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: slideUp .6s .3s both ease;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--brown);
+    border: none; border-radius: 50px;
+    padding: .85rem 2rem; font-family: var(--font-b);
+    font-weight: 800; font-size: 1rem; cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+    box-shadow: 0 4px 14px rgba(245,166,35,.4);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(245,166,35,.5); }
+  .btn-secondary {
+    background: transparent; color: var(--brown);
+    border: 2.5px solid var(--brown); border-radius: 50px;
+    padding: .85rem 2rem; font-family: var(--font-b);
+    font-weight: 800; font-size: 1rem; cursor: pointer;
+    transition: background .15s;
+  }
+  .btn-secondary:hover { background: var(--warm); }
+
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    animation: floatIn .8s .2s both ease;
+    position: relative;
+  }
+  .hero-blob {
+    width: 380px; height: 380px;
+    border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+    overflow: hidden;
+    position: relative; animation: morphBlob 8s ease-in-out infinite;
+    box-shadow: 0 20px 60px rgba(74,44,42,.18);
+  }
+  .hero-blob img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .hero-emoji { display: none; }
+  .badge-float {
+    position: absolute; background: #fff;
+    border-radius: 16px; padding: .6rem 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,.12);
+    font-weight: 800; font-size: .85rem;
+    color: var(--brown); white-space: nowrap;
+  }
+  .badge-float.b1 { top: 20px; right: -10px; animation: float 3s ease-in-out infinite; }
+  .badge-float.b2 { bottom: 40px; left: -20px; animation: float 3s .8s ease-in-out infinite; }
+  .badge-float.b3 { top: 50%; right: -30px; animation: float 3s 1.5s ease-in-out infinite; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--brown); color: #fff;
+    display: flex; justify-content: center;
+    gap: 3rem; padding: 1.2rem 2rem;
+    flex-wrap: wrap;
+  }
+  .trust-item { display: flex; align-items: center; gap: .5rem; font-weight: 700; font-size: .9rem; }
+  .trust-item .icon { font-size: 1.2rem; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 5vw; }
+  .section-tag {
+    display: inline-block;
+    background: var(--warm); color: var(--gold2);
+    border: 2px solid var(--gold);
+    border-radius: 50px; padding: .3rem .9rem;
+    font-size: .8rem; font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase;
+    margin-bottom: .8rem;
+  }
+  .section-title {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900; line-height: 1.1; color: var(--brown);
+  }
+  .section-title em { color: var(--pink); font-style: italic; }
+  .section-sub {
+    margin-top: .8rem; font-size: 1.05rem;
+    color: #7A5045; max-width: 540px; line-height: 1.7;
+  }
+
+  /* ── FEATURES ── */
+  #vantagens { background: var(--cream); }
+  .features-grid {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .feature-card {
+    background: #fff; border-radius: var(--radius);
+    padding: 2rem 1.6rem;
+    border: 2px solid transparent;
+    transition: border-color .2s, transform .2s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    border-radius: 20px 20px 0 0;
+  }
+  .feature-card.f1::before { background: var(--gold); }
+  .feature-card.f2::before { background: var(--pink); }
+  .feature-card.f3::before { background: #9B59B6; }
+  .feature-card.f4::before { background: #27AE60; }
+  .feature-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+  .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .feature-card h3 {
+    font-family: var(--font-h);
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--brown); margin-bottom: .5rem;
+  }
+  .feature-card p { font-size: .95rem; color: #7A5045; line-height: 1.6; }
+
+  /* ── PRODUCTS ── */
+  #produtos { background: var(--warm); }
+  .products-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .product-card {
+    background: #fff; border-radius: var(--radius);
+    overflow: hidden; cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    border: 2px solid #F0E0C8;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(74,44,42,.12); }
+  .product-img {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background: #F5E8D5;
+  }
+  .product-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+  }
+  .product-card:hover .product-img img { transform: scale(1.06); }
+  .bestseller-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--pink); color: #fff;
+    border-radius: 50px; padding: .2rem .65rem;
+    font-size: .72rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
+  .product-info { padding: 1.2rem; }
+  .product-brand {
+    font-size: .75rem; font-weight: 800;
+    color: var(--gold2); text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .product-name {
+    font-family: var(--font-h);
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--brown); margin: .3rem 0 .6rem;
+    line-height: 1.3;
+  }
+  .product-price {
+    font-size: 1.1rem; font-weight: 800; color: var(--brown2);
+  }
+  .product-price span {
+    font-size: .8rem; font-weight: 600; color: #9A8070;
+    text-decoration: line-through; margin-left: .4rem;
+  }
+  /* ── QTY SELECTOR ── */
+  .qty-row {
+    display: flex; align-items: center; gap: .6rem;
+    margin-top: .8rem;
+  }
+  .qty-btn {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 2px solid #E0C8B0; background: #fff;
+    font-size: 1.1rem; font-weight: 800; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brown); transition: background .15s, border-color .15s;
+    flex-shrink: 0;
+  }
+  .qty-btn:hover { background: var(--warm); border-color: var(--gold); }
+  .qty-num {
+    font-size: 1rem; font-weight: 800; color: var(--brown);
+    min-width: 24px; text-align: center;
+  }
+  .product-cta {
+    flex: 1; margin-left: auto;
+    background: var(--brown); color: #fff;
+    border: none; border-radius: 50px;
+    padding: .5rem .9rem; cursor: pointer;
+    font-family: var(--font-b); font-weight: 800; font-size: .82rem;
+    transition: background .15s; white-space: nowrap;
+  }
+  .product-cta:hover { background: var(--pink2); }
+  .product-cta.added { background: #27AE60; }
+
+  /* ── CART BAR ── */
+  .cart-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    background: var(--brown); color: #fff;
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    transform: translateY(100%);
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 -4px 30px rgba(0,0,0,.2);
+  }
+  .cart-bar.visible { transform: translateY(0); }
+  .cart-bar-info { display: flex; flex-direction: column; gap: .2rem; }
+  .cart-bar-items { font-size: .85rem; color: #C8A898; }
+  .cart-bar-total { font-family: var(--font-h); font-size: 1.4rem; font-weight: 900; color: var(--gold); }
+  .cart-bar-cta {
+    background: #25D366; color: #fff;
+    border: none; border-radius: 50px;
+    padding: .8rem 1.8rem; cursor: pointer;
+    font-family: var(--font-b); font-weight: 800; font-size: 1rem;
+    transition: transform .15s, background .15s;
+    display: flex; align-items: center; gap: .5rem;
+    white-space: nowrap;
+  }
+  .cart-bar-cta:hover { transform: scale(1.04); background: #1db954; }
+  .cart-bar-clear {
+    background: transparent; color: #C8A898;
+    border: 1.5px solid #7A5045; border-radius: 50px;
+    padding: .7rem 1.2rem; cursor: pointer;
+    font-family: var(--font-b); font-weight: 700; font-size: .85rem;
+    transition: color .15s;
+  }
+  .cart-bar-clear:hover { color: #fff; }
+
+  /* ── NAME MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(0,0,0,.55);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal-box {
+    background: #fff; border-radius: 24px;
+    padding: 2.5rem 2rem; max-width: 420px; width: 100%;
+    transform: translateY(30px) scale(.96);
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+    text-align: center;
+  }
+  .modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+  .modal-icon { font-size: 3rem; margin-bottom: .5rem; }
+  .modal-title { font-family: var(--font-h); font-size: 1.6rem; font-weight: 900; color: var(--brown); margin-bottom: .4rem; }
+  .modal-sub { color: #7A5045; font-size: .95rem; margin-bottom: 1.5rem; line-height: 1.5; }
+  .modal-input {
+    width: 100%; padding: .85rem 1.2rem;
+    border: 2px solid #E0C8B0; border-radius: 50px;
+    font-family: var(--font-b); font-size: 1rem; color: var(--brown);
+    outline: none; transition: border-color .2s; box-sizing: border-box;
+    text-align: center;
+  }
+  .modal-input:focus { border-color: var(--gold); }
+  .modal-btns { display: flex; gap: .8rem; margin-top: 1.2rem; }
+  .modal-send {
+    flex: 1; background: #25D366; color: #fff;
+    border: none; border-radius: 50px;
+    padding: .85rem; cursor: pointer;
+    font-family: var(--font-b); font-weight: 800; font-size: 1rem;
+    transition: background .15s;
+  }
+  .modal-send:hover { background: #1db954; }
+  .modal-skip {
+    background: var(--warm); color: var(--brown);
+    border: 2px solid #E0C8B0; border-radius: 50px;
+    padding: .85rem 1.2rem; cursor: pointer;
+    font-family: var(--font-b); font-weight: 700; font-size: .9rem;
+    transition: background .15s; white-space: nowrap;
+  }
+  .modal-skip:hover { background: #FFE8CA; }
+
+  /* ── WHY LOVE ── */
+  #por-que-amar { background: var(--cream); }
+  .love-grid {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; align-items: center;
+  }
+  .love-visual {
+    border-radius: 40px; height: 420px;
+    overflow: hidden; position: relative;
+  }
+  .love-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .love-emoji-big { display: none; }
+  .love-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .love-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    background: #fff; border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    border: 2px solid #F0E0C8;
+    transition: border-color .2s;
+  }
+  .love-item:hover { border-color: var(--gold); }
+  .love-item-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: var(--warm); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+  }
+  .love-item h4 {
+    font-family: var(--font-h);
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--brown); margin-bottom: .3rem;
+  }
+  .love-item p { font-size: .9rem; color: #7A5045; line-height: 1.5; }
+
+  /* ── REVIEWS ── */
+  #avaliacoes { background: var(--brown); }
+  #avaliacoes .section-tag { background: rgba(255,255,255,.1); color: var(--gold); border-color: var(--gold); }
+  #avaliacoes .section-title { color: #fff; }
+  #avaliacoes .section-sub { color: #C8A898; }
+  .reviews-grid {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .review-card {
+    background: rgba(255,255,255,.07);
+    border: 1.5px solid rgba(255,255,255,.15);
+    border-radius: var(--radius); padding: 1.6rem;
+    transition: background .2s;
+  }
+  .review-card:hover { background: rgba(255,255,255,.12); }
+  .review-stars { color: var(--gold); font-size: 1rem; margin-bottom: .8rem; }
+  .review-text { color: #EDD8C8; font-size: .95rem; line-height: 1.65; font-style: italic; }
+  .review-author {
+    margin-top: 1rem; display: flex; align-items: center; gap: .8rem;
+  }
+  .review-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center;
+    justify-content: center; font-weight: 800; font-size: .95rem;
+    color: var(--brown);
+  }
+  .review-name { font-weight: 700; color: #fff; font-size: .9rem; }
+  .review-loc { font-size: .8rem; color: #9A8070; }
+
+  /* ── SOBRE ── */
+  #sobre {
+    background: linear-gradient(135deg, #FFF8EC 50%, #FFE8CA 100%);
+  }
+  .sobre-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .sobre-text .section-title { font-size: clamp(2rem, 3.5vw, 2.8rem); }
+  .sobre-text p {
+    margin-top: 1.2rem; font-size: 1rem;
+    color: #7A5045; line-height: 1.8;
+  }
+  .sobre-stats {
+    margin-top: 2rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: #fff; border-radius: 16px; padding: 1.2rem;
+    border: 2px solid #F0E0C8; text-align: center;
+  }
+  .stat-number {
+    font-family: var(--font-h);
+    font-size: 2.2rem; font-weight: 900; color: var(--pink);
+    display: block;
+  }
+  .stat-label { font-size: .85rem; color: #7A5045; font-weight: 600; margin-top: .2rem; }
+  .sobre-visual {
+    display: grid; grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; gap: 1rem; height: 400px;
+  }
+  .sobre-card {
+    border-radius: 20px; overflow: hidden;
+    position: relative;
+  }
+  .sobre-card img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform .4s;
+  }
+  .sobre-card:hover img { transform: scale(1.07); }
+  .sobre-card .label {
+    position: absolute; bottom: 12px; left: 12px;
+    background: rgba(255,255,255,.9);
+    border-radius: 50px; padding: .3rem .8rem;
+    font-weight: 800; color: var(--brown); font-size: .85rem;
+  }
+  .sc1 { grid-column: 1; grid-row: 1 / 3; }
+  .sc2 { }
+  .sc3 { }
+
+  /* ── FAQ ── */
+  #faq { background: var(--warm); }
+  .faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: .8rem; max-width: 720px; }
+  .faq-item {
+    background: #fff; border-radius: 16px;
+    border: 2px solid #F0E0C8; overflow: hidden;
+    transition: border-color .2s;
+  }
+  .faq-item.open { border-color: var(--gold); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 1.4rem; cursor: pointer;
+    font-weight: 800; font-size: 1rem; color: var(--brown);
+    user-select: none;
+  }
+  .faq-q:hover { background: var(--warm); }
+  .faq-icon {
+    font-size: 1.3rem; color: var(--gold);
+    transition: transform .3s; flex-shrink: 0;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .35s ease, padding .25s;
+    font-size: .95rem; color: #7A5045; line-height: 1.7;
+    padding: 0 1.4rem;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 1.4rem 1.2rem; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--pink), var(--pink2));
+    padding: 4rem 5vw; text-align: center;
+  }
+  .cta-banner h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900; color: #fff;
+  }
+  .cta-banner p { color: #FFD0E5; font-size: 1.1rem; margin: .8rem auto; max-width: 500px; line-height: 1.7; }
+  .cta-banner .btn-primary { background: #fff; color: var(--pink2); margin-top: 1.5rem; font-size: 1.05rem; }
+  .cta-banner .btn-primary:hover { background: var(--cream); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brown2); color: #C8A898;
+    padding: 3rem 5vw 2rem;
+  }
+  .footer-inner {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 2.5rem;
+  }
+  .footer-logo {
+    font-family: var(--font-h);
+    font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: .6rem;
+  }
+  .footer-logo span { color: var(--pink); }
+  .footer-desc { font-size: .9rem; line-height: 1.7; }
+  footer h4 { color: var(--gold); font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+  footer ul a { color: #C8A898; text-decoration: none; font-size: .9rem; transition: color .2s; }
+  footer ul a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between;
+    align-items: center; font-size: .82rem; flex-wrap: wrap; gap: .5rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(40px) scale(.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
+  @keyframes morphBlob {
+    0%,100% { border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%; }
+    33%      { border-radius: 50% 50% 40% 60% / 60% 40% 55% 45%; }
+    66%      { border-radius: 45% 55% 60% 40% / 45% 60% 40% 55%; }
+  }
+  @keyframes pop {
+    from { transform: scale(.8); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .hero-btns { justify-content: center; }
+    .hero-visual { order: -1; }
+    .hero-blob { width: 260px; height: 260px; }
+    .hero-emoji { font-size: 5rem; }
+    .nav-links { display: none; }
+    .love-grid { grid-template-columns: 1fr; }
+    .sobre-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .sobre-visual { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">🥖 Padoca<span>Bestie</span></a>
+  <ul class="nav-links">
+    <li><a href="#vantagens">Vantagens</a></li>
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="#por-que-amar">Por que Amar</a></li>
+    <li><a href="#sobre">Nossa História</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">Pedir Agora</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-tag">🔥 Quentinho todo dia</div>
+    <h1>Pão fresco,<br><em>amor de verdade</em></h1>
+    <p>A PadocaBestie nasceu para transformar seu café da manhã em um momento especial. Feito com ingredientes selecionados, carinho e o aroma que só a padaria mais gostosa do bairro tem.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">Ver Produtos ✨</button>
+      <button class="btn-secondary" onclick="document.getElementById('sobre').scrollIntoView({behavior:'smooth'})">Nossa História</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-blob">
+      <img src="https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop" alt="Padaria Artesanal">
+    </div>
+    <div class="badge-float b1">⭐ 4.9 — Mais de 3.000 clientes</div>
+    <div class="badge-float b2">🧁 + de 40 sabores</div>
+    <div class="badge-float b3">🚚 Entrega no bairro</div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="icon">🌾</span> Ingredientes frescos</div>
+  <div class="trust-item"><span class="icon">🕕</span> Aberto das 6h às 20h</div>
+  <div class="trust-item"><span class="icon">🤍</span> Feito com amor</div>
+  <div class="trust-item"><span class="icon">📦</span> Entrega rápida</div>
+  <div class="trust-item"><span class="icon">🏆</span> Melhor do bairro</div>
+</div>
+
+<!-- VANTAGENS -->
+<section id="vantagens">
+  <div class="section-tag">Por que a gente?</div>
+  <h2 class="section-title">Vantagens que fazem<br>você <em>querer voltar</em></h2>
+  <p class="section-sub">Da primeira fornada às últimas guloseimas do dia, a PadocaBestie cuida de cada detalhe com muito carinho.</p>
+
+  <div class="features-grid">
+    <div class="feature-card f1">
+      <span class="feature-icon">🌅</span>
+      <h3>Fresquinho todo dia</h3>
+      <p>Nossas fornadas começam às 5h da manhã para que você sempre encontre pão quentinho ao chegar.</p>
+    </div>
+    <div class="feature-card f2">
+      <span class="feature-icon">🌾</span>
+      <h3>Ingredientes selecionados</h3>
+      <p>Usamos farinhas especiais, manteiga real e ingredientes sem conservantes para um sabor autêntico.</p>
+    </div>
+    <div class="feature-card f3">
+      <span class="feature-icon">💜</span>
+      <h3>Receitas exclusivas</h3>
+      <p>Cada produto tem uma história — receitas desenvolvidas pela nossa equipe com meses de testes e carinho.</p>
+    </div>
+    <div class="feature-card f4">
+      <span class="feature-icon">🚚</span>
+      <h3>Entrega no bairro</h3>
+      <p>Pediu pelo WhatsApp? A gente leva até sua porta sem taxa mínima para pedidos acima de R$ 30.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+  <div class="section-tag">Mais amados</div>
+  <h2 class="section-title">Os produtos <em>queridinhos</em><br>dos nossos clientes</h2>
+  <p class="section-sub">Descubra os produtos PadocaBestie mais escolhidos. De pãezinhos clássicos a bolos especiais, tem de tudo para o seu dia.</p>
+
+  <div class="products-grid">
+    <div class="product-card" data-name="Croissant de Manteiga Artesanal" data-price="8.90">
+      <div class="product-img">
+        <img src="https://images.pexels.com/photos/13119734/pexels-photo-13119734.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Croissant de Manteiga">
+        <div class="bestseller-badge">Mais Vendido</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">PadocaBestie</div>
+        <div class="product-name">Croissant de Manteiga Artesanal</div>
+        <div class="product-price">R$ 8,90 <span>R$ 10,00</span></div>
+        <div class="qty-row">
+          <button class="qty-btn minus">−</button>
+          <span class="qty-num">0</span>
+          <button class="qty-btn plus">+</button>
+          <button class="product-cta">Pedir agora</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-name="Cupcake Red Velvet com Cream Cheese" data-price="11.90">
+      <div class="product-img">
+        <img src="https://images.pexels.com/photos/806363/pexels-photo-806363.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Red Velvet">
+        <div class="bestseller-badge">Novo!</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">PadocaBestie</div>
+        <div class="product-name">Cupcake Red Velvet com Cream Cheese</div>
+        <div class="product-price">R$ 11,90</div>
+        <div class="qty-row">
+          <button class="qty-btn minus">−</button>
+          <span class="qty-num">0</span>
+          <button class="qty-btn plus">+</button>
+          <button class="product-cta">Pedir agora</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-name="Pão Francês Crocante — Dúzia" data-price="9.90">
+      <div class="product-img">
+        <img src="https://images.pexels.com/photos/1287278/pexels-photo-1287278.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Pão Francês">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">PadocaBestie</div>
+        <div class="product-name">Pão Francês Crocante — Dúzia</div>
+        <div class="product-price">R$ 9,90 <span>R$ 12,00</span></div>
+        <div class="qty-row">
+          <button class="qty-btn minus">−</button>
+          <span class="qty-num">0</span>
+          <button class="qty-btn plus">+</button>
+          <button class="product-cta">Pedir agora</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-name="Pão de Queijo Mineiro — 6 unidades" data-price="14.90">
+      <div class="product-img">
+        <img src="https://images.pexels.com/photos/17850150/pexels-photo-17850150.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Pão de Queijo">
+        <div class="bestseller-badge">Mais Vendido</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">PadocaBestie</div>
+        <div class="product-name">Pão de Queijo Mineiro — 6 unidades</div>
+        <div class="product-price">R$ 14,90</div>
+        <div class="qty-row">
+          <button class="qty-btn minus">−</button>
+          <span class="qty-num">0</span>
+          <button class="qty-btn plus">+</button>
+          <button class="product-cta">Pedir agora</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-name="Bolo de Cenoura com Cobertura de Chocolate" data-price="49.90">
+      <div class="product-img">
+        <img src="https://images.pexels.com/photos/5742606/pexels-photo-5742606.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Bolo de Cenoura">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">PadocaBestie</div>
+        <div class="product-name">Bolo de Cenoura com Cobertura de Chocolate</div>
+        <div class="product-price">R$ 49,90 <span>R$ 60,00</span></div>
+        <div class="qty-row">
+          <button class="qty-btn minus">−</button>
+          <span class="qty-num">0</span>
+          <button class="qty-btn plus">+</button>
+          <button class="product-cta">Pedir agora</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-name="Brownie de Chocolate Belga com Nozes" data-price="13.90">
+      <div class="product-img">
+        <img src="https://images.pexels.com/photos/30924034/pexels-photo-30924034.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" alt="Brownie de Chocolate">
+        <div class="bestseller-badge">Novo!</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">PadocaBestie</div>
+        <div class="product-name">Brownie de Chocolate Belga com Nozes</div>
+        <div class="product-price">R$ 13,90</div>
+        <div class="qty-row">
+          <button class="qty-btn minus">−</button>
+          <span class="qty-num">0</span>
+          <button class="qty-btn plus">+</button>
+          <button class="product-cta">Pedir agora</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE AMAR -->
+<section id="por-que-amar">
+  <div class="love-grid">
+    <div class="love-visual">
+      <img src="https://images.pexels.com/photos/205961/pexels-photo-205961.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Padaria artesanal">
+      <span class="love-emoji-big">🥖</span>
+    </div>
+    <div>
+      <div class="section-tag">Por que amar</div>
+      <h2 class="section-title">Motivos de sobra para<br><em>apaixonar</em></h2>
+      <div class="love-list" style="margin-top:2rem">
+        <div class="love-item">
+          <div class="love-item-icon">🌡️</div>
+          <div>
+            <h4>Sempre na temperatura certa</h4>
+            <p>Trabalhamos com câmaras de fermentação controladas para garantir textura perfeita em cada produto.</p>
+          </div>
+        </div>
+        <div class="love-item">
+          <div class="love-item-icon">🎨</div>
+          <div>
+            <h4>Variedade para todo mundo</h4>
+            <p>Do salgado ao doce, do tradicional ao especial — sempre tem uma novidade para descobrir aqui.</p>
+          </div>
+        </div>
+        <div class="love-item">
+          <div class="love-item-icon">💬</div>
+          <div>
+            <h4>Atendimento que cuida de você</h4>
+            <p>Nossa equipe é treinada para atender com carinho e ajudar você a escolher o produto certo.</p>
+          </div>
+        </div>
+        <div class="love-item">
+          <div class="love-item-icon">🌿</div>
+          <div>
+            <h4>Sem conservantes, sem enganação</h4>
+            <p>Rótulo limpo, ingredientes que você conhece. Aqui você sabe o que está comendo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="avaliacoes">
+  <div class="section-tag">O que dizem</div>
+  <h2 class="section-title">Nossos clientes <em>falam</em> por nós</h2>
+  <p class="section-sub">Mais de 3.000 pessoas já descobriram o sabor da PadocaBestie. E a maioria volta todo dia! ☀️</p>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"O croissant daqui é o melhor que já comi em toda minha vida. Derrete na boca, crocante por fora, macio por dentro. Perfeito!"</p>
+      <div class="review-author">
+        <div class="review-avatar">JB</div>
+        <div>
+          <div class="review-name">Juliana Borges</div>
+          <div class="review-loc">Cliente desde 2022</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Moro perto e venho todo dia antes do trabalho. O pão de queijo ainda saindo do forno é simplesmente inacreditável. Recomendo demais!"</p>
+      <div class="review-author">
+        <div class="review-avatar">RS</div>
+        <div>
+          <div class="review-name">Rafael Souza</div>
+          <div class="review-loc">Cliente desde 2021</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Pedi o bolo de cenoura pro aniversário da minha mãe e ela quase chorou de tão gostoso. Entrega foi rápida e embalagem linda. Voltarei!"</p>
+      <div class="review-author">
+        <div class="review-avatar">ML</div>
+        <div>
+          <div class="review-name">Marina Lima</div>
+          <div class="review-loc">Cliente desde 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-text">
+      <div class="section-tag">Nossa história</div>
+      <h2 class="section-title">Uma padaria com<br><em>alma de casa</em></h2>
+      <p>A PadocaBestie nasceu de um sonho simples: criar uma padaria onde cada pessoa se sentisse em casa — com o cheiro de pão quentinho, um sorriso no balcão e produtos feitos com ingredientes de verdade.</p>
+      <p style="margin-top:.8rem">Começamos pequenos, com uma fornada de croissants e um pão de queijo que viralizou no bairro. Hoje, atendemos mais de 3.000 famílias e continuamos com o mesmo carinho de sempre.</p>
+      <div class="sobre-stats">
+        <div class="stat-card">
+          <span class="stat-number">+3.200</span>
+          <div class="stat-label">Clientes satisfeitos</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">40+</span>
+          <div class="stat-label">Produtos artesanais</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">5h</span>
+          <div class="stat-label">Primeira fornada</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">4.9★</span>
+          <div class="stat-label">Avaliação média</div>
+        </div>
+      </div>
+    </div>
+    <div class="sobre-visual">
+      <div class="sobre-card sc1">
+        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop" alt="Croissants">
+        <span class="label">🥐 Croissants</span>
+      </div>
+      <div class="sobre-card sc2">
+        <img src="https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=400&h=240&fit=crop" alt="Bolos">
+        <span class="label">🎂 Bolos</span>
+      </div>
+      <div class="sobre-card sc3">
+        <img src="https://images.pexels.com/photos/209540/pexels-photo-209540.jpeg?auto=compress&cs=tinysrgb&w=400&h=240&fit=crop" alt="Pãezinhos">
+        <span class="label">🥖 Pãezinhos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-tag">Dúvidas</div>
+  <h2 class="section-title">Perguntas <em>frequentes</em></h2>
+  <p class="section-sub">Tudo o que você precisa saber sobre a PadocaBestie antes de se apaixonar.</p>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Qual o horário de funcionamento da PadocaBestie?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Abrimos de segunda a sábado das 6h às 20h, e aos domingos das 6h às 14h. Nossos produtos ficam disponíveis a partir da primeira fornada, às 6h da manhã.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Vocês fazem entrega? Qual a área de cobertura?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Sim! Fazemos entrega no bairro e nos bairros vizinhos para pedidos acima de R$ 30. O pedido pode ser feito pelo WhatsApp e o prazo de entrega é de aproximadamente 40 minutos.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Posso encomendar bolos e produtos personalizados?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Com certeza! Fazemos bolos para aniversários, casamentos e eventos especiais. O prazo mínimo de encomenda é de 3 dias úteis. Entre em contato pelo WhatsApp para saber os sabores disponíveis.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Os produtos têm conservantes ou aditivos artificiais?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Não! Todos os nossos produtos são feitos com ingredientes naturais e sem conservantes artificiais. Por isso, recomendamos consumo em até 2 dias para os pães e até 5 dias para os bolos.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Vocês têm opções sem glúten ou veganas?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Temos uma linha reduzida de produtos sem glúten e veganos, disponível às terças e quintas-feiras. Consulte o cardápio semanal pelo WhatsApp para conferir as opções disponíveis.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Tá esperando o quê, bestie? 🥖</h2>
+  <p>Peça agora pelo WhatsApp e receba o café da manhã mais gostoso do bairro na sua porta.</p>
+  <button class="btn-primary" onclick="alert('Abrindo WhatsApp... 💬')">Pedir pelo WhatsApp ✨</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">🥖 Padoca<span>Bestie</span></div>
+      <p class="footer-desc">Feito com amor, entregue com carinho. A padaria mais gostosa do bairro, aberta desde 2019.</p>
+    </div>
+    <div>
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#vantagens">Vantagens</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#por-que-amar">Por que Amar</a></li>
+        <li><a href="#sobre">Nossa História</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Google Maps</a></li>
+        <li><a href="#">contato@padobestie.com.br</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 PadocaBestie. Feito com 🤍 e muito pão.</span>
+    <span>Suzano, São Paulo — Brasil</span>
+  </div>
+</footer>
+
+<!-- CART BAR -->
+<div class="cart-bar" id="cartBar">
+  <div class="cart-bar-info">
+    <div class="cart-bar-items" id="cartItems">0 itens selecionados</div>
+    <div class="cart-bar-total" id="cartTotal">R$ 0,00</div>
+  </div>
+  <div style="display:flex;gap:.7rem;align-items:center;flex-wrap:wrap">
+    <button class="cart-bar-clear" onclick="clearCart()">Limpar</button>
+    <button class="cart-bar-cta" onclick="openModal()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.339 18.894l-.538 1.996C4.565 21.511 5.089 22 5.671 22c.182 0 .368-.049.532-.149l2.098-1.248a9.878 9.878 0 002.7-.002 9.94 9.94 0 005.598-1.703A9.968 9.968 0 0020 12a9.968 9.968 0 00-2.929-7.071A9.968 9.968 0 0010 2a9.968 9.968 0 00-7.071 2.929A9.968 9.968 0 000 12c0 1.847.503 3.576 1.378 5.062l-1.04 3.854a.5.5 0 00.612.612l3.389-.634z"/></svg>
+      Pedir pelo WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- NAME MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-icon">👋</div>
+    <div class="modal-title">Qual é o seu nome?</div>
+    <div class="modal-sub">Assim a padaria já sabe quem está pedindo e seu atendimento fica ainda mais personalizado!</div>
+    <input class="modal-input" id="clientName" type="text" placeholder="Ex: Maria Silva" maxlength="50">
+    <div class="modal-btns">
+      <button class="modal-skip" onclick="sendWhatsApp('')">Pular</button>
+      <button class="modal-send" onclick="sendWhatsApp(document.getElementById('clientName').value)">
+        Enviar pedido ✓
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── FAQ ──
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── CART STATE ──
+const WA_NUMBER = '5511992568717';
+const cart = {};
+
+function getCardData(card) {
+  return {
+    name:  card.dataset.name,
+    price: parseFloat(card.dataset.price)
+  };
+}
+
+function updateCartBar() {
+  let totalItems = 0, totalPrice = 0;
+  Object.values(cart).forEach(({ qty, price }) => {
+    totalItems += qty;
+    totalPrice += qty * price;
+  });
+
+  const bar = document.getElementById('cartBar');
+  const itemsEl = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cartTotal');
+
+  if (totalItems > 0) {
+    bar.classList.add('visible');
+    itemsEl.textContent = totalItems === 1 ? '1 item selecionado' : `${totalItems} itens selecionados`;
+    totalEl.textContent = 'R$ ' + totalPrice.toFixed(2).replace('.', ',');
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+
+// ── QTY HANDLERS ──
+document.querySelectorAll('.product-card').forEach(card => {
+  const { name, price } = getCardData(card);
+  const minusBtn = card.querySelector('.qty-btn.minus');
+  const plusBtn  = card.querySelector('.qty-btn.plus');
+  const qtyNum   = card.querySelector('.qty-num');
+  const cta      = card.querySelector('.product-cta');
+
+  cart[name] = { qty: 0, price };
+
+  plusBtn.addEventListener('click', () => {
+    cart[name].qty++;
+    qtyNum.textContent = cart[name].qty;
+    updateCartBar();
+    // Animate button
+    cta.textContent = 'Adicionado ✓';
+    cta.classList.add('added');
+    clearTimeout(cta._t);
+    cta._t = setTimeout(() => {
+      cta.textContent = 'Pedir agora';
+      cta.classList.remove('added');
+    }, 1200);
+  });
+
+  minusBtn.addEventListener('click', () => {
+    if (cart[name].qty > 0) {
+      cart[name].qty--;
+      qtyNum.textContent = cart[name].qty;
+      updateCartBar();
+    }
+  });
+
+  cta.addEventListener('click', () => {
+    // If qty is 0, add 1 automatically
+    if (cart[name].qty === 0) {
+      cart[name].qty = 1;
+      qtyNum.textContent = 1;
+      updateCartBar();
+      cta.textContent = 'Adicionado ✓';
+      cta.classList.add('added');
+      clearTimeout(cta._t);
+      cta._t = setTimeout(() => {
+        cta.textContent = 'Pedir agora';
+        cta.classList.remove('added');
+      }, 1200);
+    } else {
+      // Already has qty, open modal directly
+      openModal();
+    }
+  });
+});
+
+// ── MODAL ──
+function openModal() {
+  const totalItems = Object.values(cart).reduce((s, { qty }) => s + qty, 0);
+  if (totalItems === 0) {
+    alert('Adicione pelo menos um produto antes de pedir! 🛒');
+    return;
+  }
+  document.getElementById('clientName').value = '';
+  document.getElementById('modalOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('clientName').focus(), 300);
+}
+
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+document.getElementById('clientName').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') sendWhatsApp(this.value);
+});
+
+// ── WHATSAPP MESSAGE ──
+function sendWhatsApp(name) {
+  document.getElementById('modalOverlay').classList.remove('open');
+
+  const items = Object.entries(cart).filter(([, { qty }]) => qty > 0);
+  if (items.length === 0) return;
+
+  const totalPrice = items.reduce((s, [, { qty, price }]) => s + qty * price, 0);
+  const totalItems = items.reduce((s, [, { qty }]) => s + qty, 0);
+
+  const greeting = name && name.trim()
+    ? `Olá! Me chamo *${name.trim()}* e gostaria de fazer um pedido.`
+    : 'Olá! Gostaria de fazer um pedido.';
+
+  const lines = items.map(([nome, { qty, price }]) => {
+    const subtotal = (qty * price).toFixed(2).replace('.', ',');
+    return `▸ ${qty}x ${nome} — R$ ${price.toFixed(2).replace('.', ',')} cada = *R$ ${subtotal}*`;
+  });
+
+  const msg = [
+    '🥖 *Pedido via site PadocaBestie*',
+    '',
+    greeting,
+    '',
+    '📋 *Itens do pedido:*',
+    ...lines,
+    '',
+    `📦 Total de itens: *${totalItems}*`,
+    `💰 *Total: R$ ${totalPrice.toFixed(2).replace('.', ',')}*`,
+    '',
+    'Aguardo confirmação. Obrigado(a)! 😊'
+  ].join('\n');
+
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+function clearCart() {
+  Object.keys(cart).forEach(k => { cart[k].qty = 0; });
+  document.querySelectorAll('.qty-num').forEach(el => el.textContent = '0');
+  updateCartBar();
+}
+</script>
+</body>
+</html>

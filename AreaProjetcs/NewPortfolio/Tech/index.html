@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechFix — Conserto de Eletrônicos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0A0E1A;
+  --bg2:     #0F1525;
+  --bg3:     #141B2E;
+  --card:    #161D30;
+  --cyan:    #00D4FF;
+  --cyan2:   #00B8E0;
+  --electric:#7B5EFF;
+  --elec2:   #5B3EDF;
+  --green:   #00E5A0;
+  --text:    #E8F0FF;
+  --muted:   #6B7A9E;
+  --border:  rgba(0,212,255,.15);
+  --radius:  18px;
+  --font-h:  'Syne', sans-serif;
+  --font-b:  'Space Grotesk', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,14,26,.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: var(--font-h); font-weight: 800; font-size: 1.4rem;
+  color: var(--text); text-decoration: none; display: flex; align-items: center; gap: .5rem;
+}
+.nav-logo span { color: var(--cyan); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: .88rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--cyan); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--cyan), var(--electric));
+  color: #fff; border: none; border-radius: 50px;
+  padding: .5rem 1.4rem; font-family: var(--font-b);
+  font-weight: 700; font-size: .85rem; cursor: pointer;
+  transition: opacity .2s, transform .15s;
+}
+.nav-cta:hover { opacity: .9; transform: scale(1.04); }
+
+/* ── HERO ── */
+.hero {
+  min-height: calc(100vh - 64px);
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 3rem;
+  padding: 4rem 5vw;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(123,94,255,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -100px; left: 30%;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(0,212,255,.1); border: 1px solid rgba(0,212,255,.3);
+  color: var(--cyan); border-radius: 50px; padding: .35rem 1rem;
+  font-size: .78rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; margin-bottom: 1.2rem;
+  animation: pop .5s cubic-bezier(.34,1.56,.64,1);
+}
+.dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: pulse 1.5s infinite; }
+.hero h1 {
+  font-family: var(--font-h); font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 800; line-height: 1.05; color: var(--text);
+  animation: slideUp .6s .1s both ease;
+}
+.hero h1 em { 
+  font-style: normal;
+  background: linear-gradient(90deg, var(--cyan), var(--electric));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero p {
+  margin-top: 1.2rem; font-size: 1.05rem; color: var(--muted);
+  line-height: 1.75; max-width: 480px;
+  animation: slideUp .6s .2s both ease;
+}
+.hero-btns { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; animation: slideUp .6s .3s both ease; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--cyan), var(--electric));
+  color: #fff; border: none; border-radius: 50px;
+  padding: .9rem 2rem; font-family: var(--font-b);
+  font-weight: 700; font-size: 1rem; cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 4px 20px rgba(0,212,255,.25);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,212,255,.4); }
+.btn-ghost {
+  background: transparent; color: var(--text);
+  border: 1.5px solid var(--border); border-radius: 50px;
+  padding: .9rem 2rem; font-family: var(--font-b);
+  font-weight: 600; font-size: 1rem; cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* hero visual */
+.hero-visual { display: flex; justify-content: center; align-items: center; animation: floatIn .8s .2s both ease; position: relative; }
+.hero-glow-ring {
+  width: 380px; height: 380px; border-radius: 50%;
+  border: 2px solid rgba(0,212,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; animation: spin 18s linear infinite;
+}
+.hero-glow-ring::before {
+  content: ''; position: absolute; inset: 12px; border-radius: 50%;
+  border: 1px solid rgba(123,94,255,.2);
+}
+.hero-img-blob {
+  position: absolute; width: 300px; height: 300px;
+  border-radius: 50%; overflow: hidden;
+  border: 2px solid rgba(0,212,255,.2);
+  box-shadow: 0 0 60px rgba(0,212,255,.15), 0 0 120px rgba(123,94,255,.1);
+  animation: counterSpin 18s linear infinite;
+}
+.hero-img-blob img { width: 100%; height: 100%; object-fit: cover; }
+.orbit-badge {
+  position: absolute; background: var(--card);
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: .55rem 1rem; font-size: .8rem; font-weight: 700;
+  color: var(--text); white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.orbit-badge .dot-g { width: 7px; height: 7px; background: var(--green); border-radius: 50%; display: inline-block; margin-right: .4rem; }
+.ob1 { top: 10px; right: -30px; animation: float 3.5s ease-in-out infinite; }
+.ob2 { bottom: 30px; left: -40px; animation: float 3.5s 1s ease-in-out infinite; }
+.ob3 { top: 50%; transform: translateY(-50%); right: -60px; animation: float 3.5s 2s ease-in-out infinite; }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 2.5rem; padding: 1.2rem 2rem;
+}
+.trust-item { display: flex; align-items: center; gap: .6rem; font-size: .88rem; font-weight: 500; color: var(--muted); }
+.trust-item .ti { color: var(--cyan); font-size: 1.1rem; }
+.trust-item strong { color: var(--text); }
+
+/* ── SECTIONS ── */
+section { padding: 5rem 5vw; }
+.s-tag {
+  display: inline-block;
+  background: rgba(0,212,255,.08); border: 1px solid rgba(0,212,255,.25);
+  color: var(--cyan); border-radius: 50px; padding: .3rem .9rem;
+  font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .8rem;
+}
+.s-title { font-family: var(--font-h); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.1; }
+.s-title em { font-style: normal; background: linear-gradient(90deg, var(--cyan), var(--electric)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.s-sub { margin-top: .8rem; font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+/* ── SERVICES (cards with toggle) ── */
+#servicos { background: var(--bg); }
+.services-grid {
+  margin-top: 3rem;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.4rem;
+}
+.service-card {
+  background: var(--card); border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  overflow: hidden; cursor: pointer;
+  transition: border-color .25s, transform .2s, box-shadow .2s;
+  position: relative;
+}
+.service-card.selected {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px var(--cyan), 0 8px 32px rgba(0,212,255,.15);
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.4); border-color: rgba(0,212,255,.4); }
+.svc-img { height: 180px; position: relative; overflow: hidden; background: var(--bg2); }
+.svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.service-card:hover .svc-img img { transform: scale(1.07); }
+.svc-badge {
+  position: absolute; top: 10px; right: 10px;
+  background: linear-gradient(135deg, var(--cyan), var(--electric));
+  color: #fff; border-radius: 50px; padding: .2rem .65rem;
+  font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+}
+.svc-check {
+  position: absolute; top: 10px; left: 10px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--bg2); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; transition: background .2s, border-color .2s;
+}
+.service-card.selected .svc-check { background: var(--cyan); border-color: var(--cyan); }
+.svc-info { padding: 1.2rem 1.2rem 1.4rem; }
+.svc-category { font-size: .72rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; letter-spacing: .07em; }
+.svc-name { font-family: var(--font-h); font-size: 1rem; font-weight: 700; color: var(--text); margin: .35rem 0 .5rem; line-height: 1.3; }
+.svc-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; margin-bottom: .9rem; }
+.svc-price { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.svc-price .from { font-size: .78rem; font-weight: 500; color: var(--muted); margin-right: .3rem; }
+.svc-cta {
+  display: block; margin-top: .8rem;
+  background: rgba(0,212,255,.1); color: var(--cyan);
+  border: 1.5px solid rgba(0,212,255,.3); border-radius: 50px;
+  padding: .55rem 0; width: 100%; cursor: pointer;
+  font-family: var(--font-b); font-weight: 700; font-size: .85rem;
+  transition: background .15s, color .15s;
+}
+.service-card.selected .svc-cta { background: var(--cyan); color: var(--bg); border-color: var(--cyan); }
+.svc-cta:hover { background: var(--cyan); color: var(--bg); border-color: var(--cyan); }
+
+/* ── HOW IT WORKS ── */
+#como-funciona { background: var(--bg2); }
+.steps { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; position: relative; }
+.steps::before {
+  content: '';
+  position: absolute; top: 36px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.step-card { text-align: center; padding: 1.5rem 1rem; position: relative; }
+.step-num {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--card); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin: 0 auto 1.2rem;
+  position: relative; z-index: 1;
+  transition: border-color .2s;
+}
+.step-num.active { border-color: var(--cyan); box-shadow: 0 0 20px rgba(0,212,255,.2); }
+.step-card h3 { font-family: var(--font-h); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .4rem; }
+.step-card p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+/* ── FEATURES ── */
+#diferenciais { background: var(--bg3); }
+.feats-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
+.feat-card {
+  background: var(--card); border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 1.8rem 1.5rem;
+  transition: border-color .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.feat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 18px 18px 0 0;
+}
+.feat-card.f1::before { background: linear-gradient(90deg, var(--cyan), var(--electric)); }
+.feat-card.f2::before { background: linear-gradient(90deg, var(--electric), #FF6B9D); }
+.feat-card.f3::before { background: linear-gradient(90deg, var(--green), var(--cyan)); }
+.feat-card.f4::before { background: linear-gradient(90deg, #FFB347, var(--electric)); }
+.feat-card:hover { border-color: rgba(0,212,255,.4); transform: translateY(-4px); }
+.feat-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+.feat-card h3 { font-family: var(--font-h); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+.feat-card p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+/* ── REVIEWS ── */
+#avaliacoes { background: var(--bg2); }
+.reviews-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.4rem; }
+.review-card {
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 1.6rem;
+  transition: border-color .2s;
+}
+.review-card:hover { border-color: rgba(0,212,255,.3); }
+.review-stars { color: #FFB347; font-size: .95rem; margin-bottom: .8rem; }
+.review-text { color: #B0C0E0; font-size: .92rem; line-height: 1.65; font-style: italic; }
+.review-author { margin-top: 1.2rem; display: flex; align-items: center; gap: .8rem; }
+.review-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--electric));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: .9rem; color: #fff;
+}
+.review-name { font-weight: 700; color: var(--text); font-size: .88rem; }
+.review-device { font-size: .78rem; color: var(--muted); }
+
+/* ── SOBRE ── */
+#sobre { background: var(--bg); }
+.sobre-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.sobre-text p { margin-top: 1rem; font-size: .97rem; color: var(--muted); line-height: 1.8; }
+.stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.stat-box {
+  background: var(--card); border-radius: 16px; padding: 1.2rem;
+  border: 1.5px solid var(--border); text-align: center;
+}
+.stat-num {
+  font-family: var(--font-h); font-size: 2rem; font-weight: 800;
+  background: linear-gradient(90deg, var(--cyan), var(--electric));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  display: block;
+}
+.stat-lbl { font-size: .8rem; color: var(--muted); margin-top: .25rem; font-weight: 500; }
+.sobre-visual { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1rem; height: 420px; }
+.sv-card { border-radius: 16px; overflow: hidden; }
+.sv-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.sv-card:hover img { transform: scale(1.06); }
+.sv1 { grid-column: 1; grid-row: 1 / 3; }
+
+/* ── FAQ ── */
+#faq { background: var(--bg2); }
+.faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: .7rem; max-width: 740px; }
+.faq-item {
+  background: var(--card); border-radius: 14px;
+  border: 1.5px solid var(--border); overflow: hidden;
+  transition: border-color .2s;
+}
+.faq-item.open { border-color: rgba(0,212,255,.4); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.15rem 1.4rem; cursor: pointer;
+  font-weight: 600; font-size: .97rem; color: var(--text);
+  user-select: none;
+}
+.faq-q:hover { color: var(--cyan); }
+.faq-icon { font-size: 1.3rem; color: var(--cyan); transition: transform .3s; flex-shrink: 0; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .25s;
+  font-size: .92rem; color: var(--muted); line-height: 1.7;
+  padding: 0 1.4rem;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 1.4rem 1.2rem; }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--bg3) 0%, rgba(123,94,255,.2) 50%, var(--bg3) 100%);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 5rem 5vw; text-align: center; position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,.08) 0%, transparent 70%);
+}
+.cta-banner h2 { font-family: var(--font-h); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--text); position: relative; }
+.cta-banner p { color: var(--muted); font-size: 1.05rem; margin: .8rem auto; max-width: 500px; line-height: 1.7; position: relative; }
+.cta-banner .btn-primary { margin-top: 1.5rem; font-size: 1.05rem; position: relative; }
+
+/* ── FOOTER ── */
+footer { background: #060912; border-top: 1px solid var(--border); padding: 3rem 5vw 2rem; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+.footer-logo { font-family: var(--font-h); font-size: 1.6rem; font-weight: 800; color: var(--text); margin-bottom: .6rem; }
+.footer-logo span { color: var(--cyan); }
+.footer-desc { font-size: .88rem; color: var(--muted); line-height: 1.7; }
+footer h4 { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--cyan); margin-bottom: 1rem; font-weight: 700; }
+footer ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+footer ul a { color: var(--muted); text-decoration: none; font-size: .88rem; transition: color .2s; }
+footer ul a:hover { color: var(--cyan); }
+.footer-bottom {
+  border-top: 1px solid var(--border); padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: .8rem; color: var(--muted); flex-wrap: wrap; gap: .5rem;
+}
+
+/* ── CART BAR ── */
+.cart-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(10,14,26,.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  transform: translateY(100%);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 -8px 40px rgba(0,0,0,.5);
+}
+.cart-bar.visible { transform: translateY(0); }
+.cart-bar-info { display: flex; flex-direction: column; gap: .2rem; }
+.cart-bar-items { font-size: .83rem; color: var(--muted); }
+.cart-bar-total { font-family: var(--font-h); font-size: 1.4rem; font-weight: 800; color: var(--cyan); }
+.cart-btns { display: flex; gap: .7rem; align-items: center; flex-wrap: wrap; }
+.cart-clear {
+  background: transparent; color: var(--muted);
+  border: 1px solid rgba(255,255,255,.1); border-radius: 50px;
+  padding: .7rem 1.2rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 600; font-size: .85rem;
+  transition: color .15s;
+}
+.cart-clear:hover { color: var(--text); }
+.cart-wa {
+  background: #25D366; color: #fff;
+  border: none; border-radius: 50px;
+  padding: .8rem 1.8rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 700; font-size: 1rem;
+  transition: transform .15s, background .15s;
+  display: flex; align-items: center; gap: .5rem; white-space: nowrap;
+}
+.cart-wa:hover { transform: scale(1.04); background: #1db954; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,.7);
+  display: flex; align-items: center; justify-content: center; padding: 1rem;
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--bg2); border-radius: 24px;
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem; max-width: 420px; width: 100%;
+  transform: translateY(30px) scale(.96);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  text-align: center;
+}
+.modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+.modal-icon { font-size: 2.8rem; margin-bottom: .6rem; }
+.modal-title { font-family: var(--font-h); font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: .4rem; }
+.modal-sub { color: var(--muted); font-size: .93rem; margin-bottom: 1.5rem; line-height: 1.6; }
+.modal-input {
+  width: 100%; padding: .85rem 1.2rem;
+  background: var(--bg3); border: 1.5px solid var(--border);
+  border-radius: 50px; font-family: var(--font-b);
+  font-size: 1rem; color: var(--text); outline: none;
+  transition: border-color .2s; box-sizing: border-box; text-align: center;
+}
+.modal-input::placeholder { color: var(--muted); }
+.modal-input:focus { border-color: var(--cyan); }
+.modal-btns { display: flex; gap: .8rem; margin-top: 1.2rem; }
+.modal-send {
+  flex: 1; background: #25D366; color: #fff;
+  border: none; border-radius: 50px;
+  padding: .85rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 700; font-size: 1rem;
+  transition: background .15s;
+}
+.modal-send:hover { background: #1db954; }
+.modal-skip {
+  background: var(--bg3); color: var(--muted);
+  border: 1.5px solid var(--border); border-radius: 50px;
+  padding: .85rem 1.2rem; cursor: pointer;
+  font-family: var(--font-b); font-weight: 600; font-size: .88rem;
+  transition: color .15s; white-space: nowrap;
+}
+.modal-skip:hover { color: var(--text); }
+
+/* ── ANIMATIONS ── */
+@keyframes slideUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes floatIn { from { opacity: 0; transform: scale(.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes pop { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes counterSpin { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .hero-btns { justify-content: center; }
+  .hero-visual { order: -1; }
+  .hero-glow-ring { width: 260px; height: 260px; }
+  .hero-img-blob { width: 200px; height: 200px; }
+  .nav-links { display: none; }
+  .sobre-inner { grid-template-columns: 1fr; }
+  .sobre-visual { display: none; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .ob3 { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">⚡ Tech<span>Fix</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#sobre">Sobre Nós</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('servicos').scrollIntoView({behavior:'smooth'})">Solicitar Orçamento</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-tag"><span class="dot"></span> Especialistas em eletrônicos</div>
+    <h1>Seu aparelho<br><em>de volta à vida</em><br>hoje mesmo.</h1>
+    <p>A TechFix é referência em conserto de celulares, notebooks e tablets em Suzano. Diagnóstico gratuito, peças originais e garantia em todos os serviços.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('servicos').scrollIntoView({behavior:'smooth'})">Ver Serviços ⚡</button>
+      <button class="btn-ghost" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Como Funciona</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-glow-ring">
+      <div class="hero-img-blob">
+        <img src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="Técnico consertando eletrônico">
+      </div>
+    </div>
+    <div class="orbit-badge ob1"><span class="dot-g"></span>Diagnóstico Grátis</div>
+    <div class="orbit-badge ob2">⭐ 4.9 — +2.400 clientes</div>
+    <div class="orbit-badge ob3">🛡️ Garantia de 90 dias</div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="ti">🔍</span><span><strong>Diagnóstico gratuito</strong> sem compromisso</span></div>
+  <div class="trust-item"><span class="ti">⚙️</span><span><strong>Peças originais</strong> certificadas</span></div>
+  <div class="trust-item"><span class="ti">🕐</span><span>Atendimento <strong>das 8h às 18h</strong></span></div>
+  <div class="trust-item"><span class="ti">🛡️</span><span><strong>90 dias</strong> de garantia</span></div>
+  <div class="trust-item"><span class="ti">📍</span><span>Suzano, <strong>SP</strong></span></div>
+</div>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="s-tag">Nossos Serviços</div>
+  <h2 class="s-title">Selecione o que seu<br>aparelho <em>precisa</em></h2>
+  <p class="s-sub">Clique nos serviços desejados, monte seu orçamento e envie direto pelo WhatsApp. Rápido, fácil e sem compromisso.</p>
+
+  <div class="services-grid" id="servicesGrid">
+
+    <div class="service-card" data-name="Troca de Tela — Smartphone" data-price="180">
+      <div class="svc-img">
+        <img src="https://images.pexels.com/photos/3785927/pexels-photo-3785927.jpeg?auto=compress&cs=tinysrgb&w=500&h=280&fit=crop" alt="Troca de tela">
+        <div class="svc-badge">Mais Pedido</div>
+        <div class="svc-check">✓</div>
+      </div>
+      <div class="svc-info">
+        <div class="svc-category">Smartphone</div>
+        <div class="svc-name">Troca de Tela</div>
+        <div class="svc-desc">Display quebrado ou sem toque? Substituímos com tela original e garantia de 90 dias no serviço.</div>
+        <div class="svc-price"><span class="from">a partir de</span>R$ 180,00</div>
+        <button class="svc-cta">+ Selecionar</button>
+      </div>
+    </div>
+
+    <div class="service-card" data-name="Troca de Bateria — Smartphone" data-price="120">
+      <div class="svc-img">
+        <img src="https://images.pexels.com/photos/4195342/pexels-photo-4195342.jpeg?auto=compress&cs=tinysrgb&w=500&h=280&fit=crop" alt="Troca de bateria">
+        <div class="svc-check">✓</div>
+      </div>
+      <div class="svc-info">
+        <div class="svc-category">Smartphone</div>
+        <div class="svc-name">Troca de Bateria</div>
+        <div class="svc-desc">Bateria viciada ou inchada? Trocamos por bateria original e seu aparelho volta a durar o dia todo.</div>
+        <div class="svc-price"><span class="from">a partir de</span>R$ 120,00</div>
+        <button class="svc-cta">+ Selecionar</button>
+      </div>
+    </div>
+
+    <div class="service-card" data-name="Troca de Conector de Carga" data-price="90">
+      <div class="svc-img">
+        <img src="https://images.pexels.com/photos/3825539/pexels-photo-3825539.jpeg?auto=compress&cs=tinysrgb&w=500&h=280&fit=crop" alt="Conector de carga">
+        <div class="svc-badge">Rápido</div>
+        <div class="svc-check">✓</div>
+      </div>
+      <div class="svc-info">
+        <div class="svc-category">Smartphone / Tablet</div>
+        <div class="svc-name">Troca de Conector de Carga</div>
+        <div class="svc-desc">Carregador não encaixa ou só funciona torto? Resolvemos em até 2 horas na maioria dos modelos.</div>
+        <div class="svc-price"><span class="from">a partir de</span>R$ 90,00</div>
+        <button class="svc-cta">+ Selecionar</button>
+      </div>
+    </div>
+
+    <div class="service-card" data-name="Reparo de Placa-Mãe / Microssoldagem" data-price="200">
+      <div class="svc-img">
+        <img src="https://images.pexels.com/photos/1432675/pexels-photo-1432675.jpeg?auto=compress&cs=tinysrgb&w=500&h=280&fit=crop" alt="Reparo de placa">
+        <div class="svc-check">✓</div>
+      </div>
+      <div class="svc-info">
+        <div class="svc-category">Avançado</div>
+        <div class="svc-name">Reparo de Placa-Mãe / Microssoldagem</div>
+        <div class="svc-desc">Aparelho sem imagem, sem sinal ou que não liga? Nossa equipe faz microssoldagem com equipamentos profissionais.</div>
+        <div class="svc-price"><span class="from">a partir de</span>R$ 200,00</div>
+        <button class="svc-cta">+ Selecionar</button>
+      </div>
+    </div>
+
+    <div class="service-card" data-name="Manutenção de Notebook" data-price="150">
+      <div class="svc-img">
+        <img src="https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=500&h=280&fit=crop" alt="Manutenção de notebook">
+        <div class="svc-badge">Popular</div>
+        <div class="svc-check">✓</div>
+      </div>
+      <div class="svc-info">
+        <div class="svc-category">Notebook</div>
+        <div class="svc-name">Manutenção de Notebook</div>
+        <div class="svc-desc">Limpeza interna, troca de pasta térmica, upgrade de memória ou SSD. Deixamos seu notebook novo de novo.</div>
+        <div class="svc-price"><span class="from">a partir de</span>R$ 150,00</div>
+        <button class="svc-cta">+ Selecionar</button>
+      </div>
+    </div>
+
+    <div class="service-card" data-name="Recuperação de Dados" data-price="250">
+      <div class="svc-img">
+        <img src="https://images.pexels.com/photos/117729/pexels-photo-117729.jpeg?auto=compress&cs=tinysrgb&w=500&h=280&fit=crop" alt="Recuperação de dados">
+        <div class="svc-check">✓</div>
+      </div>
+      <div class="svc-info">
+        <div class="svc-category">Especializado</div>
+        <div class="svc-name">Recuperação de Dados</div>
+        <div class="svc-desc">Fotos, contatos e arquivos perdidos? Fazemos análise técnica para recuperar seus dados com segurança.</div>
+        <div class="svc-price"><span class="from">a partir de</span>R$ 250,00</div>
+        <button class="svc-cta">+ Selecionar</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="s-tag">Processo</div>
+  <h2 class="s-title">Simples, rápido e<br><em>sem complicação</em></h2>
+  <p class="s-sub">Do diagnóstico à entrega, tudo transparente e com você no controle.</p>
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num active">📲</div>
+      <h3>1. Solicite pelo WhatsApp</h3>
+      <p>Descreva o problema ou use nosso site para montar seu orçamento. Respondemos em minutos.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">🔍</div>
+      <h3>2. Diagnóstico Gratuito</h3>
+      <p>Traga o aparelho. Fazemos uma análise completa sem custo e sem compromisso de reparo.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">✅</div>
+      <h3>3. Aprovação e Reparo</h3>
+      <p>Você aprova o orçamento e nossos técnicos começam o reparo imediatamente com peças originais.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">🎁</div>
+      <h3>4. Entrega com Garantia</h3>
+      <p>Aparelho testado, embalado e entregue com 90 dias de garantia no serviço prestado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="s-tag">Por que a TechFix?</div>
+  <h2 class="s-title">A loja que <em>trata seu<br>aparelho</em> com cuidado</h2>
+  <p class="s-sub">Somos movidos pela paixão por tecnologia e pelo compromisso de entregar o melhor serviço do bairro.</p>
+  <div class="feats-grid">
+    <div class="feat-card f1">
+      <span class="feat-icon">🔬</span>
+      <h3>Diagnóstico Preciso</h3>
+      <p>Equipamentos de última geração para identificar com exatidão o problema do seu aparelho antes de qualquer reparo.</p>
+    </div>
+    <div class="feat-card f2">
+      <span class="feat-icon">📦</span>
+      <h3>Peças Originais</h3>
+      <p>Trabalhamos apenas com peças certificadas pelo fabricante. Sem surpresas, sem qualidade duvidosa.</p>
+    </div>
+    <div class="feat-card f3">
+      <span class="feat-icon">🛡️</span>
+      <h3>90 Dias de Garantia</h3>
+      <p>Todo serviço tem garantia de 90 dias. Se algo sair errado, a gente resolve sem custo adicional para você.</p>
+    </div>
+    <div class="feat-card f4">
+      <span class="feat-icon">⚡</span>
+      <h3>Prazo Express</h3>
+      <p>A maioria dos reparos é concluída no mesmo dia. Para consertos complexos, previsão honesta desde o início.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="avaliacoes">
+  <div class="s-tag">Avaliações</div>
+  <h2 class="s-title">Quem veio, <em>voltou</em> e indicou</h2>
+  <p class="s-sub">Mais de 2.400 clientes atendidos em Suzano e região. Veja o que dizem sobre nós.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Levei meu iPhone com a tela totalmente destruída. Em menos de 3 horas estava perfeito, como novo. Atendimento incrível, preço justo e ainda tem garantia. Recomendo demais!"</p>
+      <div class="review-author">
+        <div class="review-avatar">CM</div>
+        <div><div class="review-name">Carlos Mendes</div><div class="review-device">iPhone 13 — Troca de tela</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Meu notebook esquentava muito e travava o tempo todo. Fizeram a limpeza e trocaram a pasta térmica. Agora roda tudo tranquilo. Trabalho muito bem feito, valeu muito a pena!"</p>
+      <div class="review-author">
+        <div class="review-avatar">FS</div>
+        <div><div class="review-name">Fernanda Silva</div><div class="review-device">Notebook Dell — Manutenção</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Pensei que tinha perdido todas as fotos do meu filho. A TechFix conseguiu recuperar tudo! Fiquei emocionado. Serviço de altíssima qualidade. Não levo meus dispositivos em outro lugar."</p>
+      <div class="review-author">
+        <div class="review-avatar">RL</div>
+        <div><div class="review-name">Roberto Lima</div><div class="review-device">Samsung — Recuperação de dados</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-text">
+      <div class="s-tag">Nossa História</div>
+      <h2 class="s-title">Nascemos em<br>Suzano para <em>resolver</em></h2>
+      <p>A TechFix surgiu em 2018 com uma missão simples: oferecer consertos de alta qualidade com honestidade e transparência. Cansados de ver clientes sendo enganados com peças ruins e preços abusivos, decidimos fazer diferente.</p>
+      <p>Hoje somos referência na região, com uma equipe de técnicos certificados e mais de 2.400 aparelhos recuperados. Cada conserto é tratado como único — porque para o cliente, aquele aparelho é insubstituível.</p>
+      <div class="stats-row">
+        <div class="stat-box"><span class="stat-num">+2.4k</span><div class="stat-lbl">Aparelhos consertados</div></div>
+        <div class="stat-box"><span class="stat-num">4.9★</span><div class="stat-lbl">Nota média no Google</div></div>
+        <div class="stat-box"><span class="stat-num">90d</span><div class="stat-lbl">Garantia em todos serviços</div></div>
+        <div class="stat-box"><span class="stat-num">6+</span><div class="stat-lbl">Anos de experiência</div></div>
+      </div>
+    </div>
+    <div class="sobre-visual">
+      <div class="sv-card sv1">
+        <img src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop" alt="Técnico trabalhando">
+      </div>
+      <div class="sv-card">
+        <img src="https://images.pexels.com/photos/3825539/pexels-photo-3825539.jpeg?auto=compress&cs=tinysrgb&w=400&h=240&fit=crop" alt="Placa eletrônica">
+      </div>
+      <div class="sv-card">
+        <img src="https://images.pexels.com/photos/4195342/pexels-photo-4195342.jpeg?auto=compress&cs=tinysrgb&w=400&h=240&fit=crop" alt="Ferramentas">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="s-tag">Dúvidas</div>
+  <h2 class="s-title">Perguntas <em>frequentes</em></h2>
+  <p class="s-sub">Tudo o que você precisa saber antes de trazer seu aparelho.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">O diagnóstico é realmente gratuito? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Sim, 100% gratuito e sem compromisso. Avaliamos o aparelho, identificamos o problema e te passamos o orçamento. Você decide se quer prosseguir ou não — sem pagar nada pelo diagnóstico.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Qual o prazo médio de reparo? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Troca de tela e bateria costumam ser feitas no mesmo dia, muitas vezes em 2 a 4 horas. Reparos de placa e microssoldagem podem levar de 1 a 3 dias úteis. Sempre informamos o prazo real antes de iniciar.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">As peças utilizadas são originais? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Sim. Trabalhamos exclusivamente com peças originais ou de primeira linha certificadas. Nunca usamos peças genéricas sem qualidade — isso faz parte do nosso compromisso com a garantia de 90 dias.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Como funciona a garantia? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Todos os serviços têm garantia de 90 dias contra defeitos relacionados ao reparo. Se o problema voltar por causa do nosso serviço, consertamos gratuitamente. A garantia não cobre novos danos físicos ou quedas.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Vocês atendem quais modelos e marcas? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Atendemos todas as principais marcas: Apple (iPhone e iPad), Samsung, Motorola, Xiaomi, LG, além de notebooks de todas as marcas. Se tiver dúvida sobre o seu modelo, manda mensagem no WhatsApp que verificamos.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>Aparelho quebrado?<br>A gente resolve. ⚡</h2>
+  <p>Manda mensagem agora, descreve o problema e já receba uma estimativa de orçamento gratuita.</p>
+  <button class="btn-primary" onclick="openModal()">Solicitar Orçamento 📲</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">⚡ Tech<span>Fix</span></div>
+      <p class="footer-desc">Conserto de celulares, tablets e notebooks em Suzano. Diagnóstico gratuito, peças originais e 90 dias de garantia.</p>
+    </div>
+    <div>
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Google Maps</a></li>
+        <li><a href="#">contato@techfix.com.br</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 TechFix. Feito com ⚡ e muito cuidado.</span>
+    <span>Suzano, São Paulo — Brasil</span>
+  </div>
+</footer>
+
+<!-- CART BAR -->
+<div class="cart-bar" id="cartBar">
+  <div class="cart-bar-info">
+    <div class="cart-bar-items" id="cartItems">0 serviços selecionados</div>
+    <div class="cart-bar-total" id="cartTotal">R$ 0,00</div>
+  </div>
+  <div class="cart-btns">
+    <button class="cart-clear" onclick="clearCart()">Limpar</button>
+    <button class="cart-wa" onclick="openModal()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.339 18.894l-.538 1.996C4.565 21.511 5.089 22 5.671 22c.182 0 .368-.049.532-.149l2.098-1.248a9.878 9.878 0 002.7-.002A9.94 9.94 0 0020 12 9.968 9.968 0 0010 2 9.968 9.968 0 002.929 4.929 9.968 9.968 0 000 12c0 1.847.503 3.576 1.378 5.062l-1.04 3.854a.5.5 0 00.612.612l3.389-.634z"/></svg>
+      Pedir Orçamento pelo WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- NAME MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-icon">🔧</div>
+    <div class="modal-title">Qual é o seu nome?</div>
+    <div class="modal-sub">Assim nosso técnico já te chama pelo nome e seu atendimento fica ainda mais personalizado!</div>
+    <input class="modal-input" id="clientName" type="text" placeholder="Ex: João Silva" maxlength="50">
+    <div class="modal-btns">
+      <button class="modal-skip" onclick="sendWhatsApp('')">Pular</button>
+      <button class="modal-send" onclick="sendWhatsApp(document.getElementById('clientName').value)">Enviar Orçamento ✓</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WA_NUMBER = '5511992568717';
+const selected = new Set();
+
+// ── SERVICE CARD TOGGLE ──
+document.querySelectorAll('.service-card').forEach(card => {
+  const cta = card.querySelector('.svc-cta');
+
+  function toggle() {
+    const name = card.dataset.name;
+    if (selected.has(name)) {
+      selected.delete(name);
+      card.classList.remove('selected');
+      cta.textContent = '+ Selecionar';
+    } else {
+      selected.add(name);
+      card.classList.add('selected');
+      cta.textContent = '✓ Selecionado';
+    }
+    updateCartBar();
+  }
+
+  card.addEventListener('click', toggle);
+});
+
+function updateCartBar() {
+  const bar = document.getElementById('cartBar');
+  const itemsEl = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cartTotal');
+
+  if (selected.size === 0) {
+    bar.classList.remove('visible');
+    return;
+  }
+
+  let total = 0;
+  selected.forEach(name => {
+    const card = [...document.querySelectorAll('.service-card')].find(c => c.dataset.name === name);
+    if (card) total += parseFloat(card.dataset.price);
+  });
+
+  bar.classList.add('visible');
+  itemsEl.textContent = selected.size === 1 ? '1 serviço selecionado' : `${selected.size} serviços selecionados`;
+  totalEl.textContent = 'A partir de R$ ' + total.toFixed(2).replace('.', ',');
+}
+
+function clearCart() {
+  selected.clear();
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.classList.remove('selected');
+    card.querySelector('.svc-cta').textContent = '+ Selecionar';
+  });
+  updateCartBar();
+}
+
+// ── FAQ ──
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── MODAL ──
+function openModal() {
+  if (selected.size === 0) { alert('Selecione pelo menos um serviço primeiro! ⚡'); return; }
+  document.getElementById('clientName').value = '';
+  document.getElementById('modalOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('clientName').focus(), 300);
+}
+
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+document.getElementById('clientName').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') sendWhatsApp(this.value);
+});
+
+// ── WHATSAPP MESSAGE ──
+function sendWhatsApp(name) {
+  document.getElementById('modalOverlay').classList.remove('open');
+  if (selected.size === 0) return;
+
+  let total = 0;
+  const lines = [];
+  selected.forEach(svcName => {
+    const card = [...document.querySelectorAll('.service-card')].find(c => c.dataset.name === svcName);
+    if (!card) return;
+    const price = parseFloat(card.dataset.price);
+    total += price;
+    lines.push(`▸ ${svcName} — a partir de R$ ${price.toFixed(2).replace('.', ',')}`);
+  });
+
+  const greeting = name && name.trim()
+    ? `Olá! Me chamo *${name.trim()}* e gostaria de um orçamento.`
+    : 'Olá! Gostaria de solicitar um orçamento.';
+
+  const msg = [
+    '🔧 *Solicitação de Orçamento — TechFix*',
+    '',
+    greeting,
+    '',
+    '📋 *Serviços de interesse:*',
+    ...lines,
+    '',
+    `💰 *Estimativa total: a partir de R$ ${total.toFixed(2).replace('.', ',')}*`,
+    '',
+    'Gostaria de mais informações e confirmar disponibilidade. Obrigado(a)! ⚡'
+  ].join('\n');
+
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+</script>
+</body>
+</html>
