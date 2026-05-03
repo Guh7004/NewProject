@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Aniversário, meu amor 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 25%, #ff9ec7 50%, #ffc4e1 75%, #ffe0ec 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #5a2a3a;
+    position: relative;
+  }
+
+  /* Floating hearts background */
+  .hearts-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .heart {
+    position: absolute;
+    font-size: 24px;
+    animation: floatUp linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 40px 20px 30px;
+    position: relative;
+  }
+  .hero .crown {
+    font-size: 64px;
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .hero h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(48px, 9vw, 88px);
+    color: #c2185b;
+    text-shadow: 2px 4px 0 rgba(255,255,255,0.6), 4px 8px 18px rgba(194,24,91,0.25);
+    line-height: 1.1;
+    margin: 10px 0 16px;
+  }
+  .hero .sub {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(22px, 3.4vw, 32px);
+    color: #8a2c4d;
+  }
+
+  /* MAIN CARD */
+  .card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 36px 28px;
+    margin: 28px 0;
+    box-shadow: 0 12px 40px rgba(194, 24, 91, 0.18), inset 0 0 0 2px rgba(255,255,255,0.7);
+    position: relative;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px dashed rgba(255, 158, 199, 0.6);
+    border-radius: 32px;
+    pointer-events: none;
+  }
+
+  .message {
+    font-size: clamp(17px, 2.4vw, 21px);
+    line-height: 1.8;
+    text-align: center;
+    color: #5a2a3a;
+  }
+  .message p { margin-bottom: 18px; }
+  .message .highlight {
+    color: #c2185b;
+    font-weight: 700;
+  }
+  .message .signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(28px, 4vw, 38px);
+    color: #c2185b;
+    display: block;
+    margin-top: 24px;
+  }
+
+  /* SCATTERED FLOATING PHOTOS */
+  .scatter-photo {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background: white;
+    padding: 8px 8px 22px;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 3;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, z-index 0s;
+    cursor: pointer;
+  }
+  .scatter-photo:hover {
+    transform: rotate(0deg) scale(1.5) !important;
+    box-shadow: 0 16px 50px rgba(194,24,91,0.4);
+    z-index: 50;
+  }
+  .scatter-photo .pic {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #ffe0ec, #ffc4e1);
+    border-radius: 2px;
+    display: block;
+  }
+  .scatter-photo .pic.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c2185b;
+    font-family: 'Caveat', cursive;
+    font-size: 14px;
+    text-align: center;
+    padding: 6px;
+    line-height: 1.2;
+  }
+
+  /* Position each photo individually */
+  .photo-1 { top: 60px;   left: -20px;  transform: rotate(-8deg); }
+  .photo-2 { top: 220px;  right: -10px; transform: rotate(7deg); }
+  .photo-3 { top: 540px;  left: -30px;  transform: rotate(5deg); }
+  .photo-4 { top: 780px;  right: -20px; transform: rotate(-6deg); }
+  .photo-5 { top: 1100px; left: -10px;  transform: rotate(8deg); }
+  .photo-6 { top: 1340px; right: -25px; transform: rotate(-5deg); }
+
+  /* Gentle floating animation */
+  @keyframes floaty {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -8px; }
+  }
+  .scatter-photo {
+    animation: floaty 4s ease-in-out infinite;
+  }
+  .photo-2 { animation-delay: 0.5s; }
+  .photo-3 { animation-delay: 1s; }
+  .photo-4 { animation-delay: 1.5s; }
+  .photo-5 { animation-delay: 2s; }
+  .photo-6 { animation-delay: 2.5s; }
+
+  /* CONFETTI/EMOJI BAR */
+  .emoji-bar {
+    text-align: center;
+    font-size: 32px;
+    margin: 20px 0;
+    letter-spacing: 8px;
+    animation: wiggle 3s ease-in-out infinite;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    75% { transform: rotate(-2deg); }
+  }
+
+  /* WISH BOX */
+  .wish-box {
+    background: linear-gradient(135deg, #fff5f8, #ffe8f0);
+    border: 3px dashed #ff9ec7;
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin: 24px 0;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(20px, 3vw, 26px);
+    color: #8a2c4d;
+    line-height: 1.6;
+  }
+
+  .photos-note {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(20px, 3vw, 28px);
+    color: #8a2c4d;
+    margin: 30px auto;
+    max-width: 600px;
+    padding: 0 20px;
+    line-height: 1.4;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(28px, 4vw, 40px);
+    color: #c2185b;
+    position: relative;
+    z-index: 2;
+  }
+  .footer .small {
+    display: block;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    color: #8a2c4d;
+    margin-top: 12px;
+    opacity: 0.8;
+  }
+
+  /* Cake button */
+  .cake-btn {
+    display: block;
+    margin: 24px auto;
+    background: linear-gradient(135deg, #ff6fa3, #c2185b);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(194,24,91,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    z-index: 2;
+  }
+  .cake-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(194,24,91,0.5);
+  }
+  .cake-btn:active {
+    transform: scale(0.97);
+  }
+
+  /* MOBILE: photos scatter inside container width */
+  @media (max-width: 720px) {
+    .scatter-photo { width: 100px; height: 100px; padding: 6px 6px 18px; }
+    .scatter-photo .pic { height: 78px; }
+    .photo-1 { top: 40px;   left: 0; }
+    .photo-2 { top: 200px;  right: 0; }
+    .photo-3 { top: 520px;  left: 0; }
+    .photo-4 { top: 750px;  right: 0; }
+    .photo-5 { top: 1050px; left: 0; }
+    .photo-6 { top: 1280px; right: 0; }
+    .container { padding: 20px 14px 40px; }
+    .card { padding: 28px 18px; }
+  }
+  @media (max-width: 480px) {
+    .scatter-photo { width: 80px; height: 80px; padding: 5px 5px 14px; }
+    .scatter-photo .pic { height: 62px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts-bg" id="heartsBg"></div>
+
+<div class="container">
+
+  <!-- Scattered floating photos -->
+  <div class="scatter-photo photo-1">
+    <img src="./Assets/foto1.jpg" alt="" class="pic" onerror="this.outerHTML='<div class=\'pic placeholder\'>📷<br>foto1.jpg</div>'">
+  </div>
+  <div class="scatter-photo photo-2">
+    <img src="./Assets/foto2.jpg" alt="" class="pic" onerror="this.outerHTML='<div class=\'pic placeholder\'>📷<br>foto2.jpg</div>'">
+  </div>
+  <div class="scatter-photo photo-3">
+    <img src="./Assets/foto3.jpg" alt="" class="pic" onerror="this.outerHTML='<div class=\'pic placeholder\'>📷<br>foto3.jpg</div>'">
+  </div>
+  <div class="scatter-photo photo-4">
+    <img src="./Assets/foto4.jpg" alt="" class="pic" onerror="this.outerHTML='<div class=\'pic placeholder\'>📷<br>foto4.jpg</div>'">
+  </div>
+  <div class="scatter-photo photo-5">
+    <img src="./Assets/foto5.jpg" alt="" class="pic" onerror="this.outerHTML='<div class=\'pic placeholder\'>📷<br>foto5.jpg</div>'">
+  </div>
+  <div class="scatter-photo photo-6">
+    <img src="./Assets/foto6.jpg" alt="" class="pic" onerror="this.outerHTML='<div class=\'pic placeholder\'>📷<br>foto6.jpg</div>'">
+  </div>
+
+  <header class="hero">
+    <div class="crown">👑</div>
+    <h1>Feliz Aniversário,<br>meu amor</h1>
+    <div class="sub">~ um dia incrível pra uma pessoa incrível ~</div>
+  </header>
+
+  <div class="emoji-bar">🎂 🎉 💖 🎈 🌹</div>
+
+  <section class="card">
+    <div class="message">
+      <p>Hoje é um dia <span class="highlight">incrível</span>, porque é aniversário de uma pessoa <span class="highlight">incrível</span>! ✨</p>
+
+      <p>Sempre sorrindo, fazendo brincadeiras bobas e mandando uns áudios e fotos que eu <em>odeiooooooo tantooooooooo</em> 😤💕 hahahaha</p>
+
+      <p>Ficando mais boiola a cada dia <span class="highlight">por suaaaaaa culpaaaaa</span> 🥺💗</p>
+
+      <p>Não sou muito bom com palavras, mas queria te desejar um <span class="highlight">feliz aniversário, meu amor</span>.</p>
+
+      <p>Desejo tudo de bom pra você. Você merece o mundo inteiro — e mais um pouquinho. 🌍💝</p>
+
+      <span class="signature">Te amo demais 💕</span>
+    </div>
+  </section>
+
+  <p class="photos-note">"Não temos muitas fotos juntos então foi oq deu pra fazer kkkkkkkkkk" 📸💕</p>
+
+  <div class="wish-box">
+    "Que esse novo ano da sua vida seja cheio de risadas bobas,<br>
+    áudios longos, fotos sem avisar<br>
+    e muito, muito amor — do meu pra você. 💖"
+  </div>
+
+  <button class="cake-btn" onclick="celebrar()">🎂 Apertar pra ganhar um beijo 💋</button>
+
+  <footer class="footer">
+    Te amo, meu amor 💗
+    <span class="small">feito com carinho só pra você ✨</span>
+  </footer>
+
+</div>
+
+<script>
+  // Floating hearts
+  const heartChars = ['💖', '💕', '💗', '💝', '🌸', '✨', '💐', '🎈'];
+  const bg = document.getElementById('heartsBg');
+  function spawnHeart() {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (16 + Math.random() * 24) + 'px';
+    const dur = 8 + Math.random() * 8;
+    h.style.animationDuration = dur + 's';
+    bg.appendChild(h);
+    setTimeout(() => h.remove(), dur * 1000);
+  }
+  for (let i = 0; i < 12; i++) {
+    setTimeout(spawnHeart, i * 600);
+  }
+  setInterval(spawnHeart, 700);
+
+  // Celebrate button
+  function celebrar() {
+    const messages = [
+      '💋 Beijo enviado! 💋',
+      '💕 Mais um beijinho! 💕',
+      '🥰 Te amo demais! 🥰',
+      '💖 Você é incrível! 💖',
+      '🌹 Beijo com rosa! 🌹',
+      '💗 Feliz aniversário de novo! 💗'
+    ];
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+
+    // Burst of hearts
+    for (let i = 0; i < 30; i++) {
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+      h.style.left = (40 + Math.random() * 20) + 'vw';
+      h.style.bottom = '20vh';
+      h.style.top = 'auto';
+      h.style.fontSize = (24 + Math.random() * 20) + 'px';
+      h.style.animation = 'none';
+      h.style.transition = 'all 2s ease-out';
+      bg.appendChild(h);
+      requestAnimationFrame(() => {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 200 + Math.random() * 300;
+        h.style.transform = `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist - 100}px) rotate(${Math.random()*720}deg)`;
+        h.style.opacity = '0';
+      });
+      setTimeout(() => h.remove(), 2100);
+    }
+
+    // Floating message
+    const popup = document.createElement('div');
+    popup.textContent = msg;
+    popup.style.cssText = `
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      background: linear-gradient(135deg, #ff6fa3, #c2185b);
+      color: white;
+      padding: 24px 40px;
+      border-radius: 24px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      box-shadow: 0 20px 60px rgba(194,24,91,0.5);
+      z-index: 9999;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: 0;
+    `;
+    document.body.appendChild(popup);
+    requestAnimationFrame(() => {
+      popup.style.transform = 'translate(-50%, -50%) scale(1)';
+      popup.style.opacity = '1';
+    });
+    setTimeout(() => {
+      popup.style.opacity = '0';
+      popup.style.transform = 'translate(-50%, -80%) scale(0.8)';
+      setTimeout(() => popup.remove(), 400);
+    }, 1500);
+  }
+</script>
+
+</body>
+</html>
