@@ -3,23 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Clínica OdontoVida — odontologia premium em ortodontia, implante dentário, lentes de contato e harmonização facial em São Paulo. Avaliação gratuita.">
-<meta name="keywords" content="dentista São Paulo, ortodontia, implante dentário, clareamento, harmonização facial, lentes de contato dental">
-<meta property="og:title" content="Clínica OdontoVida — O sorriso que você merece">
-<meta property="og:description" content="Mais de 5 mil sorrisos transformados. Tecnologia, conforto e parcelamento em até 12x.">
+<meta name="description" content="Clínica OdontoVida — odontologia premium em São Paulo. Avaliação gratuita.">
 <title>Clínica OdontoVida — Dentista em São Paulo | Avaliação Gratuita</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
-<!-- AOS — Animate On Scroll -->
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-<!-- Swiper -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-<!-- Lucide Icons (lightweight icon library) -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
 <style>
@@ -51,33 +43,63 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  cursor: none;
 }
+/* CURSOR PERSONALIZADO */
+.cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+  mix-blend-mode: difference;
+}
+.cursor-follower {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), width 0.3s, height 0.3s, opacity 0.3s, border-color 0.3s;
+  opacity: 0.6;
+}
+.cursor.hover { width: 36px; height: 36px; background: var(--accent); }
+.cursor-follower.hover { width: 70px; height: 70px; opacity: 0.3; border-color: var(--accent); }
+.cursor.click { transform: translate(-50%, -50%) scale(0.6); }
+@media (max-width: 1024px) and (hover: none) {
+  body { cursor: auto; }
+  .cursor, .cursor-follower { display: none; }
+}
+
 h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; line-height: 1.1; letter-spacing: -0.02em; }
 h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 600; }
 h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 600; }
 h3 { font-size: 1.4rem; font-weight: 600; }
-a { color: var(--primary); text-decoration: none; }
+a, button { cursor: none; }
+@media (hover: none) { a, button { cursor: auto; } }
 img { max-width: 100%; display: block; }
 .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
-/* BLOBS DE FUNDO */
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: 0;
-  animation: float 14s ease-in-out infinite;
+/* TEXT REVEAL */
+.reveal-text {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
 }
-@keyframes float {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(30px,-40px) scale(1.05); }
-  66% { transform: translate(-20px,30px) scale(0.95); }
+.reveal-text > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: revealUp 1s cubic-bezier(.5, 0, 0, 1) forwards;
 }
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+@keyframes revealUp {
+  to { transform: translateY(0); }
 }
 
 /* TOPBAR */
@@ -109,13 +131,17 @@ header {
   top: 0;
   z-index: 100;
   border-bottom: 1px solid rgba(0,0,0,0.04);
+  transition: padding 0.3s, box-shadow 0.3s;
 }
+header.scrolled { padding: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 0;
+  transition: padding 0.3s;
 }
+header.scrolled .nav { padding: 12px 0; }
 .logo {
   font-family: 'Fraunces', serif;
   font-size: 1.6rem;
@@ -137,12 +163,10 @@ header {
   color: white;
   box-shadow: 0 8px 20px rgba(0, 110, 122, 0.35);
   transform: rotate(-5deg);
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
 }
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
+.logo:hover .logo-icon { transform: rotate(8deg) scale(1.1); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a {
   color: var(--text);
   font-weight: 500;
@@ -162,6 +186,7 @@ header {
 }
 .nav-links a:hover { color: var(--primary); }
 .nav-links a:hover::after { width: 100%; }
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -171,48 +196,77 @@ header {
   font-weight: 600;
   font-size: 0.95rem;
   border: none;
-  cursor: pointer;
-  transition: all 0.3s;
   font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s;
+  isolation: isolate;
 }
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+}
+.btn:hover::before { width: 400px; height: 400px; }
 .btn-primary {
   background: var(--text);
   color: white;
   box-shadow: 0 6px 16px rgba(13, 31, 45, 0.2);
 }
-.btn-primary:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0, 110, 122, 0.3); }
+.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 32px rgba(0, 110, 122, 0.35); background: var(--primary); }
 .btn-accent {
   background: var(--accent);
   color: white;
   box-shadow: 0 6px 16px rgba(255, 138, 61, 0.3);
 }
-.btn-accent:hover { background: #f57225; transform: translateY(-2px); }
+.btn-accent:hover { transform: translateY(-3px) scale(1.02); background: #f57225; }
 .btn-whatsapp {
   background: var(--whatsapp);
   color: white;
   box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
 }
-.btn-whatsapp:hover { background: #1ea952; transform: translateY(-2px); }
+.btn-whatsapp:hover { transform: translateY(-3px) scale(1.02); background: #1ea952; }
 .btn-large { padding: 18px 36px; font-size: 1rem; }
-.menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text); padding: 8px; }
+.menu-toggle { display: none; background: none; border: none; color: var(--text); padding: 8px; }
 
 /* HERO */
 .hero {
   position: relative;
   padding: 80px 0 120px;
   overflow: hidden;
+  perspective: 1500px;
 }
-.hero::before {
-  content: '';
+.hero-bg {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background:
     radial-gradient(circle at 15% 30%, var(--mint) 0%, transparent 35%),
     radial-gradient(circle at 85% 70%, var(--pink) 0%, transparent 30%),
     radial-gradient(circle at 50% 100%, var(--lavender) 0%, transparent 40%);
   opacity: 0.55;
-  z-index: 0;
 }
+.blob-bg {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+}
+.blob-bg.b1 { width: 400px; height: 400px; background: var(--mint); top: 10%; left: -100px; }
+.blob-bg.b2 { width: 350px; height: 350px; background: var(--pink); bottom: 0; right: -50px; }
+.blob-bg.b3 { width: 250px; height: 250px; background: var(--accent-light); top: 50%; left: 40%; }
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
@@ -264,29 +318,43 @@ header {
   background: var(--accent-light);
   z-index: -1;
   border-radius: 100px;
+  transform-origin: left;
+  animation: drawLine 1s 1.2s cubic-bezier(.5,0,0,1) both;
+  transform: scaleX(0);
 }
+@keyframes drawLine { to { transform: scaleX(1); } }
 .hero p.lead {
   font-size: 1.2rem;
   color: var(--text-light);
   margin-bottom: 36px;
   max-width: 540px;
+  opacity: 0;
+  animation: fadeInUp 0.9s 0.6s both;
 }
-.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; opacity: 0; animation: fadeInUp 0.9s 0.8s both; }
 .hero-trust {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-top: 40px;
+  opacity: 0;
+  animation: fadeInUp 0.9s 1s both;
 }
 .hero-trust-avatars { display: flex; }
-.hero-trust-avatars img, .hero-trust-avatars div {
+.hero-trust-avatars img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
   border: 3px solid white;
   margin-left: -10px;
   object-fit: cover;
+  transition: transform 0.3s;
 }
+.hero-trust-avatars img:hover { transform: translateY(-6px) scale(1.1); z-index: 5; }
 .hero-trust-avatars > *:first-child { margin-left: 0; }
 .hero-trust-text { font-size: 0.9rem; color: var(--text-light); }
 .hero-trust-text strong { color: var(--text); display: block; }
@@ -294,6 +362,8 @@ header {
 .hero-visual {
   position: relative;
   aspect-ratio: 1 / 1.15;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 .hero-img-main {
   position: absolute;
@@ -305,8 +375,15 @@ header {
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   z-index: 2;
+  transform: translateZ(0);
 }
-.hero-img-main img { width: 100%; height: 100%; object-fit: cover; }
+.hero-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(.2,.8,.2,1);
+}
+.hero-img-main:hover img { transform: scale(1.08); }
 .hero-img-secondary {
   position: absolute;
   width: 45%;
@@ -318,8 +395,15 @@ header {
   box-shadow: var(--shadow-lg);
   z-index: 3;
   border: 6px solid var(--bg);
+  transition: transform 0.4s;
 }
-.hero-img-secondary img { width: 100%; height: 100%; object-fit: cover; }
+.hero-img-secondary img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(.2,.8,.2,1);
+}
+.hero-img-secondary:hover img { transform: scale(1.12); }
 .hero-floating-card {
   position: absolute;
   background: rgba(255,255,255,0.95);
@@ -332,6 +416,11 @@ header {
   align-items: center;
   gap: 14px;
   animation: float-slow 5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(2deg); }
 }
 .hero-card-1 { top: 50px; left: -30px; }
 .hero-card-2 { bottom: 80px; right: -40px; animation-delay: -2.5s; }
@@ -349,7 +438,50 @@ header {
 .hero-floating-card strong { display: block; font-size: 1rem; }
 .hero-floating-card span { font-size: 0.8rem; color: var(--text-light); }
 
-/* MARQUEE de logos / parceiros */
+/* SCROLL INDICATOR */
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: bounce-soft 2s infinite;
+  z-index: 5;
+}
+.scroll-down-line {
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--text), transparent);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-down-line::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 16px;
+  background: var(--accent);
+  top: 0;
+  animation: scrollLine 2s infinite;
+}
+@keyframes scrollLine {
+  0% { top: -16px; }
+  100% { top: 100%; }
+}
+@keyframes bounce-soft {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* MARQUEE */
 .marquee-section {
   background: white;
   padding: 32px 0;
@@ -386,7 +518,9 @@ header {
   display: flex;
   align-items: center;
   gap: 12px;
+  transition: opacity 0.3s;
 }
+.marquee-item:hover { opacity: 1; color: var(--primary); }
 
 /* SECTIONS */
 section { padding: 100px 0; position: relative; }
@@ -406,6 +540,7 @@ section { padding: 100px 0; position: relative; }
   width: 28px;
   height: 2px;
   background: var(--accent);
+  display: inline-block;
 }
 .section-title { text-align: center; max-width: 720px; margin: 0 auto 64px; }
 .section-title h2 { margin-bottom: 18px; }
@@ -422,24 +557,29 @@ section { padding: 100px 0; position: relative; }
   padding: 36px 32px;
   border-radius: 24px;
   border: 1px solid var(--border);
-  transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s, border-color 0.4s;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 .tratamento-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--primary-light) 0%, transparent 50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--primary-light) 0%, transparent 50%);
   opacity: 0;
   transition: opacity 0.4s;
+  pointer-events: none;
 }
 .tratamento-card:hover {
-  transform: translateY(-8px);
   box-shadow: var(--shadow);
   border-color: var(--primary);
 }
-.tratamento-card:hover::before { opacity: 1; }
+.tratamento-card:hover::before { opacity: 0.6; }
 .tratamento-card > * { position: relative; z-index: 1; }
 .tratamento-icon {
   width: 64px;
@@ -453,9 +593,9 @@ section { padding: 100px 0; position: relative; }
   margin-bottom: 24px;
   box-shadow: 0 12px 24px rgba(0, 110, 122, 0.25);
   transform: rotate(-4deg);
-  transition: transform 0.4s;
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
 }
-.tratamento-card:hover .tratamento-icon { transform: rotate(0deg) scale(1.05); }
+.tratamento-card:hover .tratamento-icon { transform: rotate(8deg) scale(1.15) translateY(-4px); }
 .tratamento-card:nth-child(2) .tratamento-icon { background: linear-gradient(135deg, var(--accent), #ffb380); box-shadow: 0 12px 24px rgba(255, 138, 61, 0.3); }
 .tratamento-card:nth-child(3) .tratamento-icon { background: linear-gradient(135deg, #b04eb6, #d97cd2); box-shadow: 0 12px 24px rgba(176, 78, 182, 0.25); }
 .tratamento-card:nth-child(4) .tratamento-icon { background: linear-gradient(135deg, #4e7ed3, #7da7e8); box-shadow: 0 12px 24px rgba(78, 126, 211, 0.25); }
@@ -471,7 +611,57 @@ section { padding: 100px 0; position: relative; }
   font-weight: 600;
   margin-top: 16px;
   font-size: 0.9rem;
+  transition: gap 0.3s;
 }
+.tratamento-card:hover .tratamento-link { gap: 14px; }
+
+/* GALERIA com REVEAL */
+.galeria {
+  padding: 0;
+  overflow: hidden;
+}
+.galeria-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.galeria-img {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  cursor: none;
+}
+.galeria-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(.2,.8,.2,1), filter 0.4s;
+}
+.galeria-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,71,82,0.85) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.galeria-img:hover img { transform: scale(1.1); filter: brightness(1.05); }
+.galeria-img:hover::after { opacity: 1; }
+.galeria-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  color: white;
+  z-index: 2;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), opacity 0.4s;
+}
+.galeria-img:hover .galeria-overlay { transform: translateY(0); opacity: 1; }
+.galeria-overlay h4 { font-family: 'Fraunces', serif; font-size: 1.4rem; margin-bottom: 4px; color: white; }
+.galeria-overlay p { font-size: 0.9rem; opacity: 0.9; }
 
 /* SOBRE */
 .sobre-grid {
@@ -483,6 +673,7 @@ section { padding: 100px 0; position: relative; }
 .sobre-image-wrap {
   position: relative;
   aspect-ratio: 4/5;
+  will-change: transform;
 }
 .sobre-image-main {
   position: absolute;
@@ -491,7 +682,13 @@ section { padding: 100px 0; position: relative; }
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
-.sobre-image-main img { width: 100%; height: 100%; object-fit: cover; }
+.sobre-image-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(.2,.8,.2,1);
+}
+.sobre-image-main:hover img { transform: scale(1.05); }
 .sobre-image-decor {
   position: absolute;
   bottom: -30px;
@@ -502,8 +699,11 @@ section { padding: 100px 0; position: relative; }
   overflow: hidden;
   box-shadow: var(--shadow);
   border: 8px solid var(--bg);
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
 }
-.sobre-image-decor img { width: 100%; height: 100%; object-fit: cover; }
+.sobre-image-decor:hover { transform: rotate(-3deg) scale(1.05); }
+.sobre-image-decor img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s; }
+.sobre-image-decor:hover img { transform: scale(1.08); }
 .stats-card {
   position: absolute;
   top: 40px;
@@ -516,7 +716,9 @@ section { padding: 100px 0; position: relative; }
   align-items: center;
   gap: 18px;
   z-index: 5;
+  transition: transform 0.4s;
 }
+.stats-card:hover { transform: scale(1.08) rotate(-3deg); }
 .stats-card .num {
   font-family: 'Fraunces', serif;
   font-size: 2.2rem;
@@ -534,7 +736,9 @@ section { padding: 100px 0; position: relative; }
   align-items: flex-start;
   gap: 14px;
   font-weight: 500;
+  transition: transform 0.3s, color 0.3s;
 }
+.sobre-list li:hover { transform: translateX(8px); color: var(--primary); }
 .sobre-list li .check-icon {
   width: 28px;
   height: 28px;
@@ -546,7 +750,9 @@ section { padding: 100px 0; position: relative; }
   justify-content: center;
   flex-shrink: 0;
   margin-top: 2px;
+  transition: transform 0.3s;
 }
+.sobre-list li:hover .check-icon { transform: rotate(360deg); }
 
 /* COUNTERS */
 .counters-section {
@@ -575,7 +781,9 @@ section { padding: 100px 0; position: relative; }
 .counter {
   text-align: center;
   padding: 20px;
+  transition: transform 0.4s;
 }
+.counter:hover { transform: translateY(-8px); }
 .counter-num {
   font-family: 'Fraunces', serif;
   font-size: 3.5rem;
@@ -589,13 +797,8 @@ section { padding: 100px 0; position: relative; }
 
 /* DEPOIMENTOS */
 .depoimentos { background: var(--bg-soft); }
-.swiper {
-  padding: 20px 8px 60px;
-  overflow: visible;
-}
-.swiper-slide {
-  height: auto;
-}
+.swiper { padding: 20px 8px 60px; overflow: visible; }
+.swiper-slide { height: auto; }
 .depoimento-card {
   background: white;
   padding: 36px;
@@ -605,7 +808,9 @@ section { padding: 100px 0; position: relative; }
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: transform 0.4s, box-shadow 0.4s;
 }
+.depoimento-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
 .depoimento-card::before {
   content: '"';
   position: absolute;
@@ -645,7 +850,9 @@ section { padding: 100px 0; position: relative; }
   border-radius: 50%;
   box-shadow: var(--shadow-sm);
   color: var(--primary) !important;
+  transition: transform 0.3s;
 }
+.swiper-button-next:hover, .swiper-button-prev:hover { transform: scale(1.1); background: var(--primary); color: white !important; }
 .swiper-button-next::after, .swiper-button-prev::after { font-size: 1.1rem !important; font-weight: 700; }
 
 /* CTA BANNER */
@@ -681,8 +888,17 @@ section { padding: 100px 0; position: relative; }
   border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  transform: rotate(3deg);
+  transition: transform 0.5s;
 }
-.cta-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.cta-image-wrap:hover { transform: rotate(0deg) scale(1.04); }
+.cta-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s;
+}
+.cta-image-wrap:hover img { transform: scale(1.1); }
 
 /* AGENDAMENTO */
 .agendamento-grid {
@@ -704,7 +920,7 @@ section { padding: 100px 0; position: relative; }
   align-items: center;
   transition: all 0.3s;
 }
-.contato-item:hover { border-color: var(--primary); transform: translateX(4px); }
+.contato-item:hover { border-color: var(--primary); transform: translateX(8px); box-shadow: var(--shadow-sm); }
 .contato-icon {
   width: 48px;
   height: 48px;
@@ -715,7 +931,9 @@ section { padding: 100px 0; position: relative; }
   justify-content: center;
   color: var(--primary);
   flex-shrink: 0;
+  transition: transform 0.3s, background 0.3s;
 }
+.contato-item:hover .contato-icon { background: var(--primary); color: white; transform: rotate(360deg); }
 .contato-item strong { display: block; font-size: 0.95rem; }
 .contato-item span { color: var(--text-light); font-size: 0.9rem; }
 
@@ -738,6 +956,7 @@ section { padding: 100px 0; position: relative; }
   border-radius: 50%;
   opacity: 0.6;
   z-index: -1;
+  animation: float-slow 6s ease-in-out infinite;
 }
 .form-card h3 { font-family: 'Fraunces', serif; margin-bottom: 8px; font-size: 1.6rem; }
 .form-card .form-sub { color: var(--text-light); margin-bottom: 28px; font-size: 0.95rem; }
@@ -771,7 +990,6 @@ section { padding: 100px 0; position: relative; }
   gap: 6px;
 }
 
-/* MAPA */
 .mapa-wrap {
   border-radius: 24px;
   overflow: hidden;
@@ -795,7 +1013,6 @@ section { padding: 100px 0; position: relative; }
 .faq-item:hover { border-color: var(--primary); }
 .faq-q {
   padding: 24px 28px;
-  cursor: pointer;
   font-weight: 600;
   font-size: 1.05rem;
   display: flex;
@@ -813,19 +1030,19 @@ section { padding: 100px 0; position: relative; }
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(.2,.8,.2,1);
   flex-shrink: 0;
 }
 .faq-item.open .faq-q-icon {
   background: var(--primary);
   color: white;
-  transform: rotate(45deg);
+  transform: rotate(135deg);
 }
 .faq-a {
   padding: 0 28px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s, padding 0.3s;
+  transition: max-height 0.4s, padding 0.4s;
   color: var(--text-light);
 }
 .faq-item.open .faq-a { padding: 0 28px 24px; max-height: 300px; }
@@ -847,6 +1064,12 @@ footer::before {
   width: 500px;
   height: 500px;
   background: radial-gradient(circle, rgba(0,110,122,0.4) 0%, transparent 70%);
+  animation: float 14s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px,-40px) scale(1.05); }
+  66% { transform: translate(-20px,30px) scale(0.95); }
 }
 .footer-cta {
   background: linear-gradient(135deg, var(--accent) 0%, #ff7320 100%);
@@ -860,7 +1083,19 @@ footer::before {
   margin-bottom: 64px;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
+.footer-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  animation: float 8s ease-in-out infinite;
+}
+.footer-cta > * { position: relative; }
 .footer-cta h3 { color: white; font-family: 'Fraunces', serif; font-size: 1.6rem; }
 .footer-cta p { opacity: 0.9; }
 .footer-cta .btn-primary { background: white; color: var(--text); }
@@ -883,7 +1118,8 @@ footer h4 {
 footer p, footer a, footer li { color: rgba(255,255,255,0.7); font-size: 0.92rem; }
 footer a:hover { color: var(--accent); }
 footer ul { list-style: none; }
-footer ul li { padding: 5px 0; }
+footer ul li { padding: 5px 0; transition: padding 0.2s; }
+footer ul li:hover { padding-left: 6px; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
   padding-top: 28px;
@@ -902,10 +1138,10 @@ footer ul li { padding: 5px 0; }
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(.2,.8,.2,1);
   color: white;
 }
-.social a:hover { background: var(--accent); transform: translateY(-3px); }
+.social a:hover { background: var(--accent); transform: translateY(-6px) rotate(8deg); }
 
 /* WHATSAPP FLUTUANTE */
 .whatsapp-float {
@@ -931,34 +1167,28 @@ footer ul li { padding: 5px 0; }
   0%, 100% { box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5); }
   50% { box-shadow: 0 12px 32px rgba(37, 211, 102, 0.7), 0 0 0 16px rgba(37, 211, 102, 0.15); }
 }
-.whatsapp-tooltip {
+
+/* PROGRESS BAR */
+.progress-bar {
   position: fixed;
-  bottom: 38px;
-  right: 110px;
-  background: white;
-  padding: 12px 18px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  font-size: 0.88rem;
-  font-weight: 600;
-  z-index: 99;
-  white-space: nowrap;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  z-index: 1000;
+  transition: width 0.1s;
+  box-shadow: 0 0 10px rgba(0, 110, 122, 0.5);
 }
-.whatsapp-tooltip::after {
-  content: '';
-  position: absolute;
-  right: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-left: 8px solid white;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-}
+
+/* IMAGE PARALLAX HOLDER */
+.parallax-img { will-change: transform; }
+.scale-on-scroll { will-change: transform; transform-origin: center top; }
 
 /* RESPONSIVO */
 @media (max-width: 980px) {
   .hero-grid, .sobre-grid, .agendamento-grid, .cta-banner { grid-template-columns: 1fr; gap: 48px; }
   .tratamentos-grid, .counters-grid { grid-template-columns: repeat(2, 1fr); }
+  .galeria-wrap { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; flex-direction: column; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); gap: 20px; }
   .nav-links.open { display: flex; }
@@ -970,10 +1200,10 @@ footer ul li { padding: 5px 0; }
   .hero-card-1 { left: 0; top: 30px; }
   .hero-card-2 { right: 0; bottom: 100px; }
   .cta-banner { padding: 56px 32px; }
-  .whatsapp-tooltip { display: none; }
+  .scroll-down { display: none; }
 }
 @media (max-width: 600px) {
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid, .galeria-wrap { grid-template-columns: 1fr; }
   .form-card { padding: 32px 24px; }
   .tratamentos-grid, .counters-grid { grid-template-columns: 1fr; }
   .footer-cta { flex-direction: column; text-align: center; }
@@ -982,12 +1212,18 @@ footer ul li { padding: 5px 0; }
   .logo { font-size: 1.3rem; }
   .logo-icon { width: 38px; height: 38px; }
   .nav .btn { display: none; }
-  h1 .nav .btn-primary { display: inline-flex; }
   .hero h1 { font-size: 2.2rem; }
 }
 </style>
 </head>
 <body>
+
+<!-- CURSOR -->
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
 
 <!-- TOPBAR -->
 <div class="topbar">
@@ -997,41 +1233,49 @@ footer ul li { padding: 5px 0; }
       <span><i data-lucide="map-pin" style="width:14px;height:14px"></i> Av. Paulista, 1000 — São Paulo</span>
       <span><i data-lucide="clock" style="width:14px;height:14px"></i> Seg-Sex 8h-20h | Sáb 8h-13h</span>
     </div>
-    <a href="#agendar"><strong>Avaliação gratuita →</strong></a>
+    <a href="#agendar" class="hover-trigger"><strong>Avaliação gratuita →</strong></a>
   </div>
 </div>
 
 <!-- HEADER -->
-<header>
+<header id="header">
   <div class="container nav">
-    <a href="#" class="logo">
+    <a href="#" class="logo hover-trigger">
       <span class="logo-icon"><i data-lucide="sparkles" style="width:22px;height:22px"></i></span>
       <span>OdontoVida</span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#tratamentos">Tratamentos</a></li>
-      <li><a href="#sobre">Sobre nós</a></li>
-      <li><a href="#depoimentos">Depoimentos</a></li>
-      <li><a href="#faq">Dúvidas</a></li>
-      <li><a href="#agendar">Contato</a></li>
+      <li><a href="#tratamentos" class="hover-trigger">Tratamentos</a></li>
+      <li><a href="#sobre" class="hover-trigger">Sobre nós</a></li>
+      <li><a href="#galeria" class="hover-trigger">Galeria</a></li>
+      <li><a href="#depoimentos" class="hover-trigger">Depoimentos</a></li>
+      <li><a href="#faq" class="hover-trigger">Dúvidas</a></li>
     </ul>
-    <a href="#agendar" class="btn btn-primary">Agendar avaliação <i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>
-    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <a href="#agendar" class="btn btn-primary magnetic hover-trigger">Agendar avaliação <i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>
+    <button class="menu-toggle hover-trigger" onclick="document.getElementById('navLinks').classList.toggle('open')">
       <i data-lucide="menu" style="width:24px;height:24px"></i>
     </button>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="blob-bg b1" data-mouse="0.05"></div>
+  <div class="blob-bg b2" data-mouse="-0.05"></div>
+  <div class="blob-bg b3" data-mouse="0.08"></div>
   <div class="container hero-grid">
-    <div data-aos="fade-right" data-aos-duration="900">
+    <div>
       <span class="hero-badge"><span class="dot"></span> Atendendo hoje · Resposta em 1h no WhatsApp</span>
-      <h1>O sorriso que você merece começa com uma <span class="underline-mark">avaliação gratuita</span>.</h1>
+      <h1>
+        <span class="reveal-text"><span style="animation-delay: 0.1s">O sorriso que você</span></span><br>
+        <span class="reveal-text"><span style="animation-delay: 0.2s">merece começa com uma</span></span><br>
+        <span class="reveal-text"><span style="animation-delay: 0.3s" class="underline-mark">avaliação gratuita</span></span><span class="reveal-text"><span style="animation-delay: 0.3s">.</span></span>
+      </h1>
       <p class="lead">Tratamentos modernos em ortodontia, implantes e harmonização facial, com tecnologia de ponta e parcelamento em até 12x sem juros. Atendimento humanizado no coração de São Paulo.</p>
       <div class="hero-cta">
-        <a href="#agendar" class="btn btn-primary btn-large">Agendar avaliação <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
-        <a href="https://wa.me/5511400289220?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." class="btn btn-whatsapp btn-large" target="_blank" rel="noopener"><i data-lucide="message-circle" style="width:18px;height:18px"></i> WhatsApp</a>
+        <a href="#agendar" class="btn btn-primary btn-large magnetic hover-trigger">Agendar avaliação <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
+        <a href="https://wa.me/5511400289220?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." class="btn btn-whatsapp btn-large magnetic hover-trigger" target="_blank" rel="noopener"><i data-lucide="message-circle" style="width:18px;height:18px"></i> WhatsApp</a>
       </div>
       <div class="hero-trust">
         <div class="hero-trust-avatars">
@@ -1046,28 +1290,32 @@ footer ul li { padding: 5px 0; }
         </div>
       </div>
     </div>
-    <div class="hero-visual" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
-      <div class="hero-floating-card hero-card-1">
+    <div class="hero-visual" id="heroVisual">
+      <div class="hero-floating-card hero-card-1" data-mouse="0.15">
         <div class="hero-card-icon"><i data-lucide="shield-check" style="width:24px;height:24px"></i></div>
         <div>
           <strong>Garantia 5 anos</strong>
           <span>em implantes</span>
         </div>
       </div>
-      <div class="hero-floating-card hero-card-2">
+      <div class="hero-floating-card hero-card-2" data-mouse="-0.15">
         <div class="hero-card-icon accent"><i data-lucide="credit-card" style="width:24px;height:24px"></i></div>
         <div>
           <strong>Em até 12x</strong>
           <span>sem juros</span>
         </div>
       </div>
-      <div class="hero-img-main">
+      <div class="hero-img-main parallax-img scale-on-scroll" data-mouse="0.04">
         <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=900&h=1100&fit=crop&q=80" alt="Dentista atendendo paciente" loading="eager">
       </div>
-      <div class="hero-img-secondary">
+      <div class="hero-img-secondary parallax-img" data-mouse="-0.06">
         <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=600&fit=crop&q=80" alt="Equipamento odontológico moderno">
       </div>
     </div>
+  </div>
+  <div class="scroll-down">
+    <span>Role para ver</span>
+    <div class="scroll-down-line"></div>
   </div>
 </section>
 
@@ -1082,7 +1330,6 @@ footer ul li { padding: 5px 0; }
     <div class="marquee-item"><i data-lucide="check-circle" style="width:18px;height:18px"></i> Dabi Atlante</div>
     <div class="marquee-item"><i data-lucide="check-circle" style="width:18px;height:18px"></i> Bredent</div>
     <div class="marquee-item"><i data-lucide="check-circle" style="width:18px;height:18px"></i> CRO-SP 12345</div>
-    <!-- duplicar para loop infinito -->
     <div class="marquee-item"><i data-lucide="check-circle" style="width:18px;height:18px"></i> Invisalign</div>
     <div class="marquee-item"><i data-lucide="check-circle" style="width:18px;height:18px"></i> Straumann</div>
     <div class="marquee-item"><i data-lucide="check-circle" style="width:18px;height:18px"></i> Neodent</div>
@@ -1102,37 +1349,37 @@ footer ul li { padding: 5px 0; }
       <p>Da prevenção à reabilitação completa, contamos com especialistas em todas as áreas da odontologia moderna.</p>
     </div>
     <div class="tratamentos-grid">
-      <div class="tratamento-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="tratamento-card tilt hover-trigger" data-aos="fade-up" data-aos-delay="0">
         <div class="tratamento-icon"><i data-lucide="smile" style="width:30px;height:30px"></i></div>
         <h3>Ortodontia</h3>
         <p>Aparelho fixo, autoligado, lingual e alinhadores transparentes (Invisalign). Diagnóstico digital sem dor.</p>
         <a href="#agendar" class="tratamento-link">Saber mais <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
-      <div class="tratamento-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="tratamento-card tilt hover-trigger" data-aos="fade-up" data-aos-delay="100">
         <div class="tratamento-icon"><i data-lucide="anchor" style="width:30px;height:30px"></i></div>
         <h3>Implantes Dentários</h3>
         <p>Implantes de titânio com garantia de 5 anos. Carga imediata em casos selecionados.</p>
         <a href="#agendar" class="tratamento-link">Saber mais <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
-      <div class="tratamento-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="tratamento-card tilt hover-trigger" data-aos="fade-up" data-aos-delay="200">
         <div class="tratamento-icon"><i data-lucide="sparkles" style="width:30px;height:30px"></i></div>
         <h3>Clareamento</h3>
         <p>Clareamento a laser em 1 sessão ou caseiro supervisionado. Resultado visível em poucos dias.</p>
         <a href="#agendar" class="tratamento-link">Saber mais <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
-      <div class="tratamento-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="tratamento-card tilt hover-trigger" data-aos="fade-up" data-aos-delay="0">
         <div class="tratamento-icon"><i data-lucide="gem" style="width:30px;height:30px"></i></div>
         <h3>Lentes de Contato</h3>
         <p>Facetas em porcelana ultrafinas que transformam o seu sorriso em apenas 2 sessões.</p>
         <a href="#agendar" class="tratamento-link">Saber mais <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
-      <div class="tratamento-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="tratamento-card tilt hover-trigger" data-aos="fade-up" data-aos-delay="100">
         <div class="tratamento-icon"><i data-lucide="syringe" style="width:30px;height:30px"></i></div>
         <h3>Harmonização Facial</h3>
         <p>Botox, preenchimento e bichectomia realizados por dentistas especialistas em HOF.</p>
         <a href="#agendar" class="tratamento-link">Saber mais <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
-      <div class="tratamento-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="tratamento-card tilt hover-trigger" data-aos="fade-up" data-aos-delay="200">
         <div class="tratamento-icon"><i data-lucide="baby" style="width:30px;height:30px"></i></div>
         <h3>Odontopediatria</h3>
         <p>Atendimento especializado para crianças com ambiente lúdico e profissionais qualificados.</p>
@@ -1142,18 +1389,45 @@ footer ul li { padding: 5px 0; }
   </div>
 </section>
 
+<!-- GALERIA com hover effect -->
+<section class="galeria" id="galeria">
+  <div class="galeria-wrap">
+    <div class="galeria-img hover-trigger" data-aos="fade-up">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&h=1000&fit=crop&q=80" alt="Consultório moderno" loading="lazy">
+      <div class="galeria-overlay">
+        <h4>Estrutura moderna</h4>
+        <p>6 consultórios com tecnologia 4.0</p>
+      </div>
+    </div>
+    <div class="galeria-img hover-trigger" data-aos="fade-up" data-aos-delay="100">
+      <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&h=1000&fit=crop&q=80" alt="Atendimento personalizado" loading="lazy">
+      <div class="galeria-overlay">
+        <h4>Atendimento humano</h4>
+        <p>Cada paciente é único pra gente</p>
+      </div>
+    </div>
+    <div class="galeria-img hover-trigger" data-aos="fade-up" data-aos-delay="200">
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&h=1000&fit=crop&q=80" alt="Tecnologia de ponta" loading="lazy">
+      <div class="galeria-overlay">
+        <h4>Tecnologia 4.0</h4>
+        <p>Scanner digital e raio-X 3D</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SOBRE -->
 <section id="sobre" class="sobre">
   <div class="container sobre-grid">
     <div class="sobre-image-wrap" data-aos="fade-right">
-      <div class="stats-card" data-aos="fade-down" data-aos-delay="500">
+      <div class="stats-card hover-trigger" data-aos="fade-down" data-aos-delay="500">
         <div>
           <div class="num">15+</div>
           <div class="lbl">anos de excelência</div>
         </div>
       </div>
       <div class="sobre-image-main">
-        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&h=1200&fit=crop&q=80" alt="Equipe da clínica OdontoVida" loading="lazy">
+        <img class="parallax-img" data-speed="0.1" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&h=1200&fit=crop&q=80" alt="Equipe da clínica OdontoVida" loading="lazy">
       </div>
       <div class="sobre-image-decor">
         <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&h=600&fit=crop&q=80" alt="Consultório moderno" loading="lazy">
@@ -1170,7 +1444,7 @@ footer ul li { padding: 5px 0; }
         <li><span class="check-icon"><i data-lucide="check" style="width:16px;height:16px"></i></span> Plano de tratamento personalizado, transparente e sem surpresas</li>
         <li><span class="check-icon"><i data-lucide="check" style="width:16px;height:16px"></i></span> Atendimento de emergência 24h para pacientes ativos</li>
       </ul>
-      <a href="#agendar" class="btn btn-primary">Conhecer a clínica <i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>
+      <a href="#agendar" class="btn btn-primary magnetic hover-trigger">Conhecer a clínica <i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>
     </div>
   </div>
 </section>
@@ -1210,74 +1484,59 @@ footer ul li { padding: 5px 0; }
     <div class="swiper depoimentos-swiper" data-aos="fade-up">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <div class="depoimento-card">
+          <div class="depoimento-card hover-trigger">
             <div class="depo-stars">★★★★★</div>
-            <p>"Fiz meu Invisalign na OdontoVida e foi a melhor decisão. Equipe atenciosa, resultado impecável e o parcelamento ajudou demais. Recomendo de olhos fechados."</p>
+            <p>"Fiz meu Invisalign na OdontoVida e foi a melhor decisão. Equipe atenciosa, resultado impecável e o parcelamento ajudou demais."</p>
             <div class="depo-autor">
               <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=faces" alt="">
-              <div class="depo-info">
-                <strong>Mariana Silva</strong>
-                <span>Paciente desde 2024 · Ortodontia</span>
-              </div>
+              <div class="depo-info"><strong>Mariana Silva</strong><span>Paciente desde 2024 · Ortodontia</span></div>
             </div>
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="depoimento-card">
+          <div class="depoimento-card hover-trigger">
             <div class="depo-stars">★★★★★</div>
-            <p>"Coloquei dois implantes e fiquei impressionado com a estrutura. Sem dor, sem demora, tudo no prazo combinado. Profissionais nota 10, atendimento de primeira."</p>
+            <p>"Coloquei dois implantes e fiquei impressionado com a estrutura. Sem dor, sem demora, tudo no prazo combinado. Profissionais nota 10."</p>
             <div class="depo-autor">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=faces" alt="">
-              <div class="depo-info">
-                <strong>Roberto Cardoso</strong>
-                <span>Paciente desde 2023 · Implantes</span>
-              </div>
+              <div class="depo-info"><strong>Roberto Cardoso</strong><span>Paciente desde 2023 · Implantes</span></div>
             </div>
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="depoimento-card">
+          <div class="depoimento-card hover-trigger">
             <div class="depo-stars">★★★★★</div>
             <p>"Levei meus filhos e fui surpreendida pela paciência da odontopediatra. Eles agora pedem pra ir no dentista — coisa que eu nunca imaginei!"</p>
             <div class="depo-autor">
               <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=faces" alt="">
-              <div class="depo-info">
-                <strong>Juliana Almeida</strong>
-                <span>Paciente desde 2022 · Odontopediatria</span>
-              </div>
+              <div class="depo-info"><strong>Juliana Almeida</strong><span>Paciente desde 2022 · Odontopediatria</span></div>
             </div>
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="depoimento-card">
+          <div class="depoimento-card hover-trigger">
             <div class="depo-stars">★★★★★</div>
-            <p>"Fiz lentes de contato e a transformação foi incrível. Em 2 sessões eu saí com o sorriso que sempre quis. Equipe super profissional, indico para todos."</p>
+            <p>"Fiz lentes de contato e a transformação foi incrível. Em 2 sessões eu saí com o sorriso que sempre quis. Equipe super profissional."</p>
             <div class="depo-autor">
               <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=faces" alt="">
-              <div class="depo-info">
-                <strong>Pedro Henrique</strong>
-                <span>Paciente desde 2025 · Lentes de contato</span>
-              </div>
+              <div class="depo-info"><strong>Pedro Henrique</strong><span>Paciente desde 2025 · Lentes de contato</span></div>
             </div>
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="depoimento-card">
+          <div class="depoimento-card hover-trigger">
             <div class="depo-stars">★★★★★</div>
-            <p>"Fiz harmonização facial pela primeira vez aqui e o resultado ficou super natural. Atendimento humanizado, explicaram cada detalhe antes do procedimento."</p>
+            <p>"Fiz harmonização facial pela primeira vez aqui e o resultado ficou super natural. Atendimento humanizado, explicaram cada detalhe antes."</p>
             <div class="depo-autor">
               <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=120&h=120&fit=crop&crop=faces" alt="">
-              <div class="depo-info">
-                <strong>Camila Souza</strong>
-                <span>Paciente desde 2024 · HOF</span>
-              </div>
+              <div class="depo-info"><strong>Camila Souza</strong><span>Paciente desde 2024 · HOF</span></div>
             </div>
           </div>
         </div>
       </div>
       <div class="swiper-pagination"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next hover-trigger"></div>
+      <div class="swiper-button-prev hover-trigger"></div>
     </div>
   </div>
 </section>
@@ -1289,10 +1548,10 @@ footer ul li { padding: 5px 0; }
       <div>
         <span class="section-tag" style="color: var(--accent);">Sua avaliação é gratuita</span>
         <h2>Vamos planejar o seu novo sorriso?</h2>
-        <p>Diagnóstico completo, plano de tratamento personalizado e simulação de parcelamento. Tudo em uma única visita, sem custo e sem compromisso.</p>
+        <p>Diagnóstico completo, plano de tratamento personalizado e simulação de parcelamento. Tudo em uma única visita.</p>
         <div class="cta-cta">
-          <a href="#agendar" class="btn btn-primary btn-large">Agendar agora <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
-          <a href="https://wa.me/5511400289220" class="btn btn-whatsapp btn-large" target="_blank"><i data-lucide="message-circle" style="width:18px;height:18px"></i> WhatsApp</a>
+          <a href="#agendar" class="btn btn-primary btn-large magnetic hover-trigger">Agendar agora <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
+          <a href="https://wa.me/5511400289220" class="btn btn-whatsapp btn-large magnetic hover-trigger" target="_blank"><i data-lucide="message-circle" style="width:18px;height:18px"></i> WhatsApp</a>
         </div>
       </div>
       <div class="cta-image-wrap">
@@ -1310,33 +1569,21 @@ footer ul li { padding: 5px 0; }
       <h2>Agende sua avaliação gratuita</h2>
       <p>Preencha o formulário ao lado ou fale conosco diretamente. Nossa equipe responde em até 1 hora durante o horário comercial.</p>
       <div class="contato-list">
-        <div class="contato-item">
+        <div class="contato-item hover-trigger">
           <div class="contato-icon"><i data-lucide="phone" style="width:22px;height:22px"></i></div>
-          <div>
-            <strong>Telefone</strong>
-            <span>(11) 4002-8922</span>
-          </div>
+          <div><strong>Telefone</strong><span>(11) 4002-8922</span></div>
         </div>
-        <div class="contato-item">
+        <div class="contato-item hover-trigger">
           <div class="contato-icon"><i data-lucide="message-circle" style="width:22px;height:22px"></i></div>
-          <div>
-            <strong>WhatsApp</strong>
-            <span>(11) 9 4002-8922</span>
-          </div>
+          <div><strong>WhatsApp</strong><span>(11) 9 4002-8922</span></div>
         </div>
-        <div class="contato-item">
+        <div class="contato-item hover-trigger">
           <div class="contato-icon"><i data-lucide="mail" style="width:22px;height:22px"></i></div>
-          <div>
-            <strong>E-mail</strong>
-            <span>contato@odontovida.com.br</span>
-          </div>
+          <div><strong>E-mail</strong><span>contato@odontovida.com.br</span></div>
         </div>
-        <div class="contato-item">
+        <div class="contato-item hover-trigger">
           <div class="contato-icon"><i data-lucide="map-pin" style="width:22px;height:22px"></i></div>
-          <div>
-            <strong>Endereço</strong>
-            <span>Av. Paulista, 1000, sala 502 — Bela Vista, SP</span>
-          </div>
+          <div><strong>Endereço</strong><span>Av. Paulista, 1000, sala 502 — Bela Vista, SP</span></div>
         </div>
       </div>
       <div class="mapa-wrap">
@@ -1349,19 +1596,19 @@ footer ul li { padding: 5px 0; }
       <form onsubmit="enviarFormulario(event)">
         <div class="form-group">
           <label for="nome">Nome completo</label>
-          <input type="text" id="nome" required placeholder="Seu nome">
+          <input type="text" id="nome" required placeholder="Seu nome" class="hover-trigger">
         </div>
         <div class="form-group">
           <label for="telefone">WhatsApp</label>
-          <input type="tel" id="telefone" required placeholder="(11) 99999-9999">
+          <input type="tel" id="telefone" required placeholder="(11) 99999-9999" class="hover-trigger">
         </div>
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input type="email" id="email" required placeholder="seuemail@exemplo.com">
+          <input type="email" id="email" required placeholder="seuemail@exemplo.com" class="hover-trigger">
         </div>
         <div class="form-group">
           <label for="tratamento">Qual tratamento te interessa?</label>
-          <select id="tratamento" required>
+          <select id="tratamento" required class="hover-trigger">
             <option value="">Selecione uma opção</option>
             <option>Ortodontia / Aparelho</option>
             <option>Implante dentário</option>
@@ -1372,7 +1619,7 @@ footer ul li { padding: 5px 0; }
             <option>Outro / Avaliação geral</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-accent btn-large">
+        <button type="submit" class="btn btn-accent btn-large magnetic hover-trigger">
           <i data-lucide="message-circle" style="width:18px;height:18px"></i>
           Falar com a clínica agora
         </button>
@@ -1391,35 +1638,35 @@ footer ul li { padding: 5px 0; }
     </div>
     <div class="faq-list" data-aos="fade-up" data-aos-delay="100">
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <div class="faq-q hover-trigger" onclick="this.parentElement.classList.toggle('open')">
           A primeira avaliação é gratuita mesmo?
           <span class="faq-q-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
         </div>
         <div class="faq-a"><p>Sim! A primeira consulta é totalmente gratuita e inclui exame clínico, raio-X panorâmico digital e plano de tratamento personalizado, sem nenhum compromisso.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <div class="faq-q hover-trigger" onclick="this.parentElement.classList.toggle('open')">
           Vocês trabalham com convênios?
           <span class="faq-q-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
         </div>
         <div class="faq-a"><p>Atendemos os principais convênios odontológicos do Brasil. Entre em contato pelo WhatsApp para confirmar se o seu plano está na nossa lista.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <div class="faq-q hover-trigger" onclick="this.parentElement.classList.toggle('open')">
           Como funciona o parcelamento?
           <span class="faq-q-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
         </div>
-        <div class="faq-a"><p>Aceitamos cartão de crédito em até 12x sem juros, financiamento direto sem entrada e Pix com 10% de desconto à vista. O plano de pagamento é definido na sua avaliação gratuita.</p></div>
+        <div class="faq-a"><p>Aceitamos cartão de crédito em até 12x sem juros, financiamento direto sem entrada e Pix com 10% de desconto à vista.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <div class="faq-q hover-trigger" onclick="this.parentElement.classList.toggle('open')">
           Tem estacionamento próximo?
           <span class="faq-q-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
         </div>
-        <div class="faq-a"><p>Sim. Temos parceria com 2 estacionamentos a 100 metros da clínica e estamos a 1 quadra da estação Trianon-Masp do metrô.</p></div>
+        <div class="faq-a"><p>Sim. Temos parceria com 2 estacionamentos a 100 metros e estamos a 1 quadra da estação Trianon-Masp do metrô.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <div class="faq-q hover-trigger" onclick="this.parentElement.classList.toggle('open')">
           Atendem casos de emergência?
           <span class="faq-q-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
         </div>
@@ -1437,7 +1684,7 @@ footer ul li { padding: 5px 0; }
         <h3>Pronto para transformar seu sorriso?</h3>
         <p>Agende sua avaliação gratuita e descubra o melhor plano para você.</p>
       </div>
-      <a href="#agendar" class="btn btn-primary btn-large">Agendar agora <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
+      <a href="#agendar" class="btn btn-primary btn-large magnetic hover-trigger">Agendar agora <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
     </div>
     <div class="footer-grid">
       <div>
@@ -1447,29 +1694,29 @@ footer ul li { padding: 5px 0; }
         </div>
         <p>Há 15 anos transformando sorrisos com tecnologia, cuidado e excelência. Mais de 5.000 pacientes atendidos em São Paulo.</p>
         <div class="social">
-          <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
-          <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
-          <a href="#" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px"></i></a>
-          <a href="https://wa.me/5511400289220" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Instagram" class="hover-trigger"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Facebook" class="hover-trigger"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="YouTube" class="hover-trigger"><i data-lucide="youtube" style="width:18px;height:18px"></i></a>
+          <a href="https://wa.me/5511400289220" aria-label="WhatsApp" class="hover-trigger"><i data-lucide="message-circle" style="width:18px;height:18px"></i></a>
         </div>
       </div>
       <div>
         <h4>Tratamentos</h4>
         <ul>
-          <li><a href="#tratamentos">Ortodontia</a></li>
-          <li><a href="#tratamentos">Implantes</a></li>
-          <li><a href="#tratamentos">Clareamento</a></li>
-          <li><a href="#tratamentos">Lentes de contato</a></li>
-          <li><a href="#tratamentos">Harmonização</a></li>
+          <li><a href="#tratamentos" class="hover-trigger">Ortodontia</a></li>
+          <li><a href="#tratamentos" class="hover-trigger">Implantes</a></li>
+          <li><a href="#tratamentos" class="hover-trigger">Clareamento</a></li>
+          <li><a href="#tratamentos" class="hover-trigger">Lentes</a></li>
+          <li><a href="#tratamentos" class="hover-trigger">Harmonização</a></li>
         </ul>
       </div>
       <div>
         <h4>Institucional</h4>
         <ul>
-          <li><a href="#sobre">Sobre nós</a></li>
-          <li><a href="#depoimentos">Depoimentos</a></li>
-          <li><a href="#faq">Dúvidas</a></li>
-          <li><a href="#agendar">Contato</a></li>
+          <li><a href="#sobre" class="hover-trigger">Sobre nós</a></li>
+          <li><a href="#depoimentos" class="hover-trigger">Depoimentos</a></li>
+          <li><a href="#faq" class="hover-trigger">Dúvidas</a></li>
+          <li><a href="#agendar" class="hover-trigger">Contato</a></li>
         </ul>
       </div>
       <div>
@@ -1490,30 +1737,50 @@ footer ul li { padding: 5px 0; }
 </footer>
 
 <!-- WHATSAPP FLUTUANTE -->
-<div class="whatsapp-tooltip">Fale com a gente!</div>
-<a href="https://wa.me/5511400289220?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+<a href="https://wa.me/5511400289220?text=Olá!%20Vim%20pelo%20site." class="whatsapp-float magnetic hover-trigger" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <i data-lucide="message-circle" style="width:30px;height:30px"></i>
 </a>
 
-<!-- AOS -->
+<!-- LIBS -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<!-- Swiper -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Lenis smooth scroll -->
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<!-- Vanilla Tilt for 3D effects -->
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 
 <script>
-// Lucide icons
+// LUCIDE
 lucide.createIcons();
 
-// AOS init
-AOS.init({
-  duration: 800,
-  easing: 'ease-out-cubic',
-  once: true,
-  offset: 80
+// LENIS smooth scroll
+const lenis = new Lenis({
+  duration: 1.4,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+  wheelMultiplier: 1,
+  touchMultiplier: 1.5,
+});
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// Anchor links use Lenis
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      const target = document.querySelector(id);
+      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -60, duration: 1.6 }); }
+    }
+    document.getElementById('navLinks').classList.remove('open');
+  });
 });
 
-// Swiper init
-const swiper = new Swiper('.depoimentos-swiper', {
+// AOS
+AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
+
+// SWIPER
+new Swiper('.depoimentos-swiper', {
   slidesPerView: 1,
   spaceBetween: 24,
   loop: true,
@@ -1527,14 +1794,144 @@ const swiper = new Swiper('.depoimentos-swiper', {
   }
 });
 
-// Counter animation
+// VANILLA TILT — efeito 3D nos cards de tratamento
+VanillaTilt.init(document.querySelectorAll('.tilt'), {
+  max: 8,
+  speed: 600,
+  glare: true,
+  'max-glare': 0.15,
+  scale: 1.02
+});
+
+// CURSOR PERSONALIZADO
+const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
+let mouseX = 0, mouseY = 0;
+let followerX = 0, followerY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+function animateFollower() {
+  followerX += (mouseX - followerX) * 0.15;
+  followerY += (mouseY - followerY) * 0.15;
+  follower.style.left = followerX + 'px';
+  follower.style.top = followerY + 'px';
+  requestAnimationFrame(animateFollower);
+}
+animateFollower();
+
+document.addEventListener('mousedown', () => cursor.classList.add('click'));
+document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+document.querySelectorAll('.hover-trigger, a, button, input, select, textarea').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); follower.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); follower.classList.remove('hover'); });
+});
+
+// MAGNETIC BUTTONS
+document.querySelectorAll('.magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.25}px, ${y * 0.4}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+// MOUSE PARALLAX (hero blobs e imagens)
+const mouseParallaxEls = document.querySelectorAll('[data-mouse]');
+window.addEventListener('mousemove', (e) => {
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 2;
+  const dx = e.clientX - cx;
+  const dy = e.clientY - cy;
+  mouseParallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.mouse);
+    el.style.transform = `translate(${dx * speed}px, ${dy * speed}px)`;
+  });
+});
+
+// SCROLL: imagem do hero diminui + paralax
+const heroVisual = document.getElementById('heroVisual');
+const heroImgMain = document.querySelector('.hero-img-main');
+const heroImgSec = document.querySelector('.hero-img-secondary');
+const sobreImg = document.querySelector('.sobre-image-wrap img.parallax-img');
+
+function onScroll() {
+  const sy = window.scrollY;
+  // Hero scale + fade
+  if (heroImgMain) {
+    const scale = Math.max(0.7, 1 - sy * 0.0008);
+    const opacity = Math.max(0, 1 - sy * 0.002);
+    const rotate = sy * 0.02;
+    heroImgMain.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+    heroImgMain.style.opacity = opacity;
+  }
+  if (heroImgSec) {
+    const scale = Math.max(0.6, 1 - sy * 0.0006);
+    const ty = sy * 0.15;
+    heroImgSec.style.transform = `translateY(${ty}px) scale(${scale})`;
+  }
+  // Floating cards parallax
+  document.querySelectorAll('.hero-floating-card').forEach((card, i) => {
+    const offset = sy * (i === 0 ? 0.3 : 0.45);
+    card.style.marginTop = `-${offset}px`;
+  });
+  // Hero text parallax
+  const heroText = document.querySelector('.hero-grid > div:first-child');
+  if (heroText && sy < window.innerHeight) {
+    heroText.style.transform = `translateY(${sy * 0.2}px)`;
+    heroText.style.opacity = Math.max(0, 1 - sy * 0.0015);
+  }
+  // Progress bar
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (sy / docHeight) * 100;
+  document.getElementById('progressBar').style.width = progress + '%';
+  // Header
+  const header = document.getElementById('header');
+  if (sy > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+}
+lenis.on('scroll', onScroll);
+window.addEventListener('scroll', onScroll, { passive: true });
+
+// PARALAX em imagens com data-speed
+const parallaxImgs = document.querySelectorAll('img.parallax-img[data-speed]');
+function updateParallax() {
+  parallaxImgs.forEach(img => {
+    const speed = parseFloat(img.dataset.speed) || 0.1;
+    const rect = img.getBoundingClientRect();
+    const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+    img.style.transform = `translateY(${center * speed * -0.3}px) scale(1.15)`;
+  });
+}
+window.addEventListener('scroll', updateParallax, { passive: true });
+updateParallax();
+
+// MOUSE-FOLLOW radial em cards de tratamento
+document.querySelectorAll('.tratamento-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--mx', x + '%');
+    card.style.setProperty('--my', y + '%');
+  });
+});
+
+// COUNTERS animados
 const counters = document.querySelectorAll('.counter-num');
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const el = entry.target;
       const target = +el.dataset.target;
-      const isPercent = el.nextElementSibling.textContent.includes('%');
       let current = 0;
       const duration = 2000;
       const stepTime = 30;
@@ -1556,7 +1953,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 counters.forEach(c => counterObserver.observe(c));
 
-// Form submit
+// FORM SUBMIT
 function enviarFormulario(e) {
   e.preventDefault();
   const nome = document.getElementById('nome').value;
@@ -1565,14 +1962,6 @@ function enviarFormulario(e) {
   const msg = `Olá! Meu nome é ${nome}, telefone ${telefone}. Tenho interesse em ${tratamento} e gostaria de agendar minha avaliação gratuita.`;
   window.open(`https://wa.me/5511400289220?text=${encodeURIComponent(msg)}`, '_blank');
 }
-
-// Close mobile menu on click
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
-});
-
-// Hide tooltip after 6s
-setTimeout(() => { const t = document.querySelector('.whatsapp-tooltip'); if (t) t.style.opacity = '0'; t.style.transition = 'opacity 0.5s'; }, 6000);
 </script>
 
 </body>
