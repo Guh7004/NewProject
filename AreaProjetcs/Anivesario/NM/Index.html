@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Para você</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vinho:#1a0a12;
+    --rosa:#ff6b9d;
+    --rosa-claro:#ff9ec0;
+    --dourado:#f0c987;
+    --creme:#fff4f7;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    font-family:'Jost', sans-serif;
+    background:radial-gradient(130% 120% at 50% 0%, #2a0f1c 0%, var(--vinho) 65%);
+    color:var(--creme);
+    overflow:hidden;
+    -webkit-tap-highlight-color:transparent;
+  }
+  #abertura{
+    position:fixed; inset:0; z-index:50;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center; padding:32px 24px;
+    background:radial-gradient(120% 100% at 50% 0%, #3a1424 0%, var(--vinho) 60%);
+    transition:opacity .9s ease;
+  }
+  #abertura.sumindo{ opacity:0; pointer-events:none; }
+  .coracao-topo{
+    font-size:46px; color:var(--rosa);
+    filter:drop-shadow(0 0 18px rgba(255,107,157,.6));
+    animation:bate 1.6s ease-in-out infinite;
+  }
+  @keyframes bate{ 0%,100%{ transform:scale(1);} 30%{ transform:scale(1.18);} 45%{ transform:scale(.96);} }
+  #abertura h1{
+    font-family:'Great Vibes', cursive;
+    font-size:clamp(48px, 14vw, 86px);
+    font-weight:400; line-height:1; color:var(--creme);
+    margin:14px 0 6px; text-shadow:0 2px 30px rgba(255,107,157,.35);
+  }
+  #abertura .sub{
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(16px, 4.5vw, 20px);
+    letter-spacing:.04em; color:var(--rosa-claro);
+    opacity:.9; margin-bottom:30px; font-style:italic;
+  }
+  #btn-comecar{
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px; letter-spacing:.06em;
+    color:var(--vinho); background:var(--rosa);
+    border:none; padding:15px 54px; border-radius:50px;
+    cursor:pointer; font-weight:500;
+    box-shadow:0 8px 30px rgba(255,107,157,.45);
+    transition:transform .2s, box-shadow .2s, opacity .3s;
+    animation:pulsa 2.4s ease-in-out infinite;
+  }
+  #btn-comecar:hover{ transform:translateY(-2px); box-shadow:0 12px 40px rgba(255,107,157,.6); }
+  #btn-comecar:active{ transform:translateY(0); }
+  @keyframes pulsa{ 0%,100%{ box-shadow:0 8px 30px rgba(255,107,157,.4);} 50%{ box-shadow:0 8px 44px rgba(255,107,157,.7);} }
+  .aviso{
+    margin-top:18px; font-family:'Cormorant Garamond', serif;
+    font-style:italic; color:var(--rosa-claro);
+    font-size:15px; min-height:20px; max-width:320px; opacity:0; transition:.3s;
+  }
+  .aviso.show{ opacity:.9; }
+
+  /* ---------- CENA: foto grande de fundo, com margem em volta ---------- */
+  #cena{
+    position:fixed; inset:0; z-index:1;
+    display:flex; align-items:center; justify-content:center;
+    padding:clamp(16px, 4vw, 40px);
+  }
+  #palco{
+    position:relative;
+    width:min(94vw, 920px);
+    height:min(90vh, 860px);
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow:0 26px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(255,158,192,.18), 0 0 60px rgba(255,107,157,.15);
+  }
+  .foto{
+    position:absolute; inset:0;
+    background-size:cover; background-position:center;
+    opacity:0; transition:opacity 1.6s ease;
+    will-change:opacity, transform;
+  }
+  .foto.ativa{ opacity:1; animation:kenburns 7.5s ease-out forwards; }
+  @keyframes kenburns{ from{ transform:scale(1.03);} to{ transform:scale(1.12);} }
+
+  /* escurece a foto para o texto ficar legível por cima */
+  #veu{
+    position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:linear-gradient(to bottom, rgba(20,8,16,.5) 0%, rgba(20,8,16,.15) 35%, rgba(20,8,16,.45) 70%, rgba(20,8,16,.8) 100%);
+  }
+  #frase{
+    position:absolute; inset:0; z-index:3;
+    display:flex; align-items:center; justify-content:center;
+    padding:36px 28px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(26px, 6.5vw, 50px);
+    line-height:1.3; font-weight:500; text-align:center;
+    color:var(--creme);
+    text-shadow:0 2px 24px rgba(0,0,0,.75), 0 0 40px rgba(255,107,157,.3);
+    opacity:0; transform:translateY(12px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  #frase.show{ opacity:1; transform:translateY(0); }
+  #frase.destaque{ font-family:'Great Vibes', cursive; font-size:clamp(44px, 12vw, 86px); color:var(--rosa-claro); }
+  #frase.pedido{ font-style:italic; color:var(--dourado); text-shadow:0 2px 24px rgba(0,0,0,.8), 0 0 50px rgba(240,201,135,.4); }
+
+  #coracoes{ position:fixed; inset:0; z-index:5; pointer-events:none; overflow:hidden; }
+  .h{
+    position:absolute; bottom:-40px; color:var(--rosa); user-select:none;
+    animation:sobe linear forwards; filter:drop-shadow(0 0 6px rgba(255,107,157,.5));
+  }
+  @keyframes sobe{
+    0%{ transform:translateY(0) rotate(0deg); opacity:0; }
+    10%{ opacity:.9; } 90%{ opacity:.9; }
+    100%{ transform:translateY(-115vh) rotate(40deg); opacity:0; }
+  }
+  #som-toggle{
+    position:fixed; bottom:18px; right:18px; z-index:6;
+    width:46px; height:46px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(20,8,16,.5); color:var(--creme);
+    font-size:18px; cursor:pointer; display:none;
+    align-items:center; justify-content:center;
+    backdrop-filter:blur(6px); transition:.2s;
+  }
+  #som-toggle:hover{ background:rgba(255,107,157,.3); }
+  @media (prefers-reduced-motion: reduce){
+    .foto.ativa{ animation:none; }
+    .coracao-topo{ animation:none; }
+    #btn-comecar{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+  <div id="cena">
+    <div id="palco">
+      <div id="veu"></div>
+      <div id="frase"></div>
+    </div>
+  </div>
+  <div id="coracoes"></div>
+  <button id="som-toggle" aria-label="Ligar ou desligar o som">&#9834;</button>
+
+  <div id="abertura">
+    <div class="coracao-topo">&#9829;</div>
+    <h1>Para você</h1>
+    <div class="sub">com todo o meu amor</div>
+    <button id="btn-comecar">Começar</button>
+    <div class="aviso" id="aviso"></div>
+  </div>
+
+  <audio id="audio" loop></audio>
+
+<script>
+/* ===================================================================
+   CONFIGURAÇÃO
+   -------------------------------------------------------------------
+   Estrutura de pastas (tudo na mesma pasta do site):
+
+      para-voce.html
+      musica.mp3
+      fotos/
+         1.jpg
+         2.jpg
+         ...
+
+   - Numere as fotos: 1, 2, 3, 4...  (.jpg, .jpeg, .png ou .webp)
+   - O site detecta sozinho quantas fotos existem.
+   =================================================================== */
+
+const PASTA_FOTOS = "fotos/";
+const EXTENSOES   = ["jpg","jpeg","png","webp"];
+const MAX_FOTOS   = 60;
+const MUSICA      = "musica.mp3";
+
+/* O TEXTO - cada item aparece sozinho, em ordem. Edite à vontade. */
+const FRASES = [
+  "Por que eu te amo?",
+  "Eu te amo de um jeito que não sei explicar",
+  "Algo tão forte e verdadeiro",
+  "Que nunca pensei que sentiria por alguém",
+  "Poder ser eu mesmo do seu lado",
+  "Ouvir a sua risada sendo fofa ou uma baita gargalhada quando alguem cai KKKKKK",
+  "As nossas brincadeiras bobas que eu amo tanto",
+  "E o humor péssimo que a gente tem pra memes kkkkkkkkk",
+  "Nossos momentos sozinhos então sei nem oq falar",
+  "Saber disso é incrível ",
+  "Porque sei que tenho alguém especial do meu lado",
+  "Alguém em quem posso contar",
+  "E que sei que está sempre ali pra mim",
+  "Eu te amo muito",
+  "muito muito muito muito muito muito muito muito muito muito muito muito muito muito",
+  "muitoooo",
+  "Meu maior sonho foi realizado no instante q te conheci",
+  "Nunca imaginei q poderia existir alguem tão incrivel que nem você",
+  "Sei que não é o melhor lugar do mundo",
+  "Mas eu fiz tudo com muito carinho e amor",
+  "Espero que goste da ultima frase",
+  "e queria te fazer um pedido......."
+];
+
+/* Frase que aparece em destaque cursivo */
+const FRASE_DESTAQUE = "Eu te amo";
+/* Frase que dispara o travamento na foto e ganha cor dourada */
+const FRASE_PEDIDO   = "e queria te fazer um pedido.......";
+
+/* Travamento da imagem no momento do pedido */
+const IMAGEM_TRAVA = 25;     // trava nesta foto (se houver menos, trava na última)
+const TEMPO_TRAVA  = 10000;  // 10 segundos
+
+const TEMPO_POR_FRASE = 4500;
+const TEMPO_POR_FOTO  = 5500;
+
+/* =================================================================== */
+
+const palco   = document.getElementById('palco');
+const fraseEl = document.getElementById('frase');
+const audio   = document.getElementById('audio');
+const abertura= document.getElementById('abertura');
+const btn     = document.getElementById('btn-comecar');
+const aviso   = document.getElementById('aviso');
+const somBtn  = document.getElementById('som-toggle');
+const veu     = document.getElementById('veu');
+
+let fotos = [];
+let fotoIndex = 0;
+let fotoTimer = null;
+
+function achaFoto(n){
+  return new Promise(resolve=>{
+    let i=0;
+    const tenta=()=>{
+      if(i>=EXTENSOES.length){ resolve(null); return; }
+      const caminho = PASTA_FOTOS + n + "." + EXTENSOES[i];
+      const img = new Image();
+      img.onload  = ()=>resolve(caminho);
+      img.onerror = ()=>{ i++; tenta(); };
+      img.src = caminho;
+    };
+    tenta();
+  });
+}
+
+async function carregarFotos(){
+  for(let n=1; n<=MAX_FOTOS; n++){
+    const c = await achaFoto(n);
+    if(c) fotos.push(c);
+    else break;
+  }
+}
+
+audio.src = MUSICA;
+carregarFotos();
+
+btn.addEventListener('click', ()=>{
+  if(!fotos.length){
+    aviso.textContent = "Coloque as fotos numeradas (1, 2, 3...) na pasta \"fotos\" ao lado deste arquivo.";
+    aviso.classList.add('show');
+    return;
+  }
+  abertura.classList.add('sumindo');
+  setTimeout(()=>abertura.style.display='none', 900);
+
+  audio.volume = 0;
+  audio.play().then(()=>{ fadeInAudio(); somBtn.style.display='flex'; }).catch(()=>{});
+
+  iniciarFotos();
+  iniciarTexto();
+  iniciarCoracoes();
+});
+
+function fadeInAudio(){
+  let v=0;
+  const t=setInterval(()=>{
+    v+=0.04;
+    if(v>=0.85){ v=0.85; clearInterval(t); }
+    audio.volume=v;
+  },120);
+}
+
+let mudo=false;
+somBtn.addEventListener('click', ()=>{
+  mudo=!mudo; audio.muted=mudo;
+  somBtn.textContent = mudo ? '\u2715' : '\u266A';
+});
+
+/* ---------- FOTOS ---------- */
+function mostrarFoto(i){
+  const div=document.createElement('div');
+  div.className='foto';
+  div.style.backgroundImage='url("'+fotos[i]+'")';
+  palco.insertBefore(div, veu);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>div.classList.add('ativa')));
+  let antigas=palco.querySelectorAll('.foto');
+  while(antigas.length>2){ antigas[0].remove(); antigas=palco.querySelectorAll('.foto'); }
+}
+
+function proximaFoto(){
+  mostrarFoto(fotoIndex);
+  fotoIndex=(fotoIndex+1)%fotos.length;
+}
+
+function iniciarFotos(){
+  proximaFoto();
+  fotoTimer=setInterval(proximaFoto, TEMPO_POR_FOTO);
+}
+
+/* trava na foto 25 por X segundos, depois volta ao loop */
+function travarNaFoto(){
+  clearInterval(fotoTimer);
+  const alvo = Math.min(IMAGEM_TRAVA - 1, fotos.length - 1); // foto 25 = índice 24
+  mostrarFoto(alvo);
+  setTimeout(()=>{
+    fotoIndex = (alvo + 1) % fotos.length;
+    proximaFoto();
+    fotoTimer = setInterval(proximaFoto, TEMPO_POR_FOTO);
+  }, TEMPO_TRAVA);
+}
+
+/* ---------- TEXTO ---------- */
+function iniciarTexto(){
+  let i=0;
+  function mostra(){
+    fraseEl.classList.remove('show');
+    setTimeout(()=>{
+      const frase = FRASES[i];
+      fraseEl.textContent = frase;
+      fraseEl.classList.toggle('destaque', frase === FRASE_DESTAQUE);
+      fraseEl.classList.toggle('pedido',   frase === FRASE_PEDIDO);
+      fraseEl.classList.add('show');
+
+      let espera = TEMPO_POR_FRASE;
+      if(frase === FRASE_PEDIDO){
+        espera = TEMPO_TRAVA;   // fica na tela durante o travamento
+        travarNaFoto();
+      }
+      i = (i + 1) % FRASES.length;   // volta ao loop
+      setTimeout(mostra, espera);
+    }, 700);
+  }
+  setTimeout(mostra, 600);
+}
+
+/* ---------- CORAÇÕES ---------- */
+function iniciarCoracoes(){
+  const cont=document.getElementById('coracoes');
+  const simbolos=['\u2665','\u2764','\u2661'];
+  setInterval(()=>{
+    const h=document.createElement('span');
+    h.className='h';
+    h.textContent=simbolos[Math.floor(Math.random()*simbolos.length)];
+    h.style.left=Math.random()*100+'vw';
+    const tam=14+Math.random()*26; h.style.fontSize=tam+'px';
+    const dur=6+Math.random()*5; h.style.animationDuration=dur+'s';
+    h.style.opacity=0.5+Math.random()*0.5;
+    const cor=Math.random();
+    h.style.color = cor<0.6 ? '#ff6b9d' : (cor<0.85 ? '#ff9ec0' : '#f0c987');
+    cont.appendChild(h);
+    setTimeout(()=>h.remove(), dur*1000);
+  }, 600);
+}
+</script>
+</body>
+</html>

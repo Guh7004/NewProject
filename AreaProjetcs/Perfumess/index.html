@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAISON VESPER — Noir d'Or</title>
+<meta name="description" content="MAISON VESPER. Noir d'Or — onde a noite encontra o ouro. Uma fragrância de luxo absoluto." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ===========================  CURSOR  =========================== -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ===========================  LOADER  =========================== -->
+<div class="loader" id="loader">
+  <div class="loader__inner">
+    <div class="loader__logo">
+      <span class="loader__letter">M</span>
+      <span class="loader__letter">A</span>
+      <span class="loader__letter">I</span>
+      <span class="loader__letter">S</span>
+      <span class="loader__letter">O</span>
+      <span class="loader__letter">N</span>
+      <span class="loader__space">&nbsp;</span>
+      <span class="loader__letter">V</span>
+      <span class="loader__letter">E</span>
+      <span class="loader__letter">S</span>
+      <span class="loader__letter">P</span>
+      <span class="loader__letter">E</span>
+      <span class="loader__letter">R</span>
+    </div>
+    <div class="loader__bar"><span></span></div>
+    <div class="loader__pct"><span id="loaderPct">0</span><em>%</em></div>
+  </div>
+</div>
+
+<!-- ===========================  NAV  =========================== -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__brand" data-cursor="hover">
+      <span>MAISON</span>
+      <span class="nav__brand-vesper">VESPER</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#product" data-cursor="hover">A Fragrância</a></li>
+      <li><a href="#collection" data-cursor="hover">Coleção</a></li>
+      <li><a href="#story" data-cursor="hover">A Maison</a></li>
+      <li><a href="#cta" data-cursor="hover">Adquirir</a></li>
+    </ul>
+    <div class="nav__cta">
+      <span class="nav__dot"></span>
+      <span>PARIS · 1924</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===========================  HERO  =========================== -->
+<section class="hero" id="hero">
+  <canvas class="hero__particles" id="heroParticles"></canvas>
+
+  <div class="hero__gradient"></div>
+  <div class="hero__vignette"></div>
+  <div class="hero__grain"></div>
+
+  <div class="hero__content">
+    <div class="hero__tag" data-reveal>
+      <span class="hero__tag-line"></span>
+      <span>ÉDITION LIMITÉE · MMXXVI</span>
+      <span class="hero__tag-line"></span>
+    </div>
+
+    <h1 class="hero__title" id="heroTitle">
+      <span class="hero__word" data-text="NOIR"><span>N</span><span>O</span><span>I</span><span>R</span></span>
+      <span class="hero__amp"><svg viewBox="0 0 60 60" fill="none"><path d="M30 8 L30 52 M8 30 L52 30" stroke="currentColor" stroke-width="0.7"/><circle cx="30" cy="30" r="20" stroke="currentColor" stroke-width="0.5"/></svg></span>
+      <span class="hero__word hero__word--gold" data-text="D'OR"><span>D</span><span>'</span><span>O</span><span>R</span></span>
+    </h1>
+
+    <p class="hero__slogan" data-reveal>
+      <em>Onde a noite</em> encontra <em>o ouro.</em>
+    </p>
+
+    <div class="hero__actions" data-reveal>
+      <a href="#product" class="btn btn--gold" data-cursor="hover">
+        <span class="btn__label">Descubra a fragrância</span>
+        <span class="btn__arrow">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+        </span>
+      </a>
+      <a href="#story" class="btn btn--ghost" data-cursor="hover">
+        <span>A história</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero__bottle-glow"></div>
+
+  <div class="hero__meta hero__meta--left">
+    <span class="hero__meta-num">N°<em>01</em></span>
+    <span class="hero__meta-vert">EAU DE PARFUM</span>
+  </div>
+  <div class="hero__meta hero__meta--right">
+    <span class="hero__meta-vert">100 ML · 3.4 FL.OZ</span>
+    <span class="hero__meta-num">M<em>V</em></span>
+  </div>
+
+  <div class="hero__scroll">
+    <span>SCROLL</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===========================  MARQUEE  =========================== -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span>NOIR D'OR</span><span class="marquee__dot">✦</span>
+    <span>EAU DE PARFUM</span><span class="marquee__dot">✦</span>
+    <span>OUD · AMBRE · SAFRAN</span><span class="marquee__dot">✦</span>
+    <span>NOUVELLE COLLECTION</span><span class="marquee__dot">✦</span>
+    <span>MAISON VESPER</span><span class="marquee__dot">✦</span>
+    <span>PARIS</span><span class="marquee__dot">✦</span>
+    <span>NOIR D'OR</span><span class="marquee__dot">✦</span>
+    <span>EAU DE PARFUM</span><span class="marquee__dot">✦</span>
+    <span>OUD · AMBRE · SAFRAN</span><span class="marquee__dot">✦</span>
+    <span>NOUVELLE COLLECTION</span><span class="marquee__dot">✦</span>
+    <span>MAISON VESPER</span><span class="marquee__dot">✦</span>
+    <span>PARIS</span><span class="marquee__dot">✦</span>
+  </div>
+</div>
+
+<!-- ===========================  PRODUCT  =========================== -->
+<section class="product" id="product">
+  <div class="product__bg-grain"></div>
+
+  <div class="product__container">
+    <div class="product__stage" id="productStage">
+      <div class="product__halo"></div>
+      <div class="product__rays"></div>
+      <div class="product__platform"></div>
+
+      <div class="product__bottle-wrap" id="productBottle">
+        <iframe
+          class="product__viewer"
+          title="Noir d'Or — Frasco em 3D"
+          src="https://sketchfab.com/models/650e2810736b46a9bd867e5897edc13b/embed?autostart=1&autospin=0.18&preload=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_hint=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0&ui_animations=0&ui_theme=dark&dnt=1&ui_color=d4a85a"
+          frameborder="0"
+          allow="autoplay; fullscreen; xr-spatial-tracking"
+          allowfullscreen
+          mozallowfullscreen="true"
+          webkitallowfullscreen="true"
+        ></iframe>
+        <div class="product__viewer-veil"></div>
+      </div>
+
+      <div class="product__bottle-shadow"></div>
+
+      <div class="product__hint">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 0 1 15-6.7M21 12a9 9 0 0 1-15 6.7M18 5.3V9h-3.7M6 18.7V15h3.7" stroke="currentColor" stroke-width="1"/></svg>
+        <span>Arraste para girar · Pinça para aproximar</span>
+      </div>
+    </div>
+
+    <div class="product__info">
+      <div class="product__eyebrow" data-reveal>
+        <span class="product__eyebrow-line"></span>
+        <span>L'ESSENCE</span>
+      </div>
+
+      <h2 class="product__title" data-split>
+        <span class="line"><em>Noir</em> d'Or</span>
+        <span class="line">um silêncio</span>
+        <span class="line">vestido de ouro</span>
+      </h2>
+
+      <p class="product__lede" data-reveal>
+        Uma composição olfativa concebida em três atos. A pele se cobre de uma penumbra
+        ambarada, atravessada por veios de oud preto e açafrão queimado. Cada gota é
+        destilada em pequenos lotes na Provença, repousando setenta dias antes do envase.
+      </p>
+
+      <div class="notes">
+        <div class="notes__group" data-note="top">
+          <div class="notes__head">
+            <span class="notes__num">I.</span>
+            <span class="notes__cat">Notas de Topo</span>
+            <span class="notes__time">— os primeiros minutos</span>
+          </div>
+          <ul class="notes__list">
+            <li><span>Bergamota da Calábria</span></li>
+            <li><span>Pimenta Rosa</span></li>
+            <li><span>Cardamomo Verde</span></li>
+          </ul>
+        </div>
+
+        <div class="notes__group" data-note="heart">
+          <div class="notes__head">
+            <span class="notes__num">II.</span>
+            <span class="notes__cat">Notas de Corpo</span>
+            <span class="notes__time">— o coração da fragrância</span>
+          </div>
+          <ul class="notes__list">
+            <li><span>Rosa de Damasco</span></li>
+            <li><span>Íris Pallida</span></li>
+            <li><span>Açafrão Persa</span></li>
+          </ul>
+        </div>
+
+        <div class="notes__group" data-note="base">
+          <div class="notes__head">
+            <span class="notes__num">III.</span>
+            <span class="notes__cat">Notas de Fundo</span>
+            <span class="notes__time">— a assinatura que permanece</span>
+          </div>
+          <ul class="notes__list">
+            <li><span>Oud do Camboja</span></li>
+            <li><span>Âmbar Líquido</span></li>
+            <li><span>Sândalo de Mysore</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="product__meta">
+        <div>
+          <span class="product__meta-k">Concentração</span>
+          <span class="product__meta-v">22% — Extrait</span>
+        </div>
+        <div>
+          <span class="product__meta-k">Persistência</span>
+          <span class="product__meta-v">12h+</span>
+        </div>
+        <div>
+          <span class="product__meta-k">Sillage</span>
+          <span class="product__meta-v">Magnético</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================  SENSORY  =========================== -->
+<section class="sensory" id="sensory">
+  <canvas class="sensory__smoke" id="smokeCanvas"></canvas>
+  <div class="sensory__glow sensory__glow--1"></div>
+  <div class="sensory__glow sensory__glow--2"></div>
+
+  <div class="sensory__inner">
+    <div class="sensory__label" data-reveal>
+      <span>02 — </span>
+      <span>EXPERIÊNCIA SENSORIAL</span>
+    </div>
+
+    <h2 class="sensory__quote">
+      <span class="sensory__line" data-line>"O perfume é a forma</span>
+      <span class="sensory__line" data-line>mais intensa</span>
+      <span class="sensory__line" data-line><em>da memória.</em>"</span>
+    </h2>
+
+    <div class="sensory__attr" data-reveal>
+      <span class="sensory__attr-line"></span>
+      <span>JEAN-PAUL GUERLAIN</span>
+    </div>
+
+    <div class="sensory__cols">
+      <div class="sensory__col" data-reveal>
+        <span class="sensory__col-num">↳ 01</span>
+        <h3>Pele</h3>
+        <p>O calor da pele revela o âmbar líquido, libertando uma aura cremosa e prolongada que se mistura ao seu próprio aroma.</p>
+      </div>
+      <div class="sensory__col" data-reveal>
+        <span class="sensory__col-num">↳ 02</span>
+        <h3>Ar</h3>
+        <p>Suspensas no ar, as notas de fumaça e oud desenham um rastro invisível — uma assinatura olfativa que precede e permanece.</p>
+      </div>
+      <div class="sensory__col" data-reveal>
+        <span class="sensory__col-num">↳ 03</span>
+        <h3>Memória</h3>
+        <p>Horas depois, ainda repousa o sândalo. Quem passou, lembra. Quem ficou, não esquece. Quem partiu, retorna.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================  COLLECTION  =========================== -->
+<section class="collection" id="collection">
+  <div class="collection__head">
+    <div class="collection__eyebrow" data-reveal>
+      <span class="collection__eyebrow-line"></span>
+      <span>03 — LA COLLECTION</span>
+    </div>
+    <h2 class="collection__title" data-split>
+      <span class="line">As <em>sete</em> fragrâncias</span>
+      <span class="line">da Maison Vesper</span>
+    </h2>
+    <p class="collection__sub" data-reveal>
+      Cada uma destilada em edição limitada, numerada à mão, selada com a cera dourada da casa.
+    </p>
+  </div>
+
+  <div class="collection__grid">
+    <article class="card" data-card data-cursor="hover" style="--tint:#8b6f3d">
+      <div class="card__visual">
+        <img
+          class="card__img"
+          src="https://images.unsplash.com/photo-1598634222670-87c5f558119c?w=900&q=80&auto=format&fit=crop"
+          alt="Noir d'Or"
+          loading="lazy"
+        />
+        <div class="card__shine"></div>
+      </div>
+      <div class="card__body">
+        <span class="card__num">N°01</span>
+        <h3 class="card__name">Noir d'Or</h3>
+        <p class="card__desc">Oud, âmbar, sândalo</p>
+        <span class="card__price">€ 320</span>
+      </div>
+      <div class="card__hover">
+        <span>Descobrir →</span>
+      </div>
+    </article>
+
+    <article class="card" data-card data-cursor="hover" style="--tint:#c2987a">
+      <div class="card__visual">
+        <img
+          class="card__img"
+          src="https://images.unsplash.com/photo-1605463967516-b73a52062ab0?w=900&q=80&auto=format&fit=crop"
+          alt="Rose de Minuit"
+          loading="lazy"
+        />
+        <div class="card__shine"></div>
+      </div>
+      <div class="card__body">
+        <span class="card__num">N°02</span>
+        <h3 class="card__name">Rose de Minuit</h3>
+        <p class="card__desc">Rosa, patchouli, cassis</p>
+        <span class="card__price">€ 280</span>
+      </div>
+      <div class="card__hover"><span>Descobrir →</span></div>
+    </article>
+
+    <article class="card" data-card data-cursor="hover" style="--tint:#6e7b6a">
+      <div class="card__visual">
+        <img
+          class="card__img"
+          src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=900&q=80&auto=format&fit=crop"
+          alt="Forêt Profonde"
+          loading="lazy"
+        />
+        <div class="card__shine"></div>
+      </div>
+      <div class="card__body">
+        <span class="card__num">N°03</span>
+        <h3 class="card__name">Forêt Profonde</h3>
+        <p class="card__desc">Vetiver, musgo, bétula</p>
+        <span class="card__price">€ 290</span>
+      </div>
+      <div class="card__hover"><span>Descobrir →</span></div>
+    </article>
+
+    <article class="card" data-card data-cursor="hover" style="--tint:#a08b5c">
+      <div class="card__visual">
+        <img
+          class="card__img"
+          src="https://images.unsplash.com/photo-1770301410072-f6ef6dad65b2?w=900&q=80&auto=format&fit=crop"
+          alt="Soleil Tardif"
+          loading="lazy"
+        />
+        <div class="card__shine"></div>
+      </div>
+      <div class="card__body">
+        <span class="card__num">N°04</span>
+        <h3 class="card__name">Soleil Tardif</h3>
+        <p class="card__desc">Néroli, mel, baunilha</p>
+        <span class="card__price">€ 260</span>
+      </div>
+      <div class="card__hover"><span>Descobrir →</span></div>
+    </article>
+
+    <article class="card" data-card data-cursor="hover" style="--tint:#8a7a92">
+      <div class="card__visual">
+        <img
+          class="card__img"
+          src="https://images.unsplash.com/photo-1585218334450-afcf929da36e?w=900&q=80&auto=format&fit=crop"
+          alt="Violette Sombre"
+          loading="lazy"
+        />
+        <div class="card__shine"></div>
+      </div>
+      <div class="card__body">
+        <span class="card__num">N°05</span>
+        <h3 class="card__name">Violette Sombre</h3>
+        <p class="card__desc">Íris, violeta, cacau</p>
+        <span class="card__price">€ 310</span>
+      </div>
+      <div class="card__hover"><span>Descobrir →</span></div>
+    </article>
+
+    <article class="card" data-card data-cursor="hover" style="--tint:#5d6e7e">
+      <div class="card__visual">
+        <img
+          class="card__img"
+          src="https://images.unsplash.com/photo-1615160460524-432433ba1b8f?w=900&q=80&auto=format&fit=crop"
+          alt="Marée Noire"
+          loading="lazy"
+        />
+        <div class="card__shine"></div>
+      </div>
+      <div class="card__body">
+        <span class="card__num">N°06</span>
+        <h3 class="card__name">Marée Noire</h3>
+        <p class="card__desc">Sal, alga, âmbar cinza</p>
+        <span class="card__price">€ 295</span>
+      </div>
+      <div class="card__hover"><span>Descobrir →</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- ===========================  STORY  =========================== -->
+<section class="story" id="story">
+  <div class="story__pin">
+    <div class="story__image" id="storyImage">
+      <img
+        class="story__photo"
+        src="https://images.unsplash.com/photo-1719176010035-17729577d496?w=2000&q=85&auto=format&fit=crop"
+        alt="Atelier — luz e brilho"
+        loading="lazy"
+      />
+      <div class="story__image-overlay"></div>
+    </div>
+
+    <div class="story__text">
+      <div class="story__chapters">
+
+        <div class="story__chap" data-chap="01">
+          <span class="story__chap-num">01</span>
+          <h3 class="story__chap-title">Uma <em>fundação</em><br/>em Paris, 1924</h3>
+          <p>Madeleine Vesper, filha de um destilador de Grasse, abre nos fundos de uma loja de antiguidades no Marais sua primeira oficina. Trabalha apenas à noite, com janelas fechadas, à luz de uma única vela.</p>
+        </div>
+
+        <div class="story__chap" data-chap="02">
+          <span class="story__chap-num">02</span>
+          <h3 class="story__chap-title">O <em>caderno</em><br/>de fórmulas</h3>
+          <p>Em 1931, Madeleine encerra um caderno de couro com seiscentas fórmulas. Sete delas, escritas em tinta dourada, formariam um século depois a coleção que carrega seu nome — Maison Vesper.</p>
+        </div>
+
+        <div class="story__chap" data-chap="03">
+          <span class="story__chap-num">03</span>
+          <h3 class="story__chap-title">A <em>quarta</em><br/>geração</h3>
+          <p>Hoje, sua bisneta Hélène Vesper preserva o método artesanal original. Cada frasco é numerado, cada cera dourada é selada à mão. Não fazemos perfumes — destilamos uma herança.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="story__progress">
+      <span class="story__progress-fill" id="storyFill"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================  TESTIMONIALS  =========================== -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials__head">
+    <span class="testimonials__eyebrow" data-reveal>05 — IMPRESSÕES</span>
+    <h2 class="testimonials__title" data-split>
+      <span class="line">O que dizem</span>
+      <span class="line"><em>sobre nós</em></span>
+    </h2>
+  </div>
+
+  <div class="testimonials__list">
+    <figure class="quote" data-quote>
+      <div class="quote__mark">"</div>
+      <blockquote>
+        Noir d'Or não é um perfume. É um capítulo. Você o veste e, sem perceber,
+        passa a habitar uma outra história — feita de madeira queimada, ouro escuro
+        e algo que se parece com lembrança.
+      </blockquote>
+      <figcaption>
+        <span class="quote__name">Vanessa Friedman</span>
+        <span class="quote__role">The New York Times — Editorial de Estilo</span>
+      </figcaption>
+    </figure>
+
+    <figure class="quote" data-quote>
+      <div class="quote__mark">"</div>
+      <blockquote>
+        Há uma elegância silenciosa em cada gesto da Maison Vesper — desde a destilação
+        em pequenos lotes até o selo de cera. É raro encontrar tanta inteireza num
+        objeto contemporâneo.
+      </blockquote>
+      <figcaption>
+        <span class="quote__name">Suzy Menkes</span>
+        <span class="quote__role">Vogue International</span>
+      </figcaption>
+    </figure>
+
+    <figure class="quote" data-quote>
+      <div class="quote__mark">"</div>
+      <blockquote>
+        O frasco assenta no toucador como uma escultura. O perfume permanece como
+        uma assinatura. Em duas semanas, três pessoas me pararam na rua — todas para
+        perguntar a mesma coisa.
+      </blockquote>
+      <figcaption>
+        <span class="quote__name">Tilda Castellane</span>
+        <span class="quote__role">Arquiteta · Paris</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===========================  CTA  =========================== -->
+<section class="cta" id="cta">
+  <canvas class="cta__particles" id="ctaParticles"></canvas>
+  <div class="cta__glow"></div>
+
+  <div class="cta__inner">
+    <span class="cta__eyebrow" data-reveal>— ÉDITION LIMITÉE · 1500 EXEMPLAIRES —</span>
+    <h2 class="cta__title">
+      <span class="cta__word"><span>R</span><span>E</span><span>S</span><span>E</span><span>R</span><span>V</span><span>E</span></span>
+      <span class="cta__word cta__word--gold"><span>O</span>&nbsp;<span>S</span><span>E</span><span>U</span></span>
+    </h2>
+    <p class="cta__sub" data-reveal>
+      O envio começa em 30 de outubro. Cada exemplar acompanha caderno olfativo<br/>
+      e cartão numerado, assinado à mão por Hélène Vesper.
+    </p>
+
+    <a href="#" class="btn btn--gold btn--xl" data-cursor="hover">
+      <span class="btn__label">Reservar Noir d'Or</span>
+      <span class="btn__price">€ 320</span>
+      <span class="btn__arrow">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+      </span>
+    </a>
+
+    <div class="cta__stock">
+      <span class="cta__stock-dot"></span>
+      <span>1247 / 1500 disponíveis</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================  FOOTER  =========================== -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <span>MAISON</span>
+        <span class="footer__logo-vesper">VESPER</span>
+      </div>
+      <p>Parfumeurs à Paris<br/>depuis 1924</p>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>Maison</h4>
+        <a href="#">A história</a>
+        <a href="#">O atelier</a>
+        <a href="#">Métier</a>
+        <a href="#">Imprensa</a>
+      </div>
+      <div class="footer__col">
+        <h4>Coleção</h4>
+        <a href="#">Noir d'Or</a>
+        <a href="#">Rose de Minuit</a>
+        <a href="#">Forêt Profonde</a>
+        <a href="#">Ver tudo</a>
+      </div>
+      <div class="footer__col">
+        <h4>Boutique</h4>
+        <a href="#">Paris · 8e</a>
+        <a href="#">Londres · Mayfair</a>
+        <a href="#">Atendimento</a>
+        <a href="#">Reservar visita</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© MMXXVI · MAISON VESPER S.A.</span>
+    <span>14 RUE CAMBON · 75001 PARIS</span>
+    <span>NOIR D'OR — EAU DE PARFUM 100ML</span>
+  </div>
+  <div class="footer__credit">
+    Modelo 3D "Perfume Bottle" por
+    <a href="https://sketchfab.com/alshifan.414" target="_blank" rel="noopener">alshifan</a>
+    via Sketchfab, sob licença
+    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.
+    Fotografias por Unsplash.
+  </div>
+</footer>
+
+<!-- ===========================  SCRIPTS  =========================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

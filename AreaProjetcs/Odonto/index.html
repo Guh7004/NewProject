@@ -43,8 +43,16 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  cursor: none;
 }
+body.cursor-ready { cursor: none; }
+body.cursor-ready a, body.cursor-ready button, body.cursor-ready input,
+body.cursor-ready select, body.cursor-ready textarea { cursor: none; }
+.cursor, .cursor-follower { display: none; }
+body.cursor-ready .cursor, body.cursor-ready .cursor-follower { display: block; }
+/* Garantir que elementos com AOS sejam visíveis caso AOS falhe */
+[data-aos]:not(.aos-init) { opacity: 1 !important; transform: none !important; }
+.aos-init[data-aos] { opacity: 0; }
+.aos-animate[data-aos] { opacity: 1 !important; }
 /* CURSOR PERSONALIZADO */
 .cursor {
   position: fixed;
@@ -82,8 +90,7 @@ h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; line-height: 1.1; lett
 h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 600; }
 h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 600; }
 h3 { font-size: 1.4rem; font-weight: 600; }
-a, button { cursor: none; }
-@media (hover: none) { a, button { cursor: auto; } }
+@media (hover: none) { body.cursor-ready, body.cursor-ready a, body.cursor-ready button { cursor: auto !important; } body.cursor-ready .cursor, body.cursor-ready .cursor-follower { display: none; } }
 img { max-width: 100%; display: block; }
 .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
@@ -1184,6 +1191,333 @@ footer ul li:hover { padding-left: 6px; }
 .parallax-img { will-change: transform; }
 .scale-on-scroll { will-change: transform; transform-origin: center top; }
 
+/* MOUSE TRAIL */
+.trail-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  animation: trailFade 0.8s ease-out forwards;
+}
+@keyframes trailFade {
+  0% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%,-50%) scale(0.2); }
+}
+
+/* SVG WAVE DIVIDERS */
+.wave-divider {
+  display: block;
+  width: 100%;
+  height: 80px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+.wave-divider svg { width: 100%; height: 100%; display: block; }
+.wave-divider path { animation: waveFlow 14s ease-in-out infinite; }
+@keyframes waveFlow {
+  0%, 100% { d: path("M0,40 Q360,80 720,40 T1440,40 L1440,80 L0,80 Z"); }
+  50% { d: path("M0,40 Q360,0 720,40 T1440,40 L1440,80 L0,80 Z"); }
+}
+
+/* MORPHING BLOBS */
+.blob-bg {
+  animation: morph 16s ease-in-out infinite, drift 22s ease-in-out infinite;
+}
+@keyframes morph {
+  0%, 100% { border-radius: 50% 50% 50% 50%; }
+  25% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 40% 50%; }
+  75% { border-radius: 70% 30% 50% 50% / 30% 70% 50% 70%; }
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0,0); }
+  33% { transform: translate(40px,-30px); }
+  66% { transform: translate(-30px,40px); }
+}
+
+/* ANTES E DEPOIS - BEFORE/AFTER */
+.antesdepois { background: var(--bg-soft); padding: 100px 0; position: relative; overflow: hidden; }
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.compare {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  box-shadow: var(--shadow);
+  background: #000;
+}
+body.cursor-ready .compare { cursor: none; }
+.compare img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.compare .after-img {
+  clip-path: inset(0 0 0 50%);
+  transition: clip-path 0.05s linear;
+}
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: white;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 5;
+  box-shadow: 0 0 16px rgba(0,0,0,0.3);
+}
+.compare-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.compare-handle::after {
+  content: '⇄';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.compare-label {
+  position: absolute;
+  top: 16px;
+  padding: 6px 14px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 100px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  z-index: 4;
+  backdrop-filter: blur(10px);
+}
+.compare-label.before { left: 16px; }
+.compare-label.after { right: 16px; background: var(--accent); }
+.compare-caption {
+  text-align: center;
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* SPOTLIGHT no counter section */
+.counters-section {
+  position: relative;
+  isolation: isolate;
+}
+.counters-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 320px at var(--cx, 50%) var(--cy, 50%), rgba(255,255,255,0.12) 0%, transparent 60%);
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.counters-section:hover::after { opacity: 1; }
+
+/* FLOATING LABELS no formulário */
+.form-group.float {
+  position: relative;
+  margin-bottom: 22px;
+}
+.form-group.float input,
+.form-group.float select,
+.form-group.float textarea {
+  padding: 22px 18px 10px;
+}
+.form-group.float label {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  margin: 0;
+  pointer-events: none;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(.2,.8,.2,1);
+  background: transparent;
+}
+.form-group.float input:focus + label,
+.form-group.float input:not(:placeholder-shown) + label,
+.form-group.float select:focus + label,
+.form-group.float select:valid + label,
+.form-group.float textarea:focus + label,
+.form-group.float textarea:not(:placeholder-shown) + label {
+  top: 6px;
+  font-size: 0.72rem;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.form-group.float input::placeholder,
+.form-group.float textarea::placeholder { color: transparent; }
+
+/* GRADIENTE ANIMADO em volta do form */
+.form-card {
+  position: relative;
+}
+.form-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 28px;
+  background: conic-gradient(from var(--ang, 0deg), var(--primary), var(--accent), var(--mint), var(--pink), var(--primary));
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 0.4s;
+  animation: rotateGrad 6s linear infinite;
+}
+.form-card:focus-within::after { opacity: 0.6; filter: blur(8px); }
+@property --ang {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotateGrad {
+  to { --ang: 360deg; }
+}
+
+/* CONFETTI */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 14px;
+  z-index: 9999;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  animation: confettiFall 2s linear forwards;
+}
+@keyframes confettiFall {
+  0% { transform: translate(0,0) rotate(0); opacity: 1; }
+  100% { transform: var(--end-transform); opacity: 0; }
+}
+
+/* ROLLING COUNTERS */
+.counter-num {
+  display: inline-flex;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.digit-roll {
+  display: inline-block;
+  position: relative;
+  width: 0.6em;
+  height: 1em;
+  overflow: hidden;
+}
+.digit-roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+.digit-roll-inner span {
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HEARTBEAT pulse no whatsapp */
+.whatsapp-float { animation: pulse-wpp 2.5s infinite, heartbeat 1.6s ease-in-out infinite; }
+@keyframes heartbeat {
+  0%, 30%, 60%, 100% { transform: scale(1); }
+  15% { transform: scale(1.08); }
+  45% { transform: scale(1.04); }
+}
+
+/* GLOW em elementos importantes */
+.glow-on-hover { position: relative; transition: box-shadow 0.4s; }
+.glow-on-hover:hover { box-shadow: 0 0 40px rgba(255, 138, 61, 0.4), 0 16px 48px rgba(13, 31, 45, 0.10); }
+
+/* ANIMATED GRADIENT TEXT */
+.grad-text {
+  background: linear-gradient(110deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradShift 4s linear infinite;
+}
+@keyframes gradShift {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* TILT no logo */
+.logo-icon { position: relative; overflow: hidden; }
+.logo-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: shine 4s infinite;
+}
+@keyframes shine {
+  0%, 60% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* SECTION REVEAL — clip-path */
+.reveal-clip {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.reveal-clip.in { clip-path: inset(0 0 0 0); }
+
+/* ANIMATED CHECKMARKS na lista do sobre */
+.sobre-list li .check-icon {
+  position: relative;
+  overflow: hidden;
+}
+.sobre-list li .check-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: white;
+  transform: scale(0);
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+.sobre-list li:hover .check-icon::before { transform: scale(1); }
+
+@media (max-width: 980px) {
+  .compare-grid { grid-template-columns: 1fr; }
+}
+
 /* RESPONSIVO */
 @media (max-width: 980px) {
   .hero-grid, .sobre-grid, .agendamento-grid, .cta-banner { grid-template-columns: 1fr; gap: 48px; }
@@ -1246,8 +1580,8 @@ footer ul li:hover { padding-left: 6px; }
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#tratamentos" class="hover-trigger">Tratamentos</a></li>
+      <li><a href="#antesdepois" class="hover-trigger">Antes & Depois</a></li>
       <li><a href="#sobre" class="hover-trigger">Sobre nós</a></li>
-      <li><a href="#galeria" class="hover-trigger">Galeria</a></li>
       <li><a href="#depoimentos" class="hover-trigger">Depoimentos</a></li>
       <li><a href="#faq" class="hover-trigger">Dúvidas</a></li>
     </ul>
@@ -1340,6 +1674,13 @@ footer ul li:hover { padding-left: 6px; }
   </div>
 </section>
 
+<!-- WAVE entre marquee e tratamentos -->
+<div class="wave-divider" style="background: white;">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 Q360,80 720,40 T1440,40 L1440,0 L0,0 Z" fill="var(--bg)"></path>
+  </svg>
+</div>
+
 <!-- TRATAMENTOS -->
 <section id="tratamentos">
   <div class="container">
@@ -1415,6 +1756,56 @@ footer ul li:hover { padding-left: 6px; }
     </div>
   </div>
 </section>
+
+<!-- ANTES E DEPOIS -->
+<section class="antesdepois" id="antesdepois">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <span class="section-tag">Resultados reais</span>
+      <h2 class="grad-text">Antes & depois dos nossos pacientes</h2>
+      <p>Arraste o controle deslizante para ver a transformação. Sorrisos reais, pacientes reais, resultados reais.</p>
+    </div>
+    <div class="compare-grid">
+      <div data-aos="fade-up" data-aos-delay="0">
+        <div class="compare" data-compare>
+          <img class="before-img" src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=600&h=750&fit=crop&q=80&sat=-50&blur=10" alt="Antes do tratamento">
+          <img class="after-img" src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=600&h=750&fit=crop&q=80" alt="Depois do tratamento">
+          <div class="compare-label before">Antes</div>
+          <div class="compare-label after">Depois</div>
+          <div class="compare-handle"></div>
+        </div>
+        <div class="compare-caption">Clareamento + lentes — 14 dias</div>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="150">
+        <div class="compare" data-compare>
+          <img class="before-img" src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&h=750&fit=crop&q=80&sat=-50&blur=10" alt="Antes do tratamento">
+          <img class="after-img" src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&h=750&fit=crop&q=80" alt="Depois do tratamento">
+          <div class="compare-label before">Antes</div>
+          <div class="compare-label after">Depois</div>
+          <div class="compare-handle"></div>
+        </div>
+        <div class="compare-caption">Ortodontia Invisalign — 12 meses</div>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="300">
+        <div class="compare" data-compare>
+          <img class="before-img" src="https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=600&h=750&fit=crop&q=80&sat=-50&blur=10" alt="Antes do tratamento">
+          <img class="after-img" src="https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=600&h=750&fit=crop&q=80" alt="Depois do tratamento">
+          <div class="compare-label before">Antes</div>
+          <div class="compare-label after">Depois</div>
+          <div class="compare-handle"></div>
+        </div>
+        <div class="compare-caption">Implante + reabilitação — 90 dias</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE DIVIDER -->
+<div class="wave-divider" style="background: var(--bg-soft);">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 Q360,80 720,40 T1440,40 L1440,80 L0,80 Z" fill="var(--bg)"></path>
+  </svg>
+</div>
 
 <!-- SOBRE -->
 <section id="sobre" class="sobre">
@@ -1594,22 +1985,21 @@ footer ul li:hover { padding-left: 6px; }
       <h3>Solicite seu retorno em 1 hora</h3>
       <p class="form-sub">Preencha os campos e nossa equipe entra em contato pelo WhatsApp.</p>
       <form onsubmit="enviarFormulario(event)">
-        <div class="form-group">
+        <div class="form-group float">
+          <input type="text" id="nome" required placeholder=" " class="hover-trigger">
           <label for="nome">Nome completo</label>
-          <input type="text" id="nome" required placeholder="Seu nome" class="hover-trigger">
         </div>
-        <div class="form-group">
+        <div class="form-group float">
+          <input type="tel" id="telefone" required placeholder=" " class="hover-trigger">
           <label for="telefone">WhatsApp</label>
-          <input type="tel" id="telefone" required placeholder="(11) 99999-9999" class="hover-trigger">
         </div>
-        <div class="form-group">
+        <div class="form-group float">
+          <input type="email" id="email" required placeholder=" " class="hover-trigger">
           <label for="email">E-mail</label>
-          <input type="email" id="email" required placeholder="seuemail@exemplo.com" class="hover-trigger">
         </div>
-        <div class="form-group">
-          <label for="tratamento">Qual tratamento te interessa?</label>
+        <div class="form-group float">
           <select id="tratamento" required class="hover-trigger">
-            <option value="">Selecione uma opção</option>
+            <option value="" disabled selected></option>
             <option>Ortodontia / Aparelho</option>
             <option>Implante dentário</option>
             <option>Clareamento</option>
@@ -1618,6 +2008,7 @@ footer ul li:hover { padding-left: 6px; }
             <option>Odontopediatria</option>
             <option>Outro / Avaliação geral</option>
           </select>
+          <label for="tratamento">Qual tratamento te interessa?</label>
         </div>
         <button type="submit" class="btn btn-accent btn-large magnetic hover-trigger">
           <i data-lucide="message-circle" style="width:18px;height:18px"></i>
@@ -1744,93 +2135,96 @@ footer ul li:hover { padding-left: 6px; }
 <!-- LIBS -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<!-- Lenis smooth scroll -->
-<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
-<!-- Vanilla Tilt for 3D effects -->
 <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 
 <script>
-// LUCIDE
-lucide.createIcons();
+// LUCIDE icons
+try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch(e) { console.warn('Lucide:', e); }
 
-// LENIS smooth scroll
-const lenis = new Lenis({
-  duration: 1.4,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothWheel: true,
-  wheelMultiplier: 1,
-  touchMultiplier: 1.5,
-});
-function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
+// AOS — inicializa primeiro pra revelar todos os elementos
+try {
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
+  } else {
+    // Fallback: revelar tudo manualmente
+    document.querySelectorAll('[data-aos]').forEach(el => el.classList.add('aos-animate'));
+  }
+} catch(e) {
+  console.warn('AOS:', e);
+  document.querySelectorAll('[data-aos]').forEach(el => el.classList.add('aos-animate'));
+}
 
-// Anchor links use Lenis
+// Smooth scroll nativo via CSS já configurado em html { scroll-behavior: smooth }
+// Anchor links + fechamento do menu mobile
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', (e) => {
-    const id = a.getAttribute('href');
-    if (id.length > 1) {
-      const target = document.querySelector(id);
-      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -60, duration: 1.6 }); }
-    }
-    document.getElementById('navLinks').classList.remove('open');
+  a.addEventListener('click', () => {
+    const navLinks = document.getElementById('navLinks');
+    if (navLinks) navLinks.classList.remove('open');
   });
 });
 
-// AOS
-AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
-
 // SWIPER
-new Swiper('.depoimentos-swiper', {
-  slidesPerView: 1,
-  spaceBetween: 24,
-  loop: true,
-  autoplay: { delay: 5000, disableOnInteraction: false },
-  pagination: { el: '.swiper-pagination', clickable: true },
-  navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-  breakpoints: {
-    640: { slidesPerView: 1.5 },
-    980: { slidesPerView: 2.2 },
-    1240: { slidesPerView: 3 }
+try {
+  if (typeof Swiper !== 'undefined') {
+    new Swiper('.depoimentos-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      autoplay: { delay: 5000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      breakpoints: {
+        640: { slidesPerView: 1.5 },
+        980: { slidesPerView: 2.2 },
+        1240: { slidesPerView: 3 }
+      }
+    });
   }
-});
+} catch(e) { console.warn('Swiper:', e); }
 
-// VANILLA TILT — efeito 3D nos cards de tratamento
-VanillaTilt.init(document.querySelectorAll('.tilt'), {
-  max: 8,
-  speed: 600,
-  glare: true,
-  'max-glare': 0.15,
-  scale: 1.02
-});
+// VANILLA TILT — efeito 3D nos cards
+try {
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('.tilt'), {
+      max: 8, speed: 600, glare: true, 'max-glare': 0.15, scale: 1.02
+    });
+  }
+} catch(e) { console.warn('VanillaTilt:', e); }
 
-// CURSOR PERSONALIZADO
-const cursor = document.querySelector('.cursor');
-const follower = document.querySelector('.cursor-follower');
-let mouseX = 0, mouseY = 0;
-let followerX = 0, followerY = 0;
+// CURSOR PERSONALIZADO — só ativa em desktop com mouse
+try {
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  const cursor = document.querySelector('.cursor');
+  const follower = document.querySelector('.cursor-follower');
+  if (!isTouch && cursor && follower) {
+    document.body.classList.add('cursor-ready');
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursor.style.left = mouseX + 'px';
-  cursor.style.top = mouseY + 'px';
-});
-function animateFollower() {
-  followerX += (mouseX - followerX) * 0.15;
-  followerY += (mouseY - followerY) * 0.15;
-  follower.style.left = followerX + 'px';
-  follower.style.top = followerY + 'px';
-  requestAnimationFrame(animateFollower);
-}
-animateFollower();
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+    function animateFollower() {
+      followerX += (mouseX - followerX) * 0.15;
+      followerY += (mouseY - followerY) * 0.15;
+      follower.style.left = followerX + 'px';
+      follower.style.top = followerY + 'px';
+      requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
 
-document.addEventListener('mousedown', () => cursor.classList.add('click'));
-document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+    document.addEventListener('mousedown', () => cursor.classList.add('click'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('click'));
 
-document.querySelectorAll('.hover-trigger, a, button, input, select, textarea').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); follower.classList.add('hover'); });
-  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); follower.classList.remove('hover'); });
-});
+    document.querySelectorAll('.hover-trigger, a, button, input, select, textarea').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); follower.classList.add('hover'); });
+      el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); follower.classList.remove('hover'); });
+    });
+  }
+} catch(e) { console.warn('Cursor:', e); document.body.classList.remove('cursor-ready'); }
 
 // MAGNETIC BUTTONS
 document.querySelectorAll('.magnetic').forEach(btn => {
@@ -1859,46 +2253,46 @@ window.addEventListener('mousemove', (e) => {
 });
 
 // SCROLL: imagem do hero diminui + paralax
-const heroVisual = document.getElementById('heroVisual');
 const heroImgMain = document.querySelector('.hero-img-main');
 const heroImgSec = document.querySelector('.hero-img-secondary');
-const sobreImg = document.querySelector('.sobre-image-wrap img.parallax-img');
+const heroSection = document.getElementById('hero');
 
 function onScroll() {
   const sy = window.scrollY;
-  // Hero scale + fade
-  if (heroImgMain) {
+  const heroH = heroSection ? heroSection.offsetHeight : window.innerHeight;
+  const inHero = sy < heroH;
+  // Hero scale + fade só ativo enquanto rola dentro do hero
+  if (heroImgMain && inHero) {
     const scale = Math.max(0.7, 1 - sy * 0.0008);
     const opacity = Math.max(0, 1 - sy * 0.002);
     const rotate = sy * 0.02;
     heroImgMain.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
     heroImgMain.style.opacity = opacity;
   }
-  if (heroImgSec) {
+  if (heroImgSec && inHero) {
     const scale = Math.max(0.6, 1 - sy * 0.0006);
     const ty = sy * 0.15;
     heroImgSec.style.transform = `translateY(${ty}px) scale(${scale})`;
   }
-  // Floating cards parallax
-  document.querySelectorAll('.hero-floating-card').forEach((card, i) => {
-    const offset = sy * (i === 0 ? 0.3 : 0.45);
-    card.style.marginTop = `-${offset}px`;
-  });
-  // Hero text parallax
-  const heroText = document.querySelector('.hero-grid > div:first-child');
-  if (heroText && sy < window.innerHeight) {
-    heroText.style.transform = `translateY(${sy * 0.2}px)`;
-    heroText.style.opacity = Math.max(0, 1 - sy * 0.0015);
+  // Floating cards parallax (só dentro do hero)
+  if (inHero) {
+    document.querySelectorAll('.hero-floating-card').forEach((card, i) => {
+      const offset = sy * (i === 0 ? 0.3 : 0.45);
+      card.style.marginTop = `-${offset}px`;
+    });
   }
   // Progress bar
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = (sy / docHeight) * 100;
-  document.getElementById('progressBar').style.width = progress + '%';
+  const progress = (sy / Math.max(docHeight, 1)) * 100;
+  const pb = document.getElementById('progressBar');
+  if (pb) pb.style.width = progress + '%';
   // Header
   const header = document.getElementById('header');
-  if (sy > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+  if (header) {
+    if (sy > 50) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  }
 }
-lenis.on('scroll', onScroll);
 window.addEventListener('scroll', onScroll, { passive: true });
 
 // PARALAX em imagens com data-speed
@@ -1953,14 +2347,128 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 counters.forEach(c => counterObserver.observe(c));
 
+// MOUSE TRAIL — partículas seguindo o cursor
+try {
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  if (!isTouch) {
+    let lastTrail = 0;
+    document.addEventListener('mousemove', (e) => {
+      const now = Date.now();
+      if (now - lastTrail < 30) return;
+      lastTrail = now;
+      const dot = document.createElement('div');
+      dot.className = 'trail-dot';
+      dot.style.left = e.clientX + 'px';
+      dot.style.top = e.clientY + 'px';
+      const colors = ['#ff8a3d', '#006e7a', '#ffb5c2', '#b8e8e3'];
+      dot.style.background = colors[Math.floor(Math.random()*colors.length)];
+      const size = 4 + Math.random() * 6;
+      dot.style.width = size + 'px';
+      dot.style.height = size + 'px';
+      document.body.appendChild(dot);
+      setTimeout(() => dot.remove(), 800);
+    });
+  }
+} catch(e) { console.warn('Trail:', e); }
+
+// SPOTLIGHT no counter section
+const counterSection = document.querySelector('.counters-section');
+if (counterSection) {
+  counterSection.addEventListener('mousemove', (e) => {
+    const rect = counterSection.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    counterSection.style.setProperty('--cx', x + '%');
+    counterSection.style.setProperty('--cy', y + '%');
+  });
+}
+
+// BEFORE/AFTER COMPARE SLIDER
+document.querySelectorAll('[data-compare]').forEach(compare => {
+  const after = compare.querySelector('.after-img');
+  const handle = compare.querySelector('.compare-handle');
+  let dragging = false;
+
+  function setPosition(percent) {
+    const p = Math.max(0, Math.min(100, percent));
+    after.style.clipPath = `inset(0 0 0 ${p}%)`;
+    handle.style.left = p + '%';
+  }
+
+  // Animação inicial sutil ao carregar
+  setPosition(50);
+  setTimeout(() => {
+    let frame = 0;
+    const initAnim = setInterval(() => {
+      frame++;
+      const wave = 50 + Math.sin(frame * 0.3) * 8;
+      setPosition(wave);
+      if (frame > 25) { clearInterval(initAnim); setPosition(50); }
+    }, 40);
+  }, 600);
+
+  function getPercent(e) {
+    const rect = compare.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return (x / rect.width) * 100;
+  }
+
+  compare.addEventListener('mousedown', (e) => { dragging = true; setPosition(getPercent(e)); });
+  compare.addEventListener('touchstart', (e) => { dragging = true; setPosition(getPercent(e)); }, { passive: true });
+  window.addEventListener('mousemove', (e) => { if (dragging) setPosition(getPercent(e)); });
+  window.addEventListener('touchmove', (e) => { if (dragging) setPosition(getPercent(e)); }, { passive: true });
+  window.addEventListener('mouseup', () => { dragging = false; });
+  window.addEventListener('touchend', () => { dragging = false; });
+
+  // Hover suave: o handle segue o cursor levemente quando passa por cima
+  compare.addEventListener('mousemove', (e) => {
+    if (!dragging) {
+      const p = getPercent(e);
+      // Aproxima 30% pra direção do mouse (efeito magnético)
+      const current = parseFloat(handle.style.left);
+      const target = current + (p - current) * 0.15;
+      setPosition(target);
+    }
+  });
+});
+
+// CONFETTI ao enviar form
+function explodirConfete(originX, originY) {
+  const colors = ['#ff8a3d', '#006e7a', '#ffb5c2', '#b8e8e3', '#d8d4f5', '#25d366'];
+  for (let i = 0; i < 60; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = originX + 'px';
+    c.style.top = originY + 'px';
+    c.style.background = colors[i % colors.length];
+    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    const angle = (Math.PI * 2 * i) / 60 + (Math.random() - 0.5) * 0.5;
+    const velocity = 200 + Math.random() * 300;
+    const dx = Math.cos(angle) * velocity;
+    const dy = Math.sin(angle) * velocity + 200; // gravidade
+    const rot = (Math.random() - 0.5) * 720;
+    c.style.setProperty('--end-transform', `translate(${dx}px, ${dy}px) rotate(${rot}deg)`);
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 2000);
+  }
+}
+
 // FORM SUBMIT
 function enviarFormulario(e) {
   e.preventDefault();
   const nome = document.getElementById('nome').value;
   const telefone = document.getElementById('telefone').value;
   const tratamento = document.getElementById('tratamento').value;
-  const msg = `Olá! Meu nome é ${nome}, telefone ${telefone}. Tenho interesse em ${tratamento} e gostaria de agendar minha avaliação gratuita.`;
-  window.open(`https://wa.me/5511400289220?text=${encodeURIComponent(msg)}`, '_blank');
+  // Confete a partir do botão
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (btn) {
+    const r = btn.getBoundingClientRect();
+    explodirConfete(r.left + r.width/2, r.top + r.height/2);
+  }
+  setTimeout(() => {
+    const msg = `Olá! Meu nome é ${nome}, telefone ${telefone}. Tenho interesse em ${tratamento} e gostaria de agendar minha avaliação gratuita.`;
+    window.open(`https://wa.me/5511400289220?text=${encodeURIComponent(msg)}`, '_blank');
+  }, 800);
 }
 </script>
 
