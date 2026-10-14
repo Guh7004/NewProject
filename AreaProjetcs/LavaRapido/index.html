@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang='pt-BR'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Lavagem externa, lavagem completa e estética automotiva. Monte seu orçamento na hora e peça pelo WhatsApp.'>
+<meta property='og:type' content='website'>
+<meta property='og:locale' content='pt_BR'>
+<meta property='og:title' content='Gota Azul Lava Rápido'>
+<meta property='og:description' content='Lavagem profissional, pronta em 45 minutos. Monte seu orçamento na hora e peça pelo WhatsApp.'>
+<meta property='og:image' content='https://images.pexels.com/photos/6872591/pexels-photo-6872591.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200'>
+<meta name='theme-color' content='#070B14'>
+<link rel='icon' href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%235AAEFF' d='M16 2.5C16 2.5 6 13.2 6 20a10 10 0 0 0 20 0C26 13.2 16 2.5 16 2.5z'/%3E%3C/svg%3E">
+<title>Gota Azul Lava Rápido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+img{max-width:100%}
+:root{
+--bg:#F4F5F7; --surface:#FFFFFF; --fg:#0B1220; --muted:#4B5565; --line:#DDE1E8;
+--foam:#EAF0FB; --brand:#1F5FD6; --brand-ink:#1A4FB4; --cyan:#5AAEFF;
+--amber:#F5B83D; --amber-ink:#2A1A00;
+--wa:#15803D; --wa-ink:#FFFFFF;
+--ok:#12804A; --ok-soft:#CDEBDA; --closed:#B3322B; --closed-soft:#F5D5D2;
+--hero-a:#070B14; --hero-b:#10203D; --hero-fg:#F5F7FA; --hero-muted:#A9B4C6; --hero-line:rgba(255,255,255,.12);
+--h-ok:#3FCF86; --h-ok-soft:rgba(63,207,134,.24); --h-closed:#FF8A80; --h-closed-soft:rgba(255,138,128,.24);
+--font-display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
+--font-body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]){
+--bg:#090E18; --surface:#101826; --fg:#F3F5F8; --muted:#9BA7B8; --line:#1E2A3D;
+--foam:#142138; --brand:#5B9DFF; --brand-ink:#8DBBFF;
+--wa:#33C06C; --wa-ink:#03160A;
+--ok:#3FCF86; --ok-soft:#12402B; --closed:#FF8A80; --closed-soft:#4A1F1C;
+color-scheme:dark;
+}
+}
+:root[data-theme="dark"]{
+--bg:#090E18; --surface:#101826; --fg:#F3F5F8; --muted:#9BA7B8; --line:#1E2A3D;
+--foam:#142138; --brand:#5B9DFF; --brand-ink:#8DBBFF;
+--wa:#33C06C; --wa-ink:#03160A;
+--ok:#3FCF86; --ok-soft:#12402B; --closed:#FF8A80; --closed-soft:#4A1F1C;
+color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:17px;line-height:1.6}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+h1,h2,h3,h4,p,ul,ol,address{margin:0}
+a{color:var(--brand-ink)}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.wrap{max-width:1160px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:10px;border:2px solid transparent;font-family:var(--font-body);font-size:1rem;font-weight:700;line-height:1.1;text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,filter .15s,border-color .15s}
+.btn-wa{background:var(--wa);color:var(--wa-ink)}
+.btn-wa:hover{filter:brightness(1.07)}
+.btn-ghost{border-color:var(--fg);color:var(--fg);background:transparent}
+.btn-ghost:hover{background:var(--fg);color:var(--bg)}
+.btn-light{border-color:rgba(255,255,255,.55);color:var(--hero-fg);background:transparent}
+.btn-light:hover{background:var(--hero-fg);color:var(--hero-a);border-color:var(--hero-fg)}
+.btn-sm{min-height:40px;padding:8px 16px;font-size:.92rem}
+.hero{position:relative;overflow:hidden;color:var(--hero-fg);background:linear-gradient(135deg,var(--hero-a) 0%,var(--hero-b) 100%)}
+.hero::before{content:"";position:absolute;right:-12%;top:-20%;width:64%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(90,174,255,.2),rgba(90,174,255,0))}
+.hero>*{position:relative}
+.top{border-bottom:1px solid var(--hero-line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 24px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.55rem;text-transform:uppercase;letter-spacing:.05em;line-height:1;color:var(--hero-fg);text-decoration:none}
+.drop-a{fill:var(--cyan)}
+.drop-b{stroke:var(--hero-a);fill:none}
+.nav{display:none;gap:26px}
+.nav a{color:var(--hero-muted);text-decoration:none;font-weight:600;font-size:.95rem}
+.nav a:hover{color:var(--hero-fg)}
+.top-right{display:flex;align-items:center;gap:14px}
+.top-wa{display:none}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:.88rem;font-weight:600;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--hero-line);color:var(--hero-fg)}
+.status .dot{flex:none;width:9px;height:9px;border-radius:50%;background:var(--hero-muted)}
+.status.open .dot{background:var(--h-ok);box-shadow:0 0 0 4px var(--h-ok-soft)}
+.status.closed .dot{background:var(--h-closed);box-shadow:0 0 0 4px var(--h-closed-soft)}
+@media (min-width:900px){.nav{display:flex}.top-wa{display:inline-flex}}
+.hero-main{padding-block:clamp(36px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero-grid>*{min-width:0}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+h1{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.7rem,7vw,4.9rem);line-height:.98;letter-spacing:.005em;text-wrap:balance}
+h1 .acc{color:var(--cyan)}
+.lead-p{font-size:1.12rem;color:var(--hero-muted);max-width:46ch;margin-top:20px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.stats{list-style:none;padding:0;margin-top:34px;display:flex;flex-wrap:wrap;gap:18px 36px}
+.stats li{display:grid;gap:2px;min-width:0}
+.stats b{font-family:var(--font-display);font-weight:700;font-size:2rem;line-height:1.05;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.stats span{font-size:.84rem;color:var(--hero-muted)}
+.visual{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/11;border:1px solid var(--hero-line);background:var(--hero-a);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.visual img,.visual svg{display:block;width:100%;height:100%;object-fit:cover}
+.section{padding-block:clamp(48px,8vw,92px)}
+.alt{background:var(--surface)}
+.sec-head{display:grid;gap:10px;max-width:62ch;margin-bottom:32px}
+.sec-head p{color:var(--muted)}
+.kicker{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-ink)}
+h2.title{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.1rem,5vw,3.2rem);line-height:1;letter-spacing:.01em;text-wrap:balance}
+.quote-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(28px,5vw,64px);align-items:start}
+.quote-grid>*{min-width:0}
+.benefits{list-style:none;padding:0;margin-top:22px;display:grid;gap:12px}
+.benefits li{display:flex;gap:12px;align-items:flex-start}
+.benefits li::before{content:"";flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--brand);box-shadow:inset 0 0 0 5px var(--brand)}
+.benefits li{position:relative}
+.benefits li::after{content:"";position:absolute;left:7px;top:6px;width:5px;height:9px;border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.ticket{--pad:22px;position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:var(--pad);display:grid;gap:18px;box-shadow:0 24px 48px -30px rgba(11,31,58,.5)}
+.ticket-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}
+.ticket-head h3{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.65rem;letter-spacing:.03em;line-height:1.1}
+.ticket-head span{font-size:.78rem;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{display:block;padding:0;margin-bottom:8px;font-size:.76rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.opts{display:grid;gap:8px}
+.sizes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+.opt-body{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);transition:border-color .15s,background-color .15s}
+.opt:hover .opt-body{border-color:var(--brand)}
+.opt input:checked + .opt-body{border-color:var(--brand);background:var(--foam)}
+.opt input:focus-visible + .opt-body{outline:3px solid var(--cyan);outline-offset:2px}
+.opt-text{flex:1;min-width:0}
+.opt-name{display:block;font-weight:700;line-height:1.25}
+.opt-sub{display:block;font-size:.8rem;color:var(--muted);line-height:1.3}
+.opt-price{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sizes .opt-body{flex-direction:column;align-items:flex-start;gap:2px;padding:10px;height:100%}
+.mark{flex:none;width:20px;height:20px;border:2px solid var(--muted);border-radius:50%;display:grid;place-items:center}
+.opt input[type=checkbox] + .opt-body .mark{border-radius:6px}
+.opt input:checked + .opt-body .mark{background:var(--brand);border-color:var(--brand)}
+.mark::after{content:none}
+.opt input:checked + .opt-body .mark::after{content:""}
+.opt input[type=radio] + .opt-body .mark::after{width:6px;height:6px;border-radius:50%;background:var(--surface)}
+.opt input[type=checkbox] + .opt-body .mark::after{width:5px;height:10px;border:solid var(--surface);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+.plate{display:grid;gap:6px}
+.plate label{font-size:.76rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.plate input{width:100%;min-height:44px;padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);font:600 1rem var(--font-body);letter-spacing:.14em;text-transform:uppercase}
+.plate input::placeholder{color:var(--muted);letter-spacing:.14em;opacity:.7}
+.tear{position:relative;height:0;margin-inline:calc(var(--pad) * -1);border-top:2px dashed var(--line)}
+.tear::before,.tear::after{content:"";position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--bg)}
+.tear::before{left:-11px}
+.tear::after{right:-11px}
+.lines{list-style:none;padding:0;display:grid;gap:6px;font-size:.95rem}
+.lines li{display:flex;align-items:baseline;gap:8px}
+.lines .name{min-width:0}
+.lines .lead{flex:1;min-width:12px;border-bottom:1.5px dotted var(--line);transform:translateY(-3px)}
+.lines .p{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.total-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:6px 16px}
+.total-lbl{display:block;font-size:.76rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.total{display:block;font-family:var(--font-display);font-weight:700;font-size:3.4rem;line-height:1;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.time{font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.time b{color:var(--fg)}
+.ticket-note{font-size:.82rem;color:var(--muted)}
+.ticket .btn{width:100%}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg)}
+.card-media{position:relative;aspect-ratio:16/10;display:grid;place-items:center;color:var(--hero-fg);background:linear-gradient(135deg,var(--hero-a),var(--hero-b));overflow:hidden}
+.card-media::before{content:"";position:absolute;right:-20%;top:-40%;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(90,174,255,.3),rgba(90,174,255,0))}
+.card-media svg{position:relative}
+.card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-body{display:flex;flex-direction:column;gap:8px;padding:18px 18px 16px;flex:1}
+.card h3{font-family:var(--font-display);font-weight:700;font-size:1.5rem;letter-spacing:.02em;text-transform:uppercase;line-height:1.1}
+.card p{color:var(--muted);font-size:.92rem}
+.card-foot{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.card-foot span{font-size:.84rem;color:var(--muted)}
+.card-foot b{font-size:1.05rem}
+.tag{display:inline-block;padding:1px 8px;border-radius:999px;background:var(--amber);color:var(--amber-ink);font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
+.card h3 .tag{margin-left:8px}
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.price-table{border-collapse:collapse;width:100%;min-width:640px}
+.price-table th,.price-table td{padding:14px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.price-table thead th{font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--foam);vertical-align:bottom}
+.price-table thead small{display:block;margin-top:2px;font-size:.72rem;font-weight:500;letter-spacing:0;text-transform:none}
+.price-table tbody tr:last-child td{border-bottom:0}
+.price-table .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.price-table td.num strong{font-size:1.05rem}
+.svc-name{font-weight:700}
+.svc-desc{display:block;max-width:46ch;margin-top:2px;font-size:.88rem;color:var(--muted);font-weight:400}
+.pack{margin-top:18px;padding:18px 20px;border:1.5px dashed var(--brand);border-radius:14px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px}
+.pack-text{display:grid;gap:2px;min-width:0}
+.pack-text span{color:var(--muted);font-size:.92rem}
+.pack-prices{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px;font-variant-numeric:tabular-nums}
+.pack-prices li{display:flex;flex-direction:column}
+.pack-prices li span{font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pack-prices li strong{font-size:1.2rem}
+.pack-prices li s{font-size:.82rem;color:var(--muted)}
+.band{color:var(--hero-fg);background:linear-gradient(135deg,var(--hero-a),var(--hero-b))}
+.band .kicker{color:var(--cyan)}
+.band h2.title{color:var(--hero-fg)}
+.band .sec-head p{color:var(--hero-muted)}
+.steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px 32px}
+.steps li{min-width:0;border-top:2px solid var(--hero-line);padding-top:16px}
+.steps .n{display:block;font-family:var(--font-display);font-weight:700;font-size:3.2rem;line-height:1;color:var(--cyan)}
+.steps h3{margin:10px 0 6px;font-family:var(--font-display);font-weight:700;font-size:1.45rem;letter-spacing:.03em;text-transform:uppercase}
+.steps p{color:var(--hero-muted);font-size:.95rem}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--foam)}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px 40px}
+.info>*{min-width:0}
+.info h3{font-family:var(--font-display);font-weight:700;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;margin-bottom:12px}
+.info address{font-style:normal;margin-bottom:10px}
+.hours{width:100%;border-collapse:collapse}
+.hours th,.hours td{padding:7px 0;border-bottom:1px dashed var(--line);text-align:left;font-weight:400;font-variant-numeric:tabular-nums}
+.hours td{text-align:right;color:var(--muted)}
+.hours tr.today th,.hours tr.today td{font-weight:700;color:var(--fg)}
+.hours .tag{margin-left:8px}
+.phone{display:block;font-family:var(--font-display);font-weight:700;font-size:2.5rem;line-height:1;letter-spacing:.02em;margin-bottom:14px;user-select:all}
+.contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.pay{color:var(--muted);font-size:.92rem}
+.foot{color:var(--hero-muted);background:var(--hero-a);padding-block:30px 100px;font-size:.88rem}
+.foot .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+.foot .brand{font-size:1.25rem}
+.fab{position:fixed;z-index:10;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));box-shadow:0 12px 26px -10px rgba(0,0,0,.55)}
+@media (min-width:900px){.fab{display:none}.foot{padding-bottom:30px}}
+@media (max-width:860px){.hero-grid,.quote-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="hero">
+<header class="top" id="topo">
+<div class="wrap">
+<a class="brand" href="#topo">
+<svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path class="drop-a" d="M16 2.5C16 2.5 6 13.2 6 20a10 10 0 0 0 20 0C26 13.2 16 2.5 16 2.5z"/><path class="drop-b" d="M11.2 20.5a5 5 0 0 0 4 4.7" stroke-width="2.2" stroke-linecap="round"/></svg>
+<span id="brand-name">Gota Azul Lava Rápido</span>
+</a>
+<nav class="nav" aria-label="Seções">
+<a href="#orcamento">Orçamento</a>
+<a href="#servicos">Serviços</a>
+<a href="#precos">Preços</a>
+<a href="#contato">Contato</a>
+</nav>
+<div class="top-right">
+<div class="status closed" id="status" role="status"><span class="dot"></span><span class="txt">Confira nossos horários</span></div>
+<a class="btn btn-wa btn-sm top-wa" data-wa href="#contato" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+</div>
+</header>
+<div class="hero-main">
+<div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Lava rápido e estética automotiva · <span id="eyebrow-city">Poá, SP</span></p>
+<h1>Lavagem profissional, pronta em <span class="acc" id="hero-min">45 minutos</span>.</h1>
+<p class="lead-p">Cuidamos da pintura, do interior e do motor com produtos de qualidade e equipe treinada. Deixe o carro com a gente e volte com ele brilhando.</p>
+<div class="cta">
+<a class="btn btn-wa" data-wa href="#contato" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+<a class="btn btn-light" href="#orcamento">Calcular meu orçamento</a>
+</div>
+<ul class="stats">
+<li><b id="stat-min">45 min</b><span>lavagem completa</span></li>
+<li><b id="stat-price">R$ 35</b><span>lavagem externa a partir de</span></li>
+<li><b>Pix e cartão</b><span>em todos os serviços</span></li>
+</ul>
+</div>
+<div class="visual" id="visual"></div>
+</div>
+</div>
+</div>
+<main>
+<section class="section" id="orcamento">
+<div class="wrap quote-grid">
+<div>
+<div class="sec-head" style="margin-bottom:0">
+<span class="kicker">Orçamento na hora</span>
+<h2 class="title">Quanto custa lavar o seu carro?</h2>
+<p>Escolha o porte, a lavagem e os extras. O valor e o tempo aparecem na hora e você envia o pedido pelo WhatsApp.</p>
+</div>
+<ul class="benefits">
+<li>Valor claro antes de deixar o carro, sem surpresa.</li>
+<li>Pedido pronto no WhatsApp, com porte, serviços e placa.</li>
+<li>Confirmamos o melhor horário com você.</li>
+</ul>
+</div>
+<form class="ticket" id="ticket" aria-labelledby="t-title" autocomplete="off">
+<div class="ticket-head">
+<h3 id="t-title">Monte sua lavagem</h3>
+<span id="comanda">Comanda</span>
+</div>
+<fieldset>
+<legend>1. Porte do veículo</legend>
+<div class="sizes" id="sizes"></div>
+</fieldset>
+<fieldset>
+<legend>2. Lavagem</legend>
+<div class="opts" id="bases"></div>
+</fieldset>
+<fieldset>
+<legend>3. Extras</legend>
+<div class="opts" id="extras"></div>
+</fieldset>
+<div class="plate">
+<label for="plate">Placa (opcional)</label>
+<input id="plate" type="text" inputmode="text" autocapitalize="characters" maxlength="7" placeholder="ABC1D23">
+</div>
+<div class="tear" aria-hidden="true"></div>
+<ul class="lines" id="lines" aria-live="polite"></ul>
+<div class="total-row">
+<div>
+<span class="total-lbl" id="total-lbl">Total estimado</span>
+<span class="total" id="total">R$ 0</span>
+</div>
+<div class="time">Tempo médio <b id="time">0 min</b></div>
+</div>
+<a class="btn btn-wa" id="wa-ticket" href="#contato" target="_blank" rel="noopener">Enviar pedido no WhatsApp</a>
+<p class="ticket-note">Valor final confirmado na hora. Carro muito sujo ou com pelos de animais pode ter acréscimo.</p>
+</form>
+</div>
+</section>
+<section class="section alt" id="servicos">
+<div class="wrap">
+<div class="sec-head">
+<span class="kicker">Serviços</span>
+<h2 class="title">Do básico ao tratamento completo</h2>
+<p>Cada serviço tem o tempo médio e o valor inicial. O preço final depende do porte do veículo.</p>
+</div>
+<div class="cards" id="cards"></div>
+</div>
+</section>
+<section class="section" id="precos">
+<div class="wrap">
+<div class="sec-head">
+<span class="kicker">Tabela de preços</span>
+<h2 class="title">Valores por porte do veículo</h2>
+<p>Os extras são somados à lavagem escolhida.</p>
+</div>
+<div class="table-scroll">
+<table class="price-table">
+<thead id="price-head"></thead>
+<tbody id="price-body"></tbody>
+</table>
+</div>
+<div class="pack" id="pack"></div>
+</div>
+</section>
+<section class="section band" id="etapas">
+<div class="wrap">
+<div class="sec-head">
+<span class="kicker">Nosso processo</span>
+<h2 class="title">Como lavamos</h2>
+<p>A ordem importa. Tirar a sujeira pesada antes de encostar no carro evita risco na pintura.</p>
+</div>
+<ol class="steps">
+<li><span class="n">1</span><h3>Pré-lavagem</h3><p>Jato de água de baixo para cima solta barro e poeira antes de qualquer contato.</p></li>
+<li><span class="n">2</span><h3>Shampoo neutro</h3><p>Espuma com pH neutro e luva de microfibra. Não agride a cera nem a pintura.</p></li>
+<li><span class="n">3</span><h3>Enxágue e secagem</h3><p>Enxágue completo e secagem com microfibra, sem deixar marca de água.</p></li>
+<li><span class="n">4</span><h3>Acabamento</h3><p>Pretinho nos pneus e vidros sem marca. Na completa, aspiração e painel limpo.</p></li>
+</ol>
+</div>
+</section>
+<section class="section alt" id="galeria" hidden>
+<div class="wrap">
+<div class="sec-head">
+<span class="kicker">Resultados</span>
+<h2 class="title">Nosso trabalho</h2>
+</div>
+<div class="gallery" id="gallery"></div>
+</div>
+</section>
+<section class="section" id="contato">
+<div class="wrap">
+<div class="sec-head">
+<span class="kicker">Contato</span>
+<h2 class="title">Venha nos visitar</h2>
+</div>
+<div class="info">
+<div>
+<h3>Endereço</h3>
+<address id="address">Rua das Palmeiras, 120, Centro, Poá, SP</address>
+<a id="maps" href="#contato" target="_blank" rel="noopener">Abrir no Google Maps</a>
+</div>
+<div>
+<h3>Horários</h3>
+<table class="hours"><tbody id="hours-body"></tbody></table>
+</div>
+<div>
+<h3>WhatsApp</h3>
+<span class="phone" id="num">(11) 99999-0000</span>
+<div class="contact-actions">
+<a class="btn btn-wa btn-sm" data-wa href="#contato" target="_blank" rel="noopener">Chamar agora</a>
+<button class="btn btn-ghost btn-sm" id="copy" type="button">Copiar número</button>
+</div>
+<p class="pay" id="pay">Pix, débito, crédito e dinheiro</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="foot">
+<div class="wrap">
+<span class="brand">
+<svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><path class="drop-a" d="M16 2.5C16 2.5 6 13.2 6 20a10 10 0 0 0 20 0C26 13.2 16 2.5 16 2.5z"/><path class="drop-b" d="M11.2 20.5a5 5 0 0 0 4 4.7" stroke-width="2.2" stroke-linecap="round"/></svg>
+<span id="foot-name">Gota Azul Lava Rápido</span>
+</span>
+<span id="foot-addr">Poá, SP</span>
+<span>© <span id="year">2026</span> Todos os direitos reservados</span>
+</div>
+</footer>
+<a class="btn btn-wa fab" data-wa href="#contato" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="currentColor"/></svg>
+WhatsApp
+</a>
+<script>
+(function(){
+const CONFIG={
+nome:'Gota Azul Lava Rápido',
+cidade:'Poá, SP',
+endereco:'Rua das Palmeiras, 120, Centro, Poá, SP',
+whatsapp:'5511999990000',          // só números, com 55 + DDD
+whatsappExibir:'(11) 99999-0000',
+pagamento:'Pix, débito, crédito e dinheiro',
+// índice 0 = domingo ... 6 = sábado. Use null para dia fechado.
+horarios:[
+{abre:'08:00',fecha:'13:00'},
+{abre:'08:00',fecha:'18:00'},
+{abre:'08:00',fecha:'18:00'},
+{abre:'08:00',fecha:'18:00'},
+{abre:'08:00',fecha:'18:00'},
+{abre:'08:00',fecha:'18:00'},
+{abre:'08:00',fecha:'17:00'}
+],
+// Fotos (Pexels, licença livre). Para usar fotos do cliente,
+// troque o endereço da imagem. Deixe '' para usar o ícone.
+fotos:{
+hero:'https://images.pexels.com/photos/6872591/pexels-photo-6872591.jpeg?auto=compress&cs=tinysrgb&w=1400',
+servicos:{
+ext:'https://images.pexels.com/photos/6872609/pexels-photo-6872609.jpeg?auto=compress&cs=tinysrgb&w=800',
+comp:'https://images.pexels.com/photos/6873119/pexels-photo-6873119.jpeg?auto=compress&cs=tinysrgb&w=800',
+motor:'https://images.pexels.com/photos/18864730/pexels-photo-18864730.jpeg?auto=compress&cs=tinysrgb&w=800',
+cera:'https://images.pexels.com/photos/14615260/pexels-photo-14615260.jpeg?auto=compress&cs=tinysrgb&w=800',
+higi:'https://images.pexels.com/photos/5233285/pexels-photo-5233285.jpeg?auto=compress&cs=tinysrgb&w=800',
+poli:'https://images.pexels.com/photos/37809565/pexels-photo-37809565.jpeg?auto=compress&cs=tinysrgb&w=800'
+},
+galeria:['https://images.pexels.com/photos/28995189/pexels-photo-28995189.jpeg?auto=compress&cs=tinysrgb&w=900','https://images.pexels.com/photos/29504457/pexels-photo-29504457.jpeg?auto=compress&cs=tinysrgb&w=900','https://images.pexels.com/photos/4870671/pexels-photo-4870671.jpeg?auto=compress&cs=tinysrgb&w=900','https://images.pexels.com/photos/33093191/pexels-photo-33093191.jpeg?auto=compress&cs=tinysrgb&w=900','https://images.pexels.com/photos/6873122/pexels-photo-6873122.jpeg?auto=compress&cs=tinysrgb&w=900','https://images.pexels.com/photos/5233264/pexels-photo-5233264.jpeg?auto=compress&cs=tinysrgb&w=900']
+}
+};
+const SIZES=[
+{id:'p',nome:'Pequeno',ex:'Hatch, compacto'},
+{id:'m',nome:'Médio',ex:'Sedan, SUV médio'},
+{id:'g',nome:'Grande',ex:'SUV, picape, van'}
+];
+// tipo 'base' = escolhe uma; tipo 'extra' = soma. min = tempo em minutos.
+const SERVICES=[
+{id:'ext',tipo:'base',nome:'Lavagem externa',desc:'Pré-lavagem, shampoo neutro, secagem com microfibra e pretinho nos pneus.',min:25,preco:{p:35,m:40,g:50}},
+{id:'comp',tipo:'base',nome:'Lavagem completa',desc:'Externa mais aspiração, painel e portas limpos, vidros por dentro e por fora.',min:45,preco:{p:55,m:65,g:80},destaque:true},
+{id:'motor',tipo:'extra',nome:'Lavagem de motor',desc:'Desengraxante e proteção nas partes plásticas. Feita com o motor frio.',min:20,preco:{p:35,m:40,g:45}},
+{id:'cera',tipo:'extra',nome:'Cera protetora',desc:'Cera líquida aplicada à mão. Brilho e proteção contra sol e chuva.',min:25,preco:{p:40,m:50,g:60}},
+{id:'higi',tipo:'extra',nome:'Higienização interna',desc:'Bancos, carpete e teto com extração de sujeira e odores.',min:120,preco:{p:150,m:180,g:220}},
+{id:'poli',tipo:'extra',nome:'Polimento comercial',desc:'Remove riscos leves e oxidação. Avaliamos o carro antes de começar.',min:180,preco:{p:180,m:220,g:280}}
+];
+const PACK={nome:'Pacote mensal',desc:'4 lavagens completas, uma por semana. Pago de uma vez',base:'comp',qtd:4,preco:{p:200,m:240,g:290}};
+const ICONS={
+ext:'<path d="M24 6C24 6 12 20 12 28a12 12 0 0 0 24 0C36 20 24 6 24 6z"/><path d="M18 29a6 6 0 0 0 5 5"/>',
+comp:'<path d="M24 6l4 14 14 4-14 4-4 14-4-14-14-4 14-4z"/>',
+motor:'<circle cx="24" cy="24" r="7"/><circle cx="24" cy="24" r="16" stroke-dasharray="7 5"/>',
+cera:'<path d="M24 6l14 6v12c0 9-7 16-14 19-7-3-14-10-14-19V12z"/><path d="M17 24l5 5 9-10"/>',
+higi:'<circle cx="16" cy="30" r="8"/><circle cx="31" cy="21" r="6"/><circle cx="33" cy="36" r="5"/><circle cx="21" cy="14" r="3"/>',
+poli:'<circle cx="24" cy="24" r="7"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M37 11l-4 4M15 33l-4 4"/>'
+};
+const DIAS=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+const ORDEM=[1,2,3,4,5,6,0];
+const $=id=>document.getElementById(id);
+const byId={}; SERVICES.forEach(s=>{byId[s.id]=s;});
+const sizeById={}; SIZES.forEach(z=>{sizeById[z.id]=z;});
+const state={size:'m',base:'comp',extras:new Set(['cera'])};
+const brl=n=>'R$ '+(Number.isInteger(n)?String(n):n.toFixed(2).replace('.',','));
+const fmtMin=m=>{
+if(m<60) return m+' min';
+const h=Math.floor(m/60), r=m%60;
+return r? h+'h'+String(r).padStart(2,'0') : h+'h';
+};
+const fmtH=t=>{const p=t.split(':');const h=parseInt(p[0],10);return p[1]==='00'?h+'h':h+'h'+p[1];};
+const toMin=t=>{const p=t.split(':');return parseInt(p[0],10)*60+parseInt(p[1],10);};
+function nowSP(){
+try{
+const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+const m={}; parts.forEach(p=>{m[p.type]=p.value;});
+let h=parseInt(m.hour,10); if(h===24) h=0;
+return {wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(m.weekday),min:h*60+parseInt(m.minute,10)};
+}catch(e){
+const d=new Date(); return {wd:d.getDay(),min:d.getHours()*60+d.getMinutes()};
+}
+}
+function waLink(msg){return 'https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(msg);}
+function renderBasics(){
+$('brand-name').textContent=CONFIG.nome;
+$('foot-name').textContent=CONFIG.nome;
+$('eyebrow-city').textContent=CONFIG.cidade;
+$('address').textContent=CONFIG.endereco;
+$('foot-addr').textContent=CONFIG.endereco;
+$('num').textContent=CONFIG.whatsappExibir;
+$('pay').textContent=CONFIG.pagamento;
+$('year').textContent=new Date().getFullYear();
+$('maps').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(CONFIG.endereco);
+const comp=byId[PACK.base];
+$('hero-min').textContent=comp.min+' minutos';
+$('stat-min').textContent=comp.min+' min';
+const baseMin=Math.min.apply(null,SERVICES.filter(s=>s.tipo==='base').map(s=>s.preco.p));
+$('stat-price').textContent=brl(baseMin);
+const hello='Olá! Vim pelo site da '+CONFIG.nome+' e gostaria de agendar uma lavagem.';
+document.querySelectorAll('[data-wa]').forEach(a=>{a.href=waLink(hello);});
+const d=new Date();
+$('comanda').textContent='Comanda · '+String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');
+if(CONFIG.fotos.hero){
+$('visual').innerHTML='<img src="'+CONFIG.fotos.hero+'" alt="Carro sendo lavado na '+CONFIG.nome+'">';
+}
+const gal=CONFIG.fotos.galeria||[];
+if(gal.length){
+$('gallery').innerHTML=gal.map((src,i)=>'<img src="'+src+'" alt="Trabalho realizado '+(i+1)+'" loading="lazy">').join('');
+$('galeria').hidden=false;
+}
+}
+function renderStatus(){
+const n=nowSP(), h=CONFIG.horarios[n.wd];
+let cls='closed', txt='';
+if(h && n.min>=toMin(h.abre) && n.min<toMin(h.fecha)){
+cls='open'; txt='Aberto agora · fecha às '+fmtH(h.fecha);
+}else if(h && n.min<toMin(h.abre)){
+txt='Fechado · abre hoje às '+fmtH(h.abre);
+}else{
+for(let i=1;i<=7;i++){
+const d=(n.wd+i)%7, hd=CONFIG.horarios[d];
+if(hd){txt='Fechado · abre '+(i===1?'amanhã':DIAS[d].toLowerCase())+' às '+fmtH(hd.abre);break;}
+}
+}
+const el=$('status'); el.className='status '+cls; el.querySelector('.txt').textContent=txt;
+}
+function renderHours(){
+const today=nowSP().wd;
+$('hours-body').innerHTML=ORDEM.map(d=>{
+const h=CONFIG.horarios[d];
+return '<tr'+(d===today?' class="today"':'')+'><th scope="row">'+DIAS[d]+(d===today?' <span class="tag">hoje</span>':'')+'</th><td>'+(h?fmtH(h.abre)+' às '+fmtH(h.fecha):'Fechado')+'</td></tr>';
+}).join('');
+}
+function renderCards(){
+$('cards').innerHTML=SERVICES.map(s=>{
+const src=CONFIG.fotos.servicos && CONFIG.fotos.servicos[s.id];
+const media=src
+? '<img src="'+src+'" alt="'+s.nome+'" loading="lazy">'
+: '<svg viewBox="0 0 48 48" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICONS[s.id]+'</svg>';
+return '<article class="card"><div class="card-media">'+media+'</div><div class="card-body"><h3>'+s.nome+(s.destaque?'<span class="tag">Mais pedida</span>':'')+'</h3><p>'+s.desc+'</p>'+
+'<div class="card-foot"><span>'+(s.tipo==='extra'?'Extra · ':'')+fmtMin(s.min)+'</span><span>a partir de <b>'+brl(s.preco.p)+'</b></span></div></div></article>';
+}).join('');
+}
+function renderTable(){
+$('price-head').innerHTML='<tr><th scope="col">Serviço</th><th scope="col" class="num">Tempo</th>'+
+SIZES.map(z=>'<th scope="col" class="num">'+z.nome+'<small>'+z.ex+'</small></th>').join('')+'</tr>';
+$('price-body').innerHTML=SERVICES.map(s=>
+'<tr><td><span class="svc-name">'+s.nome+'</span>'+(s.destaque?' <span class="tag">Mais pedida</span>':'')+'<span class="svc-desc">'+s.desc+'</span></td>'+
+'<td class="num">'+fmtMin(s.min)+'</td>'+
+SIZES.map(z=>'<td class="num"><strong>'+brl(s.preco[z.id])+'</strong></td>').join('')+'</tr>'
+).join('');
+const base=byId[PACK.base];
+$('pack').innerHTML='<div class="pack-text"><strong>'+PACK.nome+'</strong><span>'+PACK.desc+'.</span></div><ul class="pack-prices">'+
+SIZES.map(z=>'<li><span>'+z.nome+'</span><strong>'+brl(PACK.preco[z.id])+'</strong><s>'+brl(base.preco[z.id]*PACK.qtd)+'</s></li>').join('')+'</ul>';
+}
+function renderOptions(){
+$('sizes').innerHTML=SIZES.map(z=>
+'<label class="opt"><input type="radio" name="size" value="'+z.id+'"'+(z.id===state.size?' checked':'')+'><span class="opt-body"><span class="opt-name">'+z.nome+'</span><span class="opt-sub">'+z.ex+'</span></span></label>'
+).join('');
+$('bases').innerHTML=SERVICES.filter(s=>s.tipo==='base').map(s=>
+'<label class="opt"><input type="radio" name="base" value="'+s.id+'"'+(s.id===state.base?' checked':'')+'><span class="opt-body"><span class="mark"></span><span class="opt-text"><span class="opt-name">'+s.nome+'</span><span class="opt-sub">'+fmtMin(s.min)+'</span></span><span class="opt-price" data-price="'+s.id+'"></span></span></label>'
+).join('');
+$('extras').innerHTML=SERVICES.filter(s=>s.tipo==='extra').map(s=>
+'<label class="opt"><input type="checkbox" name="extra" value="'+s.id+'"'+(state.extras.has(s.id)?' checked':'')+'><span class="opt-body"><span class="mark"></span><span class="opt-text"><span class="opt-name">'+s.nome+'</span><span class="opt-sub">+ '+fmtMin(s.min)+'</span></span><span class="opt-price" data-price="'+s.id+'"></span></span></label>'
+).join('');
+}
+function renderTotals(){
+const z=sizeById[state.size];
+document.querySelectorAll('[data-price]').forEach(el=>{
+const s=byId[el.dataset.price];
+el.textContent=(s.tipo==='extra'?'+ ':'')+brl(s.preco[state.size]);
+});
+const chosen=[byId[state.base]].concat(SERVICES.filter(s=>s.tipo==='extra' && state.extras.has(s.id)));
+let total=0, minutes=0;
+chosen.forEach(s=>{total+=s.preco[state.size];minutes+=s.min;});
+$('lines').innerHTML=chosen.map(s=>
+'<li><span class="name">'+s.nome+'</span><span class="lead"></span><span class="p">'+brl(s.preco[state.size])+'</span></li>'
+).join('');
+$('total').textContent=brl(total);
+$('total-lbl').textContent='Total estimado · porte '+z.nome.toLowerCase();
+$('time').textContent='≈ '+fmtMin(minutes);
+const plate=$('plate').value.trim();
+const msg='Olá! Quero lavar meu carro na '+CONFIG.nome+'.\n'+
+'Porte: '+z.nome+' ('+z.ex+')\n'+
+'Serviços: '+chosen.map(s=>s.nome).join(' + ')+'\n'+
+(plate?'Placa: '+plate+'\n':'')+
+'Total estimado: '+brl(total)+'\n'+
+'Qual horário vocês têm hoje?';
+$('wa-ticket').href=waLink(msg);
+}
+function bind(){
+const f=$('ticket');
+f.addEventListener('submit',e=>e.preventDefault());
+f.addEventListener('change',e=>{
+const t=e.target;
+if(t.name==='size') state.size=t.value;
+else if(t.name==='base') state.base=t.value;
+else if(t.name==='extra'){ if(t.checked) state.extras.add(t.value); else state.extras.delete(t.value); }
+renderTotals();
+});
+$('plate').addEventListener('input',e=>{
+e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
+renderTotals();
+});
+const btn=$('copy'), numEl=$('num');
+btn.addEventListener('click',()=>{
+const done=()=>{btn.textContent='Copiado';setTimeout(()=>{btn.textContent='Copiar número';},1600);};
+const fallback=()=>{
+try{const r=document.createRange();r.selectNodeContents(numEl);const s=window.getSelection();s.removeAllRanges();s.addRange(r);}catch(e){}
+};
+try{ navigator.clipboard.writeText(CONFIG.whatsappExibir).then(done,fallback); }catch(e){ fallback(); }
+});
+}
+renderBasics();
+renderStatus();
+renderHours();
+renderCards();
+renderTable();
+renderOptions();
+renderTotals();
+bind();
+setInterval(renderStatus,60000);
+})();
+</script>
+</body>
+</html>
